@@ -11,4 +11,7 @@ package fotocopiadorav3.Vista;
  */
 public class VistaInterfaz{
     
+    
+    
+    
 }
