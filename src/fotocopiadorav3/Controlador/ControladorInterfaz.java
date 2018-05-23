@@ -10,5 +10,10 @@ package fotocopiadorav3.Controlador;
  @author Tomas
  */
 public class ControladorInterfaz{
-    
+    public int suma(int a, int b){
+        return a+b;
+    }
+    public int resta(int a, int b){
+        return a-b;
+    }
 }
