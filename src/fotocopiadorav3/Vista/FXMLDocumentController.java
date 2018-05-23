@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fotocopiadorav3;
+package fotocopiadorav3.Vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
