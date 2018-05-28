@@ -49,5 +49,6 @@ public class ModeloInterfaz{
         return nombreDevolver;
         
     }
-    
+    //Tomas, necesito un metodo que verifique que el usuario y la contraseña
+    //Son validos.
 }

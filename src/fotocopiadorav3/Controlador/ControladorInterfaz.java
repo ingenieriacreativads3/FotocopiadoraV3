@@ -12,30 +12,68 @@ package fotocopiadorav3.Controlador;
 public class ControladorInterfaz{
     
     protected GestorPedido GestorPedidos = new GestorPedido();
+    protected GestorCuenta GestorCuenta = new GestorCuenta();
     
     
     /**
      * Clase que se encarga de la creacion del pedido
-     * @param nombrePersona
-     * @param apellidoPersona
+     * @param nombreYApellidoPersona
      * @param identificadorDocumento
      * @param seña
      * Se calcula fecha actual?
      * @return: true si se creo el pedido, false en caso contrario
      */
-    public String crearPedido(String nombrePersona, String apellidoPersona, String identificadorDocumento, double seña){
+    public String crearPedido(String nombreYApellidoPersona, String identificadorDocumento, double seña){
         
-        String IDPedido;
+        String identificadorPedido;
         
         try {
-            IDPedido = GestorPedidos.crearPedido (nombrePersona, apellidoPersona, identificadorDocumento, seña);
-            return IDPedido;
+            identificadorPedido = GestorPedidos.crearPedido (nombreYApellidoPersona, identificadorDocumento, seña);
+            return identificadorPedido;
         }catch (Exception e) {
             return null;
         }
     }
     
+    /**
+     * Metodo para comprobar que 
+     * 
+     * @param usuario
+     * @param contraseña
+     */
+    public boolean iniciarSecion(String usuario, String contraseña){
+        
+        boolean exitoAlIniciar=false;
+        
+        try{
+            
+            if(existeUsuario(usuario)){
+                if(esValidoUsuarioYContraseña(usuario, contraseña)){
+                    exitoAlIniciar=true;
+                }
+                else{
+                    exitoAlIniciar=false;
+                }
+            }
+            else{
+                exitoAlIniciar=false;
+            }
+            return exitoAlIniciar;
+        }catch(Exception e){
+            return exitoAlIniciar;
+        }
+    }
     
+    private boolean existeUsuario(String usuario){
+        boolean existe=false;
+        //existe=ModeloInterfaz.existeUsuario(usuario);
+        return existe;
+    }
     
+    private boolean esValidoUsuarioYContraseña(String usuario, String contraseña){
+        boolean esValido=false;
+        //esValido = ModeloInterfaz.esValidoUsuarioYContraseña(usuario, contraseña);
+        return esValido;
+    }
     
 }

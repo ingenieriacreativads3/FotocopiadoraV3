@@ -10,11 +10,11 @@ package fotocopiadorav3.Controlador;
  * 
  * @author Alonso David
  */
-public class GestionCuenta {
+public class GestorCuenta {
     
    protected void iniciarSecion(){
        /**
-        * El metodo recibe por parametros un usuarioy una contraseña.
+        * El metodo recibe por parametros un usuario y una contraseña.
         * En caso de ser datos validos, devuelve true.
         * En case de ser datos incorrectos, devuelve false.
         */
