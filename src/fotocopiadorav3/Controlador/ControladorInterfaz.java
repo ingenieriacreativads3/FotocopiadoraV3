@@ -5,6 +5,8 @@
  */
 package fotocopiadorav3.Controlador;
 
+import fotocopiadorav3.Modelo.ModeloInterfaz;
+
 /**
 
  @author Alonso David
@@ -66,13 +68,13 @@ public class ControladorInterfaz{
     
     private boolean existeUsuario(String usuario){
         boolean existe=false;
-        //existe=ModeloInterfaz.existeUsuario(usuario);
+        existe=ModeloInterfaz.existeUsuario(usuario);
         return existe;
     }
     
     private boolean esValidoUsuarioYContraseña(String usuario, String contraseña){
         boolean esValido=false;
-        //esValido = ModeloInterfaz.esValidoUsuarioYContraseña(usuario, contraseña);
+        esValido = ModeloInterfaz.existePass(usuario, contraseña);
         return esValido;
     }
     
