@@ -37,7 +37,7 @@ public class ModeloInterfaz {
      *Esta rutina verifica la existencia de un usuario.
      * @return
      */
-    public static boolean existeUsuario(){
+    public static boolean existeUsuario(String nombreUsuario){
         
         boolean existe = false;
         
