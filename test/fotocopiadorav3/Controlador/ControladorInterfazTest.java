@@ -40,33 +40,5 @@ public class ControladorInterfazTest {
     /**
      * Test of suma method, of class ControladorInterfaz.
      */
-    @Test
-    public void testSuma() {
-        System.out.println("suma");
-        int a = 0;
-        int b = 0;
-        ControladorInterfaz instance = new ControladorInterfaz();
-        int expResult = 0;
-        int result = instance.suma(a, b);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of resta method, of class ControladorInterfaz.
-     */
-    @Test
-    public void testResta() {
-        System.out.println("resta");
-        int a = 5;
-        int b = 2;
-        ControladorInterfaz instance = new ControladorInterfaz();
-        int expResult = 3;
-        int result = instance.resta(a, b);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
     
 }
