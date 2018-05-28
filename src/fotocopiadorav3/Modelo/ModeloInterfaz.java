@@ -17,17 +17,17 @@ package fotocopiadorav3.Modelo;
 public class ModeloInterfaz {
     
     /**
-     * Esta rutina verifica la existencia del password para un usuario
-     * específico.
-     * @param password
-     * @return
+     * Esta rutina verifica la existencia del password
+     * para un usuario específico.
+     * 
+     * @param nombreUsuario
+     * @param passwordUsuario
+     * @return boolean
      */
     public static boolean existePass(String nombreUsuario, String passwordUsuario){
         
         //Establecer un valor por defecto
         boolean existe = false;
-        
-        
         
         return existe;
         
@@ -48,10 +48,10 @@ public class ModeloInterfaz {
     }
     
     /**
-     *Este método
+     *Este método devuelve el siguiente identificador de pedido
      * @return
      */
-    public static Nombre getSiguienteCodigoPedido() {
+    public static Nombre getSiguienteCodigoTransaccion() {
 
         Nombre nombreDevolver = Nombre.objetoInvalido;
 
