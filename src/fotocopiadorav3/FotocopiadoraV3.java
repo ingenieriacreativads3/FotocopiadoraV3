@@ -19,7 +19,7 @@ public class FotocopiadoraV3 extends Application{
     
     @Override
     public void start(Stage stage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Vista/FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Vista/FXMLPaginaPrincipal.fxml"));
         
         Scene scene = new Scene(root);
         
