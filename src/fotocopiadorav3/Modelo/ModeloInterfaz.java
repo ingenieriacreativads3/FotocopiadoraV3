@@ -7,27 +7,65 @@
 package fotocopiadorav3.Modelo;
 
 /**
-
+ * Esta clase determina la conexion con el exterior del paquete.
+ * Aqui se reciben parametros y se solicitan datos por medio
+ * de métdos estáticos. Desde ya muchas gracias.
+ * 
+ * 
  @author Tomas
  */
-public class ModeloInterfaz{
+public class ModeloInterfaz {
     
-    public static Nombre getSiguienteCodigoPedido(){
+    /**
+     * Esta rutina verifica la existencia del password para un usuario
+     * específico.
+     * @param password
+     * @return
+     */
+    public static boolean existePass(String nombreUsuario, String passwordUsuario){
         
-        Nombre nombreDevolver = Nombre.objetoInvalido;
+        //Establecer un valor por defecto
+        boolean existe = false;
         
-        //TODO devolver el siguiente de la lista, no null
         
-        return nombreDevolver;
+        
+        return existe;
         
     }
     
-    public static Pedido getNuevoPedido(){
+    /**
+     *Esta rutina verifica la existencia de un usuario.
+     * @return
+     */
+    public static boolean existeUsuario(){
         
+        boolean existe = false;
+        
+        
+        
+        return existe;
+        
+    }
+    
+    /**
+     *Este método
+     * @return
+     */
+    public static Nombre getSiguienteCodigoPedido() {
+
+        Nombre nombreDevolver = Nombre.objetoInvalido;
+
+        //TODO devolver el siguiente de la lista, no null
+        return nombreDevolver;
+
+    }
+    
+    public static Pedido getNuevoPedido() {
+
         Pedido pedidoDevolver = Pedido.nuevo();
-        
+
         return pedidoDevolver;
-        
+
     }
     
     public static Alumno getNuevoAlumno(){
