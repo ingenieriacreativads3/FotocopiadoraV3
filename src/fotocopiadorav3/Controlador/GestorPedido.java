@@ -19,12 +19,12 @@ public class GestorPedido {
      *
      * El metodo deberia devolver una clave de pedido. La clave de pedido es el
      * valor con el cual un cliente puede retirar el pedido.
-     * @param nombrePresona
-     * @param apellidoPersona
+     * @param nombreYApellidoPersona
      * @param IDFotocopia
      * @param seña
+     * @return 
      */
-    protected String crearPedido(String nombrePresona, String apellidoPersona, String IDFotocopia, double seña) {
+    protected String crearPedido(String nombreYApellidoPersona, String IDFotocopia, double seña) {
         /**
          * Se inicializan las variabes. Generar una clave de pedido "IDPedido"
          * Persistir en la base de datos un nuevo pedido. Devolver un ID de
