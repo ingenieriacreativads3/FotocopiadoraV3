@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fotocopiadorav3.Modelo;
 
-import com.sun.javafx.geom.transform.BaseTransform;
+package fotocopiadorav3.Modelo;
 
 /**
 
@@ -13,7 +12,25 @@ import com.sun.javafx.geom.transform.BaseTransform;
  */
 public class ModeloInterfaz{
     
-    public static Alumno getNuevo(){
+    public static Nombre getSiguienteCodigoPedido(){
+        
+        Nombre nombreDevolver = Nombre.objetoInvalido;
+        
+        //TODO devolver el siguiente de la lista, no null
+        
+        return nombreDevolver;
+        
+    }
+    
+    public static Pedido getNuevoPedido(){
+        
+        Pedido pedidoDevolver = Pedido.nuevo();
+        
+        return pedidoDevolver;
+        
+    }
+    
+    public static Alumno getNuevoAlumno(){
         
         Alumno alumnoDevolver = Alumno.nuevo();
         
