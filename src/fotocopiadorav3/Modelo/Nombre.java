@@ -15,7 +15,7 @@ public class Nombre{
     private final int id;
     private String valor;
             
-    private final static Nombre objetoInvalido = new Nombre();
+    protected final static Nombre objetoInvalido = new Nombre();
 
     private static Set<Nombre> listaObjetos = new HashSet<>();
     
