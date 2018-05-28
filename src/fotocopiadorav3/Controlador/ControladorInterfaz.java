@@ -10,21 +10,32 @@ package fotocopiadorav3.Controlador;
  @author Alonso David
  */
 public class ControladorInterfaz{
-    protected GestionPedido GestorPedidos = new GestionPedido();
-   
+    
+    protected GestorPedido GestorPedidos = new GestorPedido();
+    
+    
     /**
      * Clase que se encarga de la creacion del pedido
-     * @parametros: nombre persona, apellido persona, ID fotocopia, seña.
+     * @param nombrePersona
+     * @param apellidoPersona
+     * @param identificadorDocumento
+     * @param seña
      * Se calcula fecha actual?
      * @return: true si se creo el pedido, false en caso contrario
      */
-    public String crearPedido(String _nombrePersona, String _apellidoPersona, String _IDFotocopia, double _seña){
-        String IDPedido;//preguntar por out
-        try{
-            IDPedido = GestorPedidos.crearPedido(_nombrePersona, _apellidoPersona, _IDFotocopia, _seña);
+    public String crearPedido(String nombrePersona, String apellidoPersona, String identificadorDocumento, double seña){
+        
+        String IDPedido;
+        
+        try {
+            IDPedido = GestorPedidos.crearPedido (nombrePersona, apellidoPersona, identificadorDocumento, seña);
             return IDPedido;
-        }catch(Exception e){
+        }catch (Exception e) {
             return null;
         }
     }
+    
+    
+    
+    
 }
