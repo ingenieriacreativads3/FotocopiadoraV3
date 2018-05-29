@@ -18,7 +18,7 @@ public class Persona{
     private int dni;
     private Direccion direccion;
     
-    protected final static Persona objetoInvalido = new Persona();
+    protected final static Persona OBJETO_INVALIDO = new Persona();
 
     private static Set<Persona> listaObjetos = new HashSet<>();
 
@@ -51,7 +51,7 @@ public class Persona{
     protected static Persona nuevo(){
 
         //Crear un objeto a devolver
-        Persona objetoDevolver = Persona.objetoInvalido;
+        Persona objetoDevolver = Persona.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
         Persona objetoNuevo = new Persona();

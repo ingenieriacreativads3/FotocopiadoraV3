@@ -14,7 +14,7 @@ public class Alumno extends Persona{
     
     private final int id;
             
-    private final static Alumno objetoInvalido = new Alumno();
+    private final static Alumno OBJETO_INVALIDO = new Alumno();
 
     private static Set<Alumno> listaObjetos = new HashSet<>();
 
@@ -47,7 +47,7 @@ public class Alumno extends Persona{
     protected static Alumno nuevo(){
 
         //Crear un objeto a devolver
-        Alumno objetoDevolver = Alumno.objetoInvalido;
+        Alumno objetoDevolver = Alumno.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
         Alumno objetoNuevo = new Alumno();

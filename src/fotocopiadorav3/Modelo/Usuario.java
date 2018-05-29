@@ -19,7 +19,7 @@ public class Usuario{
     private Nombre nombreUsuario;
     private Nombre pass;
 
-    protected static Usuario objetoInvalido = new Usuario(Persona.objetoInvalido);
+    protected final static Usuario OBJETO_INVALIDO = new Usuario(Persona.OBJETO_INVALIDO);
 
     private static Set<Usuario> listaObjetos = new HashSet<>();
 
@@ -27,9 +27,9 @@ public class Usuario{
 
     protected static Persona getPersonaForID(int id){
 
-        Persona personaDevolver = Persona.objetoInvalido;
+        Persona personaDevolver = Persona.OBJETO_INVALIDO;
         int idPersonaBuscada = id;
-        int idPersonaDevolver = Persona.objetoInvalido.getId();
+        int idPersonaDevolver = Persona.OBJETO_INVALIDO.getId();
         
         for(Usuario objetoActual : listaObjetos){
             
@@ -140,7 +140,7 @@ public class Usuario{
     protected static Usuario nuevo(Persona personaFinal){
 
         //Crear un objeto a devolver
-        Usuario objetoDevolver = Usuario.objetoInvalido;
+        Usuario objetoDevolver = Usuario.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
         Usuario objetoNuevo = new Usuario(personaFinal);
@@ -215,10 +215,6 @@ public class Usuario{
         this.pass = pass;
     }
 
-    private static void setObjetoInvalido(Usuario objetoInvalido) {
-        Usuario.objetoInvalido = objetoInvalido;
-    }
-
     private static void setListaObjetos(Set<Usuario> listaObjetos) {
         Usuario.listaObjetos = listaObjetos;
     }
@@ -242,7 +238,7 @@ public class Usuario{
     }
 
     private static Usuario getObjetoInvalido() {
-        return objetoInvalido;
+        return OBJETO_INVALIDO;
     }
 
     private static Set<Usuario> getListaObjetos() {

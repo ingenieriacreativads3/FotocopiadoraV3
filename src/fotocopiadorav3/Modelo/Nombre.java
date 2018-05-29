@@ -15,7 +15,7 @@ public class Nombre{
     private final int id;
     private String valor;
             
-    protected final static Nombre objetoInvalido = new Nombre();
+    protected final static Nombre OBJETO_INVALIDO = new Nombre();
 
     private static Set<Nombre> listaObjetos = new HashSet<>();
     
@@ -67,7 +67,7 @@ public class Nombre{
     protected static Nombre nuevo(){
 
         //Crear un objeto a devolver
-        Nombre objetoDevolver = Nombre.objetoInvalido;
+        Nombre objetoDevolver = Nombre.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
         Nombre objetoNuevo = new Nombre();

@@ -16,7 +16,7 @@ public class Direccion{
     private Nombre calle;
     private int numero;
             
-    private final static Direccion objetoInvalido = new Direccion();
+    private final static Direccion OBJETO_INVALIDO = new Direccion();
 
     private static Set<Direccion> listaObjetos = new HashSet<>();
 
@@ -49,7 +49,7 @@ public class Direccion{
     protected static Direccion nuevo(){
 
         //Crear un objeto a devolver
-        Direccion objetoDevolver = Direccion.objetoInvalido;
+        Direccion objetoDevolver = Direccion.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
         Direccion objetoNuevo = new Direccion();

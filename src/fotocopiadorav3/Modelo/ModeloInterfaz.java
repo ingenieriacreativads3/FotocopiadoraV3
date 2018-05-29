@@ -53,7 +53,7 @@ public class ModeloInterfaz {
      */
     public static Nombre getSiguienteCodigoTransaccion() {
 
-        Nombre nombreDevolver = Nombre.objetoInvalido;
+        Nombre nombreDevolver = Nombre.OBJETO_INVALIDO;
 
         //TODO devolver el siguiente de la lista, no null
         return nombreDevolver;
@@ -80,7 +80,7 @@ public class ModeloInterfaz {
     
     public static Nombre getNombreAlumnoByAlumno(Alumno alumnorecibido){
         
-        Nombre nombreDevolver = Nombre.objetoInvalido;
+        Nombre nombreDevolver = Nombre.OBJETO_INVALIDO;
         
         
         

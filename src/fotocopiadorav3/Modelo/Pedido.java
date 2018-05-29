@@ -14,30 +14,12 @@ import java.util.*;
 public class Pedido {
     
     private final int id;
-    private String valor;
+    private Date fecha;
+    private double importe;
             
-    protected final static Pedido objetoInvalido = new Pedido();
+    protected final static Pedido OBJETO_INVALIDO = new Pedido();
 
     private static Set<Pedido> listaObjetos = new HashSet<>();
-    
-    public String getValor() {
-
-        String valorDevolver = "Sin valor";
-
-        //Si el valor requerido no nulo
-        if(this.valor != null){
-
-            valorDevolver = this.valor;
-
-        }else{
-
-            //...se establecio un valor por defecto
-
-        }
-
-        return valorDevolver;
-
-    }
 
     private int getNewId(){
 
@@ -68,7 +50,7 @@ public class Pedido {
     protected static Pedido nuevo(){
 
         //Crear un objeto a devolver
-        Pedido objetoDevolver = Pedido.objetoInvalido;
+        Pedido objetoDevolver = Pedido.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
         Pedido objetoNuevo = new Pedido();
