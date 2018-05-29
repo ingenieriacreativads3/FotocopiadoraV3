@@ -78,15 +78,4 @@ public class ModeloInterfaz {
         
     }
     
-    public static Nombre getNombreAlumnoByAlumno(Alumno alumnorecibido){
-        
-        Nombre nombreDevolver = Nombre.OBJETO_INVALIDO;
-        
-        
-        
-        return nombreDevolver;
-        
-    }
-    //Tomas, necesito un metodo que verifique que el usuario y la contraseña
-    //Son validos.
 }

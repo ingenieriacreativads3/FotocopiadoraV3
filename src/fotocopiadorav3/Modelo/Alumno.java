@@ -13,6 +13,7 @@ import java.util.*;
 public class Alumno extends Persona{
     
     private final int id;
+    private int legajo;
             
     private final static Alumno OBJETO_INVALIDO = new Alumno();
 
@@ -112,6 +113,39 @@ public class Alumno extends Persona{
         return estadoDevolver;
 
     }//...fin funcion
+
+    //Setter
     
+    //Getter
+    
+    //Others
+    
+    @Override
+    public boolean equals(Object objetoActual) {
+
+        if(objetoActual == null){return false;}
+        if(this.getClass() != objetoActual.getClass()){return false;}
+
+        final Alumno objetoRecibido = (Alumno) objetoActual;
+
+        if(this.hashCode() != objetoRecibido.hashCode()){return false;}
+
+        return true;
+
+    }
+
+    @Override
+    public int hashCode() {
+
+        return this.id;
+
+    }
+    
+    @Override
+    public String toString() {
+        
+        return super.toString();
+        
+    }
     
 }

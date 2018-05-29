@@ -8,23 +8,22 @@ package fotocopiadorav3.Modelo;
 import java.util.*;
 
 /**
- * Esta clase determina la transacción básica del dominio de negocio.
- * Puede tener varios documentos en un pedido.
- * 
- * @param Identificador
- * @param Fecha
- * @param Importe
+ *
  * @author Tomás Contreras
  */
-public class Pedido {
+public class Materia {
     
     private final int id;
-    private Date fecha;
-    private double importe;
+    private Nombre nombre;
+    private int año;
+    private Persona titular;
+    private Persona ayudante;
+    private Persona tutor;
+    private Persona jtp;
             
-    protected final static Pedido OBJETO_INVALIDO = new Pedido();
+    protected final static Materia OBJETO_INVALIDO = new Materia();
 
-    private static Set<Pedido> listaObjetos = new HashSet<>();
+    private static Set<Materia> listaObjetos = new HashSet<>();
 
     private int getNewId(){
 
@@ -44,7 +43,7 @@ public class Pedido {
 
     //Constructor
 
-    private Pedido() {
+    private Materia() {
 
         //Asignar un identificador
         this.id = getNewId();
@@ -52,13 +51,13 @@ public class Pedido {
 
     }
 
-    protected static Pedido nuevo(){
+    protected static Materia nuevo(){
 
         //Crear un objeto a devolver
-        Pedido objetoDevolver = Pedido.OBJETO_INVALIDO;
+        Materia objetoDevolver = Materia.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
-        Pedido objetoNuevo = new Pedido();
+        Materia objetoNuevo = new Materia();
 
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
@@ -89,10 +88,10 @@ public class Pedido {
         Estado estadoDevolver= Estado.FRACASO;
 
         //Si el objeto recibido es del tipo correcto
-        if(objetoActual.getClass() == Nombre.class){
+        if(objetoActual.getClass() == Materia.class){
 
             //Obtener el objeto requerido
-            Pedido objetoAgregar = (Pedido)objetoActual;
+            Materia objetoAgregar = (Materia)objetoActual;
 
             //Agregar el nuevo elemento a la lista
             boolean seAgrego;
@@ -120,7 +119,7 @@ public class Pedido {
         return estadoDevolver;
 
     }//...fin funcion
- 
+    
     //Setter
     
     //Getter
@@ -133,7 +132,7 @@ public class Pedido {
         if(objetoActual == null){return false;}
         if(this.getClass() != objetoActual.getClass()){return false;}
 
-        final Pedido objetoRecibido = (Pedido) objetoActual;
+        final Materia objetoRecibido = (Materia) objetoActual;
 
         if(this.hashCode() != objetoRecibido.hashCode()){return false;}
 
@@ -151,7 +150,7 @@ public class Pedido {
     @Override
     public String toString() {
         
-        return "Definir";
+        return this.nombre.toString();
         
     }
     

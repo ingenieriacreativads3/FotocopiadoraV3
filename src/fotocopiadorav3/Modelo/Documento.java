@@ -8,23 +8,26 @@ package fotocopiadorav3.Modelo;
 import java.util.*;
 
 /**
- * Esta clase determina la transacción básica del dominio de negocio.
- * Puede tener varios documentos en un pedido.
- * 
- * @param Identificador
- * @param Fecha
- * @param Importe
+ *
  * @author Tomás Contreras
  */
-public class Pedido {
+public class Documento {
     
     private final int id;
-    private Date fecha;
-    private double importe;
+    private Archivo documento;
+    private Estado categoria;
+    private double precio;
+    private Date fechaIngreso;
+    
+    private Nombre nombre;
+    private Nombre autor;
+    private Nombre editorial;
+    private Nombre edicion;
+    
             
-    protected final static Pedido OBJETO_INVALIDO = new Pedido();
+    protected final static Documento OBJETO_INVALIDO = new Documento();
 
-    private static Set<Pedido> listaObjetos = new HashSet<>();
+    private static Set<Documento> listaObjetos = new HashSet<>();
 
     private int getNewId(){
 
@@ -44,7 +47,7 @@ public class Pedido {
 
     //Constructor
 
-    private Pedido() {
+    private Documento() {
 
         //Asignar un identificador
         this.id = getNewId();
@@ -52,13 +55,13 @@ public class Pedido {
 
     }
 
-    protected static Pedido nuevo(){
+    protected static Documento nuevo(){
 
         //Crear un objeto a devolver
-        Pedido objetoDevolver = Pedido.OBJETO_INVALIDO;
+        Documento objetoDevolver = Documento.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
-        Pedido objetoNuevo = new Pedido();
+        Documento objetoNuevo = new Documento();
 
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
@@ -89,10 +92,10 @@ public class Pedido {
         Estado estadoDevolver= Estado.FRACASO;
 
         //Si el objeto recibido es del tipo correcto
-        if(objetoActual.getClass() == Nombre.class){
+        if(objetoActual.getClass() == Documento.class){
 
             //Obtener el objeto requerido
-            Pedido objetoAgregar = (Pedido)objetoActual;
+            Documento objetoAgregar = (Documento)objetoActual;
 
             //Agregar el nuevo elemento a la lista
             boolean seAgrego;
@@ -120,7 +123,7 @@ public class Pedido {
         return estadoDevolver;
 
     }//...fin funcion
- 
+    
     //Setter
     
     //Getter
@@ -133,7 +136,7 @@ public class Pedido {
         if(objetoActual == null){return false;}
         if(this.getClass() != objetoActual.getClass()){return false;}
 
-        final Pedido objetoRecibido = (Pedido) objetoActual;
+        final Documento objetoRecibido = (Documento) objetoActual;
 
         if(this.hashCode() != objetoRecibido.hashCode()){return false;}
 
@@ -151,7 +154,7 @@ public class Pedido {
     @Override
     public String toString() {
         
-        return "Definir";
+        return this.documento.toString();
         
     }
     

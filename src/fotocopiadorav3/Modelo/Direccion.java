@@ -115,5 +115,38 @@ public class Direccion{
 
     }//...fin funcion
     
+    //Setter
+    
+    //Getter
+    
+    //Others
+    
+    @Override
+    public boolean equals(Object objetoActual) {
+
+        if(objetoActual == null){return false;}
+        if(this.getClass() != objetoActual.getClass()){return false;}
+
+        final Direccion objetoRecibido = (Direccion) objetoActual;
+
+        if(this.hashCode() != objetoRecibido.hashCode()){return false;}
+
+        return true;
+
+    }
+
+    @Override
+    public int hashCode() {
+
+        return this.id;
+
+    }
+    
+    @Override
+    public String toString() {
+        
+        return this.calle.toString() + " " + this.numero;
+        
+    }
     
 }

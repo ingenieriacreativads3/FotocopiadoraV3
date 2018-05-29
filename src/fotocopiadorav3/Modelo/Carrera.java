@@ -8,23 +8,18 @@ package fotocopiadorav3.Modelo;
 import java.util.*;
 
 /**
- * Esta clase determina la transacción básica del dominio de negocio.
- * Puede tener varios documentos en un pedido.
- * 
- * @param Identificador
- * @param Fecha
- * @param Importe
+ *
  * @author Tomás Contreras
  */
-public class Pedido {
+public class Carrera {
     
     private final int id;
-    private Date fecha;
-    private double importe;
+    private Nombre identificador;
+    private Nombre nombre;
             
-    protected final static Pedido OBJETO_INVALIDO = new Pedido();
+    protected final static Carrera OBJETO_INVALIDO = new Carrera();
 
-    private static Set<Pedido> listaObjetos = new HashSet<>();
+    private static Set<Carrera> listaObjetos = new HashSet<>();
 
     private int getNewId(){
 
@@ -44,7 +39,7 @@ public class Pedido {
 
     //Constructor
 
-    private Pedido() {
+    private Carrera() {
 
         //Asignar un identificador
         this.id = getNewId();
@@ -52,13 +47,13 @@ public class Pedido {
 
     }
 
-    protected static Pedido nuevo(){
+    protected static Carrera nuevo(){
 
         //Crear un objeto a devolver
-        Pedido objetoDevolver = Pedido.OBJETO_INVALIDO;
+        Carrera objetoDevolver = Carrera.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
-        Pedido objetoNuevo = new Pedido();
+        Carrera objetoNuevo = new Carrera();
 
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
@@ -89,10 +84,10 @@ public class Pedido {
         Estado estadoDevolver= Estado.FRACASO;
 
         //Si el objeto recibido es del tipo correcto
-        if(objetoActual.getClass() == Nombre.class){
+        if(objetoActual.getClass() == Carrera.class){
 
             //Obtener el objeto requerido
-            Pedido objetoAgregar = (Pedido)objetoActual;
+            Carrera objetoAgregar = (Carrera)objetoActual;
 
             //Agregar el nuevo elemento a la lista
             boolean seAgrego;
@@ -120,7 +115,7 @@ public class Pedido {
         return estadoDevolver;
 
     }//...fin funcion
- 
+    
     //Setter
     
     //Getter
@@ -133,7 +128,7 @@ public class Pedido {
         if(objetoActual == null){return false;}
         if(this.getClass() != objetoActual.getClass()){return false;}
 
-        final Pedido objetoRecibido = (Pedido) objetoActual;
+        final Carrera objetoRecibido = (Carrera) objetoActual;
 
         if(this.hashCode() != objetoRecibido.hashCode()){return false;}
 
@@ -151,7 +146,7 @@ public class Pedido {
     @Override
     public String toString() {
         
-        return "Definir";
+        return this.nombre.toString();
         
     }
     

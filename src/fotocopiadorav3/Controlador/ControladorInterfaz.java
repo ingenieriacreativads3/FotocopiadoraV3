@@ -75,5 +75,5 @@ public class ControladorInterfaz{
         //esValido = ModeloInterfaz.esValidoUsuarioYContraseña(usuario, contraseña);
         return esValido;
     }
-    
+        
 }

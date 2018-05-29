@@ -118,9 +118,43 @@ public class Persona{
     }//...fin funcion
 
     protected int getId(){
+        
         return id;
+        
     }
     
+    //Setter
     
+    //Getter
+    
+    //Others
+    
+    @Override
+    public boolean equals(Object objetoActual) {
+
+        if(objetoActual == null){return false;}
+        if(this.getClass() != objetoActual.getClass()){return false;}
+
+        final Persona objetoRecibido = (Persona) objetoActual;
+
+        if(this.hashCode() != objetoRecibido.hashCode()){return false;}
+
+        return true;
+
+    }
+
+    @Override
+    public int hashCode() {
+
+        return this.id;
+
+    }
+
+    @Override
+    public String toString() {
+        
+        return this.nombre.toString();
+        
+    }
     
 }

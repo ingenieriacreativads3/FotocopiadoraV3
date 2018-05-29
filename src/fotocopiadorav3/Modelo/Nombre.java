@@ -132,5 +132,39 @@ public class Nombre{
         return estadoDevolver;
 
     }//...fin funcion
+
+    //Setter
+    
+    //Getter
+    
+    //Others
+    
+    @Override
+    public boolean equals(Object objetoActual) {
+
+        if(objetoActual == null){return false;}
+        if(this.getClass() != objetoActual.getClass()){return false;}
+
+        final Nombre objetoRecibido = (Nombre) objetoActual;
+
+        if(this.hashCode() != objetoRecibido.hashCode()){return false;}
+
+        return true;
+
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Integer.valueOf(this.valor);
+
+    }
+    
+    @Override
+    public String toString() {
+        
+        return this.valor.toString();
+        
+    }
     
 }

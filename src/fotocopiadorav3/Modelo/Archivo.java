@@ -8,23 +8,19 @@ package fotocopiadorav3.Modelo;
 import java.util.*;
 
 /**
- * Esta clase determina la transacción básica del dominio de negocio.
- * Puede tener varios documentos en un pedido.
- * 
- * @param Identificador
- * @param Fecha
- * @param Importe
+ *
  * @author Tomás Contreras
  */
-public class Pedido {
+public class Archivo {
     
     private final int id;
-    private Date fecha;
-    private double importe;
+    //TODO aca va el tipo de archivo para subir.
+    private Nombre nombre;
+    private String archivo;
             
-    protected final static Pedido OBJETO_INVALIDO = new Pedido();
+    protected final static Archivo OBJETO_INVALIDO = new Archivo();
 
-    private static Set<Pedido> listaObjetos = new HashSet<>();
+    private static Set<Archivo> listaObjetos = new HashSet<>();
 
     private int getNewId(){
 
@@ -44,7 +40,7 @@ public class Pedido {
 
     //Constructor
 
-    private Pedido() {
+    private Archivo() {
 
         //Asignar un identificador
         this.id = getNewId();
@@ -52,13 +48,13 @@ public class Pedido {
 
     }
 
-    protected static Pedido nuevo(){
+    protected static Archivo nuevo(){
 
         //Crear un objeto a devolver
-        Pedido objetoDevolver = Pedido.OBJETO_INVALIDO;
+        Archivo objetoDevolver = Archivo.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
-        Pedido objetoNuevo = new Pedido();
+        Archivo objetoNuevo = new Archivo();
 
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
@@ -89,10 +85,10 @@ public class Pedido {
         Estado estadoDevolver= Estado.FRACASO;
 
         //Si el objeto recibido es del tipo correcto
-        if(objetoActual.getClass() == Nombre.class){
+        if(objetoActual.getClass() == Archivo.class){
 
             //Obtener el objeto requerido
-            Pedido objetoAgregar = (Pedido)objetoActual;
+            Archivo objetoAgregar = (Archivo)objetoActual;
 
             //Agregar el nuevo elemento a la lista
             boolean seAgrego;
@@ -120,7 +116,7 @@ public class Pedido {
         return estadoDevolver;
 
     }//...fin funcion
- 
+    
     //Setter
     
     //Getter
@@ -133,7 +129,7 @@ public class Pedido {
         if(objetoActual == null){return false;}
         if(this.getClass() != objetoActual.getClass()){return false;}
 
-        final Pedido objetoRecibido = (Pedido) objetoActual;
+        final Archivo objetoRecibido = (Archivo) objetoActual;
 
         if(this.hashCode() != objetoRecibido.hashCode()){return false;}
 
@@ -151,7 +147,7 @@ public class Pedido {
     @Override
     public String toString() {
         
-        return "Definir";
+        return this.nombre.toString();
         
     }
     

@@ -12,6 +12,18 @@ import java.util.*;
  */
 public enum Estado{
     
+    /**
+     * Representa un documento para tutorias de una materia en partcular.
+     * 
+     */
+    TUTORIAS(22),
+    
+    /**
+     * Representa un documento para la catedra de una materia en particular.
+     * 
+     */
+    CATEDRA(21),
+    
     TAREA_SIN_ESTADO(20),
     SUSPENDIDA(19),
     NO_REALIZADA(18),
@@ -24,7 +36,7 @@ public enum Estado{
     INICIAL(11),
     EXITO(10),
     FRACASO(9),
-
+    
     EXISTE_USUARIO(111),
 
     DATOS_VALIDOS(8),
