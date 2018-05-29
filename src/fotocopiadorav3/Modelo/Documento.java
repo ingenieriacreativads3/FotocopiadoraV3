@@ -24,6 +24,7 @@ public class Documento {
     private Nombre editorial;
     private Nombre edicion;
     
+    private Materia materia;
             
     protected final static Documento OBJETO_INVALIDO = new Documento();
 

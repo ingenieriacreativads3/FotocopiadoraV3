@@ -20,6 +20,8 @@ public class Materia {
     private Persona ayudante;
     private Persona tutor;
     private Persona jtp;
+    
+    private Carrera carrera;
             
     protected final static Materia OBJETO_INVALIDO = new Materia();
 

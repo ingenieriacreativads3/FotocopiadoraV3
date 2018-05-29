@@ -21,6 +21,8 @@ public class Pedido {
     private final int id;
     private Date fecha;
     private double importe;
+    
+    private Alumno alumno;
             
     protected final static Pedido OBJETO_INVALIDO = new Pedido();
 

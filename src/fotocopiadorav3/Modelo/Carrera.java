@@ -14,6 +14,9 @@ import java.util.*;
 public class Carrera {
     
     private final int id;
+    /**
+     * Esteidentificador se utiliza para generar el codigo transaccion.
+     */
     private Nombre identificador;
     private Nombre nombre;
             

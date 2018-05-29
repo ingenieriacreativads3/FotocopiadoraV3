@@ -14,6 +14,11 @@ import java.util.*;
 public class PedidoDocumento {
     
     private final int id;
+    private double subtotal;
+    private int cantidad;
+    
+    private Documento documento;
+    private Pedido pedido;
             
     protected final static PedidoDocumento OBJETO_INVALIDO = new PedidoDocumento();
 
