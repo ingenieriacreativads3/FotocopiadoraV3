@@ -4,21 +4,28 @@
  * and open the template in the editor.
  */
 package fotocopiadorav3.Modelo;
+
 import java.util.*;
 
 /**
-
- @author Tomas
+ *
+ * @author Tomás Contreras
  */
-public class Direccion{
+public class Materia {
     
     private final int id;
-    private AlfaNumerico calle;
-    private int numero;
+    private AlfaNumerico nombre;
+    private int año;
+    private Persona titular;
+    private Persona ayudante;
+    private Persona tutor;
+    private Persona jtp;
+    
+    private Carrera carrera;
             
-    private final static Direccion OBJETO_INVALIDO = new Direccion();
+    protected final static Materia OBJETO_INVALIDO = new Materia();
 
-    private static Set<Direccion> listaObjetos = new HashSet<>();
+    private static Set<Materia> listaObjetos = new HashSet<>();
 
     private static int getNewId(){
 
@@ -38,7 +45,7 @@ public class Direccion{
 
     //Constructor
 
-    private Direccion() {
+    private Materia() {
 
         //Asignar un identificador
         this.id = getNewId();
@@ -46,13 +53,13 @@ public class Direccion{
 
     }
 
-    protected static Direccion nuevo(){
+    protected static Materia nuevo(){
 
         //Crear un objeto a devolver
-        Direccion objetoDevolver = Direccion.OBJETO_INVALIDO;
+        Materia objetoDevolver = Materia.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
-        Direccion objetoNuevo = new Direccion();
+        Materia objetoNuevo = new Materia();
 
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
@@ -83,10 +90,10 @@ public class Direccion{
         Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
-        if(objetoActual.getClass() == Direccion.class){
+        if(objetoActual.getClass() == Materia.class){
 
             //Obtener el objeto requerido
-            Direccion objetoAgregar = (Direccion)objetoActual;
+            Materia objetoAgregar = (Materia)objetoActual;
 
             //Agregar el nuevo elemento a la lista
             boolean seAgrego;
@@ -127,7 +134,7 @@ public class Direccion{
         if(objetoActual == null){return false;}
         if(this.getClass() != objetoActual.getClass()){return false;}
 
-        final Direccion objetoRecibido = (Direccion) objetoActual;
+        final Materia objetoRecibido = (Materia) objetoActual;
 
         if(this.hashCode() != objetoRecibido.hashCode()){return false;}
 
@@ -145,7 +152,7 @@ public class Direccion{
     @Override
     public String toString() {
         
-        return this.calle.toString() + " " + this.numero;
+        return this.nombre.toString();
         
     }
     

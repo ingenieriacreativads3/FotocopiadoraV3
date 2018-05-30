@@ -4,41 +4,25 @@
  * and open the template in the editor.
  */
 package fotocopiadorav3.Modelo;
+
 import java.util.*;
 
 /**
-
- @author Tomas
+ *
+ * @author Tomás Contreras
  */
-public class Nombre{
+public class Archivo {
     
     private final int id;
-    private String valor;
+    //TODO aca va el tipo de archivo para subir.
+    private AlfaNumerico nombre;
+    private String archivo;
             
-    protected final static Nombre objetoInvalido = new Nombre();
+    protected final static Archivo OBJETO_INVALIDO = new Archivo();
 
-    private static Set<Nombre> listaObjetos = new HashSet<>();
-    
-    public String getValor() {
+    private static Set<Archivo> listaObjetos = new HashSet<>();
 
-        String valorDevolver = "Sin valor";
-
-        //Si el valor requerido no nulo
-        if(this.valor != null){
-
-            valorDevolver = this.valor;
-
-        }else{
-
-            //...se establecio un valor por defecto
-
-        }
-
-        return valorDevolver;
-
-    }
-
-    private int getNewId(){
+    private static int getNewId(){
 
         //Crear un nuevo identificador
         int idActual = listaObjetos.size();
@@ -56,7 +40,7 @@ public class Nombre{
 
     //Constructor
 
-    private Nombre() {
+    private Archivo() {
 
         //Asignar un identificador
         this.id = getNewId();
@@ -64,13 +48,13 @@ public class Nombre{
 
     }
 
-    protected static Nombre nuevo(){
+    protected static Archivo nuevo(){
 
         //Crear un objeto a devolver
-        Nombre objetoDevolver = Nombre.objetoInvalido;
+        Archivo objetoDevolver = Archivo.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
-        Nombre objetoNuevo = new Nombre();
+        Archivo objetoNuevo = new Archivo();
 
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
@@ -98,13 +82,13 @@ public class Nombre{
     private static Estado addNewObjeto(Object objetoActual){
 
         //Establecer un valor por defecto
-        Estado estadoDevolver= Estado.FRACASO;
+        Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
-        if(objetoActual.getClass() == Nombre.class){
+        if(objetoActual.getClass() == Archivo.class){
 
             //Obtener el objeto requerido
-            Nombre objetoAgregar = (Nombre)objetoActual;
+            Archivo objetoAgregar = (Archivo)objetoActual;
 
             //Agregar el nuevo elemento a la lista
             boolean seAgrego;
@@ -132,5 +116,39 @@ public class Nombre{
         return estadoDevolver;
 
     }//...fin funcion
+    
+    //Setter
+    
+    //Getter
+    
+    //Others
+    
+    @Override
+    public boolean equals(Object objetoActual) {
+
+        if(objetoActual == null){return false;}
+        if(this.getClass() != objetoActual.getClass()){return false;}
+
+        final Archivo objetoRecibido = (Archivo) objetoActual;
+
+        if(this.hashCode() != objetoRecibido.hashCode()){return false;}
+
+        return true;
+
+    }
+
+    @Override
+    public int hashCode() {
+
+        return this.id;
+
+    }
+    
+    @Override
+    public String toString() {
+        
+        return this.nombre.toString();
+        
+    }
     
 }

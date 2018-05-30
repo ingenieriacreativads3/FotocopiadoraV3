@@ -4,21 +4,25 @@
  * and open the template in the editor.
  */
 package fotocopiadorav3.Modelo;
+
 import java.util.*;
 
 /**
-
- @author Tomas
+ *
+ * @author Tomás Contreras
  */
-public class Direccion{
+public class Carrera {
     
     private final int id;
-    private AlfaNumerico calle;
-    private int numero;
+    /**
+     * Esteidentificador se utiliza para generar el codigo transaccion.
+     */
+    private AlfaNumerico identificador;
+    private AlfaNumerico nombre;
             
-    private final static Direccion OBJETO_INVALIDO = new Direccion();
+    protected final static Carrera OBJETO_INVALIDO = new Carrera();
 
-    private static Set<Direccion> listaObjetos = new HashSet<>();
+    private static Set<Carrera> listaObjetos = new HashSet<>();
 
     private static int getNewId(){
 
@@ -38,7 +42,7 @@ public class Direccion{
 
     //Constructor
 
-    private Direccion() {
+    private Carrera() {
 
         //Asignar un identificador
         this.id = getNewId();
@@ -46,13 +50,13 @@ public class Direccion{
 
     }
 
-    protected static Direccion nuevo(){
+    protected static Carrera nuevo(){
 
         //Crear un objeto a devolver
-        Direccion objetoDevolver = Direccion.OBJETO_INVALIDO;
+        Carrera objetoDevolver = Carrera.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
-        Direccion objetoNuevo = new Direccion();
+        Carrera objetoNuevo = new Carrera();
 
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
@@ -83,10 +87,10 @@ public class Direccion{
         Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
-        if(objetoActual.getClass() == Direccion.class){
+        if(objetoActual.getClass() == Carrera.class){
 
             //Obtener el objeto requerido
-            Direccion objetoAgregar = (Direccion)objetoActual;
+            Carrera objetoAgregar = (Carrera)objetoActual;
 
             //Agregar el nuevo elemento a la lista
             boolean seAgrego;
@@ -127,7 +131,7 @@ public class Direccion{
         if(objetoActual == null){return false;}
         if(this.getClass() != objetoActual.getClass()){return false;}
 
-        final Direccion objetoRecibido = (Direccion) objetoActual;
+        final Carrera objetoRecibido = (Carrera) objetoActual;
 
         if(this.hashCode() != objetoRecibido.hashCode()){return false;}
 
@@ -145,7 +149,7 @@ public class Direccion{
     @Override
     public String toString() {
         
-        return this.calle.toString() + " " + this.numero;
+        return this.nombre.toString();
         
     }
     

@@ -13,12 +13,13 @@ import java.util.*;
 public class Alumno extends Persona{
     
     private final int id;
+    private int legajo;
             
-    private final static Alumno objetoInvalido = new Alumno();
+    private final static Alumno OBJETO_INVALIDO = new Alumno();
 
     private static Set<Alumno> listaObjetos = new HashSet<>();
 
-    private int getNewId(){
+    private static int getNewId(){
 
         //Crear un nuevo identificador
         int idActual = listaObjetos.size();
@@ -47,7 +48,7 @@ public class Alumno extends Persona{
     protected static Alumno nuevo(){
 
         //Crear un objeto a devolver
-        Alumno objetoDevolver = Alumno.objetoInvalido;
+        Alumno objetoDevolver = Alumno.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
         Alumno objetoNuevo = new Alumno();
@@ -78,7 +79,7 @@ public class Alumno extends Persona{
     private static Estado addNewObjeto(Object objetoActual){
 
         //Establecer un valor por defecto
-        Estado estadoDevolver= Estado.FRACASO;
+        Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
         if(objetoActual.getClass() == Alumno.class){
@@ -112,6 +113,39 @@ public class Alumno extends Persona{
         return estadoDevolver;
 
     }//...fin funcion
+
+    //Setter
     
+    //Getter
+    
+    //Others
+    
+    @Override
+    public boolean equals(Object objetoActual) {
+
+        if(objetoActual == null){return false;}
+        if(this.getClass() != objetoActual.getClass()){return false;}
+
+        final Alumno objetoRecibido = (Alumno) objetoActual;
+
+        if(this.hashCode() != objetoRecibido.hashCode()){return false;}
+
+        return true;
+
+    }
+
+    @Override
+    public int hashCode() {
+
+        return this.id;
+
+    }
+    
+    @Override
+    public String toString() {
+        
+        return super.toString();
+        
+    }
     
 }

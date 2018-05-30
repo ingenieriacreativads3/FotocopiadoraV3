@@ -77,5 +77,5 @@ public class ControladorInterfaz{
         esValido = ModeloInterfaz.existePass(usuario, contraseña);
         return esValido;
     }
-    
+        
 }

@@ -17,45 +17,75 @@ package fotocopiadorav3.Modelo;
 public class ModeloInterfaz {
     
     /**
-     * Esta rutina verifica la existencia del password para un usuario
-     * específico.
-     * @param password
-     * @return
+     * Esta rutina verifica la existencia del password
+     * para un usuario específico.
+     * 
+     * @param nombreUsuario
+     * @param passwordUsuario
+     * @return boolean
      */
-    public static boolean existePass(String nombreUsuario, String passwordUsuario){
+    public static Estado verificaUsuarioPassword(String nombreUsuario, String passwordUsuario){
         
         //Establecer un valor por defecto
-        boolean existe = false;
+        Estado usuarioVerificar = Estado.ERROR;
         
+        if(nombreUsuario.getClass() == Valor.VERIFICADOR_DE_CLASE.getClass()){
+            
+            if(passwordUsuario.getClass() == Valor.VERIFICADOR_DE_CLASE.getClass()){
+                
+                usuarioVerificar = Usuario.verificarUsserPass(nombreUsuario, passwordUsuario);
+                
+            }else{
+                
+                usuarioVerificar = Estado.ERROR_DATOS_INVALIDOS;
+                
+            }
+            
+        }else{
+            
+            usuarioVerificar = Estado.ERROR_DATOS_INVALIDOS;
+            
+        }
         
-        
-        return existe;
+        return usuarioVerificar;
         
     }
     
     /**
      *Esta rutina verifica la existencia de un usuario.
-     * @return
+     * 
+     * @param nombreActual
+     * @return boolean
      */
-    public static boolean existeUsuario(String nombreUsuario){
+    public static boolean existeUsuario(String nombreActual){
         
         boolean existe = false;
         
-        
+        if(Usuario.existeNombreUsuario(nombreActual)){
+            
+            //...establecer un valor de exitencia
+            existe = true;
+            
+        }else{
+            
+            //...se establecio un valor por defecto
+            
+        }
         
         return existe;
         
     }
     
     /**
-     *Este método
+     *Este método devuelve el siguiente identificador de pedido
      * @return
      */
-    public static Nombre getSiguienteCodigoPedido() {
+    public static AlfaNumerico getSiguienteCodigoTransaccion() {
 
-        Nombre nombreDevolver = Nombre.objetoInvalido;
-
-        //TODO devolver el siguiente de la lista, no null
+        AlfaNumerico nombreDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        
+        
         return nombreDevolver;
 
     }
@@ -78,15 +108,4 @@ public class ModeloInterfaz {
         
     }
     
-    public static Nombre getNombreAlumnoByAlumno(Alumno alumnorecibido){
-        
-        Nombre nombreDevolver = Nombre.objetoInvalido;
-        
-        
-        
-        return nombreDevolver;
-        
-    }
-    //Tomas, necesito un metodo que verifique que el usuario y la contraseña
-    //Son validos.
 }

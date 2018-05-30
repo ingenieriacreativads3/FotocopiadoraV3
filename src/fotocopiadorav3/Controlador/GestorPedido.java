@@ -37,7 +37,7 @@ public class GestorPedido {
         //DB.Persistir(Pedido);
         
         //Modelo.getCodigo();
-        Nombre codigo = ModeloInterfaz.getSiguienteCodigoPedido();
+        AlfaNumerico codigo = ModeloInterfaz.getSiguienteCodigoTransaccion();
 
         return codigo.toString();
     }

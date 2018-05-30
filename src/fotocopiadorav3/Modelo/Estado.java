@@ -12,6 +12,25 @@ import java.util.*;
  */
 public enum Estado{
     
+    ERROR_VALOR_NO_SETEADO(24),
+    
+    USSER_PASS_CORRECTOS(23),
+    
+    /**
+     * Representa un documento para tutorias de una materia en partcular.
+     * 
+     *//**
+     * Representa un documento para tutorias de una materia en partcular.
+     * 
+     */
+    TUTORIAS(22),
+    
+    /**
+     * Representa un documento para la catedra de una materia en particular.
+     * 
+     */
+    CATEDRA(21),
+    
     TAREA_SIN_ESTADO(20),
     SUSPENDIDA(19),
     NO_REALIZADA(18),
@@ -23,8 +42,10 @@ public enum Estado{
     SIN_ESTADO(12),
     INICIAL(11),
     EXITO(10),
-    FRACASO(9),
-
+    ERROR(9),
+    
+    ERROR_CODIGO_TRANSACCION_INEXISTENTE(113),
+    EXISTE_CODIGO_TRANSACCION(112),
     EXISTE_USUARIO(111),
 
     DATOS_VALIDOS(8),
@@ -79,7 +100,7 @@ public enum Estado{
 
         boolean respuesta = false;
 
-        if(estadoActual == FRACASO){
+        if(estadoActual == ERROR){
 
             respuesta = true;
 

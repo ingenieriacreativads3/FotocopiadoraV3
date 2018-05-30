@@ -13,16 +13,16 @@ import java.util.*;
 public class Persona{
     
     private final int id;
-    private Nombre nombre;
-    private Nombre apellido;
+    private AlfaNumerico nombre;
+    private AlfaNumerico apellido;
     private int dni;
     private Direccion direccion;
     
-    protected final static Persona objetoInvalido = new Persona();
+    protected final static Persona OBJETO_INVALIDO = new Persona();
 
     private static Set<Persona> listaObjetos = new HashSet<>();
 
-    private int getNewId(){
+    private static int getNewId(){
 
         //Crear un nuevo identificador
         int idActual = listaObjetos.size();
@@ -51,7 +51,7 @@ public class Persona{
     protected static Persona nuevo(){
 
         //Crear un objeto a devolver
-        Persona objetoDevolver = Persona.objetoInvalido;
+        Persona objetoDevolver = Persona.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
         Persona objetoNuevo = new Persona();
@@ -82,7 +82,7 @@ public class Persona{
     private static Estado addNewObjeto(Object objetoActual){
 
         //Establecer un valor por defecto
-        Estado estadoDevolver= Estado.FRACASO;
+        Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
         if(objetoActual.getClass() == Persona.class){
@@ -118,9 +118,43 @@ public class Persona{
     }//...fin funcion
 
     protected int getId(){
+        
         return id;
+        
     }
     
+    //Setter
     
+    //Getter
+    
+    //Others
+    
+    @Override
+    public boolean equals(Object objetoActual) {
+
+        if(objetoActual == null){return false;}
+        if(this.getClass() != objetoActual.getClass()){return false;}
+
+        final Persona objetoRecibido = (Persona) objetoActual;
+
+        if(this.hashCode() != objetoRecibido.hashCode()){return false;}
+
+        return true;
+
+    }
+
+    @Override
+    public int hashCode() {
+
+        return this.id;
+
+    }
+
+    @Override
+    public String toString() {
+        
+        return this.nombre.toString();
+        
+    }
     
 }

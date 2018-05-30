@@ -12,7 +12,14 @@ import java.util.*;
  */
 public class Valor{
     
+    /**
+     * Este identificador, indica cada cuanto se debe iterar por cada
+     * indentificador creado.
+     */
     protected static final int SIGUIENTE_IDENTIFICADOR = 1;
+    protected static final String VERIFICADOR_DE_CLASE = "ASD";
+    
+    
 
     private Valor(){}
     

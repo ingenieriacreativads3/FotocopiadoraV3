@@ -4,21 +4,31 @@
  * and open the template in the editor.
  */
 package fotocopiadorav3.Modelo;
+
 import java.util.*;
 
 /**
-
- @author Tomas
+ *
+ * @author Tomás Contreras
  */
-public class Direccion{
+public class Documento {
     
     private final int id;
-    private AlfaNumerico calle;
-    private int numero;
+    private Archivo documento;
+    private Estado categoria;
+    private double precio;
+    private Date fechaIngreso;
+    
+    private AlfaNumerico nombre;
+    private AlfaNumerico autor;
+    private AlfaNumerico editorial;
+    private AlfaNumerico edicion;
+    
+    private Materia materia;
             
-    private final static Direccion OBJETO_INVALIDO = new Direccion();
+    protected final static Documento OBJETO_INVALIDO = new Documento();
 
-    private static Set<Direccion> listaObjetos = new HashSet<>();
+    private static Set<Documento> listaObjetos = new HashSet<>();
 
     private static int getNewId(){
 
@@ -38,7 +48,7 @@ public class Direccion{
 
     //Constructor
 
-    private Direccion() {
+    private Documento() {
 
         //Asignar un identificador
         this.id = getNewId();
@@ -46,13 +56,13 @@ public class Direccion{
 
     }
 
-    protected static Direccion nuevo(){
+    protected static Documento nuevo(){
 
         //Crear un objeto a devolver
-        Direccion objetoDevolver = Direccion.OBJETO_INVALIDO;
+        Documento objetoDevolver = Documento.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
-        Direccion objetoNuevo = new Direccion();
+        Documento objetoNuevo = new Documento();
 
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
@@ -83,10 +93,10 @@ public class Direccion{
         Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
-        if(objetoActual.getClass() == Direccion.class){
+        if(objetoActual.getClass() == Documento.class){
 
             //Obtener el objeto requerido
-            Direccion objetoAgregar = (Direccion)objetoActual;
+            Documento objetoAgregar = (Documento)objetoActual;
 
             //Agregar el nuevo elemento a la lista
             boolean seAgrego;
@@ -127,7 +137,7 @@ public class Direccion{
         if(objetoActual == null){return false;}
         if(this.getClass() != objetoActual.getClass()){return false;}
 
-        final Direccion objetoRecibido = (Direccion) objetoActual;
+        final Documento objetoRecibido = (Documento) objetoActual;
 
         if(this.hashCode() != objetoRecibido.hashCode()){return false;}
 
@@ -145,7 +155,7 @@ public class Direccion{
     @Override
     public String toString() {
         
-        return this.calle.toString() + " " + this.numero;
+        return this.documento.toString();
         
     }
     
