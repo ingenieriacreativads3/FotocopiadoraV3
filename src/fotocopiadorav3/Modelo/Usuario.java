@@ -16,32 +16,50 @@ public class Usuario{
 
     private final int id;
     private final Persona persona;
-    private Nombre nombreUsuario;
-    private Nombre pass;
+    private AlfaNumerico nombreUsuario;
+    private AlfaNumerico pass;
 
     protected final static Usuario OBJETO_INVALIDO = new Usuario(Persona.OBJETO_INVALIDO);
 
     private static Set<Usuario> listaObjetos = new HashSet<>();
 
     //funciones
-
-    protected static Persona getPersonaForID(int id){
-
-        Persona personaDevolver = Persona.OBJETO_INVALIDO;
-        int idPersonaBuscada = id;
-        int idPersonaDevolver = Persona.OBJETO_INVALIDO.getId();
+    
+    protected static Estado verificarUsserPass(String nombreActual, String passActual){
         
-        for(Usuario objetoActual : listaObjetos){
+        //Establecer un valor por defecto
+        Estado loginVerificado = Estado.ERROR;
+        
+        //Obtener los argumentos
+        AlfaNumerico nombreRecibido = AlfaNumerico.nuevo(nombreActual);
+        AlfaNumerico passRecibido = AlfaNumerico.nuevo(passActual);
+        
+        if(!existeNombreUsuario(nombreRecibido)){
             
+            //...establecer valor de usuario inexistente
+            loginVerificado = Estado.ERROR_NOMBRE_INEXISTENTE;
             
+        }else{
+            
+            if(!existePass(passRecibido)){
+                
+                //...establecer valor de password inexistente
+                loginVerificado = Estado.ERROR_PASS_INEXISTENTE;
+                
+            }else{
+                
+                //...establecer valor de login correcto
+                loginVerificado = Estado.USSER_PASS_CORRECTOS;
+                
+            }
             
         }
-
-        return personaDevolver;
-
+        
+        return loginVerificado;
+        
     }
 
-    public static boolean existePass(Nombre passRecibido){
+    protected static boolean existePass(AlfaNumerico passRecibido){
 
         boolean existe = false;
 
@@ -49,7 +67,7 @@ public class Usuario{
         for(Usuario usuarioActual : listaObjetos){
 
             //Obtener el pass del usuario actual
-            Nombre passUsuarioActual =
+            AlfaNumerico passUsuarioActual =
                     usuarioActual.getPass();
 
             //Si el pass actual es igual al pass recibido
@@ -65,8 +83,8 @@ public class Usuario{
         return existe;
 
     }
-
-    public static boolean existeNombreUsuario(Nombre nombreRecibido){
+    
+    protected static boolean existeNombreUsuario(AlfaNumerico nombreRecibido){
 
         boolean existe = false;
 
@@ -74,7 +92,7 @@ public class Usuario{
         for(Usuario usuarioActual : listaObjetos){
 
             //Obtener el nombre del usuario actual
-            Nombre nombreUsuarioActual = usuarioActual.getNombreUsuario();
+            AlfaNumerico nombreUsuarioActual = usuarioActual.getNombreUsuario();
 
             //Si el nombre actual es igual al nombre recibido
             if(nombreUsuarioActual.equals(nombreRecibido)){
@@ -90,7 +108,34 @@ public class Usuario{
 
     }
 
-    private int getNewId(){
+    protected static boolean existeNombreUsuario(String nombreActual){
+
+        boolean existe = false;
+        
+        //Obtener el argumento recibido
+        AlfaNumerico nombreRecibido = AlfaNumerico.nuevo(nombreActual);
+
+        //Recorrer el conjunto de usuarios
+        for(Usuario usuarioActual : listaObjetos){
+
+            //Obtener el nombre del usuario actual
+            AlfaNumerico nombreUsuarioActual = usuarioActual.getNombreUsuario();
+
+            //Si el nombre actual es igual al nombre recibido
+            if(nombreUsuarioActual.equals(nombreRecibido)){
+
+                //...establecer la expresion correspondiente
+                existe = true;
+
+            }
+
+        }
+
+        return existe;
+
+    }
+
+    private static int getNewId(){
 
         //Crear un nuevo identificador
         int idActual = 0;
@@ -170,7 +215,7 @@ public class Usuario{
     private static Estado addNewObjeto(Object objetoActual){
 
         //Establecer un valor por defecto
-        Estado estadoDevolver= Estado.FRACASO;
+        Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
         if(objetoActual.getClass() == Usuario.class){
@@ -207,11 +252,11 @@ public class Usuario{
 
     //Setter
 
-    protected void setNombreUsuario(Nombre nombreUsuario) {
+    protected void setNombreUsuario(AlfaNumerico nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
 
-    protected void setPass(Nombre pass) {
+    protected void setPass(AlfaNumerico pass) {
         this.pass = pass;
     }
 
@@ -229,11 +274,11 @@ public class Usuario{
         return persona;
     }
 
-    private Nombre getNombreUsuario() {
+    private AlfaNumerico getNombreUsuario() {
         return nombreUsuario;
     }
 
-    private Nombre getPass() {
+    private AlfaNumerico getPass() {
         return pass;
     }
 

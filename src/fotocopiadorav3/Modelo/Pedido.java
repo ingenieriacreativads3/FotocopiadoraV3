@@ -23,12 +23,36 @@ public class Pedido {
     private double importe;
     
     private Alumno alumno;
+    private AlfaNumerico codigoTransaccion;
             
     protected final static Pedido OBJETO_INVALIDO = new Pedido();
 
     private static Set<Pedido> listaObjetos = new HashSet<>();
+    
+    //Rutinas
+    
+    private static Estado exiteCodigoTransaccion(){
+        
+        //Establecer un valor por defecto
+        Estado estadoDevolver = Estado.ERROR_CODIGO_TRANSACCION_INEXISTENTE;
+        
+        
+        
+        return estadoDevolver;
+        
+    }
+    
+    private static AlfaNumerico getNewCodigoTransaccion(){
+        
+        AlfaNumerico alfaNumerico = AlfaNumerico.OBJETO_INVALIDO;
+        
+        
+        
+        return alfaNumerico;
+        
+    }
 
-    private int getNewId(){
+    private static int getNewId(){
 
         //Crear un nuevo identificador
         int idActual = listaObjetos.size();
@@ -88,10 +112,10 @@ public class Pedido {
     private static Estado addNewObjeto(Object objetoActual){
 
         //Establecer un valor por defecto
-        Estado estadoDevolver= Estado.FRACASO;
+        Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
-        if(objetoActual.getClass() == Nombre.class){
+        if(objetoActual.getClass() == AlfaNumerico.class){
 
             //Obtener el objeto requerido
             Pedido objetoAgregar = (Pedido)objetoActual;

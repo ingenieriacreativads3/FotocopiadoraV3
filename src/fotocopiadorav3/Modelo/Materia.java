@@ -14,7 +14,7 @@ import java.util.*;
 public class Materia {
     
     private final int id;
-    private Nombre nombre;
+    private AlfaNumerico nombre;
     private int año;
     private Persona titular;
     private Persona ayudante;
@@ -27,7 +27,7 @@ public class Materia {
 
     private static Set<Materia> listaObjetos = new HashSet<>();
 
-    private int getNewId(){
+    private static int getNewId(){
 
         //Crear un nuevo identificador
         int idActual = listaObjetos.size();
@@ -87,7 +87,7 @@ public class Materia {
     private static Estado addNewObjeto(Object objetoActual){
 
         //Establecer un valor por defecto
-        Estado estadoDevolver= Estado.FRACASO;
+        Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
         if(objetoActual.getClass() == Materia.class){

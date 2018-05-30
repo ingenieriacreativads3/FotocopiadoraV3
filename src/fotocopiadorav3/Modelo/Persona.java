@@ -13,8 +13,8 @@ import java.util.*;
 public class Persona{
     
     private final int id;
-    private Nombre nombre;
-    private Nombre apellido;
+    private AlfaNumerico nombre;
+    private AlfaNumerico apellido;
     private int dni;
     private Direccion direccion;
     
@@ -22,7 +22,7 @@ public class Persona{
 
     private static Set<Persona> listaObjetos = new HashSet<>();
 
-    private int getNewId(){
+    private static int getNewId(){
 
         //Crear un nuevo identificador
         int idActual = listaObjetos.size();
@@ -82,7 +82,7 @@ public class Persona{
     private static Estado addNewObjeto(Object objetoActual){
 
         //Establecer un valor por defecto
-        Estado estadoDevolver= Estado.FRACASO;
+        Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
         if(objetoActual.getClass() == Persona.class){

@@ -19,10 +19,10 @@ public class Documento {
     private double precio;
     private Date fechaIngreso;
     
-    private Nombre nombre;
-    private Nombre autor;
-    private Nombre editorial;
-    private Nombre edicion;
+    private AlfaNumerico nombre;
+    private AlfaNumerico autor;
+    private AlfaNumerico editorial;
+    private AlfaNumerico edicion;
     
     private Materia materia;
             
@@ -30,7 +30,7 @@ public class Documento {
 
     private static Set<Documento> listaObjetos = new HashSet<>();
 
-    private int getNewId(){
+    private static int getNewId(){
 
         //Crear un nuevo identificador
         int idActual = listaObjetos.size();
@@ -90,7 +90,7 @@ public class Documento {
     private static Estado addNewObjeto(Object objetoActual){
 
         //Establecer un valor por defecto
-        Estado estadoDevolver= Estado.FRACASO;
+        Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
         if(objetoActual.getClass() == Documento.class){

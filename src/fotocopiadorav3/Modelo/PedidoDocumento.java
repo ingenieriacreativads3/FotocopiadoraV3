@@ -16,6 +16,7 @@ public class PedidoDocumento {
     private final int id;
     private double subtotal;
     private int cantidad;
+    private Estado estado;
     
     private Documento documento;
     private Pedido pedido;
@@ -24,7 +25,7 @@ public class PedidoDocumento {
 
     private static Set<PedidoDocumento> listaObjetos = new HashSet<>();
 
-    private int getNewId(){
+    private static int getNewId(){
 
         //Crear un nuevo identificador
         int idActual = listaObjetos.size();
@@ -84,7 +85,7 @@ public class PedidoDocumento {
     private static Estado addNewObjeto(Object objetoActual){
 
         //Establecer un valor por defecto
-        Estado estadoDevolver= Estado.FRACASO;
+        Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
         if(objetoActual.getClass() == PedidoDocumento.class){

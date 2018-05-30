@@ -17,14 +17,14 @@ public class Carrera {
     /**
      * Esteidentificador se utiliza para generar el codigo transaccion.
      */
-    private Nombre identificador;
-    private Nombre nombre;
+    private AlfaNumerico identificador;
+    private AlfaNumerico nombre;
             
     protected final static Carrera OBJETO_INVALIDO = new Carrera();
 
     private static Set<Carrera> listaObjetos = new HashSet<>();
 
-    private int getNewId(){
+    private static int getNewId(){
 
         //Crear un nuevo identificador
         int idActual = listaObjetos.size();
@@ -84,7 +84,7 @@ public class Carrera {
     private static Estado addNewObjeto(Object objetoActual){
 
         //Establecer un valor por defecto
-        Estado estadoDevolver= Estado.FRACASO;
+        Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
         if(objetoActual.getClass() == Carrera.class){

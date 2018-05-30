@@ -13,14 +13,14 @@ import java.util.*;
 public class Direccion{
     
     private final int id;
-    private Nombre calle;
+    private AlfaNumerico calle;
     private int numero;
             
     private final static Direccion OBJETO_INVALIDO = new Direccion();
 
     private static Set<Direccion> listaObjetos = new HashSet<>();
 
-    private int getNewId(){
+    private static int getNewId(){
 
         //Crear un nuevo identificador
         int idActual = listaObjetos.size();
@@ -80,7 +80,7 @@ public class Direccion{
     private static Estado addNewObjeto(Object objetoActual){
 
         //Establecer un valor por defecto
-        Estado estadoDevolver= Estado.FRACASO;
+        Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
         if(objetoActual.getClass() == Direccion.class){

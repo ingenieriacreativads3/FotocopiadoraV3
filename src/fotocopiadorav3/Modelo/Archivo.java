@@ -15,14 +15,14 @@ public class Archivo {
     
     private final int id;
     //TODO aca va el tipo de archivo para subir.
-    private Nombre nombre;
+    private AlfaNumerico nombre;
     private String archivo;
             
     protected final static Archivo OBJETO_INVALIDO = new Archivo();
 
     private static Set<Archivo> listaObjetos = new HashSet<>();
 
-    private int getNewId(){
+    private static int getNewId(){
 
         //Crear un nuevo identificador
         int idActual = listaObjetos.size();
@@ -82,7 +82,7 @@ public class Archivo {
     private static Estado addNewObjeto(Object objetoActual){
 
         //Establecer un valor por defecto
-        Estado estadoDevolver= Estado.FRACASO;
+        Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
         if(objetoActual.getClass() == Archivo.class){
