@@ -11,28 +11,16 @@ import java.util.*;
  *
  * @author Tomás Contreras
  */
-public class PedidoDocumento {
+public class Error {
     
     private final int id;
-    private double subtotal;
-    private int cantidad;
-    /**
-     * Este permite identificar los diferentes estadios de un item 
-     * pedido. Esto es, las transiciones entre un item registrado,
-     * fotocopiado, cancelado, y retirado.
-     * 
-     */
-    private Estado estado;
-    
-    private Documento documento;
-    private Pedido pedido;
-    
-    private double importeConDescuento;
-    private boolean seCobroConDescuento;
-            
-    protected final static PedidoDocumento OBJETO_INVALIDO = new PedidoDocumento();
+    private AlfaNumerico tituloVentana;
+    private AlfaNumerico tituloError;
+    private AlfaNumerico descripcion;
 
-    private static Set<PedidoDocumento> listaObjetos = new HashSet<>();
+    private static Error objetoInvalido = new Error();
+
+    private static Set<Error> listaObjetos = new HashSet<>();
 
     private static int getNewId(){
 
@@ -52,21 +40,20 @@ public class PedidoDocumento {
 
     //Constructor
 
-    private PedidoDocumento() {
+    private Error() {
 
         //Asignar un identificador
         this.id = getNewId();
 
-
     }
 
-    protected static PedidoDocumento nuevo(){
+    protected static Error nuevo(){
 
         //Crear un objeto a devolver
-        PedidoDocumento objetoDevolver = PedidoDocumento.OBJETO_INVALIDO;
+        Error objetoDevolver = Error.objetoInvalido;
 
         //Crear un nuevo objeto
-        PedidoDocumento objetoNuevo = new PedidoDocumento();
+        Error objetoNuevo = new Error();
 
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
@@ -79,7 +66,6 @@ public class PedidoDocumento {
 
         }else{
 
-            //TODO capturar el error generado por un ingreso erroneo a la lista
             //...se establecio un valor por defecto
 
         }
@@ -97,10 +83,10 @@ public class PedidoDocumento {
         Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
-        if(objetoActual.getClass() == PedidoDocumento.class){
+        if(objetoActual.getClass() == Error.class){
 
             //Obtener el objeto requerido
-            PedidoDocumento objetoAgregar = (PedidoDocumento)objetoActual;
+            Error objetoAgregar = (Error)objetoActual;
 
             //Agregar el nuevo elemento a la lista
             boolean seAgrego;
@@ -128,39 +114,11 @@ public class PedidoDocumento {
         return estadoDevolver;
 
     }//...fin funcion
-    
+
     //Setter
-    
+
     //Getter
-    
-    //Others
-    
-    @Override
-    public boolean equals(Object objetoActual) {
 
-        if(objetoActual == null){return false;}
-        if(this.getClass() != objetoActual.getClass()){return false;}
-
-        final PedidoDocumento objetoRecibido = (PedidoDocumento) objetoActual;
-
-        if(this.hashCode() != objetoRecibido.hashCode()){return false;}
-
-        return true;
-
-    }
-
-    @Override
-    public int hashCode() {
-
-        return this.id;
-
-    }
-    
-    @Override
-    public String toString() {
-        
-        return "Definir";
-        
-    }
+    //TODO recargar los metodos toString, hashCode y equals
     
 }

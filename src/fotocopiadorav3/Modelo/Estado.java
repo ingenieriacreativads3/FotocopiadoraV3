@@ -12,6 +12,12 @@ import java.util.*;
  */
 public enum Estado{
     
+    
+    ITEM_PEDIDO_RETIRADO(224),
+    ITEM_PEDIDO_CANCELADO(223),
+    ITEM_PEDIDO_FOTOCOPIADO(222),
+    ITEM_PEDIDO_REGISTRADO(221),
+    
     ERROR_VALOR_NO_SETEADO(24),
     
     USSER_PASS_CORRECTOS(23),
