@@ -7,7 +7,10 @@ package fotocopiadorav3.Vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 /**
  FXML Controller class
@@ -15,6 +18,15 @@ import javafx.fxml.Initializable;
  @author Tomas
  */
 public class LoginController implements Initializable{
+
+    @FXML
+    private Button fx_iniciar_sesion_Button;
+    @FXML
+    private TextField fx_usuario_TextField;
+    @FXML
+    private TextField fx_contrasenia_TextField;
+    @FXML
+    private Button fx_salir_Button;
 
     /**
      Initializes the controller class.
