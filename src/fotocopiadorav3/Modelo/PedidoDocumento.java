@@ -17,7 +17,7 @@ public class PedidoDocumento {
     private double subtotal;
     private int cantidad;
     /**
-     * Este permite identificar los diferentes estadios de un item 
+     * Este permite identificar los diferentes estados de un item 
      * pedido. Esto es, las transiciones entre un item registrado,
      * fotocopiado, cancelado, y retirado.
      * 

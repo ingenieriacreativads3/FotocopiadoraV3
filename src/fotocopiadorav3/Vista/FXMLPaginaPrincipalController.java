@@ -7,7 +7,11 @@ package fotocopiadorav3.Vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  * FXML Controller class
@@ -15,6 +19,19 @@ import javafx.fxml.Initializable;
  * @author Usuario
  */
 public class FXMLPaginaPrincipalController implements Initializable {
+
+    @FXML
+    private Button fx_nuevo_pedido_Button;
+    @FXML
+    private Button fx_modificar_pedido_Button;
+    @FXML
+    private Button fx_cancelar_pedido_Button;
+    @FXML
+    private Button fx_inventario_Button;
+    @FXML
+    private Color x4;
+    @FXML
+    private Font x3;
 
     /**
      * Initializes the controller class.

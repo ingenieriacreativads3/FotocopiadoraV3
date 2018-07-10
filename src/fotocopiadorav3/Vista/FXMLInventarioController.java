@@ -7,7 +7,9 @@ package fotocopiadorav3.Vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TreeTableColumn;
 
 /**
  * FXML Controller class
@@ -15,6 +17,23 @@ import javafx.fxml.Initializable;
  * @author Usuario
  */
 public class FXMLInventarioController implements Initializable {
+
+    @FXML
+    private TreeTableColumn<?, ?> fx_documento_TreeTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> fx_tipo_TreeTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> fx_autor_TreeTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> fx_edicion_TreeTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> fx_carrera_TreeTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> fx_anio_TreeTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> fx_materia_TreeTableColumn;
+    @FXML
+    private TreeTableColumn<?, ?> fx_importe_TreeTableColumn;
 
     /**
      * Initializes the controller class.

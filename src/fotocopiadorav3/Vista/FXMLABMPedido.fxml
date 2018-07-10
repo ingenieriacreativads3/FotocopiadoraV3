@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fotocopiadorav3.Vista.FXMLNuevoPedidoController">
-    
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fotocopiadorav3.Vista.FXMLNuevoPedidoController">
+   <children>
+      <Label layoutX="41.0" layoutY="33.0" text="Alumno" />
+      <Label layoutX="41.0" layoutY="61.0" text="Nombre y Apellido" />
+      <Label layoutX="474.0" layoutY="25.0" text="Fecha: " />
+      <TextField fx:id="fx_nombre_apellido_TextField" layoutX="151.0" layoutY="57.0" prefHeight="25.0" prefWidth="254.0" />
+      <Label layoutX="41.0" layoutY="122.0" text="Pedido" />
+      <Separator layoutX="41.0" layoutY="103.0" prefWidth="500.0" />
+      <TableView layoutX="41.0" layoutY="153.0" prefHeight="147.0" prefWidth="398.0">
+        <columns>
+          <TableColumn fx:id="fx_documento_TableColumn" prefWidth="75.0" text="Documento" />
+          <TableColumn fx:id="fx_cantidad_TableColumn" prefWidth="75.0" text="Cantidad" />
+            <TableColumn fx:id="fx_precio_unitario_TableColumn" prefWidth="100.0" text="Precio Unit" />
+            <TableColumn fx:id="fx_precio_total_TableColumn" prefWidth="75.0" text="Precio Total" />
+            <TableColumn fx:id="fx_fecha_estimada_TableColumn" prefWidth="75.0" text="Fecha Estimada" />
+        </columns>
+      </TableView>
+      <TextField fx:id="fx_total_TextField" layoutX="499.0" layoutY="176.0" prefHeight="25.0" prefWidth="59.0" />
+      <Label layoutX="461.0" layoutY="180.0" text="Total" />
+      <TextField fx:id="fx_senia_TextField" layoutX="499.0" layoutY="227.0" prefHeight="25.0" prefWidth="59.0" />
+      <Label layoutX="463.0" layoutY="231.0" text="Seña" />
+      <Button fx:id="fx_cancelar_Button" layoutX="15.0" layoutY="361.0" mnemonicParsing="false" text="Cancelar" />
+      <Button fx:id="fx_aceptar_Button" layoutX="402.0" layoutY="361.0" mnemonicParsing="false" text="Crear Pedido/Guardar Cambios" />
+      <Button fx:id="fx_cancelar_pedido_Button" layoutX="92.0" layoutY="361.0" mnemonicParsing="false" text="Cancelar Pedido" />
+   </children>
 </AnchorPane>
