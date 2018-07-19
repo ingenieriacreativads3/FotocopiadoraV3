@@ -5,7 +5,8 @@
  */
 package fotocopiadorav3.Controlador;
 
-import fotocopiadorav3.Modelo.ModeloInterfaz;
+import fotocopiadorav3.Modelo.*;
+import java.util.List;
 
 /**
 
@@ -38,27 +39,24 @@ public class ControladorInterfaz{
     }
     
     /**
-     * Metodo para comprobar que 
+     * Metodo para verificar la existencia del usuario.
+     * Verificar si el usuario y contraseña ingresada corresponden.
      * 
      * @param usuario
      * @param contraseña
+     * @return Estado
      */
-    public boolean iniciarSecion(String usuario, String contraseña){
+    public Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
         
-        boolean exitoAlIniciar=false;
-        
+        Estado exitoAlIniciar = Estado.ERROR;
+        //Primero se debe verificar si existe el usuario.
+        //Luego se debe verificar si el usuairo y la contraseña son correctas
         try{
-            
-            if(existeUsuario(usuario)){
-                if(esValidoUsuarioYContraseña(usuario, contraseña)){
-                    exitoAlIniciar=true;
-                }
-                else{
-                    exitoAlIniciar=false;
-                }
+            if(ModeloInterfaz.existeUsuario(usuario)){
+                exitoAlIniciar = ModeloInterfaz.verificaUsuarioPassword(usuario, contraseña);
             }
             else{
-                exitoAlIniciar=false;
+                exitoAlIniciar = Estado.ERROR_NOMBRE_INEXISTENTE;
             }
             return exitoAlIniciar;
         }catch(Exception e){
@@ -66,16 +64,41 @@ public class ControladorInterfaz{
         }
     }
     
-    private boolean existeUsuario(String usuario){
-        boolean existe=false;
-        existe=ModeloInterfaz.existeUsuario(usuario);
-        return existe;
+    /*
+    Este metodo es llamado cuando el usuario y la contraseña son correctos, se debe cargar la pagina principal
+    con los pedidos cuyos estados sean pediente o terminados(no buscados)
+    */
+    public void cargarPaginaPrincipal(){
+        //Se cargara entonces los pedidos con estado pendiente y terminado
+        //Hay que definir como se cargaria
+        //Digamos, le paso un objeto pedido
     }
     
-    private boolean esValidoUsuarioYContraseña(String usuario, String contraseña){
-        boolean esValido=false;
-        esValido = ModeloInterfaz.existePass(usuario, contraseña);
-        return esValido;
-    }
+    /*
+    crea un pedido
+    */
+    public void nuevoPedido(String nombre, String apellido, List<String>documento, int cantidad, float seña){
+        //se toman los datos de los parametros
+        //se crea un pedido con sus items
+        //ModeloInterfaz.
         
+        //se genera un estado: Pendiente
+        //se persisten
+    }
+    
+    //En el modificar me deberia llegar un documento
+    public void modificarPedido(){
+        
+    }
+    
+    //se cambia el estado de pedido, si ya esta impreso el pedido va al inventario como "cancelado"
+    public void cancelarPedido(){
+        
+    }
+    
+    //Se cargara entonces los pedidos con estado impreso y cancelado
+    public void cargarInventario(){
+        
+    }
+    
 }
