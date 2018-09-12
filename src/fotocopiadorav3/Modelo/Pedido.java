@@ -31,6 +31,16 @@ public class Pedido {
     
     //Rutinas
     
+    protected static Set<Pedido> getListaPedidos(){
+        
+        Set<Pedido> listadevolver = new HashSet<>();
+        
+        listadevolver = listaObjetos;
+        
+        return listadevolver;
+        
+    }
+    
     private static Estado exiteCodigoTransaccion(){
         
         //Establecer un valor por defecto

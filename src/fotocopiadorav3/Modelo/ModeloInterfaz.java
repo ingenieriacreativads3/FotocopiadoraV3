@@ -6,6 +6,8 @@
 
 package fotocopiadorav3.Modelo;
 
+import java.util.*;
+
 /**
  * Esta clase determina la conexion con el exterior del paquete.
  * Aqui se reciben parametros y se solicitan datos por medio
@@ -16,6 +18,23 @@ package fotocopiadorav3.Modelo;
  */
 public class ModeloInterfaz {
     
+    public static Set<Pedido> getPedidosPendientes(){
+    
+        Set<Pedido> listaDevolver = new HashSet<>();
+        Set<Pedido> listaPedidos = new HashSet<>();
+        
+        listaPedidos = Pedido.getListaPedidos();
+        
+        for(Pedido pedidoActual : listaPedidos){
+            
+            
+            
+        }
+        
+        return listaDevolver;
+    
+    }
+    
     /**
      * Esta rutina verifica la existencia del password
      * para un usuario específico.
@@ -24,7 +43,7 @@ public class ModeloInterfaz {
      * @param passwordUsuario
      * @return boolean
      */
-    public static Estado verificaUsuarioPassword(String nombreUsuario, String passwordUsuario){
+    public static Estado verificaUsuarioPassword(Object nombreUsuario, Object passwordUsuario){
         
         //Establecer un valor por defecto
         Estado usuarioVerificar = Estado.ERROR;
@@ -33,7 +52,9 @@ public class ModeloInterfaz {
             
             if(passwordUsuario.getClass() == Valor.VERIFICADOR_DE_CLASE.getClass()){
                 
-                usuarioVerificar = Usuario.verificarUsserPass(nombreUsuario, passwordUsuario);
+                String nombreRecibido = String.valueOf(nombreUsuario);
+                String passwordRecido = String.valueOf(passwordUsuario);
+                usuarioVerificar = Usuario.verificarUsserPass(nombreRecibido, passwordRecido);
                 
             }else{
                 
@@ -107,5 +128,7 @@ public class ModeloInterfaz {
         return alumnoDevolver;
         
     }
+    
+    
     
 }

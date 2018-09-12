@@ -12,15 +12,14 @@ import java.util.*;
  */
 public enum Estado{
     
+    ITEM_PEDIDO_RETIRADO(224, ""),
+    ITEM_PEDIDO_CANCELADO(223, ""),
+    ITEM_PEDIDO_FOTOCOPIADO(222, ""),
+    ITEM_PEDIDO_REGISTRADO(221, ""),
     
-    ITEM_PEDIDO_RETIRADO(224),
-    ITEM_PEDIDO_CANCELADO(223),
-    ITEM_PEDIDO_FOTOCOPIADO(222),
-    ITEM_PEDIDO_REGISTRADO(221),
+    ERROR_VALOR_NO_SETEADO(24, ""),
     
-    ERROR_VALOR_NO_SETEADO(24),
-    
-    USSER_PASS_CORRECTOS(23),
+    USSER_PASS_CORRECTOS(23, ""),
     
     /**
      * Representa un documento para tutorias de una materia en partcular.
@@ -29,48 +28,50 @@ public enum Estado{
      * Representa un documento para tutorias de una materia en partcular.
      * 
      */
-    TUTORIAS(22),
+    TUTORIAS(22, ""),
     
     /**
      * Representa un documento para la catedra de una materia en particular.
      * 
      */
-    CATEDRA(21),
+    CATEDRA(21, ""),
     
-    TAREA_SIN_ESTADO(20),
-    SUSPENDIDA(19),
-    NO_REALIZADA(18),
-    REALIZADA(17),
-    CANTIDAD_VALIDA(16),
-    VENTA_REGISTRADA(15),
-    ERROR_IO(14),
-    ERROR_FILE_NOT_FOUND(13),
-    SIN_ESTADO(12),
-    INICIAL(11),
-    EXITO(10),
-    ERROR(9),
+    TAREA_SIN_ESTADO(20, ""),
+    SUSPENDIDA(19, ""),
+    NO_REALIZADA(18, ""),
+    REALIZADA(17, ""),
+    CANTIDAD_VALIDA(16, ""),
+    VENTA_REGISTRADA(15, ""),
+    ERROR_IO(14, ""),
+    ERROR_FILE_NOT_FOUND(13, ""),
+    SIN_ESTADO(12, ""),
+    INICIAL(11, ""),
+    EXITO(10, ""),
+    ERROR(9, ""),
     
-    ERROR_CODIGO_TRANSACCION_INEXISTENTE(113),
-    EXISTE_CODIGO_TRANSACCION(112),
-    EXISTE_USUARIO(111),
+    ERROR_CODIGO_TRANSACCION_INEXISTENTE(113, ""),
+    EXISTE_CODIGO_TRANSACCION(112, ""),
+    EXISTE_USUARIO(111, ""),
 
-    DATOS_VALIDOS(8),
-    ERROR_DATOS_INVALIDOS(7),
+    DATOS_VALIDOS(8, ""),
+    ERROR_DATOS_INVALIDOS(7, ""),
 
-    ERROR_PASS_INEXISTENTE(62),
-    ERROR_NOMBRE_INEXISTENTE(61),
-    ERROR_NOMBRE(6),
-    ERROR_APELLIDO(5),
-    ERROR_CANTIDAD(4),
-    ERROR_ELEMENTO(3),
-    ERROR_COTIZACION(2),
-    MENSAJE_MOSTRADO(1);
+    ERROR_PASS_INEXISTENTE(62, ""),
+    ERROR_NOMBRE_INEXISTENTE(61, ""),
+    ERROR_NOMBRE(6, ""),
+    ERROR_APELLIDO(5, ""),
+    ERROR_CANTIDAD(4, ""),
+    ERROR_ELEMENTO(3, ""),
+    ERROR_COTIZACION(2, ""),
+    MENSAJE_MOSTRADO(1, "");
 
     private final int Id;
+    private final String mensaje;
 
-    private Estado(int identificador) {
+    private Estado(int identificador, String mensajeActual) {
 
         this.Id = identificador;
+        this.mensaje = mensajeActual;
 
     }
 
@@ -203,7 +204,7 @@ public enum Estado{
     @Override
     public String toString(){
 
-        return this.name();
+        return this.mensaje;
 
     }
 
