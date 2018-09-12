@@ -37,9 +37,7 @@ public class LoginController extends Application implements Initializable{
     private TextField fx_contrasenia_TextField;
     @FXML
     private Button fx_salir_Button;
-
-    private ControladorInterfaz controladorInterfaz;
-    public static String[] argument;
+    
     /**
      Initializes the controller class.
      */
@@ -48,13 +46,6 @@ public class LoginController extends Application implements Initializable{
         // TODO
     }    
     
-    //Chicos, esto es una prueba que estoy haciendo con Jfx, van a ver estos metodos en varias clases
-    //Este metodo toma el click del boton iniciar secion, y verifica el usuario y contraseña
-    @FXML private void iniciarSesion(ActionEvent Event){
-        
-        
-        
-    }
     
     private void salir(ActionEvent Event){
         System.exit(0);
@@ -63,6 +54,7 @@ public class LoginController extends Application implements Initializable{
     @Override
     public void start(Stage primaryStage) throws Exception {
        
+        ControladorInterfaz.stagePrincipal = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         
         Scene scene = new Scene(root);
@@ -74,17 +66,24 @@ public class LoginController extends Application implements Initializable{
 
     @FXML
     private void iniciarSesion(MouseEvent event) {
+        
+        ControladorInterfaz asd = new ControladorInterfaz();
+        asd.iniciarSecion();
+        
+        /*
         String usuario = fx_usuario_TextField.toString();
         String contraseña = fx_contrasenia_TextField.toString();
         
         Estado estadoInicioSesion = controladorInterfaz.VerificarUsuarioYContraseña(usuario, contraseña);
         
         if(estadoInicioSesion == Estado.DATOS_VALIDOS){
-            ControladorInterfaz.iniciarSecion(argumentos);
+            ControladorInterfaz.iniciarSecion();
         }
         else{
             //Informar que algo mal salio usando Estado.MENSAJE_ERROR
         }
+
+        */
     }
     
 }

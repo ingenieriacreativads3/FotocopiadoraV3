@@ -20,12 +20,7 @@ public class FotocopiadoraV3 extends Application{
     
     @Override
     public void start(Stage stage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Vista/Login.fxml"));
         
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
     }
 
     /**
@@ -35,7 +30,6 @@ public class FotocopiadoraV3 extends Application{
         //launch(args);
         
         ControladorInterfaz.comenzar(args);
-        ControladorInterfaz.argumentos=args;
         
     }
     
