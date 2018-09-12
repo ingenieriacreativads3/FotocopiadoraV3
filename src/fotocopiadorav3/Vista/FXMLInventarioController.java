@@ -5,18 +5,24 @@
  */
 package fotocopiadorav3.Vista;
 
+import fotocopiadorav3.Controlador.ControladorInterfaz;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TreeTableColumn;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author Usuario
  */
-public class FXMLInventarioController implements Initializable {
+public class FXMLInventarioController extends Application implements Initializable {
 
     @FXML
     private TreeTableColumn<?, ?> fx_documento_TreeTableColumn;
@@ -43,4 +49,17 @@ public class FXMLInventarioController implements Initializable {
         // TODO
     }    
     
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+       
+        ControladorInterfaz.stagePrincipal = primaryStage;
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLInventario.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        
+    }
+
 }

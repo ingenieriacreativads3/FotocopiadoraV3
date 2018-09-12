@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fotocopiadorav3.Vista.FXMLPaginaPrincipalController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fotocopiadorav3.Vista.FXMLPaginaPrincipalController">
    <children>
       <MenuBar VBox.vgrow="NEVER">
          <menus>
@@ -66,7 +66,7 @@
                         <Button fx:id="fx_nuevo_pedido_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Nuevo Pedido" />
                         <Button fx:id="fx_modificar_pedido_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Modificar" />
                         <Button fx:id="fx_cancelar_pedido_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Cancelar" />
-                        <Button fx:id="fx_inventario_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Inventario" />
+                        <Button fx:id="fx_inventario_Button" mnemonicParsing="false" onAction="#abrirInventario" prefHeight="25.0" prefWidth="143.0" text="Inventario" />
                      </children>
                      <padding>
                         <Insets top="50.0" />
@@ -76,7 +76,7 @@
             </AnchorPane>
             <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
                <content>
-                  <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0" />
+                  <AnchorPane id="Content" fx:id="fx_panel_central_AnchorPane" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0" />
                </content>
             </ScrollPane>
             <AnchorPane />

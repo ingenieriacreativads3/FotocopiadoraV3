@@ -6,8 +6,6 @@
 package fotocopiadorav3.Vista;
 
 import fotocopiadorav3.Controlador.*;
-import static fotocopiadorav3.Controlador.ControladorInterfaz.argumentos;
-import fotocopiadorav3.Modelo.Estado;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Application;

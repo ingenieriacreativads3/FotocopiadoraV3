@@ -5,15 +5,18 @@
  */
 package fotocopiadorav3.Vista;
 
+import fotocopiadorav3.Controlador.ControladorInterfaz;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -37,6 +40,8 @@ public class FXMLPaginaPrincipalController extends Application implements Initia
     private Color x4;
     @FXML
     private Font x3;
+    @FXML
+    private AnchorPane fx_panel_central_AnchorPane;
 
     /**
      * Initializes the controller class.
@@ -55,6 +60,14 @@ public class FXMLPaginaPrincipalController extends Application implements Initia
         
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+    }
+
+    @FXML
+    private void abrirInventario(ActionEvent event) {
+        
+        ControladorInterfaz controladorInterfaz = new ControladorInterfaz();
+        controladorInterfaz.cargarInventario();
         
     }
 }

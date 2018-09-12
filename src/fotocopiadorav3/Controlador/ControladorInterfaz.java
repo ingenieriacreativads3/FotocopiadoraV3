@@ -144,6 +144,15 @@ public class ControladorInterfaz extends Application{
     //Se cargara entonces los pedidos con estado impreso y cancelado
     public void cargarInventario(){
         
+        try {
+            
+            FXMLInventarioController inventarioController = new FXMLInventarioController();
+            inventarioController.start(stagePrincipal);
+
+        } catch (Exception e) {
+            
+        }
+        
     }
     
     public static void comenzar(String[] args){
