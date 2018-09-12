@@ -67,12 +67,14 @@ public class LoginController extends Application implements Initializable{
     @FXML
     private void iniciarSesion(MouseEvent event) {
         
-        ControladorInterfaz asd = new ControladorInterfaz();
-        asd.iniciarSecion();
-        
-        /*
         String usuario = fx_usuario_TextField.toString();
         String contraseña = fx_contrasenia_TextField.toString();
+        
+        ControladorInterfaz InicioSecion = new ControladorInterfaz();
+        InicioSecion.iniciarSecion(usuario, contraseña);
+        
+        /*
+        
         
         Estado estadoInicioSesion = controladorInterfaz.VerificarUsuarioYContraseña(usuario, contraseña);
         

@@ -7,6 +7,7 @@ package fotocopiadorav3.Controlador;
 
 import fotocopiadorav3.*;
 import fotocopiadorav3.Modelo.*;
+//import fotocopiadorav3.Modelo.Estado;
 import fotocopiadorav3.Vista.*;
 import fotocopiadorav3.Controlador.*;
 import fotocopiadorav3.Vista.FXMLPaginaPrincipalController;
@@ -89,23 +90,23 @@ public class ControladorInterfaz extends Application{
      * @param contraseña
      * @return Estado
      */
-    public Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
+    
+    public void iniciarSecion(String nomrbeUsuario, String contraseña){
         
-        Estado exitoAlIniciar = Estado.ERROR;
-        //Primero se debe verificar si existe el usuario.
-        //Luego se debe verificar si el usuairo y la contraseña son correctas
-        try{
-            if(ModeloInterfaz.existeUsuario(usuario)){
-                exitoAlIniciar = ModeloInterfaz.verificaUsuarioPassword(usuario, contraseña);
+        Estado estadoUsuarioContraseña = ModeloInterfaz.verificaUsuarioPassword(nomrbeUsuario, contraseña);
+        
+        if(estadoUsuarioContraseña == Estado.EXISTE_USUARIO){
+            if(estadoUsuarioContraseña == Estado.USSER_PASS_CORRECTOS){
+                cargarPaginaPrincipal();
             }
             else{
-                exitoAlIniciar = Estado.ERROR_NOMBRE_INEXISTENTE;
+                lanzarVentanaError(Estado.ERROR_PASS_INEXISTENTE);
             }
-            return exitoAlIniciar;
-        }catch(Exception e){
-            return exitoAlIniciar;
+        }else{
+            lanzarVentanaError(Estado.ERROR_NOMBRE_INEXISTENTE);
         }
     }
+    
     
     /*
     * 
@@ -139,6 +140,23 @@ public class ControladorInterfaz extends Application{
         //Se cargara entonces los pedidos con estado pendiente y terminado
         //Hay que definir como se cargaria
         //Digamos, le paso un objeto pedido
+        try{
+            FXMLPaginaPrincipalController PaginaPrincipal = new FXMLPaginaPrincipalController();
+            PaginaPrincipal.start(stagePrincipal);
+        }catch(Exception e){
+            
+        }
+        
+    }
+    
+    public void lanzarVentanaError(Estado Error){
+        try{
+            //FXMLVentanaErrorController VentanaError = new FXMLVentanaErrorController();
+            //VentanaError.setMensajeError = Error.toString();          
+            //VentanaError.start(stagePrincipal);
+        }catch(Exception e){
+            
+        }
     }
     
     //Se cargara entonces los pedidos con estado impreso y cancelado
@@ -158,17 +176,7 @@ public class ControladorInterfaz extends Application{
         
     }
     
-    public void iniciarSecion(){
-        
-        try {
-            
-            FXMLPaginaPrincipalController asd = new FXMLPaginaPrincipalController();
-            asd.start(stagePrincipal);
-            
-        } catch (Exception e) {
-            
-        }
-        
-        
-    }
+    
+    
+    
 }
