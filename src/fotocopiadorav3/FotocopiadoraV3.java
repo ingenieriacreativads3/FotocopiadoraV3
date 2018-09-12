@@ -35,6 +35,7 @@ public class FotocopiadoraV3 extends Application{
         //launch(args);
         
         ControladorInterfaz.comenzar(args);
+        ControladorInterfaz.argumentos=args;
         
     }
     

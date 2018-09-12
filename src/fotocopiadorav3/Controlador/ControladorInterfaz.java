@@ -6,6 +6,7 @@
 package fotocopiadorav3.Controlador;
 
 import fotocopiadorav3.Modelo.*;
+import fotocopiadorav3.Vista.FXMLPaginaPrincipalController;
 import fotocopiadorav3.Vista.LoginController;
 import java.util.List;
 import javafx.application.Application;
@@ -22,7 +23,7 @@ public class ControladorInterfaz extends Application{
     
     protected GestorPedido GestorPedidos = new GestorPedido();
     protected GestorCuenta GestorCuenta = new GestorCuenta();
-    
+    public static String[] argumentos;
     
     /**
      * Clase que se encarga de la creacion del pedido
@@ -118,4 +119,7 @@ public class ControladorInterfaz extends Application{
         
     }
     
+    public static void iniciarSecion(String[] args){
+        launch(FXMLPaginaPrincipalController.class, args);
+    }
 }

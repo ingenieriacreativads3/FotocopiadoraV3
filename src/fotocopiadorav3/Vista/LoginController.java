@@ -5,7 +5,8 @@
  */
 package fotocopiadorav3.Vista;
 
-import fotocopiadorav3.Controlador.ControladorInterfaz;
+import fotocopiadorav3.Controlador.*;
+import static fotocopiadorav3.Controlador.ControladorInterfaz.argumentos;
 import fotocopiadorav3.Modelo.Estado;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -37,7 +39,7 @@ public class LoginController extends Application implements Initializable{
     private Button fx_salir_Button;
 
     private ControladorInterfaz controladorInterfaz;
-    
+    public static String[] argument;
     /**
      Initializes the controller class.
      */
@@ -50,21 +52,11 @@ public class LoginController extends Application implements Initializable{
     //Este metodo toma el click del boton iniciar secion, y verifica el usuario y contraseña
     @FXML private void iniciarSesion(ActionEvent Event){
         
-        String usuario = fx_usuario_TextField.toString();
-        String contraseña = fx_contrasenia_TextField.toString();
         
-        Estado estadoInicioSesion = controladorInterfaz.VerificarUsuarioYContraseña(usuario, contraseña);
-        
-        if(estadoInicioSesion == Estado.DATOS_VALIDOS){
-            //cambiar interfaz
-        }
-        else{
-            //Informar que algo mal salio usando Estado.MENSAJE_ERROR
-        }
         
     }
     
-    @FXML private void salir(ActionEvent Event){
+    private void salir(ActionEvent Event){
         System.exit(0);
     }
 
@@ -78,6 +70,21 @@ public class LoginController extends Application implements Initializable{
         primaryStage.setScene(scene);
         primaryStage.show();
         
+    }
+
+    @FXML
+    private void iniciarSesion(MouseEvent event) {
+        String usuario = fx_usuario_TextField.toString();
+        String contraseña = fx_contrasenia_TextField.toString();
+        
+        Estado estadoInicioSesion = controladorInterfaz.VerificarUsuarioYContraseña(usuario, contraseña);
+        
+        if(estadoInicioSesion == Estado.DATOS_VALIDOS){
+            ControladorInterfaz.iniciarSecion(argumentos);
+        }
+        else{
+            //Informar que algo mal salio usando Estado.MENSAJE_ERROR
+        }
     }
     
 }

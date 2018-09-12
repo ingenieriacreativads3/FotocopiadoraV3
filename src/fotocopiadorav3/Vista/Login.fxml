@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fotocopiadorav3.Vista.LoginController">
    <children>
-      <Button fx:id="fx_iniciar_sesion_Button" layoutX="422.0" layoutY="332.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="119.0" text="Iniciar Sesión" />
+      <Button fx:id="fx_iniciar_sesion_Button" layoutX="422.0" layoutY="332.0" mnemonicParsing="false" onAction="#iniciarSesion" onMouseClicked="#iniciarSesion" prefHeight="20.0" prefWidth="119.0" text="Iniciar Sesión" />
       <Label layoutX="78.0" layoutY="95.0" prefHeight="30.0" prefWidth="113.0" text="Usuario">
          <font>
             <Font size="20.0" />
