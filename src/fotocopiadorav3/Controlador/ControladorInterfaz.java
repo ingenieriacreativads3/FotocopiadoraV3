@@ -23,7 +23,16 @@ public class ControladorInterfaz extends Application{
     
     protected GestorPedido GestorPedidos = new GestorPedido();
     protected GestorCuenta GestorCuenta = new GestorCuenta();
+    protected GestorUsuario GestorUsuario = new GestorUsuario();
+    protected GestorCliente GestorCliente = new GestorCliente();
+    protected GestorArticulo GestorArticulo = new GestorArticulo();
     public static String[] argumentos;
+    
+    /*
+    * 
+    *   PEDIDOS
+    *
+    */
     
     /**
      * Clase que se encarga de la creacion del pedido
@@ -44,6 +53,35 @@ public class ControladorInterfaz extends Application{
             return null;
         }
     }
+    
+    /*
+    crea un pedido
+    */
+    public void nuevoPedido(String nombre, String apellido, List<String>documento, int cantidad, float seña){
+        //se toman los datos de los parametros
+        //se crea un pedido con sus items
+        //ModeloInterfaz.
+        
+        //se genera un estado: Pendiente
+        //se persisten
+    }
+    
+    //En el modificar me deberia llegar un documento
+    public void modificarPedido(){
+        
+    }
+    
+    //se cambia el estado de pedido, si ya esta impreso el pedido va al inventario como "cancelado"
+    public void cancelarPedido(){
+        
+    }
+    
+    
+    /*
+    * 
+    *   CUENTA
+    *
+    */
     
     /**
      * Metodo para verificar la existencia del usuario.
@@ -72,6 +110,30 @@ public class ControladorInterfaz extends Application{
     }
     
     /*
+    * 
+    *   USUARIO
+    *
+    */
+    
+    /*
+    * 
+    *   CLIENTE
+    *
+    */
+    
+    /*
+    * 
+    *   ARTICULO
+    *
+    */
+    
+    /*
+    * 
+    *   INTERFAZ
+    *
+    */
+    
+    /*
     Este metodo es llamado cuando el usuario y la contraseña son correctos, se debe cargar la pagina principal
     con los pedidos cuyos estados sean pediente o terminados(no buscados)
     */
@@ -79,28 +141,6 @@ public class ControladorInterfaz extends Application{
         //Se cargara entonces los pedidos con estado pendiente y terminado
         //Hay que definir como se cargaria
         //Digamos, le paso un objeto pedido
-    }
-    
-    /*
-    crea un pedido
-    */
-    public void nuevoPedido(String nombre, String apellido, List<String>documento, int cantidad, float seña){
-        //se toman los datos de los parametros
-        //se crea un pedido con sus items
-        //ModeloInterfaz.
-        
-        //se genera un estado: Pendiente
-        //se persisten
-    }
-    
-    //En el modificar me deberia llegar un documento
-    public void modificarPedido(){
-        
-    }
-    
-    //se cambia el estado de pedido, si ya esta impreso el pedido va al inventario como "cancelado"
-    public void cancelarPedido(){
-        
     }
     
     //Se cargara entonces los pedidos con estado impreso y cancelado

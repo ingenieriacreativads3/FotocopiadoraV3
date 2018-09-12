@@ -20,6 +20,8 @@ public class GestorCuenta {
         */
    }
    
-   
+   protected void cerrarSecion(){
+       
+   }
    
 }

@@ -74,4 +74,7 @@ public class GestorPedido {
 
     }
 
+    protected void registrarItemPedido(){
+        
+    }
 }
