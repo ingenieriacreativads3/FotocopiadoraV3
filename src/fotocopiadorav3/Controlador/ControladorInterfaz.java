@@ -6,13 +6,19 @@
 package fotocopiadorav3.Controlador;
 
 import fotocopiadorav3.Modelo.*;
+import fotocopiadorav3.Vista.LoginController;
 import java.util.List;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
 
  @author Alonso David
  */
-public class ControladorInterfaz{
+public class ControladorInterfaz extends Application{
     
     protected GestorPedido GestorPedidos = new GestorPedido();
     protected GestorCuenta GestorCuenta = new GestorCuenta();
@@ -98,6 +104,17 @@ public class ControladorInterfaz{
     
     //Se cargara entonces los pedidos con estado impreso y cancelado
     public void cargarInventario(){
+        
+    }
+    
+    public static void comenzar(String[] args){
+        
+        launch(LoginController.class, args);
+        
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
         
     }
     

@@ -5,6 +5,7 @@
  */
 package fotocopiadorav3;
 
+import fotocopiadorav3.Controlador.ControladorInterfaz;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,7 +32,10 @@ public class FotocopiadoraV3 extends Application{
      @param args the command line arguments
      */
     public static void main(String[] args){
-        launch(args);
+        //launch(args);
+        
+        ControladorInterfaz.comenzar(args);
+        
     }
     
 }
