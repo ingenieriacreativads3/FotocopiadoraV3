@@ -75,7 +75,7 @@ public class ControladorInterfaz extends Application{
     }
     
     
-    /*
+    /**
     * 
     *   CUENTA
     *
@@ -156,7 +156,6 @@ public class ControladorInterfaz extends Application{
     }
     
     public static void comenzar(String[] args){
-        
         
         launch(LoginController.class, args);
         
