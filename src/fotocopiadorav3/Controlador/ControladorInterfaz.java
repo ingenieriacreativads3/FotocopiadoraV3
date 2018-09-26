@@ -13,6 +13,7 @@ import fotocopiadorav3.Vista.FXMLPaginaPrincipalController;
 import fotocopiadorav3.Vista.LoginController;
 import java.util.List;
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
