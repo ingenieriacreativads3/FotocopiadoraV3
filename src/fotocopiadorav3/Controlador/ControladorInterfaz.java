@@ -41,7 +41,8 @@ public class ControladorInterfaz extends Application{
     */
     
     public void iniciarSecion(){
-        
+        //todo: Mejorar
+        cargarInventario();
     }
     
     public Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
@@ -170,7 +171,7 @@ public class ControladorInterfaz extends Application{
     public void start(Stage primaryStage) throws Exception {
         
     }
-    
+    /*
     public void cargarListaPedido(){
         
         try {
@@ -234,5 +235,5 @@ public class ControladorInterfaz extends Application{
             
         }
         
-    }
+    }*/
 }
