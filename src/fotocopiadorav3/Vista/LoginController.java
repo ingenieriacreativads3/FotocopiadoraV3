@@ -45,8 +45,8 @@ public class LoginController extends Application implements Initializable{
     }    
     
     
-    private void salir(ActionEvent Event){
-        System.exit(0);
+    private void salir(MouseEvent Event) throws Throwable{
+        
     }
 
     @Override
