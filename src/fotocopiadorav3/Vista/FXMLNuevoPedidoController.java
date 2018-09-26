@@ -7,18 +7,20 @@ package fotocopiadorav3.Vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author Usuario
  */
-public class FXMLNuevoPedidoController implements Initializable {
+public class FXMLNuevoPedidoController extends Application implements Initializable {
 
     @FXML
     private TextField fx_nombre_apellido_TextField;
@@ -50,5 +52,10 @@ public class FXMLNuevoPedidoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        
+    }
     
 }

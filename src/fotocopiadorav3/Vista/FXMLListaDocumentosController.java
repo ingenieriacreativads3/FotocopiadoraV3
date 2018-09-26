@@ -7,14 +7,16 @@ package fotocopiadorav3.Vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Application;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author Usuario
  */
-public class FXMLListaDocumentosController implements Initializable {
+public class FXMLListaDocumentosController extends Application implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -23,5 +25,10 @@ public class FXMLListaDocumentosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        
+    }
     
 }
