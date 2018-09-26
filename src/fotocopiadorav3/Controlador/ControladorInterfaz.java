@@ -32,6 +32,38 @@ public class ControladorInterfaz extends Application{
     public static String[] argumentos;
     public static Stage stagePrincipal;
     
+    
+    /*
+    * 
+    *   CUENTA
+    *
+    */
+    
+    public void iniciarSecion(){
+        
+        
+        
+        
+    }
+    
+    /*
+    * 
+    *   USUARIO
+    *
+    */
+    
+    /*
+    * 
+    *   CLIENTE
+    *
+    */
+    
+    /*
+    * 
+    *   ARTICULO
+    *
+    */
+    
     /**
      * Clase que se encarga de la creacion del pedido
      * @param nombreYApellidoPersona
@@ -75,55 +107,6 @@ public class ControladorInterfaz extends Application{
     }
     
     
-    /*
-    * 
-    *   CUENTA
-    *
-    */
-    
-    /**
-     * Metodo para verificar la existencia del usuario.
-     * Verificar si el usuario y contraseña ingresada corresponden.
-     * 
-     * @param usuario
-     * @param contraseña
-     * @return Estado
-     */
-    public Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
-        
-        Estado exitoAlIniciar = Estado.ERROR;
-        //Primero se debe verificar si existe el usuario.
-        //Luego se debe verificar si el usuairo y la contraseña son correctas
-        try{
-            if(ModeloInterfaz.existeUsuario(usuario)){
-                exitoAlIniciar = ModeloInterfaz.verificaUsuarioPassword(usuario, contraseña);
-            }
-            else{
-                exitoAlIniciar = Estado.ERROR_NOMBRE_INEXISTENTE;
-            }
-            return exitoAlIniciar;
-        }catch(Exception e){
-            return exitoAlIniciar;
-        }
-    }
-    
-    /*
-    * 
-    *   USUARIO
-    *
-    */
-    
-    /*
-    * 
-    *   CLIENTE
-    *
-    */
-    
-    /*
-    * 
-    *   ARTICULO
-    *
-    */
     
     /*
     * 
@@ -136,9 +119,14 @@ public class ControladorInterfaz extends Application{
     con los pedidos cuyos estados sean pediente o terminados(no buscados)
     */
     public void cargarPaginaPrincipal(){
-        //Se cargara entonces los pedidos con estado pendiente y terminado
-        //Hay que definir como se cargaria
-        //Digamos, le paso un objeto pedido
+        try {
+            
+            FXMLPaginaPrincipalController asd = new FXMLPaginaPrincipalController();
+            asd.start(stagePrincipal);
+            
+        } catch (Exception e) {
+            
+        }
     }
     
     //Se cargara entonces los pedidos con estado impreso y cancelado
@@ -167,17 +155,68 @@ public class ControladorInterfaz extends Application{
         
     }
     
-    public void iniciarSecion(){
+    public void cargarListaPedido(){
         
         try {
             
-            FXMLPaginaPrincipalController asd = new FXMLPaginaPrincipalController();
-            asd.start(stagePrincipal);
-            
+            FXMLListaPedidosController ListaPedidosController = new FXMLListaPedidosController();
+            ListaPedidosController.start(stagePrincipal);
+
         } catch (Exception e) {
             
         }
         
+    }
+    
+    public void cargarNuevoPedido(){
+        
+        try {
+            
+            FXMLNuevoPedidoController NuevoPedidoController = new FXMLNuevoPedidoController();
+            NuevoPedidoController.start(stagePrincipal);
+
+        } catch (Exception e) {
+            
+        }
+        
+    }
+    
+    public void cargarListaDocumentos(){
+        
+        try {
+            
+            FXMLListaDocumentosController ListaDocumentosController = new FXMLListaDocumentosController();
+            ListaDocumentosController.start(stagePrincipal);
+
+        } catch (Exception e) {
+            
+        }
+        
+    }
+    
+    public void cargarABMPedido(){
+        
+        try {
+            
+            FXMLABMPedidoController ABMPedidoController = new FXMLABMPedidoController();
+            ABMPedidoController.start(stagePrincipal);
+
+        } catch (Exception e) {
+            
+        }
+        
+    }
+    
+    public void cargarABMDocumento(){
+        
+        try {
+            
+            FXMLABMDocumentoController ABMDocumentoController = new FXMLABMDocumentoController();
+            ABMDocumentoController.start(stagePrincipal);
+
+        } catch (Exception e) {
+            
+        }
         
     }
 }
