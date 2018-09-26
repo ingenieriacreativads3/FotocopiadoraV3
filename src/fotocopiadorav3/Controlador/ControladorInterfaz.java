@@ -42,9 +42,24 @@ public class ControladorInterfaz extends Application{
     
     public void iniciarSecion(){
         
+    }
+    
+    public Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
         
-        
-        
+        Estado exitoAlIniciar = Estado.ERROR;
+        //Primero se debe verificar si existe el usuario.
+        //Luego se debe verificar si el usuairo y la contraseña son correctas
+        try{
+            if(ModeloInterfaz.existeUsuario(usuario)){
+                exitoAlIniciar = ModeloInterfaz.verificaUsuarioPassword(usuario, contraseña);
+            }
+            else{
+                exitoAlIniciar = Estado.ERROR_NOMBRE_INEXISTENTE;
+            }
+            return exitoAlIniciar;
+        }catch(Exception e){
+            return exitoAlIniciar;
+        }
     }
     
     /*
@@ -108,55 +123,6 @@ public class ControladorInterfaz extends Application{
     }
     
     
-    /**
-    * 
-    *   CUENTA
-    *
-    */
-    
-    /**
-     * Metodo para verificar la existencia del usuario.
-     * Verificar si el usuario y contraseña ingresada corresponden.
-     * 
-     * @param usuario
-     * @param contraseña
-     * @return Estado
-     */
-    public Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
-        
-        Estado exitoAlIniciar = Estado.ERROR;
-        //Primero se debe verificar si existe el usuario.
-        //Luego se debe verificar si el usuairo y la contraseña son correctas
-        try{
-            if(ModeloInterfaz.existeUsuario(usuario)){
-                exitoAlIniciar = ModeloInterfaz.verificaUsuarioPassword(usuario, contraseña);
-            }
-            else{
-                exitoAlIniciar = Estado.ERROR_NOMBRE_INEXISTENTE;
-            }
-            return exitoAlIniciar;
-        }catch(Exception e){
-            return exitoAlIniciar;
-        }
-    }
-    
-    /*
-    * 
-    *   USUARIO
-    *
-    */
-    
-    /*
-    * 
-    *   CLIENTE
-    *
-    */
-    
-    /*
-    * 
-    *   ARTICULO
-    *
-    */
     
     /*
     * 
@@ -194,6 +160,7 @@ public class ControladorInterfaz extends Application{
     }
     
     public static void comenzar(String[] args){
+        
         
         launch(LoginController.class, args);
         
