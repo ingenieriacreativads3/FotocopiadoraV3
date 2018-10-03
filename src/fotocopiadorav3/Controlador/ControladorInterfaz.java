@@ -31,8 +31,6 @@ public class ControladorInterfaz extends Application{
     protected GestorCliente GestorCliente = new GestorCliente();
     protected GestorArticulo GestorArticulo = new GestorArticulo();
     public static String[] argumentos;
-    public static Stage stagePrincipal;
-    public static FXMLPaginaPrincipalController paginaPrincipalController = new FXMLPaginaPrincipalController();
     
     
     /*
@@ -137,32 +135,21 @@ public class ControladorInterfaz extends Application{
     con los pedidos cuyos estados sean pediente o terminados(no buscados)
     */
     public void cargarPaginaPrincipal(){
-        try {
-            
-            paginaPrincipalController.start(stagePrincipal);
-            
-        } catch (Exception e) {
-            
-        }
+        
+        VistaInterfaz.renderizarPaginaPrincipal();
+        
     }
     
     //Se cargara entonces los pedidos con estado impreso y cancelado
     public static void cargarInventario(){
         
-        try {
-            
-            FXMLInventarioController inventarioController = new FXMLInventarioController();
-            paginaPrincipalController.establecerPanelCentral(inventarioController.obtenerNodo());
-            
-        } catch (Exception e) {
-            
-        }
+        VistaInterfaz.renderizarInventario();
         
     }
     
     public static void comenzar(String[] args){
         
-        launch(LoginController.class, args);
+        VistaInterfaz.renderizarLogin(args);
         
     }
 

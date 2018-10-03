@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  *
  * @author Toshiba
  */
-public class FXMLABMDocumentoController extends Application implements Initializable {
+public class FXMLNuevoUsuarioController extends Application implements Initializable {
 
     /**
      * Initializes the controller class.

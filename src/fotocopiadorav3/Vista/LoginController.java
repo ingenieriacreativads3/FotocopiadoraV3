@@ -47,7 +47,7 @@ public class LoginController extends Application implements Initializable{
     @Override
     public void start(Stage primaryStage) throws Exception {
        
-        ControladorInterfaz.stagePrincipal = primaryStage;
+        VistaInterfaz.stagePrincipal = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         
         Scene scene = new Scene(root);

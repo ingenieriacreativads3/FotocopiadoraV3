@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  *
  * @author Toshiba
  */
-public class FXMLModificarUsuarioController implements Initializable {
+public class FXMLModificarUsuarioController extends Application implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -28,7 +28,7 @@ public class FXMLModificarUsuarioController implements Initializable {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }
