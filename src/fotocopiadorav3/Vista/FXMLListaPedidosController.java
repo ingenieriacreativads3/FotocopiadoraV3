@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  *
  * @author Usuario
  */
-public class FXMLListaPedidosController extends Application implements Initializable{
+public class FXMLListaPedidosController extends Application implements Initializable {
 
     @FXML
     private TreeTableColumn<?, ?> fx_codigo_TreeTableColumn;
@@ -45,7 +45,7 @@ public class FXMLListaPedidosController extends Application implements Initializ
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }
