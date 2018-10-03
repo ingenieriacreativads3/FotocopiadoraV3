@@ -7,14 +7,16 @@ package fotocopiadorav3.Vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Application;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
- * @author Usuario
+ * @author Toshiba
  */
-public class FXMLABMDocumentoController implements Initializable {
+public class FXMLModificarDocumentoController extends Application implements Initializable{
 
     /**
      * Initializes the controller class.
@@ -23,5 +25,10 @@ public class FXMLABMDocumentoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

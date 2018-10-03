@@ -7,41 +7,16 @@ package fotocopiadorav3.Vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
+import javafx.application.Application;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
- * @author Usuario
+ * @author Toshiba
  */
-public class FXMLNuevoPedidoController implements Initializable {
-
-    @FXML
-    private TextField fx_nombre_apellido_TextField;
-    @FXML
-    private TableColumn<?, ?> fx_documento_TableColumn;
-    @FXML
-    private TableColumn<?, ?> fx_cantidad_TableColumn;
-    @FXML
-    private TableColumn<?, ?> fx_precio_unitario_TableColumn;
-    @FXML
-    private TableColumn<?, ?> fx_precio_total_TableColumn;
-    @FXML
-    private TableColumn<?, ?> fx_fecha_estimada_TableColumn;
-    @FXML
-    private TextField fx_total_TextField;
-    @FXML
-    private TextField fx_senia_TextField;
-    @FXML
-    private Button fx_cancelar_Button;
-    @FXML
-    private Button fx_aceptar_Button;
-    @FXML
-    private Button fx_cancelar_pedido_Button;
+public class FXMLNuevoPedidoController extends Application implements Initializable{
 
     /**
      * Initializes the controller class.
@@ -50,5 +25,10 @@ public class FXMLNuevoPedidoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

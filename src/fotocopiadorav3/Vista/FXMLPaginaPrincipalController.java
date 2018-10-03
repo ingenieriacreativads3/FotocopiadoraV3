@@ -13,10 +13,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -36,13 +39,9 @@ public class FXMLPaginaPrincipalController extends Application implements Initia
     private Button fx_cancelar_pedido_Button;
     @FXML
     private Button fx_inventario_Button;
-    @FXML
-    private Color x4;
-    @FXML
-    private Font x3;
-    @FXML
-    private AnchorPane fx_panel_central_AnchorPane;
-
+   
+    private BorderPane paginaPrincipal;
+    
     /**
      * Initializes the controller class.
      */
@@ -51,12 +50,12 @@ public class FXMLPaginaPrincipalController extends Application implements Initia
         // TODO
     }
     
-    
+    @Override
     public void start(Stage primaryStage) throws Exception {
        
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLPaginaPrincipal.fxml"));
+        paginaPrincipal = (BorderPane) FXMLLoader.load(getClass().getResource("FXMLPaginaPrincipal.fxml"));
         
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(paginaPrincipal);
         
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -66,8 +65,12 @@ public class FXMLPaginaPrincipalController extends Application implements Initia
     @FXML
     private void abrirInventario(ActionEvent event) {
         
-        ControladorInterfaz controladorInterfaz = new ControladorInterfaz();
-        controladorInterfaz.cargarInventario();
+        ControladorInterfaz.cargarInventario();
         
     }
+
+    public void establecerPanelCentral(Node nodo) {
+        paginaPrincipal.setCenter(nodo);
+    }
+    
 }

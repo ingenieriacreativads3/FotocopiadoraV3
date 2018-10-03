@@ -2,102 +2,27 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fotocopiadorav3.Vista.FXMLPaginaPrincipalController">
-   <children>
-      <MenuBar VBox.vgrow="NEVER">
-         <menus>
-            <Menu mnemonicParsing="false" text="Archivo">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Nuevo Pedido" />
-                  <MenuItem mnemonicParsing="false" text="Open…" />
-                  <Menu mnemonicParsing="false" text="Open Recent" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Inventario" />
-                  <MenuItem mnemonicParsing="false" text="Guardar" />
-                  <MenuItem mnemonicParsing="false" text="Guardar como..." />
-                  <MenuItem mnemonicParsing="false" text="Revert" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Preferencias" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Salir" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edición">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Undo" />
-                  <MenuItem mnemonicParsing="false" text="Redo" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Cut" />
-                  <MenuItem mnemonicParsing="false" text="Copy" />
-                  <MenuItem mnemonicParsing="false" text="Paste" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Select All" />
-                  <MenuItem mnemonicParsing="false" text="Unselect All" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Ayuda">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-         <items>
-            <AnchorPane>
-               <children>
-                  <VBox alignment="TOP_CENTER" layoutX="90.0" layoutY="337.0" prefHeight="551.0" prefWidth="222.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Button fx:id="fx_nuevo_pedido_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Nuevo Pedido" />
-                        <Button fx:id="fx_modificar_pedido_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Modificar" />
-                        <Button fx:id="fx_cancelar_pedido_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Cancelar" />
-                        <Button fx:id="fx_inventario_Button" mnemonicParsing="false" onAction="#abrirInventario" prefHeight="25.0" prefWidth="143.0" text="Inventario" />
-                     </children>
-                     <padding>
-                        <Insets top="50.0" />
-                     </padding>
-                  </VBox>
-               </children>
-            </AnchorPane>
-            <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
-               <content>
-                  <AnchorPane id="Content" fx:id="fx_panel_central_AnchorPane" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0" />
-               </content>
-            </ScrollPane>
-            <AnchorPane />
-         </items>
-      </SplitPane>
-      <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fotocopiadorav3.Vista.FXMLPaginaPrincipalController">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font size="11.0" fx:id="x3" />
-               </font>
-               <textFill>
-                  <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
-               </textFill>
-            </Label>
-            <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
-            <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
+            <VBox alignment="TOP_CENTER" prefHeight="551.0" prefWidth="222.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="fx_nuevo_pedido_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Nuevo Pedido" />
+                  <Button fx:id="fx_modificar_pedido_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Modificar" />
+                  <Button fx:id="fx_cancelar_pedido_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Cancelar" />
+                  <Button fx:id="fx_inventario_Button" mnemonicParsing="false" onAction="#abrirInventario" prefHeight="25.0" prefWidth="143.0" text="Inventario" />
+               </children>
+               <padding>
+                  <Insets top="50.0" />
+               </padding>
+            </VBox>
          </children>
-         <padding>
-            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-         </padding>
-      </HBox>
-   </children>
-</VBox>
+      </AnchorPane>
+   </left>
+</BorderPane>

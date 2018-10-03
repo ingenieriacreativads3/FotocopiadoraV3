@@ -14,9 +14,9 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Usuario
+ * @author Toshiba
  */
-public class FXMLListaDocumentosController extends Application implements Initializable{
+public class FXMLNuevoDocumentoController extends Application implements Initializable{
 
     /**
      * Initializes the controller class.

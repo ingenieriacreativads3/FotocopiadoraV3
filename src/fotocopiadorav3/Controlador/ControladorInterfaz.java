@@ -32,6 +32,7 @@ public class ControladorInterfaz extends Application{
     protected GestorArticulo GestorArticulo = new GestorArticulo();
     public static String[] argumentos;
     public static Stage stagePrincipal;
+    public static FXMLPaginaPrincipalController paginaPrincipalController = new FXMLPaginaPrincipalController();
     
     
     /*
@@ -42,7 +43,7 @@ public class ControladorInterfaz extends Application{
     
     public void iniciarSecion(){
         //todo: Mejorar
-        cargarInventario();
+        cargarPaginaPrincipal();
     }
     
     public Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
@@ -138,8 +139,7 @@ public class ControladorInterfaz extends Application{
     public void cargarPaginaPrincipal(){
         try {
             
-            FXMLPaginaPrincipalController asd = new FXMLPaginaPrincipalController();
-            asd.start(stagePrincipal);
+            paginaPrincipalController.start(stagePrincipal);
             
         } catch (Exception e) {
             
@@ -147,13 +147,13 @@ public class ControladorInterfaz extends Application{
     }
     
     //Se cargara entonces los pedidos con estado impreso y cancelado
-    public void cargarInventario(){
+    public static void cargarInventario(){
         
         try {
             
             FXMLInventarioController inventarioController = new FXMLInventarioController();
-            inventarioController.start(stagePrincipal);
-
+            paginaPrincipalController.establecerPanelCentral(inventarioController.obtenerNodo());
+            
         } catch (Exception e) {
             
         }
@@ -162,15 +162,12 @@ public class ControladorInterfaz extends Application{
     
     public static void comenzar(String[] args){
         
-        
         launch(LoginController.class, args);
         
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        
-    }
+    public void start(Stage primaryStage) throws Exception {}
     /*
     public void cargarListaPedido(){
         
@@ -236,4 +233,6 @@ public class ControladorInterfaz extends Application{
         }
         
     }*/
+
+    public static void salirAplicacion() {}
 }

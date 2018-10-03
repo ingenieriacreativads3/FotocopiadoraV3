@@ -44,11 +44,6 @@ public class LoginController extends Application implements Initializable{
         // TODO
     }    
     
-    
-    private void salir(MouseEvent Event) throws Throwable{
-        
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception {
        
@@ -63,10 +58,15 @@ public class LoginController extends Application implements Initializable{
     }
 
     @FXML
+    private void salir(MouseEvent Event) throws Throwable{
+        ControladorInterfaz.salirAplicacion();
+    }
+
+    @FXML
     private void iniciarSesion(MouseEvent event) {
         
-        ControladorInterfaz asd = new ControladorInterfaz();
-        asd.iniciarSecion();
+        ControladorInterfaz controladorInterfaz = new ControladorInterfaz();
+        controladorInterfaz.iniciarSecion();
         
         /*
         String usuario = fx_usuario_TextField.toString();
