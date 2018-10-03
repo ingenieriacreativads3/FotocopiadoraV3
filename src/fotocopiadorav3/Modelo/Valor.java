@@ -17,7 +17,7 @@ public class Valor{
      * indentificador creado.
      */
     protected static final int SIGUIENTE_IDENTIFICADOR = 1;
-    protected static final String VERIFICADOR_DE_CLASE = "ASD";
+    protected static final String VERIFICADOR_DE_CLASE_STRING = "ASD";
     
     
 

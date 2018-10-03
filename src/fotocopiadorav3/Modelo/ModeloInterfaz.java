@@ -29,9 +29,9 @@ public class ModeloInterfaz {
         //Establecer un valor por defecto
         Estado usuarioVerificar = Estado.ERROR;
         
-        if(nombreUsuario.getClass() == Valor.VERIFICADOR_DE_CLASE.getClass()){
+        if(nombreUsuario.getClass() == Valor.VERIFICADOR_DE_CLASE_STRING.getClass()){
             
-            if(passwordUsuario.getClass() == Valor.VERIFICADOR_DE_CLASE.getClass()){
+            if(passwordUsuario.getClass() == Valor.VERIFICADOR_DE_CLASE_STRING.getClass()){
                 
                 usuarioVerificar = Usuario.verificarUsserPass(nombreUsuario, passwordUsuario);
                 
@@ -90,6 +90,10 @@ public class ModeloInterfaz {
 
     }
     
+    /**
+     *
+     * @return
+     */
     public static Pedido getNuevoPedido() {
 
         Pedido pedidoDevolver = Pedido.nuevo();
