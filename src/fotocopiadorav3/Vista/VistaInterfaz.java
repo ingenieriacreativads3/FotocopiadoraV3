@@ -46,6 +46,84 @@ public class VistaInterfaz extends Application{
         
     }
 
+    public static void renderizarNuevoPedido(){
+        
+        try {
+            
+            FXMLNuevoPedidoController nuevoPedidoController = new FXMLNuevoPedidoController();
+            paginaPrincipalController.establecerPanelCentral(nuevoPedidoController.obtenerNodo());
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+
+    public static void renderizarModificarPedido(){
+        
+        try {
+            
+            FXMLModificarPedidoController modificarPedidoControllerController = new FXMLModificarPedidoController();
+            paginaPrincipalController.establecerPanelCentral(modificarPedidoControllerController.obtenerNodo());
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+
+    public static void renderizarCancelarPedido(){
+        
+        /*try {
+            
+            FXMLCancelarPedidoController cancelarPedidoController = new FXMLCancelarPedidoController();
+            paginaPrincipalController.establecerPanelCentral(cancelarPedidoController.obtenerNodo());
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+        
+    }
+
+    public static void renderizarNuevoDocumento(){
+        
+        try {
+            
+            FXMLNuevoDocumentoController nuevoDocumentoController = new FXMLNuevoDocumentoController();
+            paginaPrincipalController.establecerPanelCentral(nuevoDocumentoController.obtenerNodo());
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+
+    public static void renderizarModificarDocumento(){
+        
+        try {
+            
+            FXMLModificarDocumentoController modificarDocumentoController = new FXMLModificarDocumentoController();
+            paginaPrincipalController.establecerPanelCentral(modificarDocumentoController.obtenerNodo());
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+
+    public static void renderizarEliminarDocumento(){
+        
+        /*try {
+            
+            FXMLInventarioController inventarioController = new FXMLInventarioController();
+            paginaPrincipalController.establecerPanelCentral(inventarioController.obtenerNodo());
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+        
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {}
     

@@ -68,6 +68,48 @@ public class FXMLPaginaPrincipalController extends Application implements Initia
         ControladorInterfaz.cargarInventario();
         
     }
+    
+    @FXML
+    private void nuevoPedido(ActionEvent event) {
+        
+        ControladorInterfaz.cargarNuevoPedido();
+        
+    }
+    
+    @FXML
+    private void modificarPedido(ActionEvent event) {
+        
+        ControladorInterfaz.cargarModificarPedido();
+        
+    }
+    
+    @FXML
+    private void cancelarPedido(ActionEvent event) {
+        
+        ControladorInterfaz.cargarCancelarPedido();
+        
+    }
+
+    @FXML
+    private void nuevoDocumento(ActionEvent event) {
+        
+        ControladorInterfaz.cargarNuevoDocumento();
+        
+    }
+
+    @FXML
+    private void modificarDocumento(ActionEvent event) {
+        
+        ControladorInterfaz.cargarModificarDocumento();
+        
+    }
+
+    @FXML
+    private void eliminarDocumento(ActionEvent event) {
+        
+        ControladorInterfaz.cargarEliminarDocumento();
+        
+    }
 
     public void establecerPanelCentral(Node nodo) {
         paginaPrincipal.setCenter(nodo);

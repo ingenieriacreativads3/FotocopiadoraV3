@@ -8,7 +8,10 @@ package fotocopiadorav3.Vista;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 /**
@@ -16,7 +19,7 @@ import javafx.stage.Stage;
  *
  * @author Toshiba
  */
-public class FXMLModificarDocumentoController extends Application implements Initializable{
+public class FXMLModificarDocumentoController implements Initializable{
 
     /**
      * Initializes the controller class.
@@ -26,9 +29,11 @@ public class FXMLModificarDocumentoController extends Application implements Ini
         // TODO
     }    
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Node obtenerNodo() throws Exception {
+        
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLModificarDocumento.fxml"));
+        return root;
+        
     }
     
 }

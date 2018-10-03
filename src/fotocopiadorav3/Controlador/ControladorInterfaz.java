@@ -140,6 +140,12 @@ public class ControladorInterfaz extends Application{
         
     }
     
+    public static void comenzar(String[] args){
+        
+        VistaInterfaz.renderizarLogin(args);
+        
+    }
+
     //Se cargara entonces los pedidos con estado impreso y cancelado
     public static void cargarInventario(){
         
@@ -147,79 +153,44 @@ public class ControladorInterfaz extends Application{
         
     }
     
-    public static void comenzar(String[] args){
+    public static void cargarNuevoPedido(){
         
-        VistaInterfaz.renderizarLogin(args);
+        VistaInterfaz.renderizarNuevoPedido();
+        
+    }
+
+    public static void cargarModificarPedido(){
+        
+        VistaInterfaz.renderizarModificarPedido();
+        
+    }
+
+    public static void cargarCancelarPedido(){
+        
+        VistaInterfaz.renderizarCancelarPedido();
+        
+    }
+
+    public static void cargarNuevoDocumento(){
+        
+        VistaInterfaz.renderizarNuevoDocumento();
+        
+    }
+
+    public static void cargarModificarDocumento(){
+        
+        VistaInterfaz.renderizarModificarDocumento();
+        
+    }
+
+    public static void cargarEliminarDocumento(){
+        
+        VistaInterfaz.renderizarEliminarDocumento();
         
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {}
-    /*
-    public void cargarListaPedido(){
-        
-        try {
-            
-            FXMLListaPedidosController ListaPedidosController = new FXMLListaPedidosController();
-            ListaPedidosController.start(stagePrincipal);
-
-        } catch (Exception e) {
-            
-        }
-        
-    }
     
-    public void cargarNuevoPedido(){
-        
-        try {
-            
-            FXMLNuevoPedidoController NuevoPedidoController = new FXMLNuevoPedidoController();
-            NuevoPedidoController.start(stagePrincipal);
-
-        } catch (Exception e) {
-            
-        }
-        
-    }
-    
-    public void cargarListaDocumentos(){
-        
-        try {
-            
-            FXMLListaDocumentosController ListaDocumentosController = new FXMLListaDocumentosController();
-            ListaDocumentosController.start(stagePrincipal);
-
-        } catch (Exception e) {
-            
-        }
-        
-    }
-    
-    public void cargarABMPedido(){
-        
-        try {
-            
-            FXMLABMPedidoController ABMPedidoController = new FXMLABMPedidoController();
-            ABMPedidoController.start(stagePrincipal);
-
-        } catch (Exception e) {
-            
-        }
-        
-    }
-    
-    public void cargarABMDocumento(){
-        
-        try {
-            
-            FXMLABMDocumentoController ABMDocumentoController = new FXMLABMDocumentoController();
-            ABMDocumentoController.start(stagePrincipal);
-
-        } catch (Exception e) {
-            
-        }
-        
-    }*/
-
     public static void salirAplicacion() {}
 }

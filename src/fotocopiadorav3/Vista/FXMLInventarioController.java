@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  *
  * @author Usuario
  */
-public class FXMLInventarioController extends Application implements Initializable {
+public class FXMLInventarioController implements Initializable {
 
     @FXML
     private TreeTableColumn<?, ?> fx_documento_TreeTableColumn;
@@ -49,21 +49,10 @@ public class FXMLInventarioController extends Application implements Initializab
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    public FXMLInventarioController() {}
     
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-       
-//        ControladorInterfaz.stagePrincipal = primaryStage;
-//        Parent root = FXMLLoader.load(getClass().getResource("FXMLInventario.fxml"));
-        
-    }
-
     public Node obtenerNodo() throws Exception {
         
         Parent root = FXMLLoader.load(getClass().getResource("FXMLInventario.fxml"));
-         System.out.println("1");
         return root;
         
     }

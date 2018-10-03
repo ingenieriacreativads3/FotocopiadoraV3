@@ -8,7 +8,10 @@ package fotocopiadorav3.Vista;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 /**
@@ -16,7 +19,7 @@ import javafx.stage.Stage;
  *
  * @author Toshiba
  */
-public class FXMLModificarUsuarioController extends Application implements Initializable {
+public class FXMLModificarUsuarioController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -26,8 +29,10 @@ public class FXMLModificarUsuarioController extends Application implements Initi
         // TODO
     }    
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+    public Node obtenerNodo() throws Exception {
+        
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLModificarUsuario.fxml"));
+        return root;
         
     }
     

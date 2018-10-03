@@ -16,9 +16,9 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="551.0" prefWidth="222.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button fx:id="fx_nuevo_pedido_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Nuevo Pedido" />
-                  <Button fx:id="fx_modificar_pedido_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Modificar" />
-                  <Button fx:id="fx_cancelar_pedido_Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Cancelar" />
+                  <Button fx:id="fx_nuevo_pedido_Button" mnemonicParsing="false" onAction="#nuevoPedido" prefHeight="25.0" prefWidth="143.0" text="Nuevo Pedido" />
+                  <Button fx:id="fx_modificar_pedido_Button" mnemonicParsing="false" onAction="#modificarPedido" prefHeight="25.0" prefWidth="143.0" text="Modificar" />
+                  <Button fx:id="fx_cancelar_pedido_Button" mnemonicParsing="false" onAction="#cancelarPedido" prefHeight="25.0" prefWidth="143.0" text="Cancelar" />
                   <Button fx:id="fx_inventario_Button" mnemonicParsing="false" onAction="#abrirInventario" prefHeight="25.0" prefWidth="143.0" text="Inventario" />
                </children>
                <padding>
