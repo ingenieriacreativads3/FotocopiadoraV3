@@ -161,7 +161,7 @@ public class ControladorInterfaz extends Application{
     }
     
     public static void comenzar(String[] args){
-        
+        System.out.println("2");
         launch(LoginController.class, args);
         
     }
