@@ -13,64 +13,64 @@ import java.util.*;
 public enum Estado{
     
     
-    ITEM_PEDIDO_RETIRADO(224),
-    ITEM_PEDIDO_CANCELADO(223),
-    ITEM_PEDIDO_FOTOCOPIADO(222),
-    ITEM_PEDIDO_REGISTRADO(221),
+    ITEM_PEDIDO_RETIRADO(224, "El item se encuentra retirado"),
+    ITEM_PEDIDO_CANCELADO(223, "El item se encuentra cancelado"),
+    ITEM_PEDIDO_FOTOCOPIADO(222, "El item se encuentra fotocopiado"),
+    ITEM_PEDIDO_REGISTRADO(221, "El item se encuentra registrado"),
     
-    ERROR_VALOR_NO_SETEADO(24),
+    ERROR_VALOR_NO_SETEADO(24, "Esta caracteristica no tiene un valor asignado"),
     
-    USSER_PASS_CORRECTOS(23),
+    USSER_PASS_CORRECTOS(23, "Usuario y contraseña ingresados conrrectamente"),
     
     /**
      * Representa un documento para tutorias de una materia en partcular.
      * 
-     *//**
-     * Representa un documento para tutorias de una materia en partcular.
-     * 
      */
-    TUTORIAS(22),
+    TUTORIAS(22, "Este documento corresponde a las tutorias de la materia"),
     
     /**
      * Representa un documento para la catedra de una materia en particular.
      * 
      */
-    CATEDRA(21),
+    CATEDRA(21, "Este documento corresponde a la catedra de la materia"),
     
-    TAREA_SIN_ESTADO(20),
-    SUSPENDIDA(19),
-    NO_REALIZADA(18),
-    REALIZADA(17),
-    CANTIDAD_VALIDA(16),
-    VENTA_REGISTRADA(15),
-    ERROR_IO(14),
-    ERROR_FILE_NOT_FOUND(13),
-    SIN_ESTADO(12),
-    INICIAL(11),
-    EXITO(10),
-    ERROR(9),
+    TAREA_SIN_ESTADO(20, "Tarea sin estado"),
+    SUSPENDIDA(19, "Operacion suspendida"),
+    NO_REALIZADA(18, "La operacion no se realizo"),
+    REALIZADA(17, "Operacion realizada"),
+    CANTIDAD_VALIDA(16, "La cantidad ingresada es valida"),
+    VENTA_REGISTRADA(15, "La venta se registro con exito"),
+    ERROR_IO(14, "Error en Input/Ouput"),
+    ERROR_FILE_NOT_FOUND(13, "No se encontro el archivo en lo locacion ingresada"),
+    SIN_ESTADO(12, "NO hay un estado"),
+    INICIAL(11, "Estado inicial"),
+    EXITO(10, "Exito!"),
+    ERROR(9, "Existe un error"),
     
-    ERROR_CODIGO_TRANSACCION_INEXISTENTE(113),
-    EXISTE_CODIGO_TRANSACCION(112),
-    EXISTE_USUARIO(111),
+    ERROR_CODIGO_TRANSACCION_INEXISTENTE(113, "El codigo de transaccion es inexistente"),
+    EXISTE_CODIGO_TRANSACCION(112, "Existe el codigo de transaccion"),
+    EXISTE_USUARIO(111, "El usuario existe"),
 
-    DATOS_VALIDOS(8),
-    ERROR_DATOS_INVALIDOS(7),
+    DATOS_VALIDOS(8, "Los datos ingresados son correctos"),
+    ERROR_DATOS_INVALIDOS(7, "Los datos ingresados son incorrectos"),
 
-    ERROR_PASS_INEXISTENTE(62),
-    ERROR_NOMBRE_INEXISTENTE(61),
-    ERROR_NOMBRE(6),
-    ERROR_APELLIDO(5),
-    ERROR_CANTIDAD(4),
-    ERROR_ELEMENTO(3),
-    ERROR_COTIZACION(2),
-    MENSAJE_MOSTRADO(1);
+    ERROR_USSER_INEXISTENTE(63, "El ususario ingresado es inexistente"),
+    ERROR_PASS_INCORRECTA(62, "La contraseña ingresada es incorrecta"),
+    ERROR_NOMBRE_INEXISTENTE(61, "Este nombre no existe"),
+    ERROR_NOMBRE(6, "Nombre incorrecto"),
+    ERROR_APELLIDO(5, "Apellido Incorrecto"),
+    ERROR_CANTIDAD(4, "Arreglar esto en la linea /Modelo/Estado.java linea 64"),
+    ERROR_ELEMENTO(3, "Arreglar esto en la linea /Modelo/Estado.java linea 65"),
+    ERROR_COTIZACION(2, "Arreglar esto en la linea /Modelo/Estado.java linea 66"),
+    MENSAJE_MOSTRADO(1, "Arreglar esto en la linea /Modelo/Estado.java linea 67");
 
     private final int Id;
+    private final String mensaje;
 
-    private Estado(int identificador) {
+    private Estado(int identificador, String mensajeActual) {
 
         this.Id = identificador;
+        this.mensaje = mensajeActual;
 
     }
 

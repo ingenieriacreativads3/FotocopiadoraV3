@@ -44,7 +44,7 @@ public class Usuario{
             if(!existePass(passRecibido)){
                 
                 //...establecer valor de password inexistente
-                loginVerificado = Estado.ERROR_PASS_INEXISTENTE;
+                loginVerificado = Estado.ERROR_PASS_INCORRECTA;
                 
             }else{
                 
