@@ -5,18 +5,14 @@
  */
 package fotocopiadorav3.Vista;
 
-import fotocopiadorav3.Controlador.ControladorInterfaz;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TreeTableColumn;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -47,7 +43,9 @@ public class FXMLInventarioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        VistaInterfaz.obtenerListaInventario();
+        
     }    
     
     public Node obtenerNodo() throws Exception {

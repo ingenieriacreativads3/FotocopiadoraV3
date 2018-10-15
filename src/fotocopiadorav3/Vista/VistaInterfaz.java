@@ -5,6 +5,8 @@
  */
 package fotocopiadorav3.Vista;
 
+import fotocopiadorav3.Controlador.ControladorInterfaz;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -19,11 +21,12 @@ public class VistaInterfaz extends Application{
     
     public static void renderizarLogin(String[] args){
         
-        launch(LoginController.class, args);
+        launch(FXMLLoginController.class, args);
         
     }
     
     public static void renderizarPaginaPrincipal(){
+        
         try {
             
             paginaPrincipalController.start(stagePrincipal);
@@ -43,7 +46,6 @@ public class VistaInterfaz extends Application{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
 
     public static void renderizarNuevoPedido(){
@@ -56,7 +58,6 @@ public class VistaInterfaz extends Application{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
 
     public static void renderizarModificarPedido(){
@@ -69,7 +70,6 @@ public class VistaInterfaz extends Application{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
 
     public static void renderizarCancelarPedido(){
@@ -82,7 +82,6 @@ public class VistaInterfaz extends Application{
         } catch (Exception e) {
             e.printStackTrace();
         }*/
-        
     }
 
     public static void renderizarNuevoDocumento(){
@@ -95,7 +94,6 @@ public class VistaInterfaz extends Application{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
 
     public static void renderizarModificarDocumento(){
@@ -108,7 +106,6 @@ public class VistaInterfaz extends Application{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
 
     public static void renderizarEliminarDocumento(){
@@ -121,9 +118,73 @@ public class VistaInterfaz extends Application{
         } catch (Exception e) {
             e.printStackTrace();
         }*/
+    }
+    
+    public static void enviarDatosInicioSesion(String nombreUsuario, String contrasenia){
+        
+        ControladorInterfaz controladorInterfaz = new ControladorInterfaz();
+        controladorInterfaz.iniciarSecion(nombreUsuario, contrasenia);
         
     }
-
+    
+    public static void enviarDatosNuevoDocumento(String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
+        
+        ControladorInterfaz.crearNuevoDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
+        
+    }
+    
+    public static void enviarDatosModificarDocumento(String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
+        
+        ControladorInterfaz.modificarDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
+        
+    }
+    
+    public static void enviarDatosNuevoUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String dni){
+        
+        ControladorInterfaz.crearNuevoUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, dni);
+        
+    }
+    
+    public static void enviarDatosModificarUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String dni){
+        
+        ControladorInterfaz.modificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, dni);
+        
+    }
+    
+    public static void enviarDatosNuevoPedido(String alumno, ArrayList<String> nombresArticulos, ArrayList<String> fechaEstimadaArticulos, ArrayList<String> cantidadArticulos, ArrayList<String> precioUnitarioArticulos, ArrayList<String> precioTotalArticulos, String importeTotal, String senia){
+        
+        ControladorInterfaz.crearNuevoPedido(alumno, nombresArticulos, fechaEstimadaArticulos, cantidadArticulos, precioUnitarioArticulos, precioTotalArticulos, importeTotal, senia);
+        
+    }
+    
+    public static void enviarDatosModificarPedido(String alumno, ArrayList<String> nombresArticulos, ArrayList<String> fechaEstimadaArticulos, ArrayList<String> cantidadArticulos, ArrayList<String> precioUnitarioArticulos, ArrayList<String> precioTotalArticulos, String importeTotal, String senia){
+        
+        ControladorInterfaz.modificarPedido(alumno, nombresArticulos, fechaEstimadaArticulos, cantidadArticulos, precioUnitarioArticulos, precioTotalArticulos, importeTotal, senia);
+        
+    }
+    
+    public static ArrayList<String> obtenerListaInventario(){
+        
+        return ControladorInterfaz.enviarDatosInventario();
+        
+    }
+    
+    public static ArrayList<String> obtenerListaDocumentos(){
+        
+        return ControladorInterfaz.enviarDatosDocumentos();
+        
+    }
+    
+    public static ArrayList<String> obtenerListaPedidos(){
+        
+        return ControladorInterfaz.enviarDatosPedidos();
+        
+    }
+    
+    
+    
+    
+    
     @Override
     public void start(Stage primaryStage) throws Exception {}
     

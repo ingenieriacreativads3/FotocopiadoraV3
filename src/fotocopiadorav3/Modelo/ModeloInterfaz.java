@@ -112,4 +112,13 @@ public class ModeloInterfaz {
         
     }
     
+    public static Usuario getNuevoUsuario(){
+        
+        Persona personaFinal = Persona.nuevo();
+        Usuario usuarioDevolver = Usuario.nuevo(personaFinal);
+        
+        return usuarioDevolver;
+        
+    }
+    
 }

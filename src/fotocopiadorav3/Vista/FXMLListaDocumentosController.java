@@ -7,12 +7,10 @@ package fotocopiadorav3.Vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -26,7 +24,9 @@ public class FXMLListaDocumentosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        VistaInterfaz.obtenerListaDocumentos();
+        
     }    
 
     public Node obtenerNodo() throws Exception {

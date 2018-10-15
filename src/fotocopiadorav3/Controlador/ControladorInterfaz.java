@@ -5,18 +5,10 @@
  */
 package fotocopiadorav3.Controlador;
 
-import fotocopiadorav3.*;
 import fotocopiadorav3.Modelo.*;
 import fotocopiadorav3.Vista.*;
-import fotocopiadorav3.Controlador.*;
-import fotocopiadorav3.Vista.FXMLPaginaPrincipalController;
-import fotocopiadorav3.Vista.LoginController;
 import java.util.List;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -39,7 +31,7 @@ public class ControladorInterfaz extends Application{
     *
     */
     
-    public void iniciarSecion(){
+    public void iniciarSecion(String nombreUsuario, String contrasenia){
         //todo: Mejorar
         cargarPaginaPrincipal();
     }
@@ -188,9 +180,18 @@ public class ControladorInterfaz extends Application{
         VistaInterfaz.renderizarEliminarDocumento();
         
     }
-
+    
+    public static void crearNuevoUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String dni){
+        
+    }
+    
+    
+    
+    
+    
     @Override
     public void start(Stage primaryStage) throws Exception {}
     
     public static void salirAplicacion() {}
+    
 }

@@ -7,12 +7,12 @@ package fotocopiadorav3.Vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.stage.Stage;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -20,6 +20,23 @@ import javafx.stage.Stage;
  * @author Toshiba
  */
 public class FXMLModificarDocumentoController implements Initializable{
+
+    @FXML
+    private TextField fx_nombre_TextField;
+    @FXML
+    private TextField fx_editorial_TextField;
+    @FXML
+    private TextField fx_categoria_TextField;
+    @FXML
+    private TextField fx_autor_TextField;
+    @FXML
+    private TextField fx_edicion_TextField;
+    @FXML
+    private TextField fx_materia_TextField;
+    @FXML
+    private TextField fx_precio_TextField;
+    @FXML
+    private TextField fx_documento_TextField;
 
     /**
      * Initializes the controller class.
@@ -33,6 +50,21 @@ public class FXMLModificarDocumentoController implements Initializable{
         
         Parent root = FXMLLoader.load(getClass().getResource("FXMLModificarDocumento.fxml"));
         return root;
+        
+    }
+    
+    public void modificarDocumento(){
+        
+        String nombre=fx_nombre_TextField.getText();
+        String categoria=fx_categoria_TextField.getText();
+        String editorial=fx_editorial_TextField.getText();
+        String edicion=fx_edicion_TextField.getText();
+        String autor=fx_autor_TextField.getText();
+        String materia=fx_materia_TextField.getText();
+        String precio=fx_precio_TextField.getText();
+        String documento=fx_documento_TextField.getText();
+        
+        VistaInterfaz.enviarDatosModificarDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
         
     }
     

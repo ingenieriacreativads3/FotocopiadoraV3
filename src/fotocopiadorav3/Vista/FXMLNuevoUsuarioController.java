@@ -7,12 +7,12 @@ package fotocopiadorav3.Vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.stage.Stage;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -20,6 +20,19 @@ import javafx.stage.Stage;
  * @author Toshiba
  */
 public class FXMLNuevoUsuarioController implements Initializable {
+
+    @FXML
+    private TextField fx_nombre_TextField;
+    @FXML
+    private TextField fx_domicilio_TextField;
+    @FXML
+    private TextField fx_apellido_TextField;
+    @FXML
+    private TextField fx_dni_TextField;
+    @FXML
+    private TextField fx_nombre_usuario_TextField;
+    @FXML
+    private TextField fx_contrasenia_TextField;
 
     /**
      * Initializes the controller class.
@@ -33,6 +46,19 @@ public class FXMLNuevoUsuarioController implements Initializable {
         
         Parent root = FXMLLoader.load(getClass().getResource("FXMLNuevoUsuario.fxml"));
         return root;
+        
+    }
+    
+    public void nuevoUsuario(){
+        
+        String nombre = fx_nombre_TextField.getText();
+        String apellido = fx_apellido_TextField.getText();
+        String nombreUsuario = fx_nombre_usuario_TextField.getText();
+        String domicilio = fx_domicilio_TextField.getText();
+        String dni = fx_dni_TextField.getText();
+        String contrasenia = fx_contrasenia_TextField.getText();
+        
+        VistaInterfaz.enviarDatosNuevoUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, dni);
         
     }
     

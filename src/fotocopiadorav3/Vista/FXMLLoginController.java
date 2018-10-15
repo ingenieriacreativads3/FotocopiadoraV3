@@ -9,7 +9,6 @@ import fotocopiadorav3.Controlador.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,7 +24,7 @@ import javafx.stage.Stage;
 
  @author Tomas
  */
-public class LoginController extends Application implements Initializable{
+public class FXMLLoginController extends Application implements Initializable{
 
     @FXML
     private Button fx_iniciar_sesion_Button;
@@ -48,7 +47,7 @@ public class LoginController extends Application implements Initializable{
     public void start(Stage primaryStage) throws Exception {
        
         VistaInterfaz.stagePrincipal = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLLogin.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -64,14 +63,7 @@ public class LoginController extends Application implements Initializable{
 
     @FXML
     private void iniciarSesion(MouseEvent event) {
-        
-        ControladorInterfaz controladorInterfaz = new ControladorInterfaz();
-        controladorInterfaz.iniciarSecion();
-        
         /*
-        String usuario = fx_usuario_TextField.toString();
-        String contraseña = fx_contrasenia_TextField.toString();
-        
         Estado estadoInicioSesion = controladorInterfaz.VerificarUsuarioYContraseña(usuario, contraseña);
         
         if(estadoInicioSesion == Estado.DATOS_VALIDOS){
@@ -82,6 +74,12 @@ public class LoginController extends Application implements Initializable{
         }
 
         */
+        
+        String usuario = fx_usuario_TextField.toString();
+        String contrasenia = fx_contrasenia_TextField.toString();
+        
+        VistaInterfaz.enviarDatosInicioSesion(usuario, contrasenia);
+        
     }
     
 }
