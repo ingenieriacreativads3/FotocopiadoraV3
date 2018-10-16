@@ -7,18 +7,19 @@ package fotocopiadorav3.Vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.TreeTableColumn;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author Usuario
  */
-public class FXMLListaPedidosController extends Application implements Initializable {
+public class FXMLListaPedidosController implements Initializable {
 
     @FXML
     private TreeTableColumn<?, ?> fx_codigo_TreeTableColumn;
@@ -40,11 +41,15 @@ public class FXMLListaPedidosController extends Application implements Initializ
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        VistaInterfaz.obtenerListaPedidos();
+        
     }    
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+    public Node obtenerNodo() throws Exception {
+        
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLListaPedidos.fxml"));
+        return root;
         
     }
     

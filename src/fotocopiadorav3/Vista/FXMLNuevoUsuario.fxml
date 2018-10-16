@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fotocopiadorav3.Vista.FXMLNuevoUsuarioController">
-    
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fotocopiadorav3.Vista.FXMLNuevoUsuarioController">
+   <children>
+      <Label layoutX="88.0" layoutY="63.0" text="Nombre:" />
+      <TextField fx:id="fx_nombre_TextField" layoutX="152.0" layoutY="59.0" prefHeight="25.0" prefWidth="309.0" />
+      <Label layoutX="87.0" layoutY="261.0" text="DNI:" />
+      <Label layoutX="88.0" layoutY="117.0" text="Apellido:" />
+      <Label layoutX="84.0" layoutY="321.0" text="Domicilio:" />
+      <TextField fx:id="fx_domicilio_TextField" layoutX="151.0" layoutY="317.0" prefHeight="25.0" prefWidth="309.0" />
+      <TextField fx:id="fx_apellido_TextField" layoutX="152.0" layoutY="113.0" prefHeight="25.0" prefWidth="309.0" />
+      <TextField fx:id="fx_dni_TextField" layoutX="125.0" layoutY="257.0" />
+      <Button fx:id="fx_aceptar_Button" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" text="Aceptar" />
+      <Button fx:id="fx_limpiar_campos_Button" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" text="Limpiar campos" />
+      <Label layoutX="549.0" layoutY="14.0" text="Fecha: " />
+      <Label layoutX="14.0" layoutY="14.0" text="Nuevo Usuario">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="168.0" text="Nombre de usuario:" />
+      <TextField fx:id="fx_nombre_usuario_TextField" layoutX="203.0" layoutY="164.0" prefHeight="25.0" prefWidth="254.0" />
+      <Label layoutX="88.0" layoutY="213.0" text="Contraseña:" />
+      <TextField fx:id="fx_contrasenia_TextField" layoutX="169.0" layoutY="209.0" prefHeight="25.0" prefWidth="292.0" />
+   </children>
 </AnchorPane>
