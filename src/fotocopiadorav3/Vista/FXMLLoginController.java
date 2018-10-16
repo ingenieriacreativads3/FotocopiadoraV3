@@ -78,7 +78,30 @@ public class FXMLLoginController extends Application implements Initializable{
         String usuario = fx_usuario_TextField.toString();
         String contrasenia = fx_contrasenia_TextField.toString();
         
-        VistaInterfaz.enviarDatosInicioSesion(usuario, contrasenia);
+        if (validarDatos(usuario, contrasenia)) {
+            
+            VistaInterfaz.enviarDatosInicioSesion(usuario, contrasenia);
+            
+        } else{
+            
+            //Informar datos incorrectos
+            
+        }
+        
+    }
+    
+    public boolean validarDatos(String nombreUsuario, String contrasenia){
+        
+        boolean datosValidos = false;
+        Validador validador = new Validador();
+        
+        if (validador.validarNombreAlfanumerico(nombreUsuario) && validador.validarNombreAlfanumerico(contrasenia)) {
+            
+            datosValidos = true;
+            
+        }
+        
+        return datosValidos;
         
     }
     

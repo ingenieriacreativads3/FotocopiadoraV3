@@ -6,6 +6,7 @@
 package fotocopiadorav3.Vista;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -71,7 +72,32 @@ public class FXMLModificarPedidoController implements Initializable{
         String importeTotal=fx_total_TextField.getText();
         String senia=fx_senia_TextField.getText();
         
-        VistaInterfaz.enviarDatosModificarPedido(alumno, nombresArticulos, fechaEstimadaArticulos, cantidadArticulos, precioUnitarioArticulos, precioTotalArticulos, importeTotal, senia);
+        if (validarDatos(alumno, nombresArticulos, fechaEstimadaArticulos, cantidadArticulos, precioUnitarioArticulos, precioTotalArticulos, importeTotal, senia)) {
+            
+            VistaInterfaz.enviarDatosModificarPedido(alumno, nombresArticulos, fechaEstimadaArticulos, cantidadArticulos, precioUnitarioArticulos, precioTotalArticulos, importeTotal, senia);
+            
+        } else{
+            
+            //Informar datos incorrectos
+            
+        }
+    }
+    
+    public boolean validarDatos(String alumno, ArrayList<String> nombresArticulos, ArrayList<String> fechaEstimadaArticulos, ArrayList<String> cantidadArticulos, ArrayList<String> precioUnitarioArticulos, ArrayList<String> precioTotalArticulos, String importeTotal, String senia){
+        
+        boolean datosValidos = false;
+        Validador validador = new Validador();
+        
+        if (validador.validarNombre(alumno) && validador.validarNombre(nombresArticulos.get(0))
+           && validador.validarFechaEstimada(Date.valueOf(fechaEstimadaArticulos.get(0))) && validador.validarNumero(cantidadArticulos.get(0)) 
+           && validador.validarPrecio(precioUnitarioArticulos.get(0)) && validador.validarPrecio(precioTotalArticulos.get(0))
+           && validador.validarPrecio(importeTotal) && validador.validarPrecio(senia)) {
+            
+            datosValidos = true;
+            
+        }
+        
+        return datosValidos;
         
     }
     

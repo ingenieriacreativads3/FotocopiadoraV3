@@ -64,7 +64,32 @@ public class FXMLNuevoDocumentoController implements Initializable{
         String precio=fx_precio_TextField.getText();
         String documento=fx_documento_TextField.getText();
         
-        VistaInterfaz.enviarDatosNuevoDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
+        if (validarDatos(nombre, editorial, categoria, autor, edicion, materia, precio, documento)) {
+            
+            VistaInterfaz.enviarDatosNuevoDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
+            
+        } else{
+            
+            //Informar datos incorrectos
+            
+        }
+    }
+    
+    public boolean validarDatos(String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
+        
+        boolean datosValidos = false;
+        Validador validador = new Validador();
+        
+        if (validador.validarNombre(nombre) && validador.validarNombre(edicion)
+           && validador.validarNombre(categoria) && validador.validarNombre(autor) 
+           && validador.validarNumero(edicion) && validador.validarNombre(materia)
+           && validador.validarPrecio(precio) && validador.validarRutaDocumento(documento)) {
+            
+            datosValidos = true;
+            
+        }
+        
+        return datosValidos;
         
     }
     
