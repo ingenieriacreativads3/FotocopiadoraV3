@@ -16,6 +16,25 @@ package fotocopiadorav3.Modelo;
  */
 public class ModeloInterfaz {
     
+    public static boolean esDNIValido(int dniActual){
+        
+        //Establecer un valor por defecto
+        boolean esValido = false;
+        
+        if(dniActual != Valor.dniInvalido){
+            
+            esValido = true;
+            
+        }else{
+            
+            //...se establecio un valor por defecto
+            
+        }
+        
+        return esValido;
+        
+    }
+    
     /**
      * Esta rutina verifica la existencia del password
      * para un usuario específico.

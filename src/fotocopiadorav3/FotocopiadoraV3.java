@@ -6,11 +6,11 @@
 package fotocopiadorav3;
 
 import fotocopiadorav3.Controlador.ControladorInterfaz;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.application.*;
+import javafx.fxml.*;
+import javafx.scene.*;
 import javafx.stage.Stage;
+import fotocopiadorav3.Modelo.*;
 
 /**
 
@@ -30,7 +30,13 @@ public class FotocopiadoraV3 extends Application{
         //launch(args);
         
         System.out.println("1");
-        ControladorInterfaz.comenzar(args);
+        //ControladorInterfaz.comenzar(args);
+        try{
+            Direccion.guardar();
+        }catch(Exception e){
+            System.out.println("No entra");
+        }
+        
         
     }
     

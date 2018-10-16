@@ -126,6 +126,67 @@ public class Persona{
     //Setter
     
     //Getter
+
+    /**
+     * Este función devulve el nombre de pila de la persona
+     * 
+     * @return AlfaNumerico nombre
+     */
+
+    public AlfaNumerico getNombre() {
+        
+        AlfaNumerico nombreDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        nombreDevolver = this.nombre;
+        
+        return nombreDevolver;
+    }
+
+    /**
+     * Esta funcion devulve el apellido de la persona.
+     * 
+     * @return AlfaNUmerico apellido
+     */
+    public AlfaNumerico getApellido() {
+        
+        AlfaNumerico apellidoDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        apellidoDevolver = this.apellido;
+        
+        return apellidoDevolver;
+    }
+
+    /**
+     * Esta funcion devulve el dni de la persona.
+     * Se debe establecer su validez a traves de una
+     * funcion de la interfaz del paquete contenedor.
+     * 
+     * @return int dni
+     */
+    public int getDni() {
+        
+        int dniDevolver = Valor.dniInvalido;
+        
+        dniDevolver = this.dni;
+        
+        return dniDevolver;
+    }
+
+    /**
+     * Esta funcion devuelve la direccion de la persona.
+     * 
+     * @return Direccion direccion
+     */
+    public Direccion getDireccion() {
+        
+        Direccion direccionDevolver = Direccion.OBJETO_INVALIDO;
+        
+        direccionDevolver = this.direccion;
+        
+        return direccionDevolver;
+    }
+    
+    
     
     //Others
     

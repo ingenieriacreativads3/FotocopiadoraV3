@@ -5,6 +5,9 @@
  */
 package fotocopiadorav3.Modelo;
 import java.util.*;
+import fotocopiadorav3.*;
+import java.sql.*;
+
 
 /**
 
@@ -16,14 +19,33 @@ public class Direccion{
     private AlfaNumerico calle;
     private int numero;
             
-    private final static Direccion OBJETO_INVALIDO = new Direccion();
+    public final static Direccion OBJETO_INVALIDO = new Direccion();
 
-    private static Set<Direccion> listaObjetos = new HashSet<>();
+    protected static Set<Direccion> listaObjetos = new HashSet<>();
 
     private static int getNewId(){
 
         //Crear un nuevo identificador
-        int idActual = listaObjetos.size();
+        int idActual = 0;
+
+        //Obtener la cantidad de elementos no nulos del conjunto
+        if(listaObjetos != null){
+
+            if(listaObjetos.size() != 0){
+
+                idActual = listaObjetos.size();
+
+            }else{
+
+                //...se establecio un valor por defecto
+
+            }
+
+        }else{
+
+            //...se establecio unvalor por defecto
+
+        }
 
         //Buscar el siguiente identificador
         int siguienteIdentificador = Valor.SIGUIENTE_IDENTIFICADOR;
@@ -34,6 +56,42 @@ public class Direccion{
         //Devolver el nuevo identificador
         return idActual;
 
+    }
+    
+    //Base de datos
+    
+    public static Estado guardar(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        System.out.println(1.1);
+        // Instancias la clase que hemos creado anteriormente
+        ConexionMySql conexionLocalSQL = ConexionMySql.nuevo();
+        
+        System.out.println(1.2);
+        // Llamas al método que tiene la clase y te devuelve una conexión
+        Connection conector = conexionLocalSQL.conectarMySQL();
+        
+        System.out.println(1.3);
+        // Query que usarás para hacer lo que necesites
+        String sentenciaSQL = "";
+
+        // Query
+        sentenciaSQL =  "INSERT INTO alfanumerico (valor) VALUES (\" asd\")";
+        try{
+            
+            // PreparedStatement
+            PreparedStatement pstm = conector.prepareStatement(sentenciaSQL);
+            System.out.println("Funciona la conexion");
+            
+        }catch(Exception e){
+            
+            System.out.println("Fallo la consulta en modelo/direccion.guardar");
+            
+        }
+        
+        return estadoDevolver;
+        
     }
 
     //Constructor
@@ -118,6 +176,38 @@ public class Direccion{
     //Setter
     
     //Getter
+
+    /**
+     *Devuelve la calle de una direccion.
+     * 
+     * @return AlfaNUmerico calle
+     * 
+     */
+
+    public AlfaNumerico getCalle() {
+        
+        AlfaNumerico calleDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        calleDevolver = this.calle;
+        
+        return calleDevolver;
+    }
+
+    /**
+     * Esta funcion devuelve el numero de calle de una direccion.
+     * Se debe establecer su validez a traves de una
+     * funcion de la interfaz del paquete contenedor.
+     * 
+     * @return int numero
+     */
+    public int getNumero() {
+        
+        int numeroDevolver = Valor.numeroDeCalleInvalido;
+        
+        numeroDevolver = numero;
+        
+        return numeroDevolver;
+    }
     
     //Others
     

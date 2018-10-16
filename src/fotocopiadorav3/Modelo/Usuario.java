@@ -274,12 +274,32 @@ public class Usuario{
         return persona;
     }
 
-    private AlfaNumerico getNombreUsuario() {
-        return nombreUsuario;
+    /**
+     * Esta funcion devuelve el nombre de usuario de un usuario en particular
+     * 
+     * @return AlfaNumerico nombreUsuario
+     */
+    public AlfaNumerico getNombreUsuario() {
+        
+        AlfaNumerico nombreDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        nombreDevolver = this.nombreUsuario;
+        
+        return nombreDevolver;
+        
     }
 
+    /**
+     * Esta funcion devuelve la contraseña de este usuario
+     * @return AlfaNumerico password
+     */
     private AlfaNumerico getPass() {
-        return pass;
+        
+        AlfaNumerico passDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        passDevolver = this.pass;
+        
+        return passDevolver;
     }
 
     private static Usuario getObjetoInvalido() {

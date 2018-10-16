@@ -4,15 +4,24 @@
  * and open the template in the editor.
  */
 package fotocopiadorav3.Modelo;
+import java.io.*;
 import java.util.*;
+import javax.persistence.*;
 
 /**
 
  @author Tomas
  */
-public class AlfaNumerico{
+
+@Entity
+@Table(name = "alfanumerico")
+public class AlfaNumerico implements Serializable{
     
-    private final int id;
+    @Id
+    @Column(name = "id", nullable = false, unique = true, updatable = false)
+    private int id;
+    
+    @Column(name = "valor")
     private String valor;
             
     protected final static AlfaNumerico OBJETO_INVALIDO = new AlfaNumerico();
@@ -50,10 +59,21 @@ public class AlfaNumerico{
 
     //Constructor
 
-    private AlfaNumerico() {
+    /**
+     * @deprecated 
+     * 
+     * Esta funcion esta fuera de uso . Fue reemplazada por
+     * AlfaNumerico.nuevo();
+     * 
+     * @return AlfaNumerico alfanumerico
+     */
+    
+    public AlfaNumerico(){}
+
+    private AlfaNumerico(int idActual) {
 
         //Asignar un identificador
-        this.id = getNewId();
+        this.id = idActual;
 
 
     }
@@ -63,8 +83,11 @@ public class AlfaNumerico{
         //Crear un objeto a devolver
         AlfaNumerico objetoDevolver = AlfaNumerico.OBJETO_INVALIDO;
 
+        //Obtener el siguiente identificador
+        int identificador = getNewId();
+        
         //Crear un nuevo objeto
-        AlfaNumerico objetoNuevo = new AlfaNumerico();
+        AlfaNumerico objetoNuevo = new AlfaNumerico(identificador);
 
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
@@ -172,8 +195,14 @@ public class AlfaNumerico{
     }//...fin funcion
 
     //Setter
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
-    private Estado setValor(String valorRecibido){
+    
+    
+    public Estado setValor(String valorRecibido){
         
         //Establecer un valor por defecto
         Estado estadoDevolver = Estado.ERROR_VALOR_NO_SETEADO;
@@ -198,8 +227,14 @@ public class AlfaNumerico{
     }
     
     //Getter
+
+    public int getId() {
+        return id;
+    }
     
-    protected String getValor() {
+    
+    
+    public String getValor() {
 
         String valorDevolver = "Sin valor";
 
@@ -244,7 +279,17 @@ public class AlfaNumerico{
     @Override
     public String toString() {
         
-        return this.valor.toString();
+        return this.valor;
+        
+    }
+    
+    /**
+     * Esta funcion devuelve el nombre de la clase
+     * @return String clase = "AlfaNumerico";
+     */
+    public static String getClase(){
+        
+        return "AlfaNumerico";
         
     }
     
