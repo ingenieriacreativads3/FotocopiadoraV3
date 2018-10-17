@@ -17,6 +17,10 @@ import javax.persistence.*;
 @Table(name = "alfanumerico")
 public class AlfaNumerico implements Serializable{
     
+    protected static String NOMBRE_TABLA = "alfanumerico";
+    protected static String CAMPO_ID = "id";
+    protected static String CAMPO_VALOR = "valor";
+    
     @Id
     @Column(name = "id", nullable = false, unique = true, updatable = false)
     private int id;

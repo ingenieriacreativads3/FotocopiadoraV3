@@ -60,6 +60,97 @@ public class Direccion{
     
     //Base de datos
     
+    public static Estado guardar(int i){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        String valorAgregar = "sdf";
+        int idAgregar = 2;
+        String idAgregarString = String.valueOf(idAgregar);
+        
+        Connection conn = null;
+        PreparedStatement prepStmt = null;
+        ResultSet rs = null;
+        
+        System.out.println(2.1);
+        try {
+            System.out.println(2.2);
+            Class.forName(Environment.DRIVER).newInstance();
+            String connectionUrl = Environment.URL;
+            String connectionUser = Environment.USERNAME;
+            String connectionPassword = Environment.PASSWORD;
+            conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
+            System.out.println(2.3);
+//            String sqlStmt = "SELECT * FROM " + AlfaNumerico.NOMBRE_TABLA;
+            String sqlStmt = "INSERT INTO alfanumerico VALUES (?,?)";
+            System.out.println("SQL Statement:\n\t" + sqlStmt);
+            prepStmt = conn.prepareStatement(sqlStmt);
+            
+            prepStmt.setInt(1, idAgregar);
+            prepStmt.setString(2, valorAgregar);
+            
+            
+            System.out.println(prepStmt.toString());
+            
+            rs = prepStmt.executeQuery();
+            
+            System.out.println("Query ejecutada");
+            System.out.println(2.4);
+//            while (rs.next()) {
+//                
+//                String id = rs.getString("id");
+//                String valor = rs.getString("valor");
+//                
+//                System.out.println("ID: " + id + ", Valor: " + valor);
+//                
+//            }
+            System.out.println(2.5);
+            
+        } catch (Exception e) {
+            
+            System.out.println(2.6);
+            
+        }finally {
+            System.out.println(2.7);
+            try {
+                System.out.println(2.8);
+                
+                if (rs != null) rs.close();
+                    
+            } catch (SQLException e) {
+                
+                e.printStackTrace();
+                    
+            }
+            try { 
+                System.out.println(2.9);
+                    
+                if (prepStmt != null) prepStmt.close();
+                
+            } catch (SQLException e) {
+                    
+                e.printStackTrace();
+                
+            }
+            try {
+                System.out.println(2.1234);
+                    
+                if (conn != null) conn.close();
+                
+            } catch (SQLException e) {
+                
+                e.printStackTrace();
+                
+            }
+        }
+        System.out.println(2.11);
+        
+        //INSERT INTO Store_Information (Store_Name, Sales, Txn_Date) VALUES ('Los Angeles', 900, '10-Jan-1999');
+        //INSERT INTO alfanumerico (valor, id) VALUES ('sdf', '2');
+        return estadoDevolver;
+        
+    }
+    
     public static Estado guardar(){
         
         Estado estadoDevolver = Estado.ERROR;
@@ -77,11 +168,16 @@ public class Direccion{
         String sentenciaSQL = "";
 
         // Query
-        sentenciaSQL =  "INSERT INTO alfanumerico (valor) VALUES (\" asd\")";
+        sentenciaSQL =  "INSERT INTO alfanumerico (valor) VALUES (\"fghj\")";
         try{
             
             // PreparedStatement
+            System.out.println(1.4);
             PreparedStatement pstm = conector.prepareStatement(sentenciaSQL);
+            System.out.println(1.5);
+            System.out.println(pstm);
+            ResultSet asd = pstm.executeQuery();
+            System.out.println(1.6);
             System.out.println("Funciona la conexion");
             
         }catch(Exception e){
