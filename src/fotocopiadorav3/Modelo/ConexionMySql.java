@@ -38,7 +38,11 @@ public class ConexionMySql {
     private static ConexionMySql conexionMySql = null;
     
     //Constructor
-    private ConexionMySql(){}
+    private ConexionMySql(){
+        
+        
+        
+    }
     
     protected static ConexionMySql nuevo(){
         
@@ -79,7 +83,51 @@ public class ConexionMySql {
         
     }
     
-    public static Estado guardar(){
+    protected PreparedStatement getPreparedStatement(int cantidadAtributos, String nombreTabla){
+        
+        Connection conn = null;
+        PreparedStatement prepStmtDevolver = null;
+        
+        if(cantidadAtributos == 0){
+            
+            //...se establecio un valor por defecto
+            
+        }else{
+            
+            if(cantidadAtributos == 1){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?)";}
+            if(cantidadAtributos == 2){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?)";}
+            if(cantidadAtributos == 3){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?)";}
+            if(cantidadAtributos == 4){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?)";}
+            if(cantidadAtributos == 5){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 6){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 7){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 8){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 9){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 10){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";}
+            
+        }
+        
+        try {
+            
+            Class.forName(Environment.DRIVER).newInstance();
+            String connectionUrl = Environment.URL;
+            String connectionUser = Environment.USERNAME;
+            String connectionPassword = Environment.PASSWORD;
+            conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
+            
+            //prepStmtDevolver = conn.prepareStatement()
+            
+        } catch (Exception e) {
+            
+            
+            
+        }
+        
+        return prepStmtDevolver;
+        
+    }
+    
+    protected static Estado guardar(){
         
         Estado estadoDevolver = null;
         

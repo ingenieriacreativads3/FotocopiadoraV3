@@ -29,7 +29,7 @@ public class Valor{
      * Este identificador, indica un numero de documento
      * invalido. ES necesario para comparar los demas numeros de calles.
      */
-    public static final int dniInvalido = 0;
+    public static final int DNI_INVALIDO = 0;
     
 
     private Valor(){}
