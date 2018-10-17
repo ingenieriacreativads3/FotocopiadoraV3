@@ -5,9 +5,7 @@
  */
 package fotocopiadorav3.Vista2;
 
-import fotocopiadorav3.Modelo.*;
 import fotocopiadorav3.Controlador.*;
-import fotocopiadorav3.Vista.*;
 import java.util.*;
 import static javafx.application.Application.launch;
 import javafx.stage.Stage;
@@ -21,122 +19,67 @@ public class Vista2Interfaz {
     public static void renderizarLogin(){
         
         Login login = new Login();
-        login.show();
-        
-    }
-    
-    public static FXMLPaginaPrincipalController paginaPrincipalController = new FXMLPaginaPrincipalController();
-    public static Stage stagePrincipal;
-    
-    public static void renderizarLogin(String[] args){
-        
-        launch(FXMLLoginController.class, args);
+        login.setVisible(true);
         
     }
     
     public static void renderizarPaginaPrincipal(){
         
-//        try {
-//            
-//            paginaPrincipalController.start(stagePrincipal);
-//            
-//        } catch (Exception e) {
-//            
-//        }
-
-        PaginaPrincipal asd = new PaginaPrincipal();
-        asd.show();
+        PaginaPrincipal paginaPrincipal = new PaginaPrincipal();
+        paginaPrincipal.setVisible(true);
         
     }
     
     public static void renderizarInventario(){
         
-        try {
-            
-            FXMLInventarioController inventarioController = new FXMLInventarioController();
-            paginaPrincipalController.establecerPanelCentral(inventarioController.obtenerNodo());
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public static void renderizarNuevoPedido(){
         
-        try {
-            
-            FXMLNuevoPedidoController nuevoPedidoController = new FXMLNuevoPedidoController();
-            paginaPrincipalController.establecerPanelCentral(nuevoPedidoController.obtenerNodo());
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        NuevoPedido nuevoPedido = new NuevoPedido();
+        nuevoPedido.setVisible(true);
+        
     }
 
     public static void renderizarModificarPedido(){
         
-        try {
-            
-            FXMLModificarPedidoController modificarPedidoControllerController = new FXMLModificarPedidoController();
-            paginaPrincipalController.establecerPanelCentral(modificarPedidoControllerController.obtenerNodo());
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public static void renderizarCancelarPedido(){
         
-        /*try {
-            
-            FXMLCancelarPedidoController cancelarPedidoController = new FXMLCancelarPedidoController();
-            paginaPrincipalController.establecerPanelCentral(cancelarPedidoController.obtenerNodo());
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
     }
 
     public static void renderizarNuevoDocumento(){
         
-        try {
-            
-            FXMLNuevoDocumentoController nuevoDocumentoController = new FXMLNuevoDocumentoController();
-            paginaPrincipalController.establecerPanelCentral(nuevoDocumentoController.obtenerNodo());
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        NuevoDocumento nuevoDocumento = new NuevoDocumento();
+        nuevoDocumento.setVisible(true);
+        
     }
 
     public static void renderizarModificarDocumento(){
         
-        try {
-            
-            FXMLModificarDocumentoController modificarDocumentoController = new FXMLModificarDocumentoController();
-            paginaPrincipalController.establecerPanelCentral(modificarDocumentoController.obtenerNodo());
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public static void renderizarEliminarDocumento(){
         
-        /*try {
-            
-            FXMLInventarioController inventarioController = new FXMLInventarioController();
-            paginaPrincipalController.establecerPanelCentral(inventarioController.obtenerNodo());
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+    }
+    
+    public static void renderizarNuevoUsuario(){
+        
+        NuevoUsuario nuevoUsuario = new NuevoUsuario();
+        nuevoUsuario.setVisible(true);
+        
+    }
+
+    public static void renderizarModificarUsuario(){
+        
+    }
+
+    public static void renderizarEliminarUsuario(){
+        
     }
     
     public static void enviarDatosInicioSesion(String nombreUsuario, String contrasenia){
-        
-        //ControladorInterfaz controladorInterfaz = new ControladorInterfaz();
-        //controladorInterfaz.iniciarSecion(nombreUsuario, contrasenia);
         
         ControladorInterfaz.iniciarSesion(nombreUsuario, contrasenia);
         
@@ -154,15 +97,15 @@ public class Vista2Interfaz {
         
     }
     
-    public static void enviarDatosNuevoUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String dni){
+    public static void enviarDatosNuevoUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String altura, String dni){
         
-        //ControladorInterfaz.crearNuevoUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, dni);
+        //ControladorInterfaz.crearNuevoUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
         
     }
     
-    public static void enviarDatosModificarUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String dni){
+    public static void enviarDatosModificarUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String altura, String dni){
         
-        //ControladorInterfaz.modificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, dni);
+        //ControladorInterfaz.modificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
         
     }
     
