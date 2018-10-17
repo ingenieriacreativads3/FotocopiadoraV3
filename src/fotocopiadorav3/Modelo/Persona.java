@@ -124,6 +124,29 @@ public class Persona{
     }
     
     //Setter
+
+    public void setNombre(AlfaNumerico nombre) {
+        
+        AlfaNumerico alfaSet = AlfaNumerico.OBJETO_INVALIDO;
+        
+        
+        this.nombre = nombre;
+        
+    }
+
+    public void setApellido(AlfaNumerico apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
+    
+    
     
     //Getter
 

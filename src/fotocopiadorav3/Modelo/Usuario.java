@@ -252,11 +252,11 @@ public class Usuario{
 
     //Setter
 
-    protected void setNombreUsuario(AlfaNumerico nombreUsuario) {
+    public void setNombreUsuario(AlfaNumerico nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
 
-    protected void setPass(AlfaNumerico pass) {
+    public void setPass(AlfaNumerico pass) {
         this.pass = pass;
     }
 
@@ -270,8 +270,14 @@ public class Usuario{
         return id;
     }
 
-    private Persona getPersona() {
-        return persona;
+    public Persona getPersona() {
+        
+        Persona personaDevolver = null;
+        
+        personaDevolver = persona;
+        
+        return personaDevolver;
+        
     }
 
     /**

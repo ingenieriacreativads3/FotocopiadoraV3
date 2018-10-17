@@ -123,7 +123,7 @@ public class VistaInterfaz extends Application{
     public static void enviarDatosInicioSesion(String nombreUsuario, String contrasenia){
         
         ControladorInterfaz controladorInterfaz = new ControladorInterfaz();
-        controladorInterfaz.iniciarSecion(nombreUsuario, contrasenia);
+        //controladorInterfaz.iniciarSecion(nombreUsuario, contrasenia);
         
     }
     
