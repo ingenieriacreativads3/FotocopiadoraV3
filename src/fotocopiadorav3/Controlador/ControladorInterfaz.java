@@ -5,8 +5,10 @@
  */
 package fotocopiadorav3.Controlador;
 
+import fotocopiadorav3.Vista2.*;
 import fotocopiadorav3.Modelo.*;
 import fotocopiadorav3.Vista.*;
+
 import java.util.List;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -34,6 +36,12 @@ public class ControladorInterfaz extends Application{
     public void iniciarSecion(String nombreUsuario, String contrasenia){
         //todo: Mejorar
         cargarPaginaPrincipal();
+    }
+    
+    public  static void iniciarSesion(String nombreUsuario, String contrasenia){
+        
+        cargarPaginaPrincipal2();
+        
     }
     
     public Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
@@ -131,6 +139,19 @@ public class ControladorInterfaz extends Application{
         VistaInterfaz.renderizarPaginaPrincipal();
         
     }
+    
+    public static void cargarPaginaPrincipal2(){
+        
+        Vista2Interfaz.renderizarPaginaPrincipal();
+        
+    }
+    
+    public static void comenzar(){
+        
+        Vista2Interfaz.renderizarLogin();
+        
+    }
+    
     
     public static void comenzar(String[] args){
         

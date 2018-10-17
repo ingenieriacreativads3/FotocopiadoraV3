@@ -129,55 +129,68 @@ public class VistaInterfaz extends Application{
     
     public static void enviarDatosNuevoDocumento(String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
         
-        ControladorInterfaz.crearNuevoDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
+        //ControladorInterfaz.crearNuevoDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
         
     }
     
     public static void enviarDatosModificarDocumento(String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
         
-        ControladorInterfaz.modificarDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
+        //ControladorInterfaz.modificarDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
         
     }
     
     public static void enviarDatosNuevoUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String dni){
         
-        ControladorInterfaz.crearNuevoUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, dni);
+        //ControladorInterfaz.crearNuevoUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, dni);
         
     }
     
     public static void enviarDatosModificarUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String dni){
         
-        ControladorInterfaz.modificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, dni);
+        //ControladorInterfaz.modificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, dni);
         
     }
     
     public static void enviarDatosNuevoPedido(String alumno, ArrayList<String> nombresArticulos, ArrayList<String> fechaEstimadaArticulos, ArrayList<String> cantidadArticulos, ArrayList<String> precioUnitarioArticulos, ArrayList<String> precioTotalArticulos, String importeTotal, String senia){
         
-        ControladorInterfaz.crearNuevoPedido(alumno, nombresArticulos, fechaEstimadaArticulos, cantidadArticulos, precioUnitarioArticulos, precioTotalArticulos, importeTotal, senia);
+        //ControladorInterfaz.crearNuevoPedido(alumno, nombresArticulos, fechaEstimadaArticulos, cantidadArticulos, precioUnitarioArticulos, precioTotalArticulos, importeTotal, senia);
         
     }
     
     public static void enviarDatosModificarPedido(String alumno, ArrayList<String> nombresArticulos, ArrayList<String> fechaEstimadaArticulos, ArrayList<String> cantidadArticulos, ArrayList<String> precioUnitarioArticulos, ArrayList<String> precioTotalArticulos, String importeTotal, String senia){
         
-        ControladorInterfaz.modificarPedido(alumno, nombresArticulos, fechaEstimadaArticulos, cantidadArticulos, precioUnitarioArticulos, precioTotalArticulos, importeTotal, senia);
+        //ControladorInterfaz.modificarPedido(alumno, nombresArticulos, fechaEstimadaArticulos, cantidadArticulos, precioUnitarioArticulos, precioTotalArticulos, importeTotal, senia);
         
     }
     
     public static ArrayList<String> obtenerListaInventario(){
         
-        return ControladorInterfaz.enviarDatosInventario();
+        ArrayList<String> asd = new ArrayList<>();
+        
+        return asd;
+        
+        //return ControladorInterfaz.enviarDatosInventario();
+        
         
     }
     
     public static ArrayList<String> obtenerListaDocumentos(){
         
-        return ControladorInterfaz.enviarDatosDocumentos();
+        ArrayList<String> asd = new ArrayList<>();
+        
+        return asd;
+        
+        //return ControladorInterfaz.enviarDatosDocumentos();
         
     }
     
     public static ArrayList<String> obtenerListaPedidos(){
         
-        return ControladorInterfaz.enviarDatosPedidos();
+        ArrayList<String> asd = new ArrayList<>();
+        
+        return asd;
+        
+        //return ControladorInterfaz.enviarDatosPedidos();
         
     }
     
