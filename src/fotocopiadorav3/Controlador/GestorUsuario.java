@@ -5,10 +5,7 @@
  */
 package fotocopiadorav3.Controlador;
 
-import fotocopiadorav3.Modelo.AlfaNumerico;
-import fotocopiadorav3.Modelo.Estado;
-import fotocopiadorav3.Modelo.ModeloInterfaz;
-import fotocopiadorav3.Modelo.Usuario;
+import fotocopiadorav3.Modelo.*;
 
 /**
  *Clase que se encargara del ABM de usuario.
@@ -16,26 +13,26 @@ import fotocopiadorav3.Modelo.Usuario;
  */
 public class GestorUsuario {
     
-    protected Estado altaUsuario(AlfaNumerico nombre, AlfaNumerico apellido, AlfaNumerico nombreUsuario, AlfaNumerico contrasenia, AlfaNumerico Domicilio, AlfaNumerico DNI){
-        Estado usuarioCreado = Estado.ERROR;
+    protected Estado altaUsuario(AlfaNumerico nombre, AlfaNumerico apellido, AlfaNumerico nombreUsuario, AlfaNumerico contrasenia, Direccion domicilio, int DNI){
+        Estado usuarioCreadoConExito = Estado.ERROR;
         
         //Verificaciones del nombre, autor, precio, materia.
         
-        if(datosCorrectos(nombre, apellido, nombreUsuario, contrasenia, Domicilio, DNI)){
+        if(datosCorrectos(nombre, apellido, nombreUsuario, contrasenia, domicilio, DNI)){
             
-            //Usuario usuarioCreado = ModeloInterfaz.getNuevoUsuario();
+            Usuario usuarioCreado = ModeloInterfaz.getNuevoUsuario();
             
-            //usuarioCreado.getPersona().setNombre();
-            //usuarioCreado.getPersona().setApellido();
-            //usuarioCreado.setNombreUsuario();
-            //usuarioCreado.setPassword();
-            //usuarioCreado.getPersona().setDomicilio();
-            //usuarioCreado.getPersona().setDNI();
+            usuarioCreado.getPersona().setNombre(nombre);
+            usuarioCreado.getPersona().setApellido(apellido);
+            usuarioCreado.setNombreUsuario(nombreUsuario);
+            usuarioCreado.setPass(contrasenia);
+            usuarioCreado.getPersona().setDireccion(domicilio);
+            usuarioCreado.getPersona().setDni(DNI);
             
-            //usuarioCreado = ModeloInterfaz.adicionarUsuario(nombre, apellido, nombreUsuario, contrasenia, Domicilio, DNI);
+            usuarioCreadoConExito = ModeloInterfaz.adicionarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, DNI);
         }
         
-        return usuarioCreado;
+        return usuarioCreadoConExito;
     }
     
     protected void bajaUsuario(){
@@ -46,7 +43,7 @@ public class GestorUsuario {
         
     }
     
-    private boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico apellido, AlfaNumerico nombreUsuario, AlfaNumerico contrasenia, AlfaNumerico Domicilio, AlfaNumerico DNI){
+    private boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico apellido, AlfaNumerico nombreUsuario, AlfaNumerico contrasenia, AlfaNumerico Domicilio, int DNI){
         boolean exito = false;
         boolean exitoNombre = false;
         boolean exitoApellido = false;
@@ -69,7 +66,7 @@ public class GestorUsuario {
         if(Domicilio != null){
             exitoDomicilio = true;
         }
-        if(DNI != null){
+        if(DNI != Valor.DNI_INVALIDO){
             exitoDomicilio = true;
         }
         if(exitoNombre && exitoApellido && exitoNombreUsuario && exitoContrasenia && exitoDomicilio){
