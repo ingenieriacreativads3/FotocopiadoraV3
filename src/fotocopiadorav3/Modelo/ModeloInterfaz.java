@@ -18,12 +18,23 @@ public class ModeloInterfaz {
     
     /**
      * Esta rutina verifica la existencia del password
-     * para un usuario específico.
+ para un usuarioDevolver específico.
      * 
      * @param nombreUsuario
      * @param passwordUsuario
      * @return boolean
      */
+    
+    public static Usuario getUsuario(){
+        
+        Usuario usuarioDevolver = Usuario.nuevo(Persona.OBJETO_INVALIDO);
+        
+        
+        
+        return usuarioDevolver;
+        
+    }
+    
     public static Estado verificaUsuarioPassword(String nombreUsuario, String passwordUsuario){
         
         //Establecer un valor por defecto
@@ -52,7 +63,7 @@ public class ModeloInterfaz {
     }
     
     /**
-     *Esta rutina verifica la existencia de un usuario.
+     *Esta rutina verifica la existencia de un usuarioDevolver.
      * 
      * @param nombreActual
      * @return boolean

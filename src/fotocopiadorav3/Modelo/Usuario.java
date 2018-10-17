@@ -270,8 +270,14 @@ public class Usuario{
         return id;
     }
 
-    private Persona getPersona() {
-        return persona;
+    public Persona getPersona() {
+        
+        Persona personaDevolver = null;
+        
+        personaDevolver = persona;
+        
+        return personaDevolver;
+        
     }
 
     /**

@@ -79,7 +79,7 @@ public class ConexionMySql {
         
     }
     
-    public static Estado asd(){
+    public static Estado guardar(){
         
         Estado estadoDevolver = null;
         
@@ -99,8 +99,11 @@ public class ConexionMySql {
             String connectionUser = Environment.USERNAME;
             String connectionPassword = Environment.PASSWORD;
             conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
+            
+            
             System.out.println(2.3);
-//            String sqlStmt = "SELECT * FROM " + AlfaNumerico.NOMBRE_TABLA;
+            
+            //String sqlStmt = "SELECT * FROM " + AlfaNumerico.NOMBRE_TABLA;
             String sqlStmt = "INSERT INTO alfanumerico VALUES (?,?)";
             System.out.println("SQL Statement:\n\t" + sqlStmt);
             prepStmt = conn.prepareStatement(sqlStmt);
@@ -112,6 +115,9 @@ public class ConexionMySql {
             System.out.println(prepStmt.toString());
             
             prepStmt.executeUpdate();
+            
+            
+            //prepStmt.executeQuery();
             
             System.out.println("Query ejecutada");
             System.out.println(2.4);
