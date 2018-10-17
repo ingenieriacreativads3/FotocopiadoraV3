@@ -63,26 +63,26 @@ public class ControladorInterfaz extends Application{
     *
     */
     
-    public void altaUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String DNI){
+    public void altaUsuario(String nombreRecibido, String apellidoRecibido, String nombreUsuarioRecibido, String contraseniaRecibido, String domicilioRecibido, String DNIRecibido){
         //se verifica que el que de de alta sea admin
         //si es admin, se crea el usuario
         //si no lo es, se deniega
         
-        AlfaNumerico _nombre = ModeloInterfaz.getAlfaNumerico();
-        _nombre.setValor(nombre);
-        AlfaNumerico _apellido = ModeloInterfaz.getAlfaNumerico();
-        _nombre.setValor(apellido);
-        AlfaNumerico _nombreUsuario = ModeloInterfaz.getAlfaNumerico();
-        _nombre.setValor(nombreUsuario);
-        AlfaNumerico _contrasenia = ModeloInterfaz.getAlfaNumerico();
-        _nombre.setValor(contrasenia);
-        AlfaNumerico _domicilio = ModeloInterfaz.getAlfaNumerico();
-        _nombre.setValor(domicilio);
-        AlfaNumerico _DNI = ModeloInterfaz.getAlfaNumerico();
-        _nombre.setValor(DNI);
+        AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico();
+        nombre.setValor(nombreRecibido);
+        AlfaNumerico apellido = ModeloInterfaz.getAlfaNumerico();
+        apellido.setValor(apellidoRecibido);
+        AlfaNumerico nombreUsuario = ModeloInterfaz.getAlfaNumerico();
+        nombreUsuario.setValor(nombreUsuarioRecibido);
+        AlfaNumerico contrasenia = ModeloInterfaz.getAlfaNumerico();
+        contrasenia.setValor(contraseniaRecibido);
+        AlfaNumerico domicilio = ModeloInterfaz.getAlfaNumerico();
+        domicilio.setValor(domicilioRecibido);
+        AlfaNumerico DNI = ModeloInterfaz.getAlfaNumerico();
+        DNI.setValor(DNIRecibido);
 
         
-        GestorUsuario.altaUsuario(_nombre, _apellido, _nombreUsuario, _contrasenia, _domicilio, _DNI);
+        GestorUsuario.altaUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, DNI);
     }
     
     public void bajaUsuario(){
