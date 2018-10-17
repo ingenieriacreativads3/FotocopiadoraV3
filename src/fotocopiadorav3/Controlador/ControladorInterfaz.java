@@ -63,11 +63,26 @@ public class ControladorInterfaz extends Application{
     *
     */
     
-    public void altaUsuario(String nombre, String permisos){
+    public void altaUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String DNI){
         //se verifica que el que de de alta sea admin
         //si es admin, se crea el usuario
         //si no lo es, se deniega
-        GestorUsuario.altaUsuario(nombre, permisos);
+        
+        AlfaNumerico _nombre = ModeloInterfaz.getAlfaNumerico();
+        _nombre.setValor(nombre);
+        AlfaNumerico _apellido = ModeloInterfaz.getAlfaNumerico();
+        _nombre.setValor(apellido);
+        AlfaNumerico _nombreUsuario = ModeloInterfaz.getAlfaNumerico();
+        _nombre.setValor(nombreUsuario);
+        AlfaNumerico _contrasenia = ModeloInterfaz.getAlfaNumerico();
+        _nombre.setValor(contrasenia);
+        AlfaNumerico _domicilio = ModeloInterfaz.getAlfaNumerico();
+        _nombre.setValor(domicilio);
+        AlfaNumerico _DNI = ModeloInterfaz.getAlfaNumerico();
+        _nombre.setValor(DNI);
+
+        
+        GestorUsuario.altaUsuario(_nombre, _apellido, _nombreUsuario, _contrasenia, _domicilio, _DNI);
     }
     
     public void bajaUsuario(){
