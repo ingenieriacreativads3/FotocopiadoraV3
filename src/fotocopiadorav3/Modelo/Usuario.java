@@ -252,11 +252,11 @@ public class Usuario{
 
     //Setter
 
-    protected void setNombreUsuario(AlfaNumerico nombreUsuario) {
+    public void setNombreUsuario(AlfaNumerico nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
 
-    protected void setPass(AlfaNumerico pass) {
+    public void setPass(AlfaNumerico pass) {
         this.pass = pass;
     }
 

@@ -34,6 +34,15 @@ public class AlfaNumerico implements Serializable{
     
     //Rutinas
     
+    protected Estado guardar(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        //ConexionMySql.
+        
+        return estadoDevolver;
+    }
+    
     protected static AlfaNumerico valueOf(String palabra){
         
         //Establecer un valor por defecto
