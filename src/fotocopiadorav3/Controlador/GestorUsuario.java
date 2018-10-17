@@ -29,7 +29,7 @@ public class GestorUsuario {
             usuarioCreado.getPersona().setDireccion(domicilio);
             usuarioCreado.getPersona().setDni(DNI);
             
-            usuarioCreadoConExito = ModeloInterfaz.adicionarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, DNI);
+            //usuarioCreadoConExito = ModeloInterfaz.adicionarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, DNI);
         }
         
         return usuarioCreadoConExito;
@@ -43,7 +43,7 @@ public class GestorUsuario {
         
     }
     
-    private boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico apellido, AlfaNumerico nombreUsuario, AlfaNumerico contrasenia, AlfaNumerico Domicilio, int DNI){
+    private boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico apellido, AlfaNumerico nombreUsuario, AlfaNumerico contrasenia, Direccion Domicilio, int DNI){
         boolean exito = false;
         boolean exitoNombre = false;
         boolean exitoApellido = false;
