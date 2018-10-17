@@ -29,13 +29,13 @@ public class FotocopiadoraV3 extends Application{
     public static void main(String[] args){
         //launch(args);
         
-        
-        ControladorInterfaz.comenzar();
-//        try{
-//            Direccion.guardar();
-//        }catch(Exception e){
-//            System.out.println("No entra");
-//        }
+        int i = 1;
+        //ControladorInterfaz.comenzar();
+        try{
+            Direccion.guardar(2);
+        }catch(Exception e){
+            System.out.println("No entra");
+        }
         
         
     }
