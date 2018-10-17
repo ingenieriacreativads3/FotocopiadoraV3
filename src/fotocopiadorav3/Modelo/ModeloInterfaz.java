@@ -16,25 +16,30 @@ package fotocopiadorav3.Modelo;
  */
 public class ModeloInterfaz {
     
-    /**
-     * Esta rutina verifica la existencia del password
- para un usuarioDevolver específico.
-     * 
-     * @param nombreUsuario
-     * @param passwordUsuario
-     * @return boolean
-     */
+    public static AlfaNumerico getAlfaNumerico(){
+        
+        AlfaNumerico alfaNumericoDevolver = AlfaNumerico.nuevo();
+        
+        return alfaNumericoDevolver;
+        
+    }
     
     public static Usuario getUsuario(){
         
         Usuario usuarioDevolver = Usuario.nuevo(Persona.OBJETO_INVALIDO);
         
-        
-        
         return usuarioDevolver;
         
     }
     
+    /**
+     * Esta rutina verifica la existencia del password
+ para un alfaNumericoDevolver específico.
+     * 
+     * @param nombreUsuario
+     * @param passwordUsuario
+     * @return boolean
+     */
     public static Estado verificaUsuarioPassword(String nombreUsuario, String passwordUsuario){
         
         //Establecer un valor por defecto
@@ -63,7 +68,7 @@ public class ModeloInterfaz {
     }
     
     /**
-     *Esta rutina verifica la existencia de un usuarioDevolver.
+     *Esta rutina verifica la existencia de un alfaNumericoDevolver.
      * 
      * @param nombreActual
      * @return boolean
