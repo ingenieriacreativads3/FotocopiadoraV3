@@ -188,7 +188,7 @@ public class Persona{
      */
     public int getDni() {
         
-        int dniDevolver = Valor.dniInvalido;
+        int dniDevolver = Valor.DNI_INVALIDO;
         
         dniDevolver = this.dni;
         

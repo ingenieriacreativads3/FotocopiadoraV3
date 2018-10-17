@@ -16,6 +16,19 @@ package fotocopiadorav3.Modelo;
  */
 public class ModeloInterfaz {
     
+    public static Direccion getDireccion(AlfaNumerico calleRecibida, int numeroRecibido){
+        
+        Direccion direccionDevolver = Direccion.OBJETO_INVALIDO;
+        
+        Direccion direccionNUeva = Direccion.nuevo();
+        direccionNUeva.setCalle(calleRecibida);
+        direccionNUeva.setNumero(numeroRecibido);
+        direccionDevolver = direccionNUeva;
+        
+        return direccionDevolver;
+        
+    }
+    
     public static AlfaNumerico getAlfaNumerico(){
         
         AlfaNumerico alfaNumericoDevolver = AlfaNumerico.nuevo();

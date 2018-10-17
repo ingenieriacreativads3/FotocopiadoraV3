@@ -65,6 +65,7 @@ public class Direccion{
         Estado estadoDevolver = Estado.ERROR;
         
         
+        
         return estadoDevolver;
         
     }
@@ -188,6 +189,18 @@ public class Direccion{
     }//...fin funcion
     
     //Setter
+
+    protected void setCalle(AlfaNumerico calle) {
+        
+        this.calle = calle;
+        
+    }
+
+    protected void setNumero(int numero) {
+        this.numero = numero;
+    }
+    
+    
     
     //Getter
 
