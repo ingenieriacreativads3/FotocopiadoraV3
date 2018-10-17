@@ -5,12 +5,19 @@
  */
 package fotocopiadorav3.Controlador;
 
-import fotocopiadorav3.Vista2.*;
+import fotocopiadorav3.*;
 import fotocopiadorav3.Modelo.*;
 import fotocopiadorav3.Vista.*;
 
+import fotocopiadorav3.Vista2.*;
+import fotocopiadorav3.Controlador.*;
+import fotocopiadorav3.Vista.FXMLPaginaPrincipalController;
 import java.util.List;
 import javafx.application.Application;
+import static javafx.application.Application.launch;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -33,33 +40,21 @@ public class ControladorInterfaz extends Application{
     *
     */
     
-    public void iniciarSecion(String nombreUsuario, String contrasenia){
+    public void iniciarSecion(){
         //todo: Mejorar
         cargarPaginaPrincipal();
     }
     
-    public  static void iniciarSesion(String nombreUsuario, String contrasenia){
-        
+    public static void iniciarSesion(String nombre, String contrasenia){
+        //todo: Mejorar
         cargarPaginaPrincipal2();
-        
     }
     
     public Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
         
-        Estado exitoAlIniciar = Estado.ERROR;
-        //Primero se debe verificar si existe el usuario.
-        //Luego se debe verificar si el usuairo y la contraseña son correctas
-        try{
-            if(ModeloInterfaz.existeUsuario(usuario)){
-                exitoAlIniciar = ModeloInterfaz.verificaUsuarioPassword(usuario, contraseña);
-            }
-            else{
-                exitoAlIniciar = Estado.ERROR_NOMBRE_INEXISTENTE;
-            }
-            return exitoAlIniciar;
-        }catch(Exception e){
-            return exitoAlIniciar;
-        }
+        Estado exitoAlIniciar = GestorCuenta.VerificarUsuarioYContraseña(usuario, contraseña);
+        
+        return exitoAlIniciar;
     }
     
     /*
@@ -68,15 +63,69 @@ public class ControladorInterfaz extends Application{
     *
     */
     
+    public void altaUsuario(String nombre, String permisos){
+        //se verifica que el que de de alta sea admin
+        //si es admin, se crea el usuario
+        //si no lo es, se deniega
+        GestorUsuario.altaUsuario(nombre, permisos);
+    }
+    
+    public void bajaUsuario(){
+        //se verifica que el que de de alta sea admin
+        //si es admin, se baja el usuario
+        //si no lo es, se deniega
+    }
+    
+    public void modificacionUsuario(){
+        //ningun atributo extra es necesario para automidificarse
+        //para modificaciones extras:
+        //se verifica que el que de de alta sea admin
+        //si es admin, se baja el usuario
+        //si no lo es, se deniega
+    }
+    
     /*
     * 
     *   CLIENTE
     *
     */
     
+    public void adicionarClienteComoInvitado(String nombreClienteInvitado){
+        
+    }
+    
+    public void adicionarClienteComoRegistrado(String nombreCliente, int legajo){
+        
+    }
+    
+    public void modificacionClienteComoRegistrado(){
+        
+    }
+    
+    public void bajaClienteComoRegistrado(){
+        
+    }
+    
     /*
     * 
     *   ARTICULO
+    *
+    */
+    
+    public void crearArticulo(String nombre, String autor, float precio, String materia){
+        GestorArticulo.altaArticulo(nombre, autor, precio, materia);
+    }
+    
+    public void modificacionArticulo(AlfaNumerico IDArticulo){
+        GestorArticulo.modificacionArticulo(IDArticulo);
+    }
+    
+    public void bajaArticulo(AlfaNumerico IDArticulo){
+        GestorArticulo.bajaArticulo(IDArticulo);
+    }
+    /*
+    * 
+    *   PEDIDO
     *
     */
     
@@ -113,7 +162,7 @@ public class ControladorInterfaz extends Application{
     }
     
     //En el modificar me deberia llegar un documento
-    public void modificarPedido(){
+    public void modificaconPedido(){
         
     }
     
@@ -122,6 +171,15 @@ public class ControladorInterfaz extends Application{
         
     }
     
+    protected String getNumeroDeTransaccion(){
+        String IDPedido;
+        
+        AlfaNumerico codigo = ModeloInterfaz.getSiguienteCodigoTransaccion();
+        
+        IDPedido = codigo.toString();
+        
+        return IDPedido;
+    }
     
     
     /*
@@ -140,9 +198,9 @@ public class ControladorInterfaz extends Application{
         
     }
     
-    public static void cargarPaginaPrincipal2(){
+    public static void comenzar(String[] args){
         
-        Vista2Interfaz.renderizarPaginaPrincipal();
+        VistaInterfaz.renderizarLogin(args);
         
     }
     
@@ -151,14 +209,11 @@ public class ControladorInterfaz extends Application{
         Vista2Interfaz.renderizarLogin();
         
     }
-    
-    
-    public static void comenzar(String[] args){
-        
-        VistaInterfaz.renderizarLogin(args);
-        
-    }
 
+    public static void cargarPaginaPrincipal2(){
+        Vista2Interfaz.renderizarPaginaPrincipal();
+    }
+    
     //Se cargara entonces los pedidos con estado impreso y cancelado
     public static void cargarInventario(){
         
@@ -201,18 +256,9 @@ public class ControladorInterfaz extends Application{
         VistaInterfaz.renderizarEliminarDocumento();
         
     }
-    
-    public static void crearNuevoUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String dni){
-        
-    }
-    
-    
-    
-    
-    
+
     @Override
     public void start(Stage primaryStage) throws Exception {}
     
     public static void salirAplicacion() {}
-    
 }

@@ -5,21 +5,64 @@
  */
 package fotocopiadorav3.Controlador;
 
+import fotocopiadorav3.Modelo.*;
+
 /**
  *Clase que se encargara del ABM de Articulos
  * @author David Alonso
  */
 public class GestorArticulo {
     
-    protected void altaArticulo(){
+    protected Estado altaArticulo(String nombre, String autor, float precio, String materia){
+        Estado ArticuloCreado = Estado.ERROR;
+        
+        //Verificaciones del nombre, autor, precio, materia.
+        
+        if(datosCorrectos(nombre, autor, precio, materia)){
+            ArticuloCreado = ModeloInterfaz.adicionarArticulo(nombre, autor, precio, materia);
+        }
+        
+        return ArticuloCreado;
+    }
+    
+    protected void bajaArticulo(AlfaNumerico IDArticulo){
         
     }
     
-    protected void bajaArticulo(){
+    protected void modificacionArticulo(AlfaNumerico IDArticulo){
         
     }
     
-    protected void modificacionArticulo(){
+    
+    
+    private boolean datosCorrectos(String nombre, String autor, float precio, String materia){
         
+        try{
+            boolean exito = false;
+            boolean exitoNombre = false;
+            boolean exitoAutor = false;
+            boolean exitoPrecio = false;
+            boolean exitoMateria = false;
+            if(nombre != null){
+                exitoNombre=true;
+            }
+            if(autor != null){
+                exitoAutor=true;
+            }
+            if(precio < 0){
+                exitoPrecio=true;
+            }
+            if(materia != null){
+                exitoMateria=true;
+            }
+            if(exitoNombre && exitoAutor && exitoPrecio && exitoMateria){
+                exito = true;
+            }
+        
+        return exito;
+        }   catch(Exception e){
+            return false;
+        }     
     }
+    
 }

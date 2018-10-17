@@ -121,4 +121,22 @@ public class ModeloInterfaz {
         
     }
     
+    
+        // - David Alonso
+    public static Estado adicionarArticulo(String nombre, String autor, float precio, String materia){
+        Estado creacion = Estado.ERROR;
+        
+        //No entiendo tus clases
+        
+        return creacion;
+    }
+    
+    public static Estado adicionarUsuario(String nombre, String permisos){
+        Estado creacion = Estado.ERROR;
+        
+        //No entiendo tus clases
+        
+        return creacion;
+    }
+    
 }

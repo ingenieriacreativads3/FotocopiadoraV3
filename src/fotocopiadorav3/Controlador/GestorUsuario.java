@@ -5,14 +5,25 @@
  */
 package fotocopiadorav3.Controlador;
 
+import fotocopiadorav3.Modelo.Estado;
+import fotocopiadorav3.Modelo.ModeloInterfaz;
+
 /**
  *Clase que se encargara del ABM de usuario.
  * @author David Alonso
  */
 public class GestorUsuario {
     
-    protected void altaUsuario(){
+    protected Estado altaUsuario(String nombre, String permisos){
+        Estado usuarioCreado = Estado.ERROR;
         
+        //Verificaciones del nombre, autor, precio, materia.
+        
+        if(datosCorrectos(nombre, permisos)){
+            usuarioCreado = ModeloInterfaz.adicionarUsuario(nombre, permisos);
+        }
+        
+        return usuarioCreado;
     }
     
     protected void bajaUsuario(){
@@ -21,5 +32,23 @@ public class GestorUsuario {
     
     protected void modificacionUsuario(){
         
+    }
+    
+    private boolean datosCorrectos(String nombre, String permisos){
+        boolean exito = false;
+        boolean exitoNombre = false;
+        boolean exitoPermisos = false;
+        
+        if(nombre != null){
+            exitoNombre = true;
+        }
+        if(permisos != null){
+            exitoPermisos = true;
+        }
+        if(exitoNombre && exitoPermisos){
+            exito = true;
+        }
+        
+        return exito;
     }
 }
