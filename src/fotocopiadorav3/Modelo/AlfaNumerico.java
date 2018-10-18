@@ -7,6 +7,7 @@ package fotocopiadorav3.Modelo;
 import java.io.*;
 import java.util.*;
 import javax.persistence.*;
+import java.sql.*;
 
 /**
 
@@ -17,9 +18,12 @@ import javax.persistence.*;
 @Table(name = "alfanumerico")
 public class AlfaNumerico implements Serializable{
     
-    protected static String NOMBRE_TABLA = "alfanumerico";
-    protected static String CAMPO_ID = "id";
-    protected static String CAMPO_VALOR = "valor";
+    private static final String NOMBRE_TABLA = "alfanumerico";
+    private static final String CAMPO_ID = "id";
+    private static final String CAMPO_VALOR = "valor";
+    private static final int CANTIDAD_DE_CAMPOS = 2;
+    private static final int LUGAR_DEL_CAMPO_ID = 1;
+    private static final int LUGAR_DEL_CAMPO_VALOR = 2;
     
     @Id
     @Column(name = "id", nullable = false, unique = true, updatable = false)
@@ -38,7 +42,36 @@ public class AlfaNumerico implements Serializable{
         
         Estado estadoDevolver = Estado.ERROR;
         
-        //ConexionMySql.
+        System.out.println(1);
+        ConexionMySql conn = new ConexionMySql();
+        System.out.println(2);
+        PreparedStatement prepared = conn.getPreparedStatement(CANTIDAD_DE_CAMPOS, NOMBRE_TABLA);
+        System.out.println(3);
+        
+        try {
+            System.out.println(4);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            
+            System.out.println("Id: " + this.id);
+            
+            System.out.println(5);
+            prepared.setString(LUGAR_DEL_CAMPO_VALOR, this.valor);
+            
+            System.out.println(prepared.toString());
+            
+            System.out.println(6);
+            prepared.executeUpdate();
+            
+            System.out.println(7);
+            estadoDevolver = Estado.EXITO;
+            
+            System.out.println(8);
+            
+        } catch (Exception e) {
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
         
         return estadoDevolver;
     }
@@ -209,6 +242,12 @@ public class AlfaNumerico implements Serializable{
 
     //Setter
 
+    /**
+     * Esta funcion fue reemplazada por una funcion autoincremental.
+     * 
+     * @deprecated 
+     * @param id 
+     */
     public void setId(int id) {
         this.id = id;
     }

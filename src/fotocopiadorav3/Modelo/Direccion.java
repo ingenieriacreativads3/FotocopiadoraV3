@@ -64,7 +64,20 @@ public class Direccion{
         
         Estado estadoDevolver = Estado.ERROR;
         
+        AlfaNumerico alfa1 = AlfaNumerico.nuevo();
+        AlfaNumerico alfa2 = AlfaNumerico.nuevo();
+        AlfaNumerico alfa3 = AlfaNumerico.nuevo();
+        AlfaNumerico alfa4 = AlfaNumerico.nuevo();
+        alfa1.setValor("asd");
         
+        alfa4.setValor("sdhfkjlghsdklfjg");
+        estadoDevolver = alfa4.guardar();
+        
+        if(estadoDevolver == Estado.ERROR_PERSISTENCIA_INCORRECTA){
+            System.out.println("algo no anda");
+        }else{
+            System.out.println("funciona");
+        }
         
         return estadoDevolver;
         

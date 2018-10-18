@@ -30,12 +30,12 @@ public class FotocopiadoraV3 extends Application{
         //launch(args);
         
         int i = 1;
-        ControladorInterfaz.comenzar();
-        /*try{
+        //ControladorInterfaz.comenzar();
+        try{
             Direccion.guardar(2);
         }catch(Exception e){
             System.out.println("No entra");
-        }*/
+        }
         
         
     }

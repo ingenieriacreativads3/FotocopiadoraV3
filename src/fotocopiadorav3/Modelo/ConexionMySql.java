@@ -15,30 +15,30 @@ import java.sql.*;
 public class ConexionMySql {
     
     // Librería de MySQL
-    protected String driver = Environment.DRIVER;
+    private String driver = Environment.DRIVER;
 
     // Nombre de la base de datos
-    protected String database = Environment.DATABASE;
+    private String database = Environment.DATABASE;
 
     // Host
-    protected String hostname = Environment.HOSTNAME;
+    private String hostname = Environment.HOSTNAME;
 
     // Puerto
-    protected String port = Environment.PORT;
+    private String port = Environment.PORT;
 
     // Ruta de nuestra base de datos (desactivamos el uso de SSL con "?useSSL=false")
-    protected String url = Environment.URL;
+    private String url = Environment.URL;
 
     // Nombre de usuario
-    protected String username = Environment.USERNAME;
+    private String username = Environment.USERNAME;
 
     // Clave de usuario
-    protected String password = Environment.PASSWORD;
+    private String password = Environment.PASSWORD;
     
     private static ConexionMySql conexionMySql = null;
     
     //Constructor
-    private ConexionMySql(){
+    public ConexionMySql(){
         
         
         
@@ -88,22 +88,24 @@ public class ConexionMySql {
         Connection conn = null;
         PreparedStatement prepStmtDevolver = null;
         
+        String sqlStmt = "asd";
+        
         if(cantidadAtributos == 0){
             
             //...se establecio un valor por defecto
             
         }else{
             
-            if(cantidadAtributos == 1){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?)";}
-            if(cantidadAtributos == 2){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?)";}
-            if(cantidadAtributos == 3){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?)";}
-            if(cantidadAtributos == 4){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?)";}
-            if(cantidadAtributos == 5){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?)";}
-            if(cantidadAtributos == 6){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?)";}
-            if(cantidadAtributos == 7){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?)";}
-            if(cantidadAtributos == 8){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?)";}
-            if(cantidadAtributos == 9){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";}
-            if(cantidadAtributos == 10){String sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 1){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?)";}
+            if(cantidadAtributos == 2){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?)";}
+            if(cantidadAtributos == 3){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?)";}
+            if(cantidadAtributos == 4){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?)";}
+            if(cantidadAtributos == 5){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 6){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 7){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 8){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 9){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 10){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";}
             
         }
         
@@ -115,7 +117,7 @@ public class ConexionMySql {
             String connectionPassword = Environment.PASSWORD;
             conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
             
-            //prepStmtDevolver = conn.prepareStatement()
+            prepStmtDevolver = conn.prepareStatement(sqlStmt);
             
         } catch (Exception e) {
             

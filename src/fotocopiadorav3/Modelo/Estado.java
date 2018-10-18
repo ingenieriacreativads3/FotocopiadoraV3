@@ -13,6 +13,9 @@ import java.util.*;
 public enum Estado{
     
     
+    ERROR_PERSISTENCIA_INCORRECTA(300, "El item se encuentra retirado"),
+    
+    
     ITEM_PEDIDO_RETIRADO(224, "El item se encuentra retirado"),
     ITEM_PEDIDO_CANCELADO(223, "El item se encuentra cancelado"),
     ITEM_PEDIDO_FOTOCOPIADO(222, "El item se encuentra fotocopiado"),
