@@ -20,18 +20,16 @@ public class ModeloInterfaz {
         
         Direccion direccionDevolver = Direccion.OBJETO_INVALIDO;
         
-        Direccion direccionNUeva = Direccion.nuevo();
-        direccionNUeva.setCalle(calleRecibida);
-        direccionNUeva.setNumero(numeroRecibido);
-        direccionDevolver = direccionNUeva;
+        Direccion direccionNueva = Direccion.nuevo(calleRecibida, numeroRecibido);
+        direccionDevolver = direccionNueva;
         
         return direccionDevolver;
         
     }
     
-    public static AlfaNumerico getAlfaNumerico(){
+    public static AlfaNumerico getAlfaNumerico(String palabraRecibida){
         
-        AlfaNumerico alfaNumericoDevolver = AlfaNumerico.nuevo();
+        AlfaNumerico alfaNumericoDevolver = AlfaNumerico.nuevo(palabraRecibida);
         
         return alfaNumericoDevolver;
         
@@ -106,7 +104,7 @@ public class ModeloInterfaz {
     }
     
     /**
-     *Este método devuelve el siguiente identificador de pedido
+     *Este method devuelve el siguiente identificador de pedido
      * @return
      */
     public static AlfaNumerico getSiguienteCodigoTransaccion() {
@@ -141,9 +139,9 @@ public class ModeloInterfaz {
         
     }
     
-    public static Usuario getNuevoUsuario(){
+    public static Usuario getNuevoUsuario(AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, int dniRecibido, Direccion direccionRecibida){
         
-        Persona personaFinal = Persona.nuevo();
+        Persona personaFinal = Persona.nuevo(nombreRecibido, apellidoRecibido, dniRecibido, direccionRecibida);
         Usuario usuarioDevolver = Usuario.nuevo(personaFinal);
         
         return usuarioDevolver;

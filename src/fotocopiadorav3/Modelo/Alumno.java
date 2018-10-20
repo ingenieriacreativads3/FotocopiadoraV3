@@ -10,10 +10,11 @@ import java.util.*;
 
  @author Tomas
  */
-public class Alumno extends Persona{
+public class Alumno{
     
     private final int id;
     private int legajo;
+    private Persona persona;
             
     private final static Alumno OBJETO_INVALIDO = new Alumno();
 

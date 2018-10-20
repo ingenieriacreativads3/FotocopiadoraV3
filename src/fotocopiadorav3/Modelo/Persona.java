@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package fotocopiadorav3.Modelo;
+
+import java.sql.*;
 import java.util.*;
 
 /**
@@ -12,20 +14,175 @@ import java.util.*;
  */
 public class Persona{
     
-    private final int id;
+    private static final String NOMBRE_TABLA = "persona";
+    
+    private static final String CAMPO_ID = "id";
+    private static final String CAMPO_DNI = "dni";
+    private static final String CAMPO_ID_NOMBRE = "id_nombre";
+    private static final String CAMPO_ID_APELLIDO = "id_apellido";
+    private static final String CAMPO_ID_DIRECCION = "id_direccion";
+    
+    private static final int CANTIDAD_DE_CAMPOS = 5;
+    private static final int LUGAR_DEL_CAMPO_ID = 1;
+    private static final int LUGAR_DEL_CAMPO_DNI = 2;
+    private static final int LUGAR_DEL_CAMPO_ID_NOMBRE = 3;
+    private static final int LUGAR_DEL_CAMPO_ID_APELLIDO = 4;
+    private static final int LUGAR_DEL_CAMPO_ID_DIRECCION = 5;
+    
+    private int id;
     private AlfaNumerico nombre;
     private AlfaNumerico apellido;
     private int dni;
     private Direccion direccion;
+    private int idNombre;
+    private int idApellido;
+    private int idDireccion;
     
     protected final static Persona OBJETO_INVALIDO = new Persona();
 
     private static Set<Persona> listaObjetos = new HashSet<>();
+    
+    //Rutinas
+    
+    private Estado guardar(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatement(CANTIDAD_DE_CAMPOS, NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID_NOMBRE, this.idNombre);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID_APELLIDO, this.idApellido);
+            prepared.setInt(LUGAR_DEL_CAMPO_DNI, this.dni);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID_DIRECCION, this.idDireccion);
+            prepared.executeUpdate();
+            
+            estadoDevolver = Estado.EXITO;
+            
+        } catch (Exception e) {
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
+        
+    }
+    
+    private static Persona nuevo(int idRecibido, AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, int dniRecibido, Direccion direccionRecibida) {
+        
+        Persona personaDevolver = new Persona();
+        
+        personaDevolver.id = idRecibido;
+        personaDevolver.nombre = nombreRecibido;
+        personaDevolver.apellido = apellidoRecibido;
+        personaDevolver.dni = dniRecibido;
+        personaDevolver.direccion = direccionRecibida;
+        
+        Estado seAgrego = Persona.addNewObjeto(personaDevolver);
+        
+        if(!(seAgrego == Estado.EXITO)){
+            
+            //listaObjetos.remove(personaDevolver);
+            
+        }else{
+            
+            //...no hacer nada
+            
+        }
+        
+        return personaDevolver;
+        
+    }
+    
+    private static Estado getInformacion(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ResultSet rs = null;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatement(NOMBRE_TABLA);
+        
+        try {
+            
+            rs = prepared.executeQuery();
+            
+            while (rs.next()) {
+                
+                int id = rs.getInt(CAMPO_ID);
+                int dni = rs.getInt(CAMPO_DNI);
+                int id_nombre = rs.getInt(CAMPO_ID_NOMBRE);
+                int id_apellido = rs.getInt(CAMPO_ID_APELLIDO);
+                int id_direccion = rs.getInt(CAMPO_ID_DIRECCION);
+                
+                AlfaNumerico nombreAlfa = AlfaNumerico.getForId(id_nombre);
+                AlfaNumerico apelldioAlfa = AlfaNumerico.getForId(id_apellido);
+                Direccion direccionDire = Direccion.getForId(id_direccion);
+                
+                Persona asd = Persona.nuevo(id, nombreAlfa, apelldioAlfa, dni, direccionDire);
+                
+            }
+            
+            estadoDevolver = Estado.EXITO;
+            
+        } catch (Exception e) {
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
+        
+    }
+    
+    private static int getLastId(){
+        
+        int ultimoID = 0;
+        
+        Estado estadoConsulta = getInformacion();
+
+        if(listaObjetos != null){
+
+            if(estadoConsulta == Estado.EXITO){
+
+                for(Persona personaActual : listaObjetos){
+
+                    if(personaActual.id > ultimoID){
+
+                        ultimoID = personaActual.id;
+
+                    }else{
+
+                        //...no hacer nada
+
+                    }
+
+                }
+
+            }else{
+
+                //...no hacer nada
+
+            }
+
+        }else{
+
+            //...se establecio unvalor por defecto
+
+        }
+        
+        return ultimoID;
+        
+    }
 
     private static int getNewId(){
 
-        //Crear un nuevo identificador
-        int idActual = listaObjetos.size();
+        //Obtener el ultimo identificador
+        int idActual = getLastId();
 
         //Buscar el siguiente identificador
         int siguienteIdentificador = Valor.SIGUIENTE_IDENTIFICADOR;
@@ -39,16 +196,66 @@ public class Persona{
     }
 
     //Constructor
+    
+    private Persona(){
+        
+        
+        
+    }
 
-    protected Persona() {
+    private Persona(int idRecibido) {
 
         //Asignar un identificador
-        this.id = getNewId();
+        this.id = idRecibido;
 
 
     }
+    
+    protected static Persona nuevo(AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, int dniRecibido, Direccion direccionRecibida){
 
-    protected static Persona nuevo(){
+        //Crear un objeto a devolver
+        Persona objetoDevolver = Persona.OBJETO_INVALIDO;
+
+        //Obtener el siguiente identificador
+        int identificador = getNewId();
+        
+        //Crear un nuevo objeto
+        Persona objetoNuevo = new Persona(identificador);
+
+        //Agregar a la lista de control
+        Estado seAgrego = addNewObjeto(objetoNuevo);
+
+        //Si se agrega con exito
+        if(seAgrego == Estado.EXITO){
+            
+            //Asignar el valor recibido por defecto
+            Estado seSeteoNombre = objetoNuevo.setNombre(nombreRecibido);
+            Estado seSeteoApellido = objetoNuevo.setApellido(apellidoRecibido);
+            Estado seSeteoDni = objetoNuevo.setDni(dniRecibido);
+            Estado seSeteoDireccion = objetoNuevo.setDireccion(direccionRecibida);
+            
+            Estado seSeteoIdNombre = objetoNuevo.setIdNombre(nombreRecibido.getId());
+            Estado seSeteoIdApellido = objetoNuevo.setIdApellido(apellidoRecibido.getId());
+            Estado seSeteoIdDireccion = objetoNuevo.setIdDireccion(direccionRecibida.getId());
+            
+            objetoDevolver = objetoNuevo;
+            
+            Estado seGuardo = objetoDevolver.guardar();
+
+        }else{
+
+            //TODO capturar el error generado por un ingreso erroneo a la lista
+            listaObjetos.remove(objetoDevolver);
+            //...se establecio un valor por defecto
+
+        }
+
+        //Devolver el objeto requerido
+        return objetoDevolver;
+
+    }
+
+    private static Persona nuevo(){
 
         //Crear un objeto a devolver
         Persona objetoDevolver = Persona.OBJETO_INVALIDO;
@@ -125,25 +332,95 @@ public class Persona{
     
     //Setter
 
-    public void setNombre(AlfaNumerico nombre) {
+    private Estado setIdNombre(int idNombre) {
         
+        this.idNombre = idNombre;
+        
+        return Estado.EXITO;
+    }
+
+    private Estado setIdApellido(int idApellido) {
+        
+        this.idApellido = idApellido;
+        
+        return Estado.EXITO;
+    }
+
+    private Estado setIdDireccion(int idDireccion) {
+        
+        this.idDireccion = idDireccion;
+        
+        return Estado.EXITO;
+    }
+    
+    private Estado setNombre(AlfaNumerico objetoRecibido) {
+        
+        Estado estadoDevolver = Estado.ERROR;
         AlfaNumerico alfaSet = AlfaNumerico.OBJETO_INVALIDO;
         
+        if(objetoRecibido != null){
+            
+            alfaSet = objetoRecibido;
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            //..se establecio un valor por defecto
+        }
         
-        this.nombre = nombre;
+        this.nombre = alfaSet;
+        
+        return estadoDevolver;
         
     }
 
-    public void setApellido(AlfaNumerico apellido) {
-        this.apellido = apellido;
+    private Estado setApellido(AlfaNumerico objetoRecibido) {
+        
+        Estado estadoDevolver = Estado.ERROR;
+        AlfaNumerico alfaSet = AlfaNumerico.OBJETO_INVALIDO;
+        
+        if(objetoRecibido != null){
+            
+            alfaSet = objetoRecibido;
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            //..se establecio un valor por defecto
+        }
+        
+        this.apellido = alfaSet;
+        
+        return estadoDevolver;
+        
     }
 
-    public void setDni(int dni) {
+    private Estado setDni(int dni) {
+        
         this.dni = dni;
+        
+        return Estado.EXITO;
     }
 
-    public void setDireccion(Direccion direccion) {
-        this.direccion = direccion;
+    private Estado setDireccion(Direccion objetoRecibido) {
+        
+        Estado estadoDevolver = Estado.ERROR;
+        Direccion alfaSet = Direccion.OBJETO_INVALIDO;
+        
+        if(objetoRecibido != null){
+            
+            alfaSet = objetoRecibido;
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            //..se establecio un valor por defecto
+        }
+        
+        this.direccion = alfaSet;
+        
+        return estadoDevolver;
+        
     }
     
     
@@ -170,6 +447,7 @@ public class Persona{
      * 
      * @return AlfaNUmerico apellido
      */
+    
     public AlfaNumerico getApellido() {
         
         AlfaNumerico apellidoDevolver = AlfaNumerico.OBJETO_INVALIDO;
@@ -186,6 +464,7 @@ public class Persona{
      * 
      * @return int dni
      */
+    
     public int getDni() {
         
         int dniDevolver = Valor.DNI_INVALIDO;
@@ -200,6 +479,7 @@ public class Persona{
      * 
      * @return Direccion direccion
      */
+    
     public Direccion getDireccion() {
         
         Direccion direccionDevolver = Direccion.OBJETO_INVALIDO;

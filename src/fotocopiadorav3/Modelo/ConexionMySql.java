@@ -83,6 +83,32 @@ public class ConexionMySql {
         
     }
     
+    protected PreparedStatement getPreparedStatement(String nombreTabla){
+        
+        Connection conn = null;
+        PreparedStatement prepStmtDevolver = null;
+        String sqlStmt = "SELECT * FROM " + nombreTabla;
+        
+        try {
+            
+            Class.forName(Environment.DRIVER).newInstance();
+            String connectionUrl = Environment.URL;
+            String connectionUser = Environment.USERNAME;
+            String connectionPassword = Environment.PASSWORD;
+            conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
+            
+            prepStmtDevolver = conn.prepareStatement(sqlStmt);
+            
+        } catch (Exception e) {
+            
+            //..se establecio un valor por defecto
+            
+        }
+        
+        return prepStmtDevolver;
+        
+    }
+    
     protected PreparedStatement getPreparedStatement(int cantidadAtributos, String nombreTabla){
         
         Connection conn = null;
@@ -119,9 +145,10 @@ public class ConexionMySql {
             
             prepStmtDevolver = conn.prepareStatement(sqlStmt);
             
+            
         } catch (Exception e) {
             
-            
+            //...se establecio un valor por defecto
             
         }
         
@@ -168,6 +195,7 @@ public class ConexionMySql {
             
             
             //prepStmt.executeQuery();
+            
             
             System.out.println("Query ejecutada");
             System.out.println(2.4);

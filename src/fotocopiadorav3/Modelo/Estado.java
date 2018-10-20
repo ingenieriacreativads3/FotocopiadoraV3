@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package fotocopiadorav3.Modelo;
+
 import java.util.*;
 
 /**
@@ -12,8 +13,20 @@ import java.util.*;
  */
 public enum Estado{
     
+    /**
+     * Este estado representa una solicitud de statement para obtener informacion
+     */
+    GET_PREPARED_STATEMENT_FOR_GET_INFORMATION(301, "Se solicita un PreparedStatement para pedir informacion"),
     
-    ERROR_PERSISTENCIA_INCORRECTA(300, "El item se encuentra retirado"),
+    /**
+     * Este estado representa una solicitud de statement para guardar datos
+     */
+    GET_PREPARED_STATEMENT_FOR_SAVE(301, "Se solicita un PreparedStatement para guardar datos"),
+    
+    /**
+     * Este estado representa un error de bd
+     */
+    ERROR_PERSISTENCIA_INCORRECTA(300, "La persistencia no anda"),
     
     
     ITEM_PEDIDO_RETIRADO(224, "El item se encuentra retirado"),

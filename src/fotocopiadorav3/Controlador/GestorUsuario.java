@@ -13,23 +13,19 @@ import fotocopiadorav3.Modelo.*;
  */
 public class GestorUsuario {
     
-    protected Estado altaUsuario(AlfaNumerico nombre, AlfaNumerico apellido, AlfaNumerico nombreUsuario, AlfaNumerico contrasenia, Direccion domicilio, int DNI){
+    protected Estado altaUsuario(AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, AlfaNumerico nombreUsuarioRecibido, AlfaNumerico passwordRecibida, Direccion domicilioRecibido, int dniRecibido){
         Estado usuarioCreadoConExito = Estado.ERROR;
         
-        //Verificaciones del nombre, autor, precio, materia.
+        //Verificaciones del nombreRecibido, autor, precio, materia.
         
-        if(datosCorrectos(nombre, apellido, nombreUsuario, contrasenia, domicilio, DNI)){
+        if(datosCorrectos(nombreRecibido, apellidoRecibido, nombreUsuarioRecibido, passwordRecibida, domicilioRecibido, dniRecibido)){
             
-            Usuario usuarioCreado = ModeloInterfaz.getNuevoUsuario();
+            Usuario usuarioCreado = ModeloInterfaz.getNuevoUsuario(nombreRecibido, apellidoRecibido, dniRecibido, domicilioRecibido);
             
-            usuarioCreado.getPersona().setNombre(nombre);
-            usuarioCreado.getPersona().setApellido(apellido);
-            usuarioCreado.setNombreUsuario(nombreUsuario);
-            usuarioCreado.setPass(contrasenia);
-            usuarioCreado.getPersona().setDireccion(domicilio);
-            usuarioCreado.getPersona().setDni(DNI);
+            usuarioCreado.setNombreUsuario(nombreUsuarioRecibido);
+            usuarioCreado.setPass(passwordRecibida);
             
-            //usuarioCreadoConExito = ModeloInterfaz.adicionarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, DNI);
+            //usuarioCreadoConExito = ModeloInterfaz.adicionarUsuario(nombreRecibido, apellidoRecibido, nombreUsuarioRecibido, passwordRecibida, domicilioRecibido, dniRecibido);
         }
         
         return usuarioCreadoConExito;

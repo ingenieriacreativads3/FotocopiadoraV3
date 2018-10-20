@@ -15,29 +15,146 @@ import java.sql.*;
  */
 public class Direccion{
     
-    private final int id;
+    private static final String NOMBRE_TABLA = "direccion";
+    
+    private static final String CAMPO_ID = "id";
+    private static final String CAMPO_NUMERO = "numero";
+    private static final String CAMPO_ID_CALLE = "id_alfanumerico";
+    
+    private static final int CANTIDAD_DE_CAMPOS = 3;
+    private static final int LUGAR_DEL_CAMPO_ID = 1;
+    private static final int LUGAR_DEL_CAMPO_NUMERO = 2;
+    private static final int LUGAR_DEL_CAMPO_ID_CALLE = 3;
+
+    private int id;
     private AlfaNumerico calle;
     private int numero;
+    private int idCalle;
             
     public final static Direccion OBJETO_INVALIDO = new Direccion();
 
     protected static Set<Direccion> listaObjetos = new HashSet<>();
+    
+    //Rutinas
+    
+    protected static Direccion getForId(int idRecibido){
+        
+        Direccion direccionDevolver = OBJETO_INVALIDO;
+        
+        Estado seObtuvo = getInformacion();
+        
+        if(seObtuvo == Estado.EXITO){
+            
+            for(Direccion direccionActual : listaObjetos){
+                
+                if(direccionActual.id == idRecibido){
+                    
+                    direccionDevolver = direccionActual;
+                    
+                }else{
+                    
+                    //...se establecion un valor por defecto
+                    
+                }
+            }
+            
+        }else{
+            
+            //TODO capturar el error producido por no haber capturado la info de la db
+            System.out.println("Se rompio en Direccion.getForId();");
+            
+        }
+        
+        return direccionDevolver;
+        
+    }
+    
+    private static Direccion nuevo(int idActual, AlfaNumerico calleActual, int numeroActual, int idAlfaRecibido) {
+        
+        Direccion direccionDevolver = new Direccion();
+        
+        direccionDevolver.id = idActual;
+        direccionDevolver.calle = calleActual;
+        direccionDevolver.numero = numeroActual;
+        direccionDevolver.idCalle = idAlfaRecibido;
+        
+        Estado seAgrego = Direccion.addNewObjeto(direccionDevolver);
+        
+        return direccionDevolver;
+        
+    }
+    
+    private static Estado getInformacion(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ResultSet rs = null;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatement(NOMBRE_TABLA);
+        
+        try {
+            
+            rs = prepared.executeQuery();
+            
+            while (rs.next()) {
+                
+                int id = rs.getInt(CAMPO_ID);
+                int numeroActual = rs.getInt(CAMPO_NUMERO);
+                int idAlfaNumerico = rs.getInt(CAMPO_ID_CALLE);
+                
+                AlfaNumerico calleActual = AlfaNumerico.getForId(idAlfaNumerico);
+                
+                Direccion asd = nuevo(id, calleActual, numeroActual, idAlfaNumerico);
+                
+                //TODO quitar estos sout
+//                System.out.println("Size: " + getSetSize());
+//                
+//                System.out.println("ID: " + id + ", Valor: " + valor);
+                
+            }
+            
+            estadoDevolver = Estado.EXITO;
+            
+        } catch (Exception e) {
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        //System.out.println(prepared.toString());
+        
+        return estadoDevolver;
+        
+    }
+    
+    private static int getLastId(){
+        
+        int ultimoID = 0;
+        
+        Estado estadoConsulta = getInformacion();
 
-    private static int getNewId(){
-
-        //Crear un nuevo identificador
-        int idActual = 0;
-
-        //Obtener la cantidad de elementos no nulos del conjunto
         if(listaObjetos != null){
 
-            if(listaObjetos.size() != 0){
+            if(estadoConsulta == Estado.EXITO){
 
-                idActual = listaObjetos.size();
+                for(Direccion direccionActual : listaObjetos){
+
+                    if(direccionActual.id > ultimoID){
+
+                        ultimoID = direccionActual.id;
+
+                    }else{
+
+                        //...no hacer nada
+
+                    }
+
+                }
 
             }else{
 
-                //...se establecio un valor por defecto
+                //...no hacer nada
 
             }
 
@@ -46,6 +163,15 @@ public class Direccion{
             //...se establecio unvalor por defecto
 
         }
+        
+        return ultimoID;
+        
+    }
+
+    private static int getNewId(){
+
+        //Obtener el ultimo identificador
+        int idActual = getLastId();
 
         //Buscar el siguiente identificador
         int siguienteIdentificador = Valor.SIGUIENTE_IDENTIFICADOR;
@@ -64,57 +190,60 @@ public class Direccion{
         
         Estado estadoDevolver = Estado.ERROR;
         
-        AlfaNumerico alfa1 = AlfaNumerico.nuevo();
-        AlfaNumerico alfa2 = AlfaNumerico.nuevo();
-        AlfaNumerico alfa3 = AlfaNumerico.nuevo();
-        AlfaNumerico alfa4 = AlfaNumerico.nuevo();
-        alfa1.setValor("asd");
+        //AlfaNumerico alfa1 = AlfaNumerico.nuevo();
+        //AlfaNumerico alfa2 = AlfaNumerico.nuevo();
+        //AlfaNumerico alfa3 = AlfaNumerico.nuevo();
+        //AlfaNumerico alfa4 = AlfaNumerico.nuevo();
+        //AlfaNumerico alfa5 = AlfaNumerico.nuevo();
         
-        alfa4.setValor("sdhfkjlghsdklfjg");
-        estadoDevolver = alfa4.guardar();
         
-        if(estadoDevolver == Estado.ERROR_PERSISTENCIA_INCORRECTA){
-            System.out.println("algo no anda");
-        }else{
-            System.out.println("funciona");
-        }
+        
+        //alfa5.setValor("sdhfkjlghsdklfjg");
+        
+        //System.out.println("ID: " + alfa5.getId());
+        //estadoDevolver = alfa5.guardar();
+        //estadoDevolver = AlfaNumerico.getInformacion();
+        
+        //System.out.println("Antes de pedir un objeto nuevo");
+        
+        int numero = 1194;
+        AlfaNumerico asd = AlfaNumerico.nuevo("25 de mayo");
+        Direccion asdd = Direccion.nuevo(asd, numero);
+        Persona asddd = Persona.nuevo(asd, asd, numero, asdd);
+        
+        //System.out.println("Despues de pedir un objeto nuevo");
+        
+        
+        
+//        if(estadoDevolver == Estado.ERROR_PERSISTENCIA_INCORRECTA){
+//            System.out.println("algo no anda");
+//        }else{
+//            System.out.println("funciona");
+//        }
         
         return estadoDevolver;
         
     }
     
-    public static Estado guardar(){
+    private Estado guardar(){
         
         Estado estadoDevolver = Estado.ERROR;
         
-        System.out.println(1.1);
-        // Instancias la clase que hemos creado anteriormente
-        ConexionMySql conexionLocalSQL = ConexionMySql.nuevo();
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatement(CANTIDAD_DE_CAMPOS, NOMBRE_TABLA);
         
-        System.out.println(1.2);
-        // Llamas al método que tiene la clase y te devuelve una conexión
-        Connection conector = conexionLocalSQL.conectarMySQL();
-        
-        System.out.println(1.3);
-        // Query que usarás para hacer lo que necesites
-        String sentenciaSQL = "";
-
-        // Query
-        sentenciaSQL =  "INSERT INTO alfanumerico (valor) VALUES (\"fghj\")";
-        try{
+        try {
             
-            // PreparedStatement
-            System.out.println(1.4);
-            PreparedStatement pstm = conector.prepareStatement(sentenciaSQL);
-            System.out.println(1.5);
-            System.out.println(pstm);
-            ResultSet asd = pstm.executeQuery();
-            System.out.println(1.6);
-            System.out.println("Funciona la conexion");
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            prepared.setInt(LUGAR_DEL_CAMPO_NUMERO, this.numero);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID_CALLE, this.idCalle);
+            prepared.executeUpdate();
             
-        }catch(Exception e){
+            estadoDevolver = Estado.EXITO;
             
-            System.out.println("Fallo la consulta en modelo/direccion.guardar");
+        } catch (Exception e) {
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
             
         }
         
@@ -127,12 +256,60 @@ public class Direccion{
     private Direccion() {
 
         //Asignar un identificador
-        this.id = getNewId();
+        //this.id = getNewId();
 
 
     }
+    
+    private Direccion(int idActual) {
 
-    protected static Direccion nuevo(){
+        //Asignar un identificador
+        this.id = idActual;
+
+
+    }
+    
+    protected static Direccion nuevo(AlfaNumerico calle, int numero){
+
+        //Crear un objeto a devolver
+        Direccion objetoDevolver = Direccion.OBJETO_INVALIDO;
+
+        //Obtener el siguiente identificador
+        int identificador = getNewId();
+        
+        //Crear un nuevo objeto
+        Direccion objetoNuevo = new Direccion(identificador);
+
+        //Agregar a la lista de control
+        Estado seAgrego = addNewObjeto(objetoNuevo);
+
+        //Si se agrega con exito
+        if(seAgrego == Estado.EXITO){
+            
+            //Asignar el valor recibido por defecto
+            Estado seSeteoCalle = objetoNuevo.setCalle(calle);
+            Estado seSeteoNumero = objetoNuevo.setNumero(numero);
+            
+            Estado seSeteoIdAlfa = objetoNuevo.setIdAlfa(calle.getId());
+            
+            objetoDevolver = objetoNuevo;
+            
+            Estado seGuardo = objetoDevolver.guardar();
+
+        }else{
+
+            //TODO capturar el error generado por un ingreso erroneo a la lista
+            listaObjetos.remove(objetoDevolver);
+            //...se establecio un valor por defecto
+
+        }
+
+        //Devolver el objeto requerido
+        return objetoDevolver;
+
+    }
+
+    private static Direccion nuevo(){
 
         //Crear un objeto a devolver
         Direccion objetoDevolver = Direccion.OBJETO_INVALIDO;
@@ -202,25 +379,51 @@ public class Direccion{
     }//...fin funcion
     
     //Setter
-
-    protected void setCalle(AlfaNumerico calle) {
+    
+    private Estado setIdAlfa(int idAlfaRecibido){
         
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.idCalle = idAlfaRecibido;
+        
+        return estadoDevolver;
+        
+    }
+
+    private Estado setCalle(AlfaNumerico calle) {
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
         this.calle = calle;
         
+        return estadoDevolver;
+        
     }
 
-    protected void setNumero(int numero) {
+    private Estado setNumero(int numero) {
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
         this.numero = numero;
+        
+        return estadoDevolver;
+        
     }
-    
-    
     
     //Getter
+    
+    protected int getId(){
+        
+        return this.id;
+    }
 
     /**
-     *Devuelve la calle de una direccion.
+     *Devuelve la numeroActual de una direccion.
      * 
-     * @return AlfaNUmerico calle
+     * @return AlfaNUmerico numeroActual
      * 
      */
 
@@ -234,11 +437,11 @@ public class Direccion{
     }
 
     /**
-     * Esta funcion devuelve el numero de calle de una direccion.
+     * Esta funcion devuelve el numeroActual de numeroActual de una direccion.
      * Se debe establecer su validez a traves de una
      * funcion de la interfaz del paquete contenedor.
      * 
-     * @return int numero
+     * @return int numeroActual
      */
     public int getNumero() {
         

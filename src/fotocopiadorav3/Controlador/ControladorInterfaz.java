@@ -41,12 +41,12 @@ public class ControladorInterfaz extends Application{
     */
     
     public void iniciarSecion(){
-        //todo: Mejorar
+        //TODO: Mejorar
         cargarPaginaPrincipal();
     }
     
     public static void iniciarSesion(String nombre, String contrasenia){
-        //todo: Mejorar
+        //TODO: Mejorar
         cargarPaginaPrincipal2();
     }
     
@@ -68,20 +68,15 @@ public class ControladorInterfaz extends Application{
         //si es admin, se crea el usuario
         //si no lo es, se deniega
         
-        AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico();
-        nombre.setValor(nombreRecibido);
+        AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
         
-        AlfaNumerico apellido = ModeloInterfaz.getAlfaNumerico();
-        apellido.setValor(apellidoRecibido);
+        AlfaNumerico apellido = ModeloInterfaz.getAlfaNumerico(apellidoRecibido);
         
-        AlfaNumerico nombreUsuario = ModeloInterfaz.getAlfaNumerico();
-        nombreUsuario.setValor(nombreUsuarioRecibido);
+        AlfaNumerico nombreUsuario = ModeloInterfaz.getAlfaNumerico(nombreUsuarioRecibido);
         
-        AlfaNumerico contrasenia = ModeloInterfaz.getAlfaNumerico();
-        contrasenia.setValor(contraseniaRecibido);
+        AlfaNumerico contrasenia = ModeloInterfaz.getAlfaNumerico(contraseniaRecibido);
         
-        AlfaNumerico calleDomicilio = ModeloInterfaz.getAlfaNumerico();
-        calleDomicilio.setValor(calleDomicilioRecibido);
+        AlfaNumerico calleDomicilio = ModeloInterfaz.getAlfaNumerico(calleDomicilioRecibido);
         int numeroDomicilio = Integer.valueOf(numeroDomicilioRecibido);
         Direccion domicilio = ModeloInterfaz.getDireccion(calleDomicilio, numeroDomicilio);
         
@@ -210,7 +205,7 @@ public class ControladorInterfaz extends Application{
     */
     
     /*
-    Este metodo es llamado cuando el usuario y la contraseña son correctos, se debe cargar la pagina principal
+    Este method es llamado cuando el usuario y la contraseña son correctos, se debe cargar la pagina principal
     con los pedidos cuyos estados sean pediente o terminados(no buscados)
     */
     public void cargarPaginaPrincipal(){

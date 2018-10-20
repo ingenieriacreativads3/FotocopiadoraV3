@@ -119,6 +119,6 @@ public class Error {
 
     //Getter
 
-    //TODO recargar los metodos toString, hashCode y equals
+    //TODO recargar los methods toString, hashCode y equals
     
 }

@@ -14,10 +14,10 @@ import fotocopiadorav3.Modelo.*;
 public class GestorPedido {
 
     /**
-     * Metodo para crear un pedido. Recive por parametro: Un libro y su cantidad
+     * Method para crear un pedido. Recive por parametro: Un libro y su cantidad
      * Un legajo.
      *
-     * El metodo deberia devolver una clave de pedido. La clave de pedido es el
+     * El method deberia devolver una clave de pedido. La clave de pedido es el
      * valor con el cual un cliente puede retirar el pedido.
      * @param nombreYApellidoPersona
      * @param IDFotocopia
@@ -43,7 +43,7 @@ public class GestorPedido {
     }
 
     /**
-     * Metodo para modificar un pedido.
+     * Method para modificar un pedido.
      *
      * Agrega libros o quita libros del pedido.
      *
@@ -53,21 +53,22 @@ public class GestorPedido {
     }
 
     /**
-     * Metodo que deja sentado que el fotocopiado de algun libro fue hecho
+     * Method que deja sentado que el fotocopiado de algun libro fue hecho
      */
     protected void registrarFotocopiado() {
 
     }
 
     /**
-     * Metodo para cancelar pedido.
+     * Method para cancelar pedido.
+     * 
      */
     protected void cancelarPedido() {
 
     }
 
     /**
-     * Metodo que registra un retiro de pedido. Recibe como paremetro un numero
+     * Method que registra un retiro de pedido. Recibe como paremetro un numero
      * de pedido.
      */
     protected void retirarPedido() {

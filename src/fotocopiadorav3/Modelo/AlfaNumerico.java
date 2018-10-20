@@ -38,34 +38,138 @@ public class AlfaNumerico implements Serializable{
     
     //Rutinas
     
-    protected Estado guardar(){
+    protected static AlfaNumerico getForId(int idRecibido){
+        
+        AlfaNumerico alfaDevolver = OBJETO_INVALIDO;
+        
+        Estado seObtuvo = getInformacion();
+        
+        if(seObtuvo == Estado.EXITO){
+            
+            for(AlfaNumerico alfaActual : listaObjetos){
+                
+                if(alfaActual.id == idRecibido){
+                    
+                    alfaDevolver = alfaActual;
+                    
+                }else{
+                    
+                    //...se establecion un valor por defecto
+                    
+                }
+            }
+            
+        }else{
+            
+            //TODO capturar el error producido por no haber capturado la info de la db
+            System.out.println("Se rompio en Alfanumerico.getForId();");
+            
+        }
+        
+        return alfaDevolver;
+        
+    }
+    
+    private static int getLastId(){
+        
+        int ultimoID = 0;
+        
+        Estado estadoConsulta = getInformacion();
+
+        if(listaObjetos != null){
+
+            if(estadoConsulta == Estado.EXITO){
+
+                for(AlfaNumerico alfaActual : listaObjetos){
+
+                    if(alfaActual.id > ultimoID){
+
+                        ultimoID = alfaActual.id;
+
+                    }else{
+
+                        //...no hacer nada
+
+                    }
+
+                }
+
+            }else{
+
+                //...no hacer nada
+
+            }
+
+        }else{
+
+            //...se establecio unvalor por defecto
+
+        }
+        
+        return ultimoID;
+        
+    }
+    
+    private static Estado getInformacion(){
         
         Estado estadoDevolver = Estado.ERROR;
         
-        System.out.println(1);
+        ResultSet rs = null;
+        
         ConexionMySql conn = new ConexionMySql();
-        System.out.println(2);
-        PreparedStatement prepared = conn.getPreparedStatement(CANTIDAD_DE_CAMPOS, NOMBRE_TABLA);
-        System.out.println(3);
+        PreparedStatement prepared = conn.getPreparedStatement(NOMBRE_TABLA);
         
         try {
-            System.out.println(4);
-            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
             
-            System.out.println("Id: " + this.id);
+            rs = prepared.executeQuery();
             
-            System.out.println(5);
-            prepared.setString(LUGAR_DEL_CAMPO_VALOR, this.valor);
+            while (rs.next()) {
+                
+                int id = rs.getInt(CAMPO_ID);
+                String valor = rs.getString(CAMPO_VALOR);
+                
+                AlfaNumerico asd = nuevo(id, valor);
+                
+                //TODO quitar estos sout
+//                System.out.println("Size: " + getSetSize());
+//                
+//                System.out.println("ID: " + id + ", Valor: " + valor);
+                
+            }
             
-            System.out.println(prepared.toString());
-            
-            System.out.println(6);
-            prepared.executeUpdate();
-            
-            System.out.println(7);
             estadoDevolver = Estado.EXITO;
             
-            System.out.println(8);
+        } catch (Exception e) {
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        //System.out.println(prepared.toString());
+        
+        return estadoDevolver;
+        
+    }
+    
+    /**
+     * Esta funcion guarda la informacion de esta clase en la BD
+     * @return 
+     */
+    
+    private Estado guardar(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatement(CANTIDAD_DE_CAMPOS, NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            prepared.setString(LUGAR_DEL_CAMPO_VALOR, this.valor);
+            prepared.executeUpdate();
+            
+            estadoDevolver = Estado.EXITO;
             
         } catch (Exception e) {
             
@@ -76,12 +180,10 @@ public class AlfaNumerico implements Serializable{
         return estadoDevolver;
     }
     
-    protected static AlfaNumerico valueOf(String palabra){
+    protected static AlfaNumerico valueOf(String palabraRecibida){
         
         //Establecer un valor por defecto
-        AlfaNumerico alfaNumericoDevolver = AlfaNumerico.OBJETO_INVALIDO;
-        
-        
+        AlfaNumerico alfaNumericoDevolver = AlfaNumerico.nuevo(palabraRecibida);
         
         return alfaNumericoDevolver;
         
@@ -89,8 +191,8 @@ public class AlfaNumerico implements Serializable{
 
     private static int getNewId(){
 
-        //Crear un nuevo identificador
-        int idActual = listaObjetos.size();
+        //Obtener el ultimo identificador
+        int idActual = getLastId();
 
         //Buscar el siguiente identificador
         int siguienteIdentificador = Valor.SIGUIENTE_IDENTIFICADOR;
@@ -114,7 +216,30 @@ public class AlfaNumerico implements Serializable{
      * @return AlfaNumerico alfanumerico
      */
     
-    public AlfaNumerico(){}
+    private AlfaNumerico(){}
+    
+    private static AlfaNumerico nuevo(int idActual, String valorActual) {
+        
+        AlfaNumerico alfaDevolver = new AlfaNumerico();
+        
+        alfaDevolver.id = idActual;
+        alfaDevolver.valor = valorActual;
+        
+        Estado seAgrego = AlfaNumerico.addNewObjeto(alfaDevolver);
+        
+        if(!(seAgrego == Estado.EXITO)){
+            
+            //listaObjetos.remove(alfaDevolver);
+            
+        }else{
+            
+            //...no hacer nada
+            
+        }
+        
+        return alfaDevolver;
+        
+    }
 
     private AlfaNumerico(int idActual) {
 
@@ -124,7 +249,19 @@ public class AlfaNumerico implements Serializable{
 
     }
 
-    protected static AlfaNumerico nuevo(){
+    /**
+     * Esta funcion fue reemplazada por
+     * AlfaNumerico nuevo(String palabraRecibida);
+     * 
+     * Devuelve un objeto alfanumerico con el valor de la palabra
+     * enviada.
+     * 
+     * 
+     * @deprecated 
+     * @return 
+     */
+    
+    private static AlfaNumerico nuevo(){
 
         //Crear un objeto a devolver
         AlfaNumerico objetoDevolver = AlfaNumerico.OBJETO_INVALIDO;
@@ -161,29 +298,51 @@ public class AlfaNumerico implements Serializable{
         //Crear un objeto a devolver
         AlfaNumerico objetoDevolver = AlfaNumerico.OBJETO_INVALIDO;
 
+        //Obtener el siguiente identificador
+        int identificador = getNewId();
+        
         //Crear un nuevo objeto
-        AlfaNumerico objetoNuevo = new AlfaNumerico();
+        AlfaNumerico objetoNuevo = new AlfaNumerico(identificador);
 
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
+        
+        //TODO quitar este sout
+//        System.out.println("Size: " + listaObjetos.size());
 
         //Si se agrega con exito
         if(seAgrego == Estado.EXITO){
             
             //Asignar el valor recibido por defecto
-            Estado seSeteo = objetoDevolver.setValor(palabraRecibida);
+            Estado seSeteo = objetoNuevo.setValor(palabraRecibida);
             
-            if(seAgrego == Estado.EXITO){
+            if(seSeteo == Estado.EXITO){
                 
                 //Establecer el objeto a devolver
                 objetoDevolver = objetoNuevo;
                 
+                //TODO quitar este sout
+                //System.out.println("anda bien el set");
+                
+                Estado seGuardo = objetoDevolver.guardar();
+                
+                if(seGuardo == Estado.EXITO){
+                    
+                    //...no hacer nada
+                    
+                }else{
+                    
+                    listaObjetos.remove(objetoDevolver);
+                    
+                }
+                
             }else{
                 
-                //TODO aqui capturar el error producido por no setear el valor
-                //recibido como argumento
                 
-                //...se establecio un valor por defecto
+                //TODO capturar el error recibido por no poder agregar el valor
+                //al objeto
+                
+                //...no saber que hacer
                 
             }//...fin
 
@@ -221,6 +380,9 @@ public class AlfaNumerico implements Serializable{
 
                 //...asignar el estado correspondiente
                 estadoDevolver = Estado.EXITO;
+                
+                //TODO quitar este sout
+                //System.out.println("Se agrego este objeto: " + objetoAgregar.valor + " ID: " + objetoAgregar.id);
 
             }else{
 
@@ -248,43 +410,48 @@ public class AlfaNumerico implements Serializable{
      * @deprecated 
      * @param id 
      */
-    public void setId(int id) {
+    
+    private void setId(int id) {
         this.id = id;
     }
     
-    
-    
-    public Estado setValor(String valorRecibido){
+    private Estado setValor(String valorRecibido){
         
         //Establecer un valor por defecto
-        Estado estadoDevolver = Estado.ERROR_VALOR_NO_SETEADO;
+        Estado estadoDevolver = Estado.EXITO;
         
         //Asignar el valor recibido
         this.valor = valorRecibido;
         
-        //Verificar que la asignacion se realizo con exito
-        if(!this.equals(OBJETO_INVALIDO)){
-            
-            //...establecer el valor de dato no agregado
-            estadoDevolver = Estado.EXITO;
-            
-        }else{
-            
-            //...se establecio un valor por defecto
-            
-        }//..fin
-        
+//        //Verificar que la asignacion se realizo con exito
+//        if(!this.equals(OBJETO_INVALIDO)){
+//            
+//            //...establecer el valor de dato no agregado
+//            estadoDevolver = Estado.EXITO;
+//            
+//        }else{
+//            
+//            //...se establecio un valor por defecto
+//            
+//        }//..fin
+//        
         return estadoDevolver;
         
     }
     
     //Getter
+    
+    protected static int getSetSize(){
+        
+        int size = listaObjetos.size();
+        
+        return size;
+        
+    }
 
     public int getId() {
         return id;
     }
-    
-    
     
     public String getValor() {
 
@@ -315,7 +482,7 @@ public class AlfaNumerico implements Serializable{
 
         final AlfaNumerico objetoRecibido = (AlfaNumerico) objetoActual;
 
-        if(!this.valor.equals(objetoRecibido.valor)){return false;}
+        if(this.hashCode() != objetoRecibido.hashCode()){return false;}
 
         return true;
 

@@ -17,7 +17,7 @@ public class GestorCuenta {
     
    protected void iniciarSecion(){
        /**
-        * El metodo recibe por parametros un usuario y una contraseña.
+        * El method recibe por parametros un usuario y una contraseña.
         * En caso de ser datos validos, devuelve true.
         * En case de ser datos incorrectos, devuelve false.
         */
