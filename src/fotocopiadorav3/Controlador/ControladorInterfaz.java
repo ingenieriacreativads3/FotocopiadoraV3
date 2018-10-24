@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class ControladorInterfaz extends Application{
     
     protected GestorPedido GestorPedidos = new GestorPedido();
-    protected GestorCuenta GestorCuenta = new GestorCuenta();
+    //protected GestorCuenta GestorCuenta = new GestorCuenta();
     protected GestorUsuario GestorUsuario = new GestorUsuario();
     protected GestorCliente GestorCliente = new GestorCliente();
     protected GestorArticulo GestorArticulo = new GestorArticulo();
@@ -31,17 +31,19 @@ public class ControladorInterfaz extends Application{
     *
     */
     
-    public static void iniciarSesion(String nombre, String contrasenia){
-        //TODO: Mejorar
-        cargarPaginaPrincipal2();
+    public static void iniciarSesion(String usuario, String contrasenia){
+        Estado estadoVerificacion;
+        estadoVerificacion = GestorCuenta.VerificarUsuarioYContraseña(usuario, contrasenia);
+        if(estadoVerificacion == Estado.USSER_PASS_CORRECTOS){
+            cargarPaginaPrincipal();
+        }
+        else{
+            String mensajeError = estadoVerificacion.toString();
+            int IDError = estadoVerificacion.getID();
+            cargarMensajeError(mensajeError, IDError);
+        }
     }
     
-    public Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
-        
-        Estado exitoAlIniciar = GestorCuenta.VerificarUsuarioYContraseña(usuario, contraseña);
-        
-        return exitoAlIniciar;
-    }
     
     /*
     * 
@@ -69,7 +71,17 @@ public class ControladorInterfaz extends Application{
         int DNI = Integer.valueOf(DNIRecibido);
 
         
-        GestorUsuario.altaUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, DNI);
+        Estado exitoAlta = GestorUsuario.altaUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, DNI);
+        
+        
+        if(exitoAlta != Estado.DATOS_VALIDOS){
+            String mensajeError = exitoAlta.toString();
+            int IDError = exitoAlta.getID();
+            cargarMensajeError(mensajeError, IDError);
+        }
+        
+        
+        
     }
     
     public void bajaUsuario(){
@@ -201,8 +213,12 @@ public class ControladorInterfaz extends Application{
         
     }
 
-    public static void cargarPaginaPrincipal2(){
+    public static void cargarPaginaPrincipal(){
         Vista2Interfaz.renderizarPaginaPrincipal();
+    }
+    
+    public static void cargarMensajeError(String mensajeError, int IDError){
+        //Vista2Interfaz.renderizarMensajeError(mensajeError);
     }
     
     //Se cargara entonces los pedidos con estado impreso y cancelado
