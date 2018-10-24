@@ -60,6 +60,8 @@ public class Usuario{
             prepared.executeUpdate();
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Usuario.class.toString() + "guardar");
             
         } catch (Exception e) {
             
@@ -100,6 +102,8 @@ public class Usuario{
             }
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Usuario.class.toString() + "getInformacion");
             
         } catch (Exception e) {
             

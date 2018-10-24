@@ -130,7 +130,8 @@ public class AlfaNumerico implements Serializable{
                 
                 AlfaNumerico asd = nuevo(id, valor);
                 
-                //TODO quitar estos sout
+               
+//                TODO quitar estos sout
 //                System.out.println("Size: " + getSetSize());
 //                
 //                System.out.println("ID: " + id + ", Valor: " + valor);
@@ -138,6 +139,9 @@ public class AlfaNumerico implements Serializable{
             }
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            
+            conn.closeConn(AlfaNumerico.class.toString() + "getInformacion");
             
         } catch (Exception e) {
             
@@ -170,6 +174,8 @@ public class AlfaNumerico implements Serializable{
             prepared.executeUpdate();
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(AlfaNumerico.class.toString() + "guardar");
             
         } catch (Exception e) {
             

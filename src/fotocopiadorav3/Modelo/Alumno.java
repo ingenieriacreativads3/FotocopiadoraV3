@@ -46,6 +46,8 @@ public class Alumno{
             prepared.executeUpdate();
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Alumno.class.toString() + "guardar");
             
         } catch (Exception e) {
             
@@ -83,6 +85,8 @@ public class Alumno{
             }
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Alumno.class.toString() + "getInformacion");
             
         } catch (Exception e) {
             

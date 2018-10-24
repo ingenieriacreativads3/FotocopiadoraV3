@@ -35,6 +35,8 @@ public class ConexionMySql {
     // Clave de usuario
     private String password = Environment.PASSWORD;
     
+    private Connection conn;
+    
     private static ConexionMySql conexionMySql = null;
     
     //Constructor
@@ -85,7 +87,6 @@ public class ConexionMySql {
     
     protected PreparedStatement getPreparedStatement(String nombreTabla){
         
-        Connection conn = null;
         PreparedStatement prepStmtDevolver = null;
         String sqlStmt = "SELECT * FROM " + nombreTabla;
         
@@ -95,13 +96,14 @@ public class ConexionMySql {
             String connectionUrl = Environment.URL;
             String connectionUser = Environment.USERNAME;
             String connectionPassword = Environment.PASSWORD;
-            conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
+            this.conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
             
-            prepStmtDevolver = conn.prepareStatement(sqlStmt);
+            prepStmtDevolver = this.conn.prepareStatement(sqlStmt);
             
         } catch (Exception e) {
             
             //..se establecio un valor por defecto
+            System.out.println("se rompe por cerrar la conexion");
             
         }
         
@@ -109,9 +111,22 @@ public class ConexionMySql {
         
     }
     
+    protected void closeConn(String nombreClase){
+        
+        try {
+            
+            this.conn.close();
+            
+        } catch (Exception e) {
+            
+            System.out.println("no se cierra la conexion en el metodo: " + nombreClase);
+            
+        }
+        
+    }
+    
     protected PreparedStatement getPreparedStatement(int cantidadAtributos, String nombreTabla){
         
-        Connection conn = null;
         PreparedStatement prepStmtDevolver = null;
         
         String sqlStmt = "asd";
@@ -141,9 +156,9 @@ public class ConexionMySql {
             String connectionUrl = Environment.URL;
             String connectionUser = Environment.USERNAME;
             String connectionPassword = Environment.PASSWORD;
-            conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
+            this.conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
             
-            prepStmtDevolver = conn.prepareStatement(sqlStmt);
+            prepStmtDevolver = this.conn.prepareStatement(sqlStmt);
             
             
         } catch (Exception e) {

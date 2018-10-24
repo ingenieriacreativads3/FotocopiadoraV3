@@ -6,6 +6,7 @@
 package fotocopiadorav3;
 
 import fotocopiadorav3.Controlador.ControladorInterfaz;
+import fotocopiadorav3.Modelo.Direccion;
 import javafx.application.*;
 import javafx.stage.Stage;
 
@@ -26,12 +27,12 @@ public class FotocopiadoraV3 extends Application{
     public static void main(String[] args){
         
         int i = 1;
-        ControladorInterfaz.comenzar();
-//        try{
-//            Direccion.guardar(2);
-//        }catch(Exception e){
-//            System.out.println("No entra");
-//        }
+//        ControladorInterfaz.comenzar();
+        try{
+            Direccion.noUsarEstaFuncionJamas(i);
+        }catch(Exception e){
+            System.out.println("No entra");
+        }
         
         
     }

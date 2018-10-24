@@ -93,6 +93,8 @@ public class Persona{
             prepared.executeUpdate();
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Persona.class.toString() + "guardar");
             
         } catch (Exception e) {
             
@@ -163,6 +165,8 @@ public class Persona{
             }
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Persona.class.toString() + "getInformacion");
             
         } catch (Exception e) {
             

@@ -115,6 +115,8 @@ public class Direccion{
             }
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Direccion.class.toString() + "getInformacion");
             
         } catch (Exception e) {
             
@@ -208,10 +210,19 @@ public class Direccion{
         
         int numero = 1194;
         AlfaNumerico asd = AlfaNumerico.nuevo("25 de mayo");
+        System.out.println("pasa el primer alfanumerico");
+        
         Direccion asdd = Direccion.nuevo(asd, numero);
+        System.out.println("Pasa la primera direccion");
+        
         Persona asddd = Persona.nuevo(asd, asd, numero, asdd);
+        System.out.println("Pasa la primera persona");
+        
         Usuario asdddd = Usuario.nuevo(asddd, asd, asd);
+        System.out.println("Pasa el primer usuario");
+        
         Alumno asdddddd = Alumno.nuevo(numero, asddd);
+        System.out.println("pasa el primer alumno");
         
         //System.out.println("Despues de pedir un objeto nuevo");
         
@@ -242,6 +253,8 @@ public class Direccion{
             prepared.executeUpdate();
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Direccion.class.toString() + "guardar");
             
         } catch (Exception e) {
             
