@@ -13,6 +13,15 @@ import fotocopiadorav3.Modelo.*;
  */
 public class GestorArticulo {
     
+    /**
+     * 
+     * @param nombre
+     * @param autor
+     * @param precio
+     * @param materia
+     * @return
+     */
+    
     protected Estado altaArticulo(String nombre, String autor, float precio, String materia){
         Estado ArticuloCreado = Estado.ERROR;
         
@@ -25,16 +34,31 @@ public class GestorArticulo {
         return ArticuloCreado;
     }
     
+    /**
+     * 
+     * @param IDArticulo 
+     */
     protected void bajaArticulo(AlfaNumerico IDArticulo){
         
     }
     
+    /**
+     *
+     * @param IDArticulo
+     */
     protected void modificacionArticulo(AlfaNumerico IDArticulo){
         
     }
     
     
-    
+    /**
+     * 
+     * @param nombre
+     * @param autor
+     * @param precio
+     * @param materia
+     * @return 
+     */
     private boolean datosCorrectos(String nombre, String autor, float precio, String materia){
         
         try{
