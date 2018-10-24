@@ -171,7 +171,7 @@ public class ModificarPedido extends javax.swing.JFrame {
         String importe=importeTF.getText();
         String senia=seniaTF.getText();
 
-        Vista2Interfaz.enviarDatosNuevoPedido(alumno, articulosNombres, articulosFechasEst, articulosCantidades, articulosPreciosUnit, articulosSubtotales, importe, senia);
+        Vista2Interfaz.enviarDatosModificarPedido(alumno, articulosNombres, articulosFechasEst, articulosCantidades, articulosPreciosUnit, articulosSubtotales, importe, senia);
 
     }//GEN-LAST:event_aceptarActionPerformed
 

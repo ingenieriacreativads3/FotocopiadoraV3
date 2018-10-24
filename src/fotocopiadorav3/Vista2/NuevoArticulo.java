@@ -211,7 +211,7 @@ public class NuevoArticulo extends javax.swing.JFrame {
         String precio=precioTF.getText();
         String documento=documentoTF.getText();
         
-        Vista2Interfaz.enviarDatosModificarDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
+        Vista2Interfaz.enviarDatosNuevoDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
         
     }//GEN-LAST:event_aceptarActionPerformed
 
