@@ -167,7 +167,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_NuevoUsuarioActionPerformed
 
     private void NuevoDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoDocumentoActionPerformed
-        Vista2Interfaz.renderizarNuevoDocumento();
+        Vista2Interfaz.renderizarNuevoArticulo();
     }//GEN-LAST:event_NuevoDocumentoActionPerformed
 
     private void ModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarUsuarioActionPerformed
@@ -175,7 +175,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ModificarUsuarioActionPerformed
 
     private void ModificarDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarDocumentoActionPerformed
-        Vista2Interfaz.renderizarModificarDocumento();
+        Vista2Interfaz.renderizarModificarArticulo();
     }//GEN-LAST:event_ModificarDocumentoActionPerformed
 
     private void NuevoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoPedidoActionPerformed
