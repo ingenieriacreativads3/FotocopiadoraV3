@@ -35,9 +35,9 @@ public class ModeloInterfaz {
         
     }
     
-    public static Usuario getUsuario(){
+    public static Usuario getNuevoUsuario(Persona personaRecibida, AlfaNumerico nombreRecibido, AlfaNumerico passRecibida){
         
-        Usuario usuarioDevolver = Usuario.nuevo(Persona.OBJETO_INVALIDO);
+        Usuario usuarioDevolver = Usuario.nuevo(personaRecibida, nombreRecibido, passRecibida);
         
         return usuarioDevolver;
         
@@ -129,9 +129,9 @@ public class ModeloInterfaz {
 
     }
     
-    public static Alumno getNuevoAlumno(){
+    public static Alumno getNuevoAlumno(int legajorecibido, Persona personaRecibida){
         
-        Alumno alumnoDevolver = Alumno.nuevo();
+        Alumno alumnoDevolver = Alumno.nuevo(legajorecibido, personaRecibida);
         
         
         
@@ -139,17 +139,25 @@ public class ModeloInterfaz {
         
     }
     
-    public static Usuario getNuevoUsuario(AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, int dniRecibido, Direccion direccionRecibida){
+    public static Usuario getNuevoUsuario(AlfaNumerico nombrePersonaRecibido, AlfaNumerico apellidoRecibido, int dniRecibido, Direccion direccionRecibida, AlfaNumerico nombreUsuarioRecibido, AlfaNumerico passRecibido){
         
-        Persona personaFinal = Persona.nuevo(nombreRecibido, apellidoRecibido, dniRecibido, direccionRecibida);
-        Usuario usuarioDevolver = Usuario.nuevo(personaFinal);
+        Persona personaFinal = Persona.nuevo(nombrePersonaRecibido, apellidoRecibido, dniRecibido, direccionRecibida);
+        Usuario usuarioDevolver = Usuario.nuevo(personaFinal, nombreUsuarioRecibido, passRecibido);
         
         return usuarioDevolver;
         
     }
     
-    
-        // - David Alonso
+    /**
+     * 
+     * David Alonso
+     * 
+     * @param nombre
+     * @param autor
+     * @param precio
+     * @param materia
+     * @return 
+     */
     public static Estado adicionarArticulo(String nombre, String autor, float precio, String materia){
         Estado creacion = Estado.ERROR;
         

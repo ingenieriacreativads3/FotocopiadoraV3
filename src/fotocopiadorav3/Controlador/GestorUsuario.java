@@ -20,10 +20,7 @@ public class GestorUsuario {
         
         if(datosCorrectos(nombreRecibido, apellidoRecibido, nombreUsuarioRecibido, passwordRecibida, domicilioRecibido, dniRecibido)){
             
-            Usuario usuarioCreado = ModeloInterfaz.getNuevoUsuario(nombreRecibido, apellidoRecibido, dniRecibido, domicilioRecibido);
-            
-            usuarioCreado.setNombreUsuario(nombreUsuarioRecibido);
-            usuarioCreado.setPass(passwordRecibida);
+            Usuario usuarioCreado = ModeloInterfaz.getNuevoUsuario(nombreRecibido, apellidoRecibido, dniRecibido, domicilioRecibido, nombreUsuarioRecibido, passwordRecibida);
             
             //usuarioCreadoConExito = ModeloInterfaz.adicionarUsuario(nombreRecibido, apellidoRecibido, nombreUsuarioRecibido, passwordRecibida, domicilioRecibido, dniRecibido);
         }

@@ -44,6 +44,38 @@ public class Persona{
     
     //Rutinas
     
+    protected static Persona getForId(int idRecibido){
+        
+        Persona personaDevolver = OBJETO_INVALIDO;
+        
+        Estado seObtuvo = getInformacion();
+        
+        if(seObtuvo == Estado.EXITO){
+            
+            for(Persona personaActual : listaObjetos){
+                
+                if(personaActual.id == idRecibido){
+                    
+                    personaDevolver = personaActual;
+                    
+                }else{
+                    
+                    //...se establecion un valor por defecto
+                    
+                }
+            }
+            
+        }else{
+            
+            //TODO capturar el error producido por no haber capturado la info de la db
+            System.out.println("Se rompio en Direccion.getForId();");
+            
+        }
+        
+        return personaDevolver;
+        
+    }
+    
     private Estado guardar(){
         
         Estado estadoDevolver = Estado.ERROR;
@@ -72,7 +104,7 @@ public class Persona{
         
     }
     
-    private static Persona nuevo(int idRecibido, AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, int dniRecibido, Direccion direccionRecibida) {
+    private static Persona nuevo(int idRecibido, AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, int dniRecibido, Direccion direccionRecibida, int idNombreRecibido, int idApellidoRecibido, int idDireccionrecibido) {
         
         Persona personaDevolver = new Persona();
         
@@ -81,6 +113,9 @@ public class Persona{
         personaDevolver.apellido = apellidoRecibido;
         personaDevolver.dni = dniRecibido;
         personaDevolver.direccion = direccionRecibida;
+        personaDevolver.idNombre = idNombreRecibido;
+        personaDevolver.idApellido = idApellidoRecibido;
+        personaDevolver.idDireccion = idDireccionrecibido;
         
         Estado seAgrego = Persona.addNewObjeto(personaDevolver);
         
@@ -114,16 +149,16 @@ public class Persona{
             while (rs.next()) {
                 
                 int id = rs.getInt(CAMPO_ID);
-                int dni = rs.getInt(CAMPO_DNI);
+                int dniObjeto = rs.getInt(CAMPO_DNI);
                 int id_nombre = rs.getInt(CAMPO_ID_NOMBRE);
                 int id_apellido = rs.getInt(CAMPO_ID_APELLIDO);
                 int id_direccion = rs.getInt(CAMPO_ID_DIRECCION);
                 
-                AlfaNumerico nombreAlfa = AlfaNumerico.getForId(id_nombre);
-                AlfaNumerico apelldioAlfa = AlfaNumerico.getForId(id_apellido);
-                Direccion direccionDire = Direccion.getForId(id_direccion);
+                AlfaNumerico nombreObjeto = AlfaNumerico.getForId(id_nombre);
+                AlfaNumerico apellidoObjeto = AlfaNumerico.getForId(id_apellido);
+                Direccion direccionObjeto = Direccion.getForId(id_direccion);
                 
-                Persona asd = Persona.nuevo(id, nombreAlfa, apelldioAlfa, dni, direccionDire);
+                Persona asd = Persona.nuevo(id, nombreObjeto, apellidoObjeto, dniObjeto, direccionObjeto, nombreObjeto.getId(), apellidoObjeto.getId(), direccionObjeto.getId());
                 
             }
             
@@ -458,11 +493,11 @@ public class Persona{
     }
 
     /**
-     * Esta funcion devulve el dni de la persona.
+     * Esta funcion devulve el dniObjeto de la persona.
      * Se debe establecer su validez a traves de una
      * funcion de la interfaz del paquete contenedor.
      * 
-     * @return int dni
+     * @return int dniObjeto
      */
     
     public int getDni() {

@@ -101,11 +101,11 @@ public class Direccion{
                 
                 int id = rs.getInt(CAMPO_ID);
                 int numeroActual = rs.getInt(CAMPO_NUMERO);
-                int idAlfaNumerico = rs.getInt(CAMPO_ID_CALLE);
+                int idCalle = rs.getInt(CAMPO_ID_CALLE);
                 
-                AlfaNumerico calleActual = AlfaNumerico.getForId(idAlfaNumerico);
+                AlfaNumerico calleActual = AlfaNumerico.getForId(idCalle);
                 
-                Direccion asd = nuevo(id, calleActual, numeroActual, idAlfaNumerico);
+                Direccion asd = nuevo(id, calleActual, numeroActual, idCalle);
                 
                 //TODO quitar estos sout
 //                System.out.println("Size: " + getSetSize());
@@ -186,7 +186,7 @@ public class Direccion{
     
     //Base de datos
     
-    public static Estado guardar(int i){
+    public static Estado noUsarEstaFuncionJamas(int i){
         
         Estado estadoDevolver = Estado.ERROR;
         
@@ -201,7 +201,7 @@ public class Direccion{
         //alfa5.setValor("sdhfkjlghsdklfjg");
         
         //System.out.println("ID: " + alfa5.getId());
-        //estadoDevolver = alfa5.guardar();
+        //estadoDevolver = alfa5.noUsarEstaFuncionJamas();
         //estadoDevolver = AlfaNumerico.getInformacion();
         
         //System.out.println("Antes de pedir un objeto nuevo");
@@ -210,11 +210,13 @@ public class Direccion{
         AlfaNumerico asd = AlfaNumerico.nuevo("25 de mayo");
         Direccion asdd = Direccion.nuevo(asd, numero);
         Persona asddd = Persona.nuevo(asd, asd, numero, asdd);
+        Usuario asdddd = Usuario.nuevo(asddd, asd, asd);
+        Alumno asdddddd = Alumno.nuevo(numero, asddd);
         
         //System.out.println("Despues de pedir un objeto nuevo");
         
         
-        
+            
 //        if(estadoDevolver == Estado.ERROR_PERSISTENCIA_INCORRECTA){
 //            System.out.println("algo no anda");
 //        }else{

@@ -11,7 +11,7 @@ import java.util.*;
  *
  * @author Tomás Contreras
  */
-public class Documento {
+public class Articulo {
     
     private final int id;
     private Archivo documento;
@@ -26,9 +26,9 @@ public class Documento {
     
     private Materia materia;
             
-    protected final static Documento OBJETO_INVALIDO = new Documento();
+    protected final static Articulo OBJETO_INVALIDO = new Articulo();
 
-    private static Set<Documento> listaObjetos = new HashSet<>();
+    private static Set<Articulo> listaObjetos = new HashSet<>();
 
     private static int getNewId(){
 
@@ -48,7 +48,7 @@ public class Documento {
 
     //Constructor
 
-    private Documento() {
+    private Articulo() {
 
         //Asignar un identificador
         this.id = getNewId();
@@ -56,13 +56,13 @@ public class Documento {
 
     }
 
-    protected static Documento nuevo(){
+    protected static Articulo nuevo(){
 
         //Crear un objeto a devolver
-        Documento objetoDevolver = Documento.OBJETO_INVALIDO;
+        Articulo objetoDevolver = Articulo.OBJETO_INVALIDO;
 
         //Crear un nuevo objeto
-        Documento objetoNuevo = new Documento();
+        Articulo objetoNuevo = new Articulo();
 
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
@@ -93,10 +93,10 @@ public class Documento {
         Estado estadoDevolver= Estado.ERROR;
 
         //Si el objeto recibido es del tipo correcto
-        if(objetoActual.getClass() == Documento.class){
+        if(objetoActual.getClass() == Articulo.class){
 
             //Obtener el objeto requerido
-            Documento objetoAgregar = (Documento)objetoActual;
+            Articulo objetoAgregar = (Articulo)objetoActual;
 
             //Agregar el nuevo elemento a la lista
             boolean seAgrego;
@@ -137,7 +137,7 @@ public class Documento {
         if(objetoActual == null){return false;}
         if(this.getClass() != objetoActual.getClass()){return false;}
 
-        final Documento objetoRecibido = (Documento) objetoActual;
+        final Articulo objetoRecibido = (Articulo) objetoActual;
 
         if(this.hashCode() != objetoRecibido.hashCode()){return false;}
 
