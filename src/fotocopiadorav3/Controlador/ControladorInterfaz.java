@@ -5,19 +5,10 @@
  */
 package fotocopiadorav3.Controlador;
 
-import fotocopiadorav3.*;
 import fotocopiadorav3.Modelo.*;
-import fotocopiadorav3.Vista.*;
-
 import fotocopiadorav3.Vista2.*;
-import fotocopiadorav3.Controlador.*;
-import fotocopiadorav3.Vista.FXMLPaginaPrincipalController;
 import java.util.List;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -39,11 +30,6 @@ public class ControladorInterfaz extends Application{
     *   CUENTA
     *
     */
-    
-    public void iniciarSecion(){
-        //TODO: Mejorar
-        cargarPaginaPrincipal();
-    }
     
     public static void iniciarSesion(String nombre, String contrasenia){
         //TODO: Mejorar
@@ -208,17 +194,6 @@ public class ControladorInterfaz extends Application{
     Este method es llamado cuando el usuario y la contraseña son correctos, se debe cargar la pagina principal
     con los pedidos cuyos estados sean pediente o terminados(no buscados)
     */
-    public void cargarPaginaPrincipal(){
-        
-        VistaInterfaz.renderizarPaginaPrincipal();
-        
-    }
-    
-    public static void comenzar(String[] args){
-        
-        VistaInterfaz.renderizarLogin(args);
-        
-    }
     
     public static void comenzar(){
         
@@ -231,48 +206,7 @@ public class ControladorInterfaz extends Application{
     }
     
     //Se cargara entonces los pedidos con estado impreso y cancelado
-    public static void cargarInventario(){
-        
-        VistaInterfaz.renderizarInventario();
-        
-    }
-    
-    public static void cargarNuevoPedido(){
-        
-        VistaInterfaz.renderizarNuevoPedido();
-        
-    }
-
-    public static void cargarModificarPedido(){
-        
-        VistaInterfaz.renderizarModificarPedido();
-        
-    }
-
-    public static void cargarCancelarPedido(){
-        
-        VistaInterfaz.renderizarCancelarPedido();
-        
-    }
-
-    public static void cargarNuevoDocumento(){
-        
-        VistaInterfaz.renderizarNuevoDocumento();
-        
-    }
-
-    public static void cargarModificarDocumento(){
-        
-        VistaInterfaz.renderizarModificarDocumento();
-        
-    }
-
-    public static void cargarEliminarDocumento(){
-        
-        VistaInterfaz.renderizarEliminarDocumento();
-        
-    }
-
+   
     @Override
     public void start(Stage primaryStage) throws Exception {}
     
