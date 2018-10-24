@@ -5,6 +5,8 @@
  */
 package fotocopiadorav3.Vista2;
 
+import javax.swing.JTabbedPane;
+
 /**
  *
  * @author claudio
@@ -17,7 +19,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     public PaginaPrincipal() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +36,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         ModificarDocumento = new javax.swing.JButton();
         NuevoPedido = new javax.swing.JButton();
         ModificarPedido = new javax.swing.JButton();
+        areaTrabajo = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -144,12 +147,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(areaTrabajo)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 470, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(areaTrabajo, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -178,7 +187,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private void ModificarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPedidoActionPerformed
         Vista2Interfaz.renderizarModificarPedido();
     }//GEN-LAST:event_ModificarPedidoActionPerformed
-
+    
+    public JTabbedPane getAreaTrabajo(){
+        return areaTrabajo;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -221,6 +234,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton NuevoDocumento;
     private javax.swing.JButton NuevoPedido;
     private javax.swing.JButton NuevoUsuario;
+    private javax.swing.JTabbedPane areaTrabajo;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
