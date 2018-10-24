@@ -37,7 +37,6 @@ private static Direccion nuevo();
 ///Copiar el metodo, en donde corresponda,
 ///y cambiar el objeto devolvido
 
-************************************************
 protected static AlfaNumerico nuevo(
     String palabraRecibida);
 
@@ -65,7 +64,8 @@ while (rs.next());
 protected static AlfaNumerico getForId(
         int idRecibido);
 
-///Copiar la funcion
+///Copiar la funcion que recibe,
+///todos los parametros
 
 private static AlfaNumerico nuevo(
     int idActual, String valorActual);
@@ -76,6 +76,7 @@ private static AlfaNumerico nuevo(
 ///de la bd con los atributos recibidos
 
 ///Dar por terminada la funcion
+///que recibe TODOS sus parametros
 
 private static Direccion nuevo(
     int idActual, 

@@ -18,7 +18,7 @@ public class GestorArticulo {
      * @param nombre
      * @param autor
      * @param precio
-     * @param materia
+     * @param materiaz
      * @return
      */
     

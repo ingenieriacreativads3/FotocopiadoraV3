@@ -29,5 +29,7 @@ Ejecutar la(s) consulta(s) SQL en la base de datos fotocopiadora:
 
 create table alfanumerico ( id int primary key, valor varchar(30));
 create table direccion( id int primary key, numero int, id_alfanumerico int);
-
+create table persona( id int primary key, dni int, id_nombre int, id_apellido int, id_direccion int);
+create table usuario( id int primary key, id_persona int, id_nombre_usuario int, id_pass int);
+create table alumno ( id int primary key, legajo int, id_persona int);
 

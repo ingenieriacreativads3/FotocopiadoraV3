@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package fotocopiadorav3.Modelo;
+import java.sql.*;
 import java.util.*;
 
 /**
@@ -12,18 +13,133 @@ import java.util.*;
  */
 public class Alumno{
     
-    private final int id;
+    private static final String NOMBRE_TABLA = "alumno";
+    private static final String CAMPO_ID = "id";
+    private static final String CAMPO_LEGAJO = "legajo";
+    private static final String CAMPO_ID_PERSONA = "id_persona";
+    private static final int CANTIDAD_DE_CAMPOS = 3;
+    private static final int LUGAR_DEL_CAMPO_ID = 1;
+    private static final int LUGAR_DEL_CAMPO_LEGAJO = 2;
+    private static final int LUGAR_DEL_CAMPO_ID_PERSONA = 3;
+    
+    private int id;
     private int legajo;
     private Persona persona;
+    private int idPersona;
             
     private final static Alumno OBJETO_INVALIDO = new Alumno();
 
     private static Set<Alumno> listaObjetos = new HashSet<>();
+    
+    private Estado guardar(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatement(CANTIDAD_DE_CAMPOS, NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            prepared.setInt(LUGAR_DEL_CAMPO_LEGAJO, this.legajo);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID_PERSONA, this.idPersona);
+            prepared.executeUpdate();
+            
+            estadoDevolver = Estado.EXITO;
+            
+        } catch (Exception e) {
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
+        
+    }
+
+    private static Estado getInformacion(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ResultSet rs = null;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatement(NOMBRE_TABLA);
+        
+        try {
+            
+            rs = prepared.executeQuery();
+            
+            while (rs.next()) {
+                
+                int id = rs.getInt(CAMPO_ID);
+                int legajoActual = rs.getInt(CAMPO_LEGAJO);
+                int idPersona = rs.getInt(CAMPO_ID_PERSONA);
+                
+                Persona personaObjeto = Persona.getForId(idPersona);
+                
+                Alumno asd = nuevo(id, legajoActual, personaObjeto, idPersona);
+                
+            }
+            
+            estadoDevolver = Estado.EXITO;
+            
+        } catch (Exception e) {
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        //System.out.println(prepared.toString());
+        
+        return estadoDevolver;
+        
+    }
+    
+    private static int getLastId(){
+        
+        int ultimoID = 0;
+        
+        Estado estadoConsulta = getInformacion();
+
+        if(listaObjetos != null){
+
+            if(estadoConsulta == Estado.EXITO){
+
+                for(Alumno alumnoActual : listaObjetos){
+
+                    if(alumnoActual.id > ultimoID){
+
+                        ultimoID = alumnoActual.id;
+
+                    }else{
+
+                        //...no hacer nada
+
+                    }
+
+                }
+
+            }else{
+
+                //...no hacer nada
+
+            }
+
+        }else{
+
+            //...se establecio unvalor por defecto
+
+        }
+        
+        return ultimoID;
+        
+    }
 
     private static int getNewId(){
 
-        //Crear un nuevo identificador
-        int idActual = listaObjetos.size();
+        //Obtener el ultimo identificador
+        int idActual = getLastId();
 
         //Buscar el siguiente identificador
         int siguienteIdentificador = Valor.SIGUIENTE_IDENTIFICADOR;
@@ -37,16 +153,77 @@ public class Alumno{
     }
 
     //Constructor
+    
+    private static Alumno nuevo(int idActual, int legajoRecibido, Persona personaRecibida, int idPersonaRecibida) {
+        
+        Alumno alumnoDevolver = new Alumno();
+        
+        alumnoDevolver.id = idActual;
+        alumnoDevolver.legajo = legajoRecibido;
+        alumnoDevolver.persona = personaRecibida;
+        alumnoDevolver.idPersona = idPersonaRecibida;
+        
+        Estado seAgrego = Alumno.addNewObjeto(alumnoDevolver);
+        
+        return alumnoDevolver;
+        
+    }
+    
+    protected static Alumno nuevo(int legajoRecibido, Persona personaRecibida){
+
+        //Crear un objeto a devolver
+        Alumno objetoDevolver = Alumno.OBJETO_INVALIDO;
+
+        //Obtener el siguiente identificador
+        int identificador = getNewId();
+        
+        //Crear un nuevo objeto
+        Alumno objetoNuevo = new Alumno(identificador);
+
+        //Agregar a la lista de control
+        Estado seAgrego = addNewObjeto(objetoNuevo);
+
+        //Si se agrega con exito
+        if(seAgrego == Estado.EXITO){
+            
+            //Asignar el valor recibido por defecto
+            
+            Estado seSeteoLegajo = objetoNuevo.setLegajo(legajoRecibido);
+            Estado seSeteoPersona = objetoNuevo.setPersona(personaRecibida);
+            Estado seSeteoIdPersona = objetoNuevo.setIdPersona(personaRecibida.getId());
+            
+            objetoDevolver = objetoNuevo;
+            
+            Estado seGuardo = objetoDevolver.guardar();
+
+        }else{
+
+            //TODO capturar el error generado por un ingreso erroneo a la lista
+            listaObjetos.remove(objetoDevolver);
+            //...se establecio un valor por defecto
+
+        }
+
+        //Devolver el objeto requerido
+        return objetoDevolver;
+
+    }
+
+    private Alumno(int identificadorRecibido){
+        
+        this.id = identificadorRecibido;
+        
+    }
 
     private Alumno() {
 
         //Asignar un identificador
-        this.id = getNewId();
+        //this.id = getNewId();
 
 
     }
 
-    protected static Alumno nuevo(){
+    private static Alumno nuevo(){
 
         //Crear un objeto a devolver
         Alumno objetoDevolver = Alumno.OBJETO_INVALIDO;
@@ -116,6 +293,39 @@ public class Alumno{
     }//...fin funcion
 
     //Setter
+    
+    private Estado setLegajo(int idLegajorecibido){
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.legajo = idLegajorecibido;
+        
+        return estadoDevolver;
+        
+    }
+    
+    private Estado setPersona(Persona personaRecibida){
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.persona = personaRecibida;
+        
+        return estadoDevolver;
+        
+    }
+    
+    private Estado setIdPersona(int idPersonaRecibida){
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.idPersona = idPersonaRecibida;
+        
+        return estadoDevolver;
+        
+    }
     
     //Getter
     
