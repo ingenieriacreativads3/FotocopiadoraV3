@@ -7,14 +7,15 @@ package fotocopiadorav3.Vista2;
 
 import fotocopiadorav3.Controlador.*;
 import java.util.*;
-import static javafx.application.Application.launch;
-import javafx.stage.Stage;
+import javax.swing.JPanel;
 
 /**
  *
  * @author claudio
  */
 public class Vista2Interfaz {
+    
+    private static final PaginaPrincipal paginaPrincipal = new PaginaPrincipal();
     
     public static void renderizarLogin(){
         
@@ -25,7 +26,6 @@ public class Vista2Interfaz {
     
     public static void renderizarPaginaPrincipal(){
         
-        PaginaPrincipal paginaPrincipal = new PaginaPrincipal();
         paginaPrincipal.setVisible(true);
         
     }
@@ -37,7 +37,9 @@ public class Vista2Interfaz {
     public static void renderizarNuevoPedido(){
         
         NuevoPedido nuevoPedido = new NuevoPedido();
-        nuevoPedido.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(nuevoPedido.getContentPane());
+        paginaPrincipal.getAreaTrabajo().addTab("Nuevo Pedido", panel);
         
     }
 
