@@ -5,6 +5,10 @@
  */
 package fotocopiadorav3.Vista2;
 
+import fotocopiadorav3.Controlador.*;
+import fotocopiadorav3.Modelo.*;
+import java.util.*;
+
 /**
  *
  * @author claudio
@@ -27,81 +31,82 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelUsuario = new javax.swing.JLabel();
+        ImagenPortada = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jTextFieldUsuario = new javax.swing.JTextField();
-        jTextFieldPassword = new javax.swing.JTextField();
+        Titulo = new javax.swing.JLabel();
         jLabelPassword = new javax.swing.JLabel();
-        jButtonAceptar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+        jButtonAceptar = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabelUsuario1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelUsuario.setText("Usuario");
+        ImagenPortada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fade.jpg"))); // NOI18N
+        getContentPane().add(ImagenPortada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jLabel2.setText("WASD CopyShop");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(16, 16, 16));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextFieldUsuario.setBackground(new java.awt.Color(16, 16, 16));
+        jTextFieldUsuario.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
+        jTextFieldUsuario.setForeground(new java.awt.Color(102, 0, 153));
         jTextFieldUsuario.setText("Ingresar Usuario");
         jTextFieldUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTextFieldUsuarioMousePressed(evt);
             }
         });
+        jPanel1.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, 40));
 
-        jTextFieldPassword.setText("Ingresar Contraseña");
-        jTextFieldPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextFieldPasswordMousePressed(evt);
-            }
-        });
+        Titulo.setFont(new java.awt.Font("Arial Black", 2, 24)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(102, 0, 153));
+        Titulo.setText("WASD CopyShop");
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 230, -1));
 
+        jLabelPassword.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
+        jLabelPassword.setForeground(new java.awt.Color(102, 0, 153));
         jLabelPassword.setText("Cotraseña");
+        jPanel1.add(jLabelPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
+        jButtonCancelar.setBackground(new java.awt.Color(42, 16, 16));
+        jButtonCancelar.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
+        jButtonCancelar.setForeground(new java.awt.Color(102, 0, 153));
+        jButtonCancelar.setText("Cancelar");
+        jPanel1.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+
+        jButtonAceptar.setBackground(new java.awt.Color(42, 16, 16));
+        jButtonAceptar.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
+        jButtonAceptar.setForeground(new java.awt.Color(102, 0, 153));
         jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.setMaximumSize(new java.awt.Dimension(100, 28));
+        jButtonAceptar.setMinimumSize(new java.awt.Dimension(100, 28));
+        jButtonAceptar.setPreferredSize(new java.awt.Dimension(100, 28));
         jButtonAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButtonAceptarMousePressed(evt);
             }
         });
+        jPanel1.add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
 
-        jButtonCancelar.setText("Cancelar");
+        jPasswordField1.setBackground(new java.awt.Color(16, 16, 16));
+        jPasswordField1.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(102, 0, 153));
+        jPasswordField1.setText("jPasswordField1");
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 260, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelUsuario)
-                            .addComponent(jLabelPassword))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(jTextFieldUsuario)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCancelar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonAceptar)))
-                .addGap(45, 45, 45))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelUsuario)
-                    .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPassword))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAceptar)
-                    .addComponent(jButtonCancelar))
-                .addGap(30, 30, 30))
-        );
+        jLabelUsuario1.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
+        jLabelUsuario1.setForeground(new java.awt.Color(102, 0, 153));
+        jLabelUsuario1.setText("Usuario");
+        jPanel1.add(jLabelUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 300, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,17 +117,11 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTextFieldUsuarioMousePressed
 
-    private void jTextFieldPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPasswordMousePressed
-        
-        jTextFieldPassword.selectAll();
-        
-    }//GEN-LAST:event_jTextFieldPasswordMousePressed
-
     private void jButtonAceptarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAceptarMousePressed
         
         
         String usuario = jTextFieldUsuario.getText();
-        String contrasenia = jTextFieldPassword.getText();
+        String contrasenia = jPasswordField1.getText();
         
         //if (validarDatos(usuario, contrasenia)) {
         if(true){
@@ -173,11 +172,15 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ImagenPortada;
+    private javax.swing.JLabel Titulo;
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelPassword;
-    private javax.swing.JLabel jLabelUsuario;
-    private javax.swing.JTextField jTextFieldPassword;
+    private javax.swing.JLabel jLabelUsuario1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
 }
