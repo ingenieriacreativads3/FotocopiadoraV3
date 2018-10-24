@@ -51,7 +51,11 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         PestaniaClientes = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
         PestaniaUsuarios = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -148,7 +152,7 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, true
+                false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -170,17 +174,17 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         jTable2.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID Pedido", "Nombre Cliente", "Artículos", "Fecha encargo", "Precio", "Acciones"
+                "ID Artículo", "Nombre Artículo", "Fecha De Subida", "Precio Unitario", "Acciones"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, true
+                false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -198,9 +202,67 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         Pestanias.addTab("Artículos", PestaniaArticulos);
 
         PestaniaClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable3.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID Cliente", "Nombre Cliente", "Legajo", "Fecha De Entrada", "Acciones"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable3);
+
+        PestaniaClientes.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -3, 910, 590));
+
         Pestanias.addTab("Clientes", PestaniaClientes);
 
         PestaniaUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable5.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID Usuario", "Nombre Usuario", "Fecha De Creado", "Tipo Usuario", "Acciones"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(jTable5);
+
+        PestaniaUsuarios.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -3, 910, 590));
+
         Pestanias.addTab("Usuarios", PestaniaUsuarios);
 
         PanelPrincipalCentral.add(Pestanias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 620));
@@ -270,7 +332,11 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable5;
     // End of variables declaration//GEN-END:variables
 }
