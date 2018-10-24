@@ -219,11 +219,11 @@ public enum Estado{
     @Override
     public String toString(){
 
-        return this.name();
+        return this.mensaje;
 
     }
 
-    private int orden(){
+    public int getID(){
 
         return this.Id;
 

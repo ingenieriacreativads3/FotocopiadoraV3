@@ -213,6 +213,8 @@ public class Direccion{
         Usuario asdddd = Usuario.nuevo(asddd, asd, asd);
         Alumno asdddddd = Alumno.nuevo(numero, asddd);
         
+        System.out.println("sfsdfsdf");
+        
         //System.out.println("Despues de pedir un objeto nuevo");
         
         

@@ -15,19 +15,19 @@ import fotocopiadorav3.Modelo.ModeloInterfaz;
  */
 public class GestorCuenta {
     
-   protected void iniciarSecion(){
-       /**
-        * El method recibe por parametros un usuario y una contraseña.
-        * En caso de ser datos validos, devuelve true.
-        * En case de ser datos incorrectos, devuelve false.
-        */
-   }
-   
-   protected void cerrarSecion(){
-       
-   }
-   
-   protected Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
+//   protected void iniciarSecion(){
+//       /**
+//        * El method recibe por parametros un usuario y una contraseña.
+//        * En caso de ser datos validos, devuelve true.
+//        * En case de ser datos incorrectos, devuelve false.
+//        */
+//   }
+//   
+//   protected void cerrarSecion(){
+//       
+//   }
+//   
+   protected static Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
        Estado exitoAlIniciar = Estado.ERROR;
         //Primero se debe verificar si existe el usuario.
         //Luego se debe verificar si el usuairo y la contraseña son correctas
