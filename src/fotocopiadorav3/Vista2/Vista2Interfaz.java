@@ -53,7 +53,7 @@ public class Vista2Interfaz {
 
     public static void renderizarNuevoDocumento(){
         
-        NuevoDocumento nuevoDocumento = new NuevoDocumento();
+        NuevoArticulo nuevoDocumento = new NuevoArticulo();
         nuevoDocumento.setVisible(true);
         
     }
