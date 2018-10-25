@@ -5,6 +5,14 @@
  */
 package fotocopiadorav3.Vista2;
 
+import fotocopiadorav3.Vista2.Usuario.NuevoUsuario;
+import fotocopiadorav3.Vista2.Usuario.ModificarUsuario;
+import fotocopiadorav3.Vista2.Pedido.NuevoPedido;
+import fotocopiadorav3.Vista2.Pedido.ModificarPedido;
+import fotocopiadorav3.Vista2.Articulo.ModificarArticulo;
+import fotocopiadorav3.Vista2.Articulo.NuevoArticulo;
+import fotocopiadorav3.Vista2.Alumno.NuevoAlumno;
+import fotocopiadorav3.Vista2.Alumno.ModificarAlumno;
 import fotocopiadorav3.Controlador.*;
 import java.util.*;
 import javax.swing.JPanel;
@@ -28,6 +36,23 @@ public class Vista2Interfaz {
         
         paginaPrincipal.setVisible(true);
         
+    }
+    
+    public static void renderizarMensajeError(String codigo, String mensaje){
+        
+        MensajeError mensajeError = new MensajeError(){
+            @Override
+            public void dispose(){
+                
+                getFrame().setVisible(true);
+                super.dispose();
+                
+            }
+        };
+        mensajeError.setCodigoError(codigo);
+        mensajeError.setMensajeError(mensaje);
+        mensajeError.setVisible(true);
+        paginaPrincipal.dispose();
     }
     
     public static void renderizarInventario(){

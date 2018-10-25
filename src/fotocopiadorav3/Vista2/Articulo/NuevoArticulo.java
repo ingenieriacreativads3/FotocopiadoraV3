@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fotocopiadorav3.Vista2;
+package fotocopiadorav3.Vista2.Articulo;
+
+import fotocopiadorav3.Vista2.Vista2Interfaz;
 
 /**
  *

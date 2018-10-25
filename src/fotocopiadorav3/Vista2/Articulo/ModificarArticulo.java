@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 
-package fotocopiadorav3.Vista2;
+package fotocopiadorav3.Vista2.Articulo;
+
+import fotocopiadorav3.Vista2.Vista2Interfaz;
 
 /**
  *
@@ -263,8 +265,6 @@ public class ModificarArticulo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aceptar;
-    private javax.swing.JButton aceptar1;
     private javax.swing.JButton aceptar2;
     private javax.swing.JTextField autorTF;
     private javax.swing.JTextField categoriaTF;

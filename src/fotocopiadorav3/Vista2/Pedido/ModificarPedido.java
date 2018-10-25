@@ -3,20 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fotocopiadorav3.Vista2;
+package fotocopiadorav3.Vista2.Pedido;
 
+import fotocopiadorav3.Vista2.Vista2Interfaz;
 import java.util.ArrayList;
 
 /**
  *
  * @author Toshiba
  */
-public class NuevoPedido extends javax.swing.JFrame {
+public class ModificarPedido extends javax.swing.JFrame {
 
     /**
-     * Creates new form NuevoPedido
+     * Creates new form ModificarPedido
      */
-    public NuevoPedido() {
+    public ModificarPedido() {
         initComponents();
     }
 
@@ -42,7 +43,7 @@ public class NuevoPedido extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         alumnoTF.setText("jTextField1");
 
@@ -87,7 +88,7 @@ public class NuevoPedido extends javax.swing.JFrame {
 
         seniaTF.setText("jTextField3");
 
-        jLabel4.setText("Nuevo Pedido");
+        jLabel4.setText("Modificar Pedido");
 
         jLabel5.setText("Artículos:");
 
@@ -155,12 +156,8 @@ public class NuevoPedido extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void limpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarCamposActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_limpiarCamposActionPerformed
-
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        
+
         String alumno=alumnoTF.getText();
         ArrayList<String> articulosNombres=new ArrayList<>();
         ArrayList<String> articulosPreciosUnit=new ArrayList<>();
@@ -174,10 +171,14 @@ public class NuevoPedido extends javax.swing.JFrame {
         articulosSubtotales.add(articulos.getValueAt(0, 4).toString());
         String importe=importeTF.getText();
         String senia=seniaTF.getText();
-        
-        Vista2Interfaz.enviarDatosNuevoPedido(alumno, articulosNombres, articulosFechasEst, articulosCantidades, articulosPreciosUnit, articulosSubtotales, importe, senia);
-        
+
+        Vista2Interfaz.enviarDatosModificarPedido(alumno, articulosNombres, articulosFechasEst, articulosCantidades, articulosPreciosUnit, articulosSubtotales, importe, senia);
+
     }//GEN-LAST:event_aceptarActionPerformed
+
+    private void limpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarCamposActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_limpiarCamposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,20 +197,20 @@ public class NuevoPedido extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NuevoPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NuevoPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NuevoPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NuevoPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NuevoPedido().setVisible(true);
+                new ModificarPedido().setVisible(true);
             }
         });
     }

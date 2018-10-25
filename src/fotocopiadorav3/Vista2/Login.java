@@ -75,6 +75,11 @@ public class Login extends javax.swing.JFrame {
         jButtonCancelar.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jButtonCancelar.setForeground(new java.awt.Color(102, 0, 153));
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         jButtonAceptar.setBackground(new java.awt.Color(42, 16, 16));
@@ -131,6 +136,10 @@ public class Login extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButtonAceptarMousePressed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
