@@ -40,19 +40,11 @@ public class Vista2Interfaz {
     
     public static void renderizarMensajeError(String codigo, String mensaje){
         
-        MensajeError mensajeError = new MensajeError(){
-            @Override
-            public void dispose(){
-                
-                getFrame().setVisible(true);
-                super.dispose();
-                
-            }
-        };
+        MensajeError mensajeError = new MensajeError();
         mensajeError.setCodigoError(codigo);
         mensajeError.setMensajeError(mensaje);
         mensajeError.setVisible(true);
-        paginaPrincipal.dispose();
+        
     }
     
     public static void renderizarInventario(){

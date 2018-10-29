@@ -5,6 +5,8 @@
  */
 package fotocopiadorav3.Vista2;
 
+import Otros.TextPrompt;
+
 /**
  *
  * @author claudio
@@ -16,6 +18,9 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        
+        TextPrompt textPrompt = new TextPrompt("Ingrese su nombre de Usuario", jTextFieldUsuario);
+        
     }
 
     /**
@@ -53,7 +58,7 @@ public class Login extends javax.swing.JFrame {
         jTextFieldUsuario.setBackground(new java.awt.Color(16, 16, 16));
         jTextFieldUsuario.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jTextFieldUsuario.setForeground(new java.awt.Color(102, 0, 153));
-        jTextFieldUsuario.setText("Ingresar Usuario");
+        jTextFieldUsuario.setToolTipText("");
         jTextFieldUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTextFieldUsuarioMousePressed(evt);
@@ -114,8 +119,6 @@ public class Login extends javax.swing.JFrame {
 
     private void jTextFieldUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioMousePressed
         
-        jTextFieldUsuario.selectAll();
-        
     }//GEN-LAST:event_jTextFieldUsuarioMousePressed
 
     private void jButtonAceptarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAceptarMousePressed
@@ -127,13 +130,15 @@ public class Login extends javax.swing.JFrame {
         //if (validarDatos(usuario, contrasenia)) {
         if(true){
             
-            Vista2Interfaz.enviarDatosInicioSesion(usuario, contrasenia);
+//            Vista2Interfaz.enviarDatosInicioSesion(usuario, contrasenia);
             
         } else{
             
             //Informar datos incorrectos
             
         }
+        
+        Vista2Interfaz.renderizarPaginaPrincipal();
         
     }//GEN-LAST:event_jButtonAceptarMousePressed
 
