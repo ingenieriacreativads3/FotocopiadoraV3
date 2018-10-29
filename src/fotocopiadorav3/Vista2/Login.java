@@ -58,12 +58,7 @@ public class Login extends javax.swing.JFrame {
         jTextFieldUsuario.setBackground(new java.awt.Color(16, 16, 16));
         jTextFieldUsuario.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jTextFieldUsuario.setForeground(new java.awt.Color(102, 0, 153));
-        jTextFieldUsuario.setToolTipText("");
-        jTextFieldUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextFieldUsuarioMousePressed(evt);
-            }
-        });
+        jTextFieldUsuario.setToolTipText("Ingrese su nombre de usuario");
         jPanel1.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, 40));
 
         Titulo.setFont(new java.awt.Font("Arial Black", 2, 24)); // NOI18N
@@ -116,10 +111,6 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioMousePressed
-        
-    }//GEN-LAST:event_jTextFieldUsuarioMousePressed
 
     private void jButtonAceptarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAceptarMousePressed
         

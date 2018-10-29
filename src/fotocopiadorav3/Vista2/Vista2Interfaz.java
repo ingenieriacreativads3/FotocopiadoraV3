@@ -224,4 +224,10 @@ public class Vista2Interfaz {
         
     }
     
+    public static void guardar(){
+        
+//        ControladorInterfaz.guardarCambios();
+        
+    }
+    
 }

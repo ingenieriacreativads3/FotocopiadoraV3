@@ -44,6 +44,7 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         modificarCliente = new javax.swing.JButton();
         BarraMenuSuperior = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         PanelPrincipalCentral = new javax.swing.JPanel();
         areaTrabajo = new javax.swing.JTabbedPane();
         pestaniaPedidos = new javax.swing.JPanel();
@@ -166,6 +167,14 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ajustes.png"))); // NOI18N
         BarraMenuSuperior.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 20, -1, -1));
 
+        jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        BarraMenuSuperior.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 30, -1, -1));
+
         getContentPane().add(BarraMenuSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
 
         PanelPrincipalCentral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -223,6 +232,10 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         Vista2Interfaz.renderizarModificarUsuario();
     }//GEN-LAST:event_modificarUsuarioActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Vista2Interfaz.guardar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -271,6 +284,7 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     private javax.swing.JPanel BarraMenuSuperior;
     private javax.swing.JPanel PanelPrincipalCentral;
     private javax.swing.JTabbedPane areaTrabajo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
