@@ -182,32 +182,32 @@
     </Component>
     <Component class="javax.swing.JTextField" name="nombreTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese su nombre"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="apellidoTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField2"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese su apellido"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="contraseniaTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField3"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese su contrase&#xf1;a"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="domicilioTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField4"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese su domicilio actual"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nombreUsuarioTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField5"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese su nombre de usuario"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="dniTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField6"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese su n&#xfa;mero de documento"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
@@ -217,7 +217,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="alturaTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese la altura de su domicilio"/>
       </Properties>
     </Component>
   </SubComponents>

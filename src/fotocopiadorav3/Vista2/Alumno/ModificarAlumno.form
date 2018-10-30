@@ -69,7 +69,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="nombreUsuarioTF" max="32767" attributes="0"/>
+                      <Component id="legajoTF" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -94,7 +94,7 @@
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nombreUsuarioTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="legajoTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -167,27 +167,27 @@
     </Component>
     <Component class="javax.swing.JTextField" name="nombreTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese su nombre"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="apellidoTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField2"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese su apellido"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="domicilioTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField4"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese su domicilio actual"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="nombreUsuarioTF">
+    <Component class="javax.swing.JTextField" name="legajoTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField5"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese su legajo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="dniTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField6"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese su n&#xfa;mero de documento"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
@@ -197,7 +197,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="alturaTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese la altura de su domicilio"/>
       </Properties>
     </Component>
   </SubComponents>

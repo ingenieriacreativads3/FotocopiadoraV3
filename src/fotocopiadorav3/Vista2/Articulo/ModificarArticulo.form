@@ -214,42 +214,42 @@
     </Component>
     <Component class="javax.swing.JTextField" name="nombreTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese el nombre del art&#xed;culo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="categoriaTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField2"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese la categor&#xed;a del art&#xed;culo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="materiaTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField3"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese la materia a la que corresponde el art&#xed;culo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="editorialTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField4"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese el n&#xfa;mero de editorial"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="edicionTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField5"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese el n&#xfa;mero de edici&#xf3;n"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="documentoTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField6"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese la ruta del documento"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="autorTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField7"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese el nombre del autor"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="precioTF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField8"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese el precio"/>
       </Properties>
     </Component>
   </SubComponents>

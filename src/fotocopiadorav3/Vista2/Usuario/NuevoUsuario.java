@@ -5,6 +5,7 @@
  */
 package fotocopiadorav3.Vista2.Usuario;
 
+import Otros.TextPrompt;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 
 /**
@@ -18,6 +19,15 @@ public class NuevoUsuario extends javax.swing.JFrame {
      */
     public NuevoUsuario() {
         initComponents();
+        
+        TextPrompt textPromptNombre = new TextPrompt("Ingrese su nombre", nombreTF);
+        TextPrompt textPromptApellido = new TextPrompt("Ingrese su apellido", apellidoTF);
+        TextPrompt textPromptNombreUsuario = new TextPrompt("Ingrese su nombre de usuario", nombreUsuarioTF);
+        TextPrompt textPromptContrasenia = new TextPrompt("Ingrese su contraseña", contraseniaTF);
+        TextPrompt textPromptDomicilio = new TextPrompt("Ingrese su domicilio actual", domicilioTF);
+        TextPrompt textPromptAltura = new TextPrompt("Ingrese la altura de su domicilio", alturaTF);
+        TextPrompt textPromptDni = new TextPrompt("Ingrese su número de documento", dniTF);
+        
     }
 
     /**
@@ -77,21 +87,21 @@ public class NuevoUsuario extends javax.swing.JFrame {
 
         jLabel7.setText("Dni:");
 
-        nombreTF.setText("jTextField1");
+        nombreTF.setToolTipText("Ingrese su nombre");
 
-        apellidoTF.setText("jTextField2");
+        apellidoTF.setToolTipText("Ingrese su apellido");
 
-        contraseniaTF.setText("jTextField3");
+        contraseniaTF.setToolTipText("Ingrese su contraseña");
 
-        domicilioTF.setText("jTextField4");
+        domicilioTF.setToolTipText("Ingrese su domicilio actual");
 
-        nombreUsuarioTF.setText("jTextField5");
+        nombreUsuarioTF.setToolTipText("Ingrese su nombre de usuario");
 
-        dniTF.setText("jTextField6");
+        dniTF.setToolTipText("Ingrese su número de documento");
 
         jLabel8.setText("N°:");
 
-        alturaTF.setText("jTextField1");
+        alturaTF.setToolTipText("Ingrese la altura de su domicilio");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -5,6 +5,7 @@
  */
 package fotocopiadorav3.Vista2.Pedido;
 
+import Otros.TextPrompt;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 import java.util.ArrayList;
 
@@ -19,6 +20,11 @@ public class NuevoPedido extends javax.swing.JFrame {
      */
     public NuevoPedido() {
         initComponents();
+        
+        TextPrompt textPromptAlumno = new TextPrompt("Ingrese el nombre del alumno", alumnoTF);
+        TextPrompt textPromptImporte = new TextPrompt("Ingrese el importe total", importeTF);
+        TextPrompt textPromptSenia = new TextPrompt("Ingrese el importe de la seña", seniaTF);
+        
     }
 
     /**
@@ -45,7 +51,7 @@ public class NuevoPedido extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        alumnoTF.setText("jTextField1");
+        alumnoTF.setToolTipText("Ingrese el nombre del alumno");
 
         jLabel1.setText("Alumno:");
 
@@ -84,9 +90,9 @@ public class NuevoPedido extends javax.swing.JFrame {
 
         jLabel3.setText("Seña:");
 
-        importeTF.setText("jTextField2");
+        importeTF.setToolTipText("Ingrese el importe total");
 
-        seniaTF.setText("jTextField3");
+        seniaTF.setToolTipText("Ingrese el importe de la seña");
 
         jLabel4.setText("Nuevo Pedido");
 

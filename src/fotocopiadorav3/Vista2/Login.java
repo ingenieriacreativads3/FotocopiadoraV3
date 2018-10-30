@@ -19,7 +19,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         
-        TextPrompt textPrompt = new TextPrompt("Ingrese su nombre de Usuario", jTextFieldUsuario);
+        TextPrompt textPromptUsuario = new TextPrompt("Ingrese su nombre de Usuario", jTextFieldUsuario);
+        TextPrompt textPromptContrasenia = new TextPrompt("Ingrese su contraseña", jPasswordField1);
         
     }
 
@@ -99,7 +100,7 @@ public class Login extends javax.swing.JFrame {
         jPasswordField1.setBackground(new java.awt.Color(16, 16, 16));
         jPasswordField1.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(102, 0, 153));
-        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setToolTipText("Ingrese su contraseña");
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 260, 40));
 
         jLabelUsuario1.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N

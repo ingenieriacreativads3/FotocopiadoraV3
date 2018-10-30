@@ -6,6 +6,7 @@
 
 package fotocopiadorav3.Vista2.Alumno;
 
+import Otros.TextPrompt;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 
 /**
@@ -17,6 +18,14 @@ public class NuevoAlumno extends javax.swing.JFrame {
     /** Creates new form NuevoAlumno */
     public NuevoAlumno() {
         initComponents();
+        
+        TextPrompt textPromptNombre = new TextPrompt("Ingrese su nombre", nombreTF);
+        TextPrompt textPromptApellido = new TextPrompt("Ingrese su apellido", apellidoTF);
+        TextPrompt textPromptLegajo = new TextPrompt("Ingrese su legajo", legajoTF);
+        TextPrompt textPromptDomicilio = new TextPrompt("Ingrese su domicilio actual", domicilioTF);
+        TextPrompt textPromptAltura = new TextPrompt("Ingrese la altura de su domicilio", alturaTF);
+        TextPrompt textPromptDni = new TextPrompt("Ingrese su número de documento", dniTF);
+        
     }
 
     /** This method is called from within the constructor to
@@ -39,7 +48,7 @@ public class NuevoAlumno extends javax.swing.JFrame {
         nombreTF = new javax.swing.JTextField();
         apellidoTF = new javax.swing.JTextField();
         domicilioTF = new javax.swing.JTextField();
-        nombreUsuarioTF = new javax.swing.JTextField();
+        legajoTF = new javax.swing.JTextField();
         dniTF = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         alturaTF = new javax.swing.JTextField();
@@ -72,19 +81,19 @@ public class NuevoAlumno extends javax.swing.JFrame {
 
         jLabel7.setText("Dni:");
 
-        nombreTF.setText("jTextField1");
+        nombreTF.setToolTipText("Ingrese su nombre");
 
-        apellidoTF.setText("jTextField2");
+        apellidoTF.setToolTipText("Ingrese su apellido");
 
-        domicilioTF.setText("jTextField4");
+        domicilioTF.setToolTipText("Ingrese su domicilio actual");
 
-        nombreUsuarioTF.setText("jTextField5");
+        legajoTF.setToolTipText("Ingrese su legajo");
 
-        dniTF.setText("jTextField6");
+        dniTF.setToolTipText("Ingrese su número de documento");
 
         jLabel8.setText("N°:");
 
-        alturaTF.setText("jTextField1");
+        alturaTF.setToolTipText("Ingrese la altura de su domicilio");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,7 +137,7 @@ public class NuevoAlumno extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(nombreUsuarioTF)))
+                        .addComponent(legajoTF)))
                 .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -147,7 +156,7 @@ public class NuevoAlumno extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(nombreUsuarioTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(legajoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -172,12 +181,12 @@ public class NuevoAlumno extends javax.swing.JFrame {
 
         String nombre=nombreTF.getText();
         String apellido=apellidoTF.getText();
-        String nombreUsuario=nombreUsuarioTF.getText();
+        String legajo=legajoTF.getText();
         String domicilio=domicilioTF.getText();
         String altura=alturaTF.getText();
         String dni=dniTF.getText();
 
-        Vista2Interfaz.enviarDatosNuevoAlumno(nombre, apellido, nombreUsuario, domicilio, altura, dni);
+        Vista2Interfaz.enviarDatosNuevoAlumno(nombre, apellido, legajo, domicilio, altura, dni);
 
     }//GEN-LAST:event_aceptarActionPerformed
 
@@ -185,7 +194,7 @@ public class NuevoAlumno extends javax.swing.JFrame {
 
         nombreTF.setText("");
         apellidoTF.setText("");
-        nombreUsuarioTF.setText("");
+        legajoTF.setText("");
         domicilioTF.setText("");
         alturaTF.setText("");
         dniTF.setText("");
@@ -240,9 +249,9 @@ public class NuevoAlumno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField legajoTF;
     private javax.swing.JButton limpiarCampos;
     private javax.swing.JTextField nombreTF;
-    private javax.swing.JTextField nombreUsuarioTF;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -6,6 +6,7 @@
 
 package fotocopiadorav3.Vista2.Articulo;
 
+import Otros.TextPrompt;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 
 /**
@@ -17,6 +18,16 @@ public class ModificarArticulo extends javax.swing.JFrame {
     /** Creates new form ModificarArticulo */
     public ModificarArticulo() {
         initComponents();
+        
+        TextPrompt textPromptNombre = new TextPrompt("Ingrese el nombre del artículo", nombreTF);
+        TextPrompt textPromptCategoria = new TextPrompt("Ingrese la categoría del artículo", categoriaTF);
+        TextPrompt textPromptEditorial = new TextPrompt("Ingrese el número de editorial", editorialTF);
+        TextPrompt textPromptEdición = new TextPrompt("Ingrese el número de edición", edicionTF);
+        TextPrompt textPromptMateria = new TextPrompt("Ingrese la materia a la que corresponde el artículo", materiaTF);
+        TextPrompt textPromptAutor = new TextPrompt("Ingrese el nombre del autor", autorTF);
+        TextPrompt textPromptPrecio = new TextPrompt("Ingrese el precio", precioTF);
+        TextPrompt textPromptDocumento = new TextPrompt("Ingrese la ruta del documento", documentoTF);
+        
     }
 
     /** This method is called from within the constructor to
@@ -82,21 +93,21 @@ public class ModificarArticulo extends javax.swing.JFrame {
 
         jLabel9.setText("Precio:");
 
-        nombreTF.setText("jTextField1");
+        nombreTF.setToolTipText("Ingrese el nombre del artículo");
 
-        categoriaTF.setText("jTextField2");
+        categoriaTF.setToolTipText("Ingrese la categoría del artículo");
 
-        materiaTF.setText("jTextField3");
+        materiaTF.setToolTipText("Ingrese la materia a la que corresponde el artículo");
 
-        editorialTF.setText("jTextField4");
+        editorialTF.setToolTipText("Ingrese el número de editorial");
 
-        edicionTF.setText("jTextField5");
+        edicionTF.setToolTipText("Ingrese el número de edición");
 
-        documentoTF.setText("jTextField6");
+        documentoTF.setToolTipText("Ingrese la ruta del documento");
 
-        autorTF.setText("jTextField7");
+        autorTF.setToolTipText("Ingrese el nombre del autor");
 
-        precioTF.setText("jTextField8");
+        precioTF.setToolTipText("Ingrese el precio");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
