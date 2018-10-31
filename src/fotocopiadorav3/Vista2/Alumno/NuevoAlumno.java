@@ -255,15 +255,20 @@ public class NuevoAlumno extends javax.swing.JFrame {
     
     private void llenarListaValidaciones(){
         
+        Boolean booleanObject = new Boolean(false);
         
-        
+        for (JTextField campo : listaCampos) {
+            
+            listaValidaciones.put(campo, booleanObject);
+            
+        }
     }
     
-    private void agregarValidacion(ArrayList<JTextField> campos){
+    private void agregarValidacion(ArrayList<JTextField> listaCampos){
         
         Validador validador = new Validador();
         
-        for (JTextField campo : campos) {
+        for (JTextField campo : listaCampos) {
             
             campo.addFocusListener(new FocusListener() {
                 @Override
@@ -271,7 +276,9 @@ public class NuevoAlumno extends javax.swing.JFrame {
 
                 @Override
                 public void focusLost(FocusEvent e) {
-                    datosValidos = validador.validar(campo);
+                    
+//                    listaValidaciones. = validador.validar(campo);
+                    
                 }
             });
             

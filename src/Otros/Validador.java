@@ -6,15 +6,11 @@ import javax.swing.JTextField;
 
 public class Validador{
     
-    private static boolean datosValidos;
-    
-    public Validador() {
-        
-        datosValidos = false;
-        
-    }
+    public Validador() {}
     
     public boolean validar(JTextField campo){
+        
+        boolean datosValidos;
         
         if (!campo.getText().isEmpty()) {
             

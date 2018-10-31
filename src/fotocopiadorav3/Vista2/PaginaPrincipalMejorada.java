@@ -30,27 +30,23 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     private void initComponents() {
 
         BarraMenuLateral = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         nuevoUsuario = new javax.swing.JButton();
         modificarUsuario = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         nuevoPedido = new javax.swing.JButton();
         modificarPedido = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         nuevoArticulo = new javax.swing.JButton();
         modificarArticulo = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         nuevoCliente = new javax.swing.JButton();
         modificarCliente = new javax.swing.JButton();
+        Pedidos = new javax.swing.JButton();
+        Articulos = new javax.swing.JButton();
+        Alumnos = new javax.swing.JButton();
+        Usuarios = new javax.swing.JButton();
+        Guardar = new javax.swing.JButton();
         BarraMenuSuperior = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         PanelPrincipalCentral = new javax.swing.JPanel();
         areaTrabajo = new javax.swing.JTabbedPane();
-        pestaniaPedidos = new javax.swing.JPanel();
-        pestaniaArticulos = new javax.swing.JPanel();
-        pestaniaClientes = new javax.swing.JPanel();
-        pestaniaUsuarios = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,13 +54,6 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         BarraMenuLateral.setBackground(new java.awt.Color(26, 26, 26));
         BarraMenuLateral.setPreferredSize(new java.awt.Dimension(320, 100));
         BarraMenuLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setBackground(new java.awt.Color(51, 51, 69));
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Usuarios");
-        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
-        BarraMenuLateral.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 370, 60));
 
         nuevoUsuario.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         nuevoUsuario.setText("Nuevo Usuario");
@@ -84,13 +73,6 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         });
         BarraMenuLateral.add(modificarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 370, 30));
 
-        jLabel2.setBackground(new java.awt.Color(51, 51, 69));
-        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Pedidos");
-        jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
-        BarraMenuLateral.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 60));
-
         nuevoPedido.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         nuevoPedido.setText("Nuevo Pedido");
         nuevoPedido.addActionListener(new java.awt.event.ActionListener() {
@@ -108,13 +90,6 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
             }
         });
         BarraMenuLateral.add(modificarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 370, 30));
-
-        jLabel3.setBackground(new java.awt.Color(51, 51, 69));
-        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Artículos");
-        jLabel3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
-        BarraMenuLateral.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 370, 60));
 
         nuevoArticulo.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         nuevoArticulo.setText("Nuevo Artículo");
@@ -134,13 +109,6 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         });
         BarraMenuLateral.add(modificarArticulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 370, 30));
 
-        jLabel4.setBackground(new java.awt.Color(51, 51, 69));
-        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Clientes");
-        jLabel4.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
-        BarraMenuLateral.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 370, 60));
-
         nuevoCliente.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         nuevoCliente.setText("Nuevo Alumno");
         nuevoCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -159,6 +127,56 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         });
         BarraMenuLateral.add(modificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 370, 30));
 
+        Pedidos.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        Pedidos.setText("Pedidos");
+        Pedidos.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
+        Pedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PedidosActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(Pedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 60));
+
+        Articulos.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        Articulos.setText("Artículos");
+        Articulos.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
+        Articulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ArticulosActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(Articulos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 370, 60));
+
+        Alumnos.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        Alumnos.setText("Alumnos");
+        Alumnos.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
+        Alumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlumnosActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(Alumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 370, 60));
+
+        Usuarios.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        Usuarios.setText("Usuarios");
+        Usuarios.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
+        Usuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsuariosActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 370, 60));
+
+        Guardar.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        Guardar.setText("Guardar");
+        Guardar.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
+        Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 370, 50));
+
         getContentPane().add(BarraMenuLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 370, 620));
 
         BarraMenuSuperior.setBackground(new java.awt.Color(16, 16, 16));
@@ -167,32 +185,11 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ajustes.png"))); // NOI18N
         BarraMenuSuperior.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 20, -1, -1));
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        BarraMenuSuperior.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 30, -1, -1));
-
         getContentPane().add(BarraMenuSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
 
         PanelPrincipalCentral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         areaTrabajo.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-
-        pestaniaPedidos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        areaTrabajo.addTab("Pedidos", pestaniaPedidos);
-
-        pestaniaArticulos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        areaTrabajo.addTab("Artículos", pestaniaArticulos);
-
-        pestaniaClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        areaTrabajo.addTab("Clientes", pestaniaClientes);
-
-        pestaniaUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        areaTrabajo.addTab("Usuarios", pestaniaUsuarios);
-
         PanelPrincipalCentral.add(areaTrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 620));
 
         getContentPane().add(PanelPrincipalCentral, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 910, 620));
@@ -232,9 +229,25 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         Vista2Interfaz.renderizarModificarUsuario();
     }//GEN-LAST:event_modificarUsuarioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         Vista2Interfaz.guardar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_GuardarActionPerformed
+
+    private void PedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PedidosActionPerformed
+        Vista2Interfaz.renderizarListadoPedidos();
+    }//GEN-LAST:event_PedidosActionPerformed
+
+    private void ArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArticulosActionPerformed
+        Vista2Interfaz.renderizarListadoArticulos();
+    }//GEN-LAST:event_ArticulosActionPerformed
+
+    private void AlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlumnosActionPerformed
+        Vista2Interfaz.renderizarListadoAlumnos();
+    }//GEN-LAST:event_AlumnosActionPerformed
+
+    private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
+        Vista2Interfaz.renderizarListadoUsuarios();
+    }//GEN-LAST:event_UsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,15 +293,15 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Alumnos;
+    private javax.swing.JButton Articulos;
     private javax.swing.JPanel BarraMenuLateral;
     private javax.swing.JPanel BarraMenuSuperior;
+    private javax.swing.JButton Guardar;
     private javax.swing.JPanel PanelPrincipalCentral;
+    private javax.swing.JButton Pedidos;
+    private javax.swing.JButton Usuarios;
     private javax.swing.JTabbedPane areaTrabajo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton modificarArticulo;
     private javax.swing.JButton modificarCliente;
@@ -298,9 +311,5 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     private javax.swing.JButton nuevoCliente;
     private javax.swing.JButton nuevoPedido;
     private javax.swing.JButton nuevoUsuario;
-    private javax.swing.JPanel pestaniaArticulos;
-    private javax.swing.JPanel pestaniaClientes;
-    private javax.swing.JPanel pestaniaPedidos;
-    private javax.swing.JPanel pestaniaUsuarios;
     // End of variables declaration//GEN-END:variables
 }
