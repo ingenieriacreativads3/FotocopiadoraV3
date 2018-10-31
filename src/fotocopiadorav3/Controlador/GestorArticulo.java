@@ -22,13 +22,14 @@ public class GestorArticulo {
      * @return
      */
     
-    protected Estado altaArticulo(AlfaNumerico nombre, AlfaNumerico autor, float precio, AlfaNumerico materia){
+    protected Estado altaArticulo(AlfaNumerico nombre, AlfaNumerico autor, double precio, AlfaNumerico materia){
         Estado ArticuloCreado = Estado.ERROR;
         
         //Verificaciones del nombre, autor, precio, materia.
         
         if(datosCorrectos(nombre, autor, precio, materia)){
             //ArticuloCreado = ModeloInterfaz.adicionarArticulo(nombre, autor, precio, materia);
+            //Articulo articuloNuevo = ModeloInterfaz.getNuevoArticulo(nombre, autor, precio, materia);
             //Documento nuevoArticulo = ModeloInterfaz.get
         }
         
@@ -49,6 +50,7 @@ public class GestorArticulo {
         //ArticuloEliminado = ModeloInterfaz.bajaArticulo(IDArticulo);
         
         
+        
         return ArticuloEliminado;
     }
     
@@ -61,7 +63,7 @@ public class GestorArticulo {
      * @param materia
      * @return 
      */
-    protected Estado modificacionArticulo(AlfaNumerico IDArticulo, AlfaNumerico nombre, AlfaNumerico autor, float precio, AlfaNumerico materia){
+    protected Estado modificacionArticulo(AlfaNumerico IDArticulo, AlfaNumerico nombre, AlfaNumerico autor, double precio, AlfaNumerico materia){
         Estado ArticuloModificadoConExito = Estado.ERROR;
         
         //Verificaciones del nombreRecibido, autor, precio, materia.
@@ -86,7 +88,7 @@ public class GestorArticulo {
      * @param materia
      * @return 
      */
-    private boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico autor, float precio, AlfaNumerico materia){
+    private boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico autor, double precio, AlfaNumerico materia){
         
         try{
             boolean exito = false;

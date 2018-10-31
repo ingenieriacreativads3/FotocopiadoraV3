@@ -14,6 +14,14 @@ import fotocopiadorav3.Vista2.Articulo.NuevoArticulo;
 import fotocopiadorav3.Vista2.Alumno.NuevoAlumno;
 import fotocopiadorav3.Vista2.Alumno.ModificarAlumno;
 import fotocopiadorav3.Controlador.*;
+import fotocopiadorav3.Modelo.Alumno;
+import fotocopiadorav3.Modelo.Articulo;
+import fotocopiadorav3.Modelo.Pedido;
+import fotocopiadorav3.Modelo.Usuario;
+import fotocopiadorav3.Vista2.Alumno.ListaAlumnos;
+import fotocopiadorav3.Vista2.Articulo.ListaArticulos;
+import fotocopiadorav3.Vista2.Pedido.ListaPedidos;
+import fotocopiadorav3.Vista2.Usuario.ListaUsuarios;
 import java.util.*;
 import javax.swing.JPanel;
 
@@ -48,6 +56,42 @@ public class Vista2Interfaz {
     }
     
     public static void renderizarInventario(){
+        
+    }
+
+    public static void renderizarListadoAlumnos(){
+        
+        ListaAlumnos listaAlumnos = new ListaAlumnos();
+        JPanel panel = new JPanel();
+        panel.add(listaAlumnos.getContentPane());
+        paginaPrincipal.getAreaTrabajo().addTab("Listado Alumnos", panel);
+        
+    }
+
+    public static void renderizarListadoUsuarios(){
+        
+        ListaUsuarios listaUsuarios = new ListaUsuarios();
+        JPanel panel = new JPanel();
+        panel.add(listaUsuarios.getContentPane());
+        paginaPrincipal.getAreaTrabajo().addTab("Listado Usuarios", panel);
+        
+    }
+
+    public static void renderizarListadoArticulos(){
+        
+        ListaArticulos listaArticulos = new ListaArticulos();
+        JPanel panel = new JPanel();
+        panel.add(listaArticulos.getContentPane());
+        paginaPrincipal.getAreaTrabajo().addTab("Listado Artículos", panel);
+        
+    }
+
+    public static void renderizarListadoPedidos(){
+        
+        ListaPedidos listaPedidos = new ListaPedidos();
+        JPanel panel = new JPanel();
+        panel.add(listaPedidos.getContentPane());
+        paginaPrincipal.getAreaTrabajo().addTab("Listado Pedidos", panel);
         
     }
 
@@ -205,9 +249,9 @@ public class Vista2Interfaz {
         
     }
     
-    public static ArrayList<String> obtenerListaDocumentos(){
+    public static ArrayList<Usuario> obtenerListaUsuarios(){
         
-        ArrayList<String> asd = new ArrayList<>();
+        ArrayList<Usuario> asd = new ArrayList<>();
         
         return asd;
         
@@ -215,9 +259,29 @@ public class Vista2Interfaz {
         
     }
     
-    public static ArrayList<String> obtenerListaPedidos(){
+    public static ArrayList<Alumno> obtenerListaAlumnos(){
         
-        ArrayList<String> asd = new ArrayList<>();
+        ArrayList<Alumno> asd = new ArrayList<>();
+        
+        return asd;
+        
+        //return ControladorInterfaz.enviarDatosDocumentos();
+        
+    }
+    
+    public static ArrayList<Articulo> obtenerListaArticulos(){
+        
+        ArrayList<Articulo> asd = new ArrayList<>();
+        
+        return asd;
+        
+        //return ControladorInterfaz.enviarDatosDocumentos();
+        
+    }
+    
+    public static ArrayList<Pedido> obtenerListaPedidos(){
+        
+        ArrayList<Pedido> asd = new ArrayList<>();
         
         return asd;
         
