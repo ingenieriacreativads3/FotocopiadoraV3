@@ -32,11 +32,12 @@ public class GestorUsuario {
         return usuarioCreadoConExito;
     }
     
-    protected Estado bajaUsuario(AlfaNumerico IDusuario){
+    protected Estado bajaUsuario(int IDusuario){
         Estado exitoBaja = Estado.ERROR;
         //Usuario userABorrar = ModeloInterfaz.getUsuarioForID(IDusuario);
-        
+        Usuario userABorrar = ModeloInterfaz.getUsuarioForId(IDusuario);
         //ModeloInterfaz.borrarUsuario(userABorrar);
+        //userABorrar.borrar();
         
         return exitoBaja;
     }
