@@ -8,6 +8,7 @@ package fotocopiadorav3.Vista2.Alumno;
 import fotocopiadorav3.Modelo.Alumno;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,51 +36,22 @@ public class ListaAlumnos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Tabla = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        scrollpane = new javax.swing.JScrollPane();
+        Tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Id", "Nombre", "Apellido", "Legajo", "Domicilio", "Altura", "Dni"
             }
         ));
-        Tabla.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
+        scrollpane.setViewportView(Tabla);
+        if (Tabla.getColumnModel().getColumnCount() > 0) {
+            Tabla.getColumnModel().getColumn(0).setResizable(false);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -88,14 +60,14 @@ public class ListaAlumnos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Tabla, javax.swing.GroupLayout.DEFAULT_SIZE, 898, Short.MAX_VALUE)
+                .addComponent(scrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 898, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Tabla, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+                .addComponent(scrollpane, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -104,9 +76,21 @@ public class ListaAlumnos extends javax.swing.JFrame {
     
     private void cargarTabla(ArrayList<Alumno> alumnos){
         
-        Alumno primerAlumno = alumnos.get(0);
+        DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
         
-//        String nombre=primerAlumno.
+        for (Alumno alumno : alumnos) {
+            
+            String id="8486";
+            String nombre="sadfadfaf";
+            String apellido="poipupoupu";
+            String legajo="248648";
+            String domicilio="mwwaxfui";
+            String altura="4355";
+            String dni="862762762";
+
+            defaultTableModel.addRow(new Object[]{id, nombre, apellido, legajo, domicilio, altura, dni});
+
+        }
         
     }
     
@@ -146,7 +130,7 @@ public class ListaAlumnos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane Tabla;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable Tabla;
+    private javax.swing.JScrollPane scrollpane;
     // End of variables declaration//GEN-END:variables
 }

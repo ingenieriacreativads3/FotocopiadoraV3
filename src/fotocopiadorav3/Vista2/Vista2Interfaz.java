@@ -251,9 +251,9 @@ public class Vista2Interfaz {
     
     public static ArrayList<Usuario> obtenerListaUsuarios(){
         
-        ArrayList<Usuario> asd = new ArrayList<>();
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         
-        return asd;
+        return listaUsuarios;
         
         //return ControladorInterfaz.enviarDatosDocumentos();
         
@@ -261,9 +261,9 @@ public class Vista2Interfaz {
     
     public static ArrayList<Alumno> obtenerListaAlumnos(){
         
-        ArrayList<Alumno> asd = new ArrayList<>();
+        ArrayList<Alumno> listaAlumnos = new ArrayList<>();
         
-        return asd;
+        return listaAlumnos;
         
         //return ControladorInterfaz.enviarDatosDocumentos();
         
@@ -271,9 +271,9 @@ public class Vista2Interfaz {
     
     public static ArrayList<Articulo> obtenerListaArticulos(){
         
-        ArrayList<Articulo> asd = new ArrayList<>();
+        ArrayList<Articulo> listaArticulos = new ArrayList<>();
         
-        return asd;
+        return listaArticulos;
         
         //return ControladorInterfaz.enviarDatosDocumentos();
         
@@ -281,9 +281,9 @@ public class Vista2Interfaz {
     
     public static ArrayList<Pedido> obtenerListaPedidos(){
         
-        ArrayList<Pedido> asd = new ArrayList<>();
+        ArrayList<Pedido> listaPedidos = new ArrayList<>();
         
-        return asd;
+        return listaPedidos;
         
         //return ControladorInterfaz.enviarDatosPedidos();
         
