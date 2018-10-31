@@ -8,6 +8,7 @@ package fotocopiadorav3.Vista2.Alumno;
 import fotocopiadorav3.Modelo.Alumno;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 import java.util.Set;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -80,28 +81,34 @@ public class ListaAlumnos extends javax.swing.JFrame {
         
         DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
         
-        int id;
-        String nombre;
-        String apellido;
-        int legajo;
-        String domicilio;
-        int altura;
-        int dni;
+        int id=0;
+        String nombre="";
+        String apellido="";
+        int legajo=0;
+        String domicilio="";
+        int altura=0;
+        int dni=0;
         
-        for (Alumno alumno : alumnos) {
+        if (!alumnos.isEmpty()) {
             
-            id=alumno.getId();
-            nombre=alumno.getPersona().getNombre().toString();
-            apellido=alumno.getPersona().getApellido().toString();
-            legajo=alumno.getLegajo();
-            domicilio=alumno.getPersona().getDireccion().getCalle().toString();
-            altura=alumno.getPersona().getDireccion().getNumero();
-            dni=alumno.getPersona().getDni();
+            for (Alumno alumno : alumnos) {
 
-            defaultTableModel.addRow(new Object[]{id, nombre, apellido, legajo, domicilio, altura, dni});
+                id=alumno.getId();
+                nombre=alumno.getPersona().getNombre().toString();
+                apellido=alumno.getPersona().getApellido().toString();
+                legajo=alumno.getLegajo();
+                domicilio=alumno.getPersona().getDireccion().getCalle().toString();
+                altura=alumno.getPersona().getDireccion().getNumero();
+                dni=alumno.getPersona().getDni();
 
+                defaultTableModel.addRow(new Object[]{id, nombre, apellido, legajo, domicilio, altura, dni});
+
+            }
         }
-        
+    }
+
+    public JTable getTabla() {
+        return Tabla;
     }
     
     /**

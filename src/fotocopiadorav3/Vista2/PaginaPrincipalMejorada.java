@@ -5,6 +5,9 @@
  */
 package fotocopiadorav3.Vista2;
 
+import fotocopiadorav3.Vista2.Alumno.ListaAlumnos;
+import fotocopiadorav3.Vista2.Articulo.ListaArticulos;
+import fotocopiadorav3.Vista2.Usuario.ListaUsuarios;
 import javax.swing.JTabbedPane;
 
 /**
@@ -12,7 +15,11 @@ import javax.swing.JTabbedPane;
  * @author claudio
  */
 public class PaginaPrincipalMejorada extends javax.swing.JFrame {
-
+    
+    private static ListaAlumnos listaAlumnos;
+    private static ListaArticulos listaArticulos;
+    private static ListaUsuarios listaUsuarios;
+    
     /**
      * Creates new form PaginaPrincipal
      */
@@ -218,7 +225,13 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     }//GEN-LAST:event_nuevoClienteActionPerformed
 
     private void modificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarClienteActionPerformed
-        Vista2Interfaz.renderizarModificarAlumno();
+        
+        if (listaAlumnos.getTabla().getModel().getValueAt(listaAlumnos.getTabla().getSelectedRow(), 0)!=null) {
+            
+            int idAlumno = (int) listaAlumnos.getTabla().getModel().getValueAt(listaAlumnos.getTabla().getSelectedRow(), 0);
+            Vista2Interfaz.renderizarModificarAlumno(idAlumno);
+            
+        }
     }//GEN-LAST:event_modificarClienteActionPerformed
 
     private void nuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoUsuarioActionPerformed
@@ -248,7 +261,15 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
         Vista2Interfaz.renderizarListadoUsuarios();
     }//GEN-LAST:event_UsuariosActionPerformed
-
+    
+    public void establecerListados(ListaAlumnos listaAlumnos, ListaArticulos listaArticulos, ListaUsuarios listaUsuarios){
+        
+        this.listaAlumnos = listaAlumnos;
+        this.listaArticulos = listaArticulos;
+        this.listaUsuarios = listaUsuarios;
+        
+    }
+    
     /**
      * @param args the command line arguments
      */

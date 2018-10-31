@@ -16,7 +16,6 @@ import fotocopiadorav3.Vista2.Alumno.ModificarAlumno;
 import fotocopiadorav3.Controlador.*;
 import fotocopiadorav3.Modelo.Alumno;
 import fotocopiadorav3.Modelo.Articulo;
-import fotocopiadorav3.Modelo.Pedido;
 import fotocopiadorav3.Modelo.Usuario;
 import fotocopiadorav3.Modelo.ModeloInterfaz;
 import fotocopiadorav3.Vista2.Alumno.ListaAlumnos;
@@ -33,6 +32,9 @@ import javax.swing.JPanel;
 public class Vista2Interfaz {
     
     private static PaginaPrincipalMejorada paginaPrincipal = new PaginaPrincipalMejorada();
+    private static ListaAlumnos listaAlumnos = new ListaAlumnos();
+    private static ListaArticulos listaArticulos = new ListaArticulos();
+    private static ListaUsuarios listaUsuarios = new ListaUsuarios();
     
     public static void renderizarLogin(){
         
@@ -43,6 +45,7 @@ public class Vista2Interfaz {
     
     public static void renderizarPaginaPrincipal(){
         
+        paginaPrincipal.establecerListados(listaAlumnos, listaArticulos, listaUsuarios);
         paginaPrincipal.setVisible(true);
         
     }
@@ -62,7 +65,6 @@ public class Vista2Interfaz {
 
     public static void renderizarListadoAlumnos(){
         
-        ListaAlumnos listaAlumnos = new ListaAlumnos();
         JPanel panel = new JPanel();
         panel.add(listaAlumnos.getContentPane());
         paginaPrincipal.getAreaTrabajo().addTab("Listado Alumnos", panel);
@@ -171,9 +173,10 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarModificarAlumno(){
+    public static void renderizarModificarAlumno(int idAlumno){
         
         ModificarAlumno modificarAlumno = new ModificarAlumno();
+        modificarAlumno.setIdAlumno(idAlumno);
         JPanel panel = new JPanel();
         panel.add(modificarAlumno.getContentPane());
         paginaPrincipal.getAreaTrabajo().addTab("Modificar Alumno", panel);
