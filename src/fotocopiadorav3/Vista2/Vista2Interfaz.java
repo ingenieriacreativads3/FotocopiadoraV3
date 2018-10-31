@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  */
 public class Vista2Interfaz {
     
-    private static final PaginaPrincipal paginaPrincipal = new PaginaPrincipal();
+    private static PaginaPrincipalMejorada paginaPrincipal = new PaginaPrincipalMejorada();
     
     public static void renderizarLogin(){
         
@@ -26,7 +26,9 @@ public class Vista2Interfaz {
     
     public static void renderizarPaginaPrincipal(){
         
-        paginaPrincipal.setVisible(true);
+        PaginaPrincipalMejorada asd = new PaginaPrincipalMejorada();
+        asd.setVisible(true);
+        paginaPrincipal = asd;
         
     }
     
@@ -45,35 +47,54 @@ public class Vista2Interfaz {
 
     public static void renderizarModificarPedido(){
         
+        ModificarPedido modificarPedido = new ModificarPedido();
+        JPanel panel = new JPanel();
+        panel.add(modificarPedido.getContentPane());
+        paginaPrincipal.getAreaTrabajo().addTab("Modificar Pedido", panel);
+        
     }
 
     public static void renderizarCancelarPedido(){
         
     }
 
-    public static void renderizarNuevoDocumento(){
+    public static void renderizarNuevoArticulo(){
         
-        NuevoArticulo nuevoDocumento = new NuevoArticulo();
-        nuevoDocumento.setVisible(true);
-        
-    }
-
-    public static void renderizarModificarDocumento(){
+        NuevoArticulo nuevoArticulo = new NuevoArticulo();
+        JPanel panel = new JPanel();
+        panel.add(nuevoArticulo.getContentPane());
+        paginaPrincipal.getAreaTrabajo().addTab("Nuevo Articulo", panel);
         
     }
 
-    public static void renderizarEliminarDocumento(){
+    public static void renderizarModificarArticulo(){
+        
+        ModificarArticulo modificarArticulo = new ModificarArticulo();
+        JPanel panel = new JPanel();
+        panel.add(modificarArticulo.getContentPane());
+        paginaPrincipal.getAreaTrabajo().addTab("Modificar Articulo", panel);
+        
+    }
+
+    public static void renderizarEliminarArticulo(){
         
     }
     
     public static void renderizarNuevoUsuario(){
         
         NuevoUsuario nuevoUsuario = new NuevoUsuario();
-        nuevoUsuario.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(nuevoUsuario.getContentPane());
+        paginaPrincipal.getAreaTrabajo().addTab("Nuevo Usuario", panel);
         
     }
 
     public static void renderizarModificarUsuario(){
+        
+        ModificarUsuario modificarUsuario = new ModificarUsuario();
+        JPanel panel = new JPanel();
+        panel.add(modificarUsuario.getContentPane());
+        paginaPrincipal.getAreaTrabajo().addTab("Modificar Usuario", panel);
         
     }
 
@@ -81,8 +102,31 @@ public class Vista2Interfaz {
         
     }
     
+    public static void renderizarNuevoAlumno(){
+        
+        NuevoAlumno nuevoAlumno = new NuevoAlumno();
+        JPanel panel = new JPanel();
+        panel.add(nuevoAlumno.getContentPane());
+        paginaPrincipal.getAreaTrabajo().addTab("Nuevo Alumno", panel);
+        
+    }
+
+    public static void renderizarModificarAlumno(){
+        
+        ModificarAlumno modificarAlumno = new ModificarAlumno();
+        JPanel panel = new JPanel();
+        panel.add(modificarAlumno.getContentPane());
+        paginaPrincipal.getAreaTrabajo().addTab("Modificar Alumno", panel);
+        
+    }
+
+    public static void renderizarEliminarAlumno(){
+        
+    }
+    
     public static void enviarDatosInicioSesion(String nombreUsuario, String contrasenia){
         
+        System.out.println("interfaz vista");
         ControladorInterfaz.iniciarSesion(nombreUsuario, contrasenia);
         
     }
@@ -106,6 +150,18 @@ public class Vista2Interfaz {
     }
     
     public static void enviarDatosModificarUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String altura, String dni){
+        
+        //ControladorInterfaz.modificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
+        
+    }
+    
+    public static void enviarDatosNuevoAlumno(String nombre, String apellido, String legajo, String domicilio, String altura, String dni){
+        
+        //ControladorInterfaz.modificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
+        
+    }
+    
+    public static void enviarDatosModificarAlumno(String nombre, String apellido, String legajo, String domicilio, String altura, String dni){
         
         //ControladorInterfaz.modificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
         

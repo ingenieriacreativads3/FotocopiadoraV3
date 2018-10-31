@@ -94,7 +94,6 @@ public class Login extends javax.swing.JFrame {
         jPasswordField1.setBackground(new java.awt.Color(16, 16, 16));
         jPasswordField1.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(102, 0, 153));
-        jPasswordField1.setText("jPasswordField1");
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 260, 40));
 
         jLabelUsuario1.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
@@ -114,7 +113,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldUsuarioMousePressed
 
     private void jButtonAceptarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAceptarMousePressed
-        
         
         String usuario = jTextFieldUsuario.getText();
         String contrasenia = jPasswordField1.getText();

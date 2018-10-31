@@ -48,27 +48,35 @@ public class Persona{
         
         Persona personaDevolver = OBJETO_INVALIDO;
         
-        Estado seObtuvo = getInformacion();
+        //Estado seObtuvo = getInformacion();
+        Estado seObtuvo = Estado.EXITO;
         
-        if(seObtuvo == Estado.EXITO){
-            
-            for(Persona personaActual : listaObjetos){
-                
-                if(personaActual.id == idRecibido){
-                    
-                    personaDevolver = personaActual;
-                    
-                }else{
-                    
-                    //...se establecion un valor por defecto
-                    
+        if(listaObjetos != null){
+        
+            if(seObtuvo == Estado.EXITO){
+
+                for(Persona personaActual : listaObjetos){
+
+                    if(personaActual.id == idRecibido){
+
+                        personaDevolver = personaActual;
+
+                    }else{
+
+                        //...se establecion un valor por defecto
+
+                    }
                 }
+
+            }else{
+
+                //TODO capturar el error producido por no haber capturado la info de la db
+                System.out.println("Se rompio en Direccion.getForId();");
+
             }
-            
         }else{
             
-            //TODO capturar el error producido por no haber capturado la info de la db
-            System.out.println("Se rompio en Direccion.getForId();");
+            //...no hacer nada
             
         }
         
@@ -76,7 +84,7 @@ public class Persona{
         
     }
     
-    private Estado guardar(){
+    public Estado guardar(){
         
         Estado estadoDevolver = Estado.ERROR;
         
@@ -135,9 +143,11 @@ public class Persona{
         
     }
     
-    private static Estado getInformacion(){
+    protected static Estado getInformacion(){
         
         Estado estadoDevolver = Estado.ERROR;
+        
+        System.out.println("pregunta por las personas");
         
         ResultSet rs = null;
         
@@ -162,6 +172,8 @@ public class Persona{
                 
                 Persona asd = Persona.nuevo(id, nombreObjeto, apellidoObjeto, dniObjeto, direccionObjeto, nombreObjeto.getId(), apellidoObjeto.getId(), direccionObjeto.getId());
                 
+                System.out.println(id);
+                
             }
             
             estadoDevolver = Estado.EXITO;
@@ -182,7 +194,8 @@ public class Persona{
         
         int ultimoID = 0;
         
-        Estado estadoConsulta = getInformacion();
+        Estado estadoConsulta = Estado.EXITO;
+        //Estado estadoConsulta = getInformacion();
 
         if(listaObjetos != null){
 
@@ -279,7 +292,7 @@ public class Persona{
             
             objetoDevolver = objetoNuevo;
             
-            Estado seGuardo = objetoDevolver.guardar();
+            //Estado seGuardo = objetoDevolver.guardar();
 
         }else{
 

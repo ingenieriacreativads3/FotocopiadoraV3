@@ -15,33 +15,43 @@ import fotocopiadorav3.Modelo.ModeloInterfaz;
  */
 public class GestorCuenta {
     
-   protected void iniciarSecion(){
-       /**
-        * El method recibe por parametros un usuario y una contraseña.
-        * En caso de ser datos validos, devuelve true.
-        * En case de ser datos incorrectos, devuelve false.
-        */
-   }
-   
-   protected void cerrarSecion(){
+//   protected void iniciarSecion(){
+//       /**
+//        * El method recibe por parametros un usuario y una contraseña.
+//        * En caso de ser datos validos, devuelve true.
+//        * En case de ser datos incorrectos, devuelve false.
+//        */
+//   }
+//   
+//   protected void cerrarSecion(){
+//       
+//   }
+//   
+   protected static Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
        
-   }
-   
-   protected Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
        Estado exitoAlIniciar = Estado.ERROR;
         //Primero se debe verificar si existe el usuario.
         //Luego se debe verificar si el usuairo y la contraseña son correctas
+        
+        System.out.println("llega hasta el gestor cuenta");
         try{
+            
             if(ModeloInterfaz.existeUsuario(usuario)){
+                
+                System.out.println("el usuario existe");
                 exitoAlIniciar = ModeloInterfaz.verificaUsuarioPassword(usuario, contraseña);
-            }
-            else{
+                
+            }else{
+                
                 exitoAlIniciar = Estado.ERROR_NOMBRE_INEXISTENTE;
+                
             }
-            return exitoAlIniciar;
+            
         }catch(Exception e){
-            return exitoAlIniciar;
+            
         }
+        
+        return exitoAlIniciar;
    }
    
 }

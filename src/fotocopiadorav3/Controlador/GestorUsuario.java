@@ -24,6 +24,9 @@ public class GestorUsuario {
             
             //usuarioCreadoConExito = ModeloInterfaz.adicionarUsuario(nombreRecibido, apellidoRecibido, nombreUsuarioRecibido, passwordRecibida, domicilioRecibido, dniRecibido);
         }
+        else{
+            usuarioCreadoConExito = Estado.ERROR_DATOS_INVALIDOS;
+        }
         
         return usuarioCreadoConExito;
     }

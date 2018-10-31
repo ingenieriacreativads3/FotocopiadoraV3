@@ -5,6 +5,8 @@
  */
 package fotocopiadorav3.Vista2;
 
+import javax.swing.JTabbedPane;
+
 /**
  *
  * @author claudio
@@ -29,33 +31,25 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
 
         BarraMenuLateral = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        nuevoUsuario = new javax.swing.JButton();
+        modificarUsuario = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        nuevoPedido = new javax.swing.JButton();
+        modificarPedido = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        nuevoArticulo = new javax.swing.JButton();
+        modificarArticulo = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        nuevoCliente = new javax.swing.JButton();
+        modificarCliente = new javax.swing.JButton();
         BarraMenuSuperior = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         PanelPrincipalCentral = new javax.swing.JPanel();
-        Pestanias = new javax.swing.JTabbedPane();
-        PestaniaPedidos = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        PestaniaArticulos = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        PestaniaClientes = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        PestaniaUsuarios = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        areaTrabajo = new javax.swing.JTabbedPane();
+        pestaniaPedidos = new javax.swing.JPanel();
+        pestaniaArticulos = new javax.swing.JPanel();
+        pestaniaClientes = new javax.swing.JPanel();
+        pestaniaUsuarios = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,13 +65,23 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
         BarraMenuLateral.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 370, 60));
 
-        jButton2.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton2.setText("Nuevo Usuario");
-        BarraMenuLateral.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 370, 30));
+        nuevoUsuario.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nuevoUsuario.setText("Nuevo Usuario");
+        nuevoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoUsuarioActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(nuevoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 370, 30));
 
-        jButton3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton3.setText("Modificar Usuario");
-        BarraMenuLateral.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 370, 30));
+        modificarUsuario.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        modificarUsuario.setText("Modificar Usuario");
+        modificarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarUsuarioActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(modificarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 370, 30));
 
         jLabel2.setBackground(new java.awt.Color(51, 51, 69));
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -86,13 +90,23 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
         BarraMenuLateral.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 60));
 
-        jButton4.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton4.setText("Nuevo Pedido");
-        BarraMenuLateral.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 370, 30));
+        nuevoPedido.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nuevoPedido.setText("Nuevo Pedido");
+        nuevoPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoPedidoActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(nuevoPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 370, 30));
 
-        jButton5.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton5.setText("Modificar Pedido");
-        BarraMenuLateral.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 370, 30));
+        modificarPedido.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        modificarPedido.setText("Modificar Pedido");
+        modificarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarPedidoActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(modificarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 370, 30));
 
         jLabel3.setBackground(new java.awt.Color(51, 51, 69));
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -101,13 +115,23 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         jLabel3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
         BarraMenuLateral.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 370, 60));
 
-        jButton7.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton7.setText("Nuevo Artículo");
-        BarraMenuLateral.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 370, 30));
+        nuevoArticulo.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nuevoArticulo.setText("Nuevo Artículo");
+        nuevoArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoArticuloActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(nuevoArticulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 370, 30));
 
-        jButton8.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton8.setText("Modificar Artículo");
-        BarraMenuLateral.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 370, 30));
+        modificarArticulo.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        modificarArticulo.setText("Modificar Artículo");
+        modificarArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarArticuloActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(modificarArticulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 370, 30));
 
         jLabel4.setBackground(new java.awt.Color(51, 51, 69));
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -116,13 +140,23 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         jLabel4.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
         BarraMenuLateral.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 370, 60));
 
-        jButton10.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton10.setText("Nuevo Cliente");
-        BarraMenuLateral.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 370, 30));
+        nuevoCliente.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nuevoCliente.setText("Nuevo Alumno");
+        nuevoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoClienteActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(nuevoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 370, 30));
 
-        jButton11.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton11.setText("Modificar Cliente");
-        BarraMenuLateral.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 370, 30));
+        modificarCliente.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        modificarCliente.setText("Modificar Alumno");
+        modificarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarClienteActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(modificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 370, 30));
 
         getContentPane().add(BarraMenuLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 370, 620));
 
@@ -136,141 +170,58 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
 
         PanelPrincipalCentral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Pestanias.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        areaTrabajo.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
 
-        PestaniaPedidos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pestaniaPedidos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        areaTrabajo.addTab("Pedidos", pestaniaPedidos);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID Pedido", "Nombre Cliente", "Artículos", "Fecha encargo", "Precio", "Acciones"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
-            };
+        pestaniaArticulos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        areaTrabajo.addTab("Artículos", pestaniaArticulos);
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
+        pestaniaClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        areaTrabajo.addTab("Clientes", pestaniaClientes);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
+        pestaniaUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        areaTrabajo.addTab("Usuarios", pestaniaUsuarios);
 
-        PestaniaPedidos.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -3, 910, 590));
-
-        Pestanias.addTab("Pedidos", PestaniaPedidos);
-
-        PestaniaArticulos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable2.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID Artículo", "Nombre Artículo", "Fecha De Subida", "Precio Unitario", "Acciones"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable2);
-
-        PestaniaArticulos.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -3, 910, 590));
-
-        Pestanias.addTab("Artículos", PestaniaArticulos);
-
-        PestaniaClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable3.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID Cliente", "Nombre Cliente", "Legajo", "Fecha De Entrada", "Acciones"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, true, false, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(jTable3);
-
-        PestaniaClientes.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -3, 910, 590));
-
-        Pestanias.addTab("Clientes", PestaniaClientes);
-
-        PestaniaUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable5.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID Usuario", "Nombre Usuario", "Fecha De Creado", "Tipo Usuario", "Acciones"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane5.setViewportView(jTable5);
-
-        PestaniaUsuarios.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -3, 910, 590));
-
-        Pestanias.addTab("Usuarios", PestaniaUsuarios);
-
-        PanelPrincipalCentral.add(Pestanias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 620));
+        PanelPrincipalCentral.add(areaTrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 620));
 
         getContentPane().add(PanelPrincipalCentral, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 910, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nuevoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoPedidoActionPerformed
+        Vista2Interfaz.renderizarNuevoPedido();
+    }//GEN-LAST:event_nuevoPedidoActionPerformed
+
+    private void modificarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPedidoActionPerformed
+        Vista2Interfaz.renderizarModificarPedido();
+    }//GEN-LAST:event_modificarPedidoActionPerformed
+
+    private void nuevoArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoArticuloActionPerformed
+        Vista2Interfaz.renderizarNuevoArticulo();
+    }//GEN-LAST:event_nuevoArticuloActionPerformed
+
+    private void modificarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarArticuloActionPerformed
+        Vista2Interfaz.renderizarModificarArticulo();
+    }//GEN-LAST:event_modificarArticuloActionPerformed
+
+    private void nuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoClienteActionPerformed
+        Vista2Interfaz.renderizarNuevoAlumno();
+    }//GEN-LAST:event_nuevoClienteActionPerformed
+
+    private void modificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarClienteActionPerformed
+        Vista2Interfaz.renderizarModificarAlumno();
+    }//GEN-LAST:event_modificarClienteActionPerformed
+
+    private void nuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoUsuarioActionPerformed
+        Vista2Interfaz.renderizarNuevoUsuario();
+    }//GEN-LAST:event_nuevoUsuarioActionPerformed
+
+    private void modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUsuarioActionPerformed
+        Vista2Interfaz.renderizarModificarUsuario();
+    }//GEN-LAST:event_modificarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,36 +258,35 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public JTabbedPane getAreaTrabajo(){
+        return areaTrabajo;
+    }
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BarraMenuLateral;
     private javax.swing.JPanel BarraMenuSuperior;
     private javax.swing.JPanel PanelPrincipalCentral;
-    private javax.swing.JPanel PestaniaArticulos;
-    private javax.swing.JPanel PestaniaClientes;
-    private javax.swing.JPanel PestaniaPedidos;
-    private javax.swing.JPanel PestaniaUsuarios;
-    private javax.swing.JTabbedPane Pestanias;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JTabbedPane areaTrabajo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable5;
+    private javax.swing.JButton modificarArticulo;
+    private javax.swing.JButton modificarCliente;
+    private javax.swing.JButton modificarPedido;
+    private javax.swing.JButton modificarUsuario;
+    private javax.swing.JButton nuevoArticulo;
+    private javax.swing.JButton nuevoCliente;
+    private javax.swing.JButton nuevoPedido;
+    private javax.swing.JButton nuevoUsuario;
+    private javax.swing.JPanel pestaniaArticulos;
+    private javax.swing.JPanel pestaniaClientes;
+    private javax.swing.JPanel pestaniaPedidos;
+    private javax.swing.JPanel pestaniaUsuarios;
     // End of variables declaration//GEN-END:variables
 }

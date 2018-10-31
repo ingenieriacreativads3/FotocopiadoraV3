@@ -85,10 +85,10 @@ public class ConexionMySql {
         
     }
     
-    protected PreparedStatement getPreparedStatement(String nombreTabla){
+    protected PreparedStatement getPreparedStatement(String nombreTablaRecibido){
         
         PreparedStatement prepStmtDevolver = null;
-        String sqlStmt = "SELECT * FROM " + nombreTabla;
+        String sqlStmt = "SELECT * FROM " + nombreTablaRecibido;
         
         try {
             
@@ -96,14 +96,15 @@ public class ConexionMySql {
             String connectionUrl = Environment.URL;
             String connectionUser = Environment.USERNAME;
             String connectionPassword = Environment.PASSWORD;
+            System.out.println("antes de hacer la conexion");
             this.conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
-            
+            System.out.println("realiza la conexion en conexionmysql getpreparedstatement");
             prepStmtDevolver = this.conn.prepareStatement(sqlStmt);
             
         } catch (Exception e) {
             
             //..se establecio un valor por defecto
-            System.out.println("se rompe por cerrar la conexion");
+            System.out.println("se rompe cuando incia la sesion la conexion");
             
         }
         
@@ -267,6 +268,16 @@ public class ConexionMySql {
         //INSERT INTO alfanumerico (valor, id) VALUES ('sdf', '2');
         
         return estadoDevolver;
+        
+    }
+    
+    public static void getAllInformacion(){
+        
+        AlfaNumerico.getInformacion();
+        Direccion.getInformacion();
+        Persona.getInformacion();
+        Alumno.getInformacion();
+        Usuario.getInformacion();
         
     }
     

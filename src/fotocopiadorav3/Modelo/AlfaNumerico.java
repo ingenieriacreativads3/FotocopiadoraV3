@@ -42,27 +42,36 @@ public class AlfaNumerico implements Serializable{
         
         AlfaNumerico alfaDevolver = OBJETO_INVALIDO;
         
-        Estado seObtuvo = getInformacion();
+        Estado seObtuvo = Estado.EXITO;
+        //Estado seObtuvo = getInformacion();
         
-        if(seObtuvo == Estado.EXITO){
-            
-            for(AlfaNumerico alfaActual : listaObjetos){
-                
-                if(alfaActual.id == idRecibido){
-                    
-                    alfaDevolver = alfaActual;
-                    
-                }else{
-                    
-                    //...se establecion un valor por defecto
-                    
+        if(listaObjetos != null){
+        
+            if(seObtuvo == Estado.EXITO){
+
+                for(AlfaNumerico alfaActual : listaObjetos){
+
+                    if(alfaActual.id == idRecibido){
+
+                        alfaDevolver = alfaActual;
+
+                    }else{
+
+                        //...se establecion un valor por defecto
+
+                    }
                 }
+
+            }else{
+
+                //TODO capturar el error producido por no haber capturado la info de la db
+                System.out.println("Se rompio en Alfanumerico.getForId();");
+
             }
             
         }else{
             
-            //TODO capturar el error producido por no haber capturado la info de la db
-            System.out.println("Se rompio en Alfanumerico.getForId();");
+            //...no hacer nada
             
         }
         
@@ -74,7 +83,8 @@ public class AlfaNumerico implements Serializable{
         
         int ultimoID = 0;
         
-        Estado estadoConsulta = getInformacion();
+        //Estado estadoConsulta = getInformacion();
+        Estado estadoConsulta = Estado.EXITO;
 
         if(listaObjetos != null){
 
@@ -110,9 +120,10 @@ public class AlfaNumerico implements Serializable{
         
     }
     
-    private static Estado getInformacion(){
+    protected static Estado getInformacion(){
         
         Estado estadoDevolver = Estado.ERROR;
+        System.out.println("Pregunta por los alfaNumericos");
         
         ResultSet rs = null;
         
@@ -129,6 +140,8 @@ public class AlfaNumerico implements Serializable{
                 String valor = rs.getString(CAMPO_VALOR);
                 
                 AlfaNumerico asd = nuevo(id, valor);
+                
+                System.out.println(id);
                 
                
 //                TODO quitar estos sout
@@ -160,7 +173,7 @@ public class AlfaNumerico implements Serializable{
      * @return 
      */
     
-    private Estado guardar(){
+    public Estado guardar(){
         
         Estado estadoDevolver = Estado.ERROR;
         
@@ -330,17 +343,17 @@ public class AlfaNumerico implements Serializable{
                 //TODO quitar este sout
                 //System.out.println("anda bien el set");
                 
-                Estado seGuardo = objetoDevolver.guardar();
-                
-                if(seGuardo == Estado.EXITO){
-                    
-                    //...no hacer nada
-                    
-                }else{
-                    
-                    listaObjetos.remove(objetoDevolver);
-                    
-                }
+//                Estado seGuardo = objetoDevolver.guardar();
+//                
+//                if(seGuardo == Estado.EXITO){
+//                    
+//                    //...no hacer nada
+//                    
+//                }else{
+//                    
+//                    listaObjetos.remove(objetoDevolver);
+//                    
+//                }
                 
             }else{
                 
@@ -348,7 +361,7 @@ public class AlfaNumerico implements Serializable{
                 //TODO capturar el error recibido por no poder agregar el valor
                 //al objeto
                 
-                //...no saber que hacer
+                listaObjetos.remove(objetoDevolver);
                 
             }//...fin
 

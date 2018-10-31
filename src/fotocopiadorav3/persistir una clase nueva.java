@@ -1,4 +1,4 @@
-
+/*
 ///Verificar que todos sus atributos, 
 ///sean tipo bd, ninguna referencia a objetos.
 ///Si hay una referencia a un objeto, 
@@ -117,6 +117,6 @@ private Estado setValor(String valorRecibido);
 private static Estado guardar();
 
 
-
+*/
 
 
