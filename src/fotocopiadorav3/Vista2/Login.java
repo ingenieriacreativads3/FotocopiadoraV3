@@ -129,7 +129,7 @@ public class Login extends javax.swing.JFrame {
             
         }
         
-        //Vista2Interfaz.renderizarPaginaPrincipal();
+        Vista2Interfaz.renderizarPaginaPrincipal();
         
     }//GEN-LAST:event_jButtonAceptarMousePressed
 
