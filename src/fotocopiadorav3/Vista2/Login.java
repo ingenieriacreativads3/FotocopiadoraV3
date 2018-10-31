@@ -5,6 +5,8 @@
  */
 package fotocopiadorav3.Vista2;
 
+import Otros.TextPrompt;
+
 /**
  *
  * @author claudio
@@ -16,6 +18,10 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        
+        TextPrompt textPromptUsuario = new TextPrompt("Ingrese su nombre de Usuario", jTextFieldUsuario);
+        TextPrompt textPromptContrasenia = new TextPrompt("Ingrese su contraseña", jPasswordField1);
+        
     }
 
     /**
@@ -53,12 +59,7 @@ public class Login extends javax.swing.JFrame {
         jTextFieldUsuario.setBackground(new java.awt.Color(16, 16, 16));
         jTextFieldUsuario.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jTextFieldUsuario.setForeground(new java.awt.Color(102, 0, 153));
-        jTextFieldUsuario.setText("Ingresar Usuario");
-        jTextFieldUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextFieldUsuarioMousePressed(evt);
-            }
-        });
+        jTextFieldUsuario.setToolTipText("Ingrese su nombre de usuario");
         jPanel1.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, 40));
 
         Titulo.setFont(new java.awt.Font("Arial Black", 2, 24)); // NOI18N
@@ -75,6 +76,11 @@ public class Login extends javax.swing.JFrame {
         jButtonCancelar.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jButtonCancelar.setForeground(new java.awt.Color(102, 0, 153));
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         jButtonAceptar.setBackground(new java.awt.Color(42, 16, 16));
@@ -94,6 +100,7 @@ public class Login extends javax.swing.JFrame {
         jPasswordField1.setBackground(new java.awt.Color(16, 16, 16));
         jPasswordField1.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(102, 0, 153));
+        jPasswordField1.setToolTipText("Ingrese su contraseña");
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 260, 40));
 
         jLabelUsuario1.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
@@ -106,12 +113,6 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioMousePressed
-        
-        jTextFieldUsuario.selectAll();
-        
-    }//GEN-LAST:event_jTextFieldUsuarioMousePressed
-
     private void jButtonAceptarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAceptarMousePressed
         
         String usuario = jTextFieldUsuario.getText();
@@ -120,7 +121,7 @@ public class Login extends javax.swing.JFrame {
         //if (validarDatos(usuario, contrasenia)) {
         if(true){
             
-            Vista2Interfaz.enviarDatosInicioSesion(usuario, contrasenia);
+//            Vista2Interfaz.enviarDatosInicioSesion(usuario, contrasenia);
             
         } else{
             
@@ -128,7 +129,13 @@ public class Login extends javax.swing.JFrame {
             
         }
         
+        Vista2Interfaz.renderizarPaginaPrincipal();
+        
     }//GEN-LAST:event_jButtonAceptarMousePressed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
      * @param args the command line arguments

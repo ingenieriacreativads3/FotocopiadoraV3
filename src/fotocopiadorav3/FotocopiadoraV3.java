@@ -5,7 +5,7 @@
  */
 package fotocopiadorav3;
 
-import fotocopiadorav3.Controlador.ControladorInterfaz;
+import fotocopiadorav3.Controlador.*;
 import fotocopiadorav3.Modelo.*;
 import javafx.application.*;
 import javafx.stage.Stage;

@@ -3,19 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fotocopiadorav3.Vista2;
+package fotocopiadorav3.Vista2.Usuario;
+
+import Otros.TextPrompt;
+import fotocopiadorav3.Vista2.Vista2Interfaz;
 
 /**
  *
  * @author Toshiba
  */
-public class ModificarAlumno extends javax.swing.JFrame {
+public class ModificarUsuario extends javax.swing.JFrame {
 
     /**
-     * Creates new form ModificarAlumno
+     * Creates new form ModificarUsuario
      */
-    public ModificarAlumno() {
+    public ModificarUsuario() {
         initComponents();
+        
+        TextPrompt textPromptNombre = new TextPrompt("Ingrese su nombre", nombreTF);
+        TextPrompt textPromptApellido = new TextPrompt("Ingrese su apellido", apellidoTF);
+        TextPrompt textPromptNombreUsuario = new TextPrompt("Ingrese su nombre de usuario", nombreUsuarioTF);
+        TextPrompt textPromptContrasenia = new TextPrompt("Ingrese su contraseña", contraseniaTF);
+        TextPrompt textPromptDomicilio = new TextPrompt("Ingrese su domicilio actual", domicilioTF);
+        TextPrompt textPromptAltura = new TextPrompt("Ingrese la altura de su domicilio", alturaTF);
+        TextPrompt textPromptDni = new TextPrompt("Ingrese su número de documento", dniTF);
+        
     }
 
     /**
@@ -28,15 +40,17 @@ public class ModificarAlumno extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        aceptar = new javax.swing.JButton();
+        aceptar1 = new javax.swing.JButton();
         limpiarCampos = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         nombreTF = new javax.swing.JTextField();
         apellidoTF = new javax.swing.JTextField();
+        contraseniaTF = new javax.swing.JTextField();
         domicilioTF = new javax.swing.JTextField();
         nombreUsuarioTF = new javax.swing.JTextField();
         dniTF = new javax.swing.JTextField();
@@ -45,12 +59,12 @@ public class ModificarAlumno extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nuevo Alumno");
+        jLabel1.setText("Modificar Usuario");
 
-        aceptar.setText("Aceptar");
-        aceptar.addActionListener(new java.awt.event.ActionListener() {
+        aceptar1.setText("Aceptar");
+        aceptar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aceptarActionPerformed(evt);
+                aceptar1ActionPerformed(evt);
             }
         });
 
@@ -65,25 +79,29 @@ public class ModificarAlumno extends javax.swing.JFrame {
 
         jLabel3.setText("Apellido:");
 
-        jLabel4.setText("Legajo:");
+        jLabel4.setText("Nombre de Usuario:");
+
+        jLabel5.setText("Contraseña:");
 
         jLabel6.setText("Domicilio:");
 
         jLabel7.setText("Dni:");
 
-        nombreTF.setText("jTextField1");
+        nombreTF.setToolTipText("Ingrese su nombre");
 
-        apellidoTF.setText("jTextField2");
+        apellidoTF.setToolTipText("Ingrese su apellido");
 
-        domicilioTF.setText("jTextField4");
+        contraseniaTF.setToolTipText("Ingrese su contraseña");
 
-        nombreUsuarioTF.setText("jTextField5");
+        domicilioTF.setToolTipText("Ingrese su domicilio actual");
 
-        dniTF.setText("jTextField6");
+        nombreUsuarioTF.setToolTipText("Ingrese su nombre de usuario");
+
+        dniTF.setToolTipText("Ingrese su número de documento");
 
         jLabel8.setText("N°:");
 
-        alturaTF.setText("jTextField1");
+        alturaTF.setToolTipText("Ingrese la altura de su domicilio");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,7 +113,7 @@ public class ModificarAlumno extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(limpiarCampos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(aceptar))
+                        .addComponent(aceptar1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(253, 253, 253)
                         .addComponent(jLabel1)
@@ -116,6 +134,10 @@ public class ModificarAlumno extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addComponent(dniTF))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(contraseniaTF))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
@@ -147,7 +169,11 @@ public class ModificarAlumno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(nombreUsuarioTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(contraseniaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(domicilioTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,7 +185,7 @@ public class ModificarAlumno extends javax.swing.JFrame {
                     .addComponent(dniTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aceptar)
+                    .addComponent(aceptar1)
                     .addComponent(limpiarCampos))
                 .addContainerGap())
         );
@@ -167,26 +193,30 @@ public class ModificarAlumno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+    private void aceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar1ActionPerformed
 
         String nombre=nombreTF.getText();
         String apellido=apellidoTF.getText();
         String nombreUsuario=nombreUsuarioTF.getText();
+        String contrasenia=contraseniaTF.getText();
         String domicilio=domicilioTF.getText();
         String altura=alturaTF.getText();
         String dni=dniTF.getText();
 
-        Vista2Interfaz.enviarDatosModificarAlumno(nombre, apellido, nombreUsuario, domicilio, altura, dni);
-    }//GEN-LAST:event_aceptarActionPerformed
+        Vista2Interfaz.enviarDatosModificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
+
+    }//GEN-LAST:event_aceptar1ActionPerformed
 
     private void limpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarCamposActionPerformed
 
         nombreTF.setText("");
         apellidoTF.setText("");
         nombreUsuarioTF.setText("");
+        contraseniaTF.setText("");
         domicilioTF.setText("");
         alturaTF.setText("");
         dniTF.setText("");
+
     }//GEN-LAST:event_limpiarCamposActionPerformed
 
     /**
@@ -206,34 +236,36 @@ public class ModificarAlumno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarAlumno().setVisible(true);
+                new ModificarUsuario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aceptar;
+    private javax.swing.JButton aceptar1;
     private javax.swing.JTextField alturaTF;
     private javax.swing.JTextField apellidoTF;
+    private javax.swing.JTextField contraseniaTF;
     private javax.swing.JTextField dniTF;
     private javax.swing.JTextField domicilioTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
