@@ -84,18 +84,45 @@ public class ControladorInterfaz extends Application{
         
     }
     
-    public void bajaUsuario(){
+    public void bajaUsuario(String IDusuario){
         //se verifica que el que de de alta sea admin
         //si es admin, se baja el usuario
         //si no lo es, se deniega
+        AlfaNumerico IDusuarioRecibido = ModeloInterfaz.getAlfaNumerico(IDusuario);
+        Estado exitoBaja = GestorUsuario.bajaUsuario(IDusuarioRecibido);
     }
     
-    public void modificacionUsuario(){
+    public void modificacionUsuario(String IDusuarioRecibido, String nombreRecibido, String apellidoRecibido, String nombreUsuarioRecibido, String contraseniaRecibido, String calleDomicilioRecibido, String numeroDomicilioRecibido, String DNIRecibido){
         //ningun atributo extra es necesario para automidificarse
         //para modificaciones extras:
         //se verifica que el que de de alta sea admin
         //si es admin, se baja el usuario
         //si no lo es, se deniega
+        AlfaNumerico IDusuario = ModeloInterfaz.getAlfaNumerico(IDusuarioRecibido);
+        
+        AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
+        
+        AlfaNumerico apellido = ModeloInterfaz.getAlfaNumerico(apellidoRecibido);
+        
+        AlfaNumerico nombreUsuario = ModeloInterfaz.getAlfaNumerico(nombreUsuarioRecibido);
+        
+        AlfaNumerico contrasenia = ModeloInterfaz.getAlfaNumerico(contraseniaRecibido);
+        
+        AlfaNumerico calleDomicilio = ModeloInterfaz.getAlfaNumerico(calleDomicilioRecibido);
+        int numeroDomicilio = Integer.valueOf(numeroDomicilioRecibido);
+        Direccion domicilio = ModeloInterfaz.getDireccion(calleDomicilio, numeroDomicilio);
+        
+        int DNI = Integer.valueOf(DNIRecibido);
+        
+        Estado exitoModificacion = GestorUsuario.modificacionUsuario(IDusuario, nombre, apellido, nombreUsuario, contrasenia, domicilio, DNI);
+        
+        
+        if(exitoModificacion != Estado.DATOS_VALIDOS){
+            String mensajeError = exitoModificacion.toString();
+            int IDError = exitoModificacion.getID();
+            cargarMensajeError(mensajeError, IDError);
+        }
+        
     }
     
     /*
@@ -105,19 +132,26 @@ public class ControladorInterfaz extends Application{
     */
     
     public void adicionarClienteComoInvitado(String nombreClienteInvitado){
-        
+        //todo
     }
     
-    public void adicionarClienteComoRegistrado(String nombreCliente, int legajo){
+    public void adicionarClienteComoRegistrado(String legajoRecibido, String nombreClienteRecibido){
+        AlfaNumerico nombreCliente = ModeloInterfaz.getAlfaNumerico(nombreClienteRecibido);
+        int legajo = Integer.valueOf(legajoRecibido);
         
+        Estado exitoAlta = GestorCliente.altaCliente(legajo, nombreCliente);
     }
     
-    public void modificacionClienteComoRegistrado(){
+    public void modificacionClienteComoRegistrado(String legajoRecibido, String nombreClienteRecibido){
+        AlfaNumerico nombreCliente = ModeloInterfaz.getAlfaNumerico(nombreClienteRecibido);
+        int legajo = Integer.valueOf(legajoRecibido);
         
+        Estado exitoAlta = GestorCliente.modificacionCliente(legajo, nombreCliente);
     }
     
-    public void bajaClienteComoRegistrado(){
-        
+    public void bajaClienteComoRegistrado(String legajoRecibido){
+        int legajo = Integer.valueOf(legajoRecibido);
+        Estado exitoAlta = GestorCliente.bajaCliente(legajo);
     }
     
     /*
@@ -126,12 +160,34 @@ public class ControladorInterfaz extends Application{
     *
     */
     
-    public void crearArticulo(String nombre, String autor, float precio, String materia){
-        GestorArticulo.altaArticulo(nombre, autor, precio, materia);
+    public void crearArticulo(String nombreRecibido, String autorRecibido, String precioRecibido, String materiaRecibido){
+        
+        AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
+        
+        AlfaNumerico autor = ModeloInterfaz.getAlfaNumerico(autorRecibido);
+        
+        AlfaNumerico materia = ModeloInterfaz.getAlfaNumerico(materiaRecibido);
+        
+        float precio = Float.valueOf(precioRecibido);
+        
+        
+        Estado exitoAlta = GestorArticulo.altaArticulo(nombre, autor, precio, materia);
     }
     
-    public void modificacionArticulo(AlfaNumerico IDArticulo){
-        GestorArticulo.modificacionArticulo(IDArticulo);
+    public void modificacionArticulo(AlfaNumerico IDArticulo, String nombreRecibido, String autorRecibido, String precioRecibido, String materiaRecibido){
+        AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
+        
+        AlfaNumerico autor = ModeloInterfaz.getAlfaNumerico(autorRecibido);
+        
+        AlfaNumerico materia = ModeloInterfaz.getAlfaNumerico(materiaRecibido);
+        
+        float precio = Float.valueOf(precioRecibido);
+        
+        
+        GestorArticulo.modificacionArticulo(IDArticulo, nombre, autor, precio, materia);
+        
+        
+        
     }
     
     public void bajaArticulo(AlfaNumerico IDArticulo){

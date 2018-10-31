@@ -31,12 +31,29 @@ public class GestorUsuario {
         return usuarioCreadoConExito;
     }
     
-    protected void bajaUsuario(){
+    protected Estado bajaUsuario(AlfaNumerico IDusuario){
+        Estado exitoBaja = Estado.ERROR;
         
+        //exitoBaja = ModeloInterfaz.bajaUsuario(IDusuario);
+        
+        
+        return exitoBaja;
     }
     
-    protected void modificacionUsuario(){
+    protected Estado modificacionUsuario(AlfaNumerico IDUusuarioRecibido, AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, AlfaNumerico nombreUsuarioRecibido, AlfaNumerico passwordRecibida, Direccion domicilioRecibido, int dniRecibido){
+        Estado usuarioCreadoConExito = Estado.ERROR;
         
+        //Verificaciones del nombreRecibido, autor, precio, materia.
+        
+        if(datosCorrectos(nombreRecibido, apellidoRecibido, nombreUsuarioRecibido, passwordRecibida, domicilioRecibido, dniRecibido)){
+            
+            //usuarioCreadoConExito = ModeloInterfaz.modificarUsuario(IDUusuarioRecibido, nombreRecibido, apellidoRecibido, nombreUsuarioRecibido, passwordRecibida, domicilioRecibido, dniRecibido);
+        }
+        else{
+            usuarioCreadoConExito = Estado.ERROR_DATOS_INVALIDOS;
+        }
+        
+        return usuarioCreadoConExito;
     }
     
     private boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico apellido, AlfaNumerico nombreUsuario, AlfaNumerico contrasenia, Direccion Domicilio, int DNI){

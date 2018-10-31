@@ -5,21 +5,63 @@
  */
 package fotocopiadorav3.Controlador;
 
+import fotocopiadorav3.Modelo.AlfaNumerico;
+import fotocopiadorav3.Modelo.Estado;
+
 /**
  *Clase que se encargara del ABM de Clientes
  * @author David Alonso
  */
 public class GestorCliente {
     
-    protected void altaCliente(){
+    protected Estado altaCliente(int legajo, AlfaNumerico nombreCliente){
+        Estado Exito = Estado.ERROR;
+        if(datosCorrectos(legajo, nombreCliente)){
+            //Persona nuevoCliente = ModeloInterfaz.get
+            //Exito = ModeloInterfaz.getNuevoAlumno(legajo, personaRecibida);
+        }
         
+        return Exito;
     }
     
-    protected void bajaCliente(){
+    protected Estado bajaCliente(int legajo){
+        Estado Exito = Estado.ERROR;
         
+        //Dar de baja
+        
+        return Exito;
     }
     
-    protected void modificacionCliente(){
+    protected Estado modificacionCliente(int legajo, AlfaNumerico nombreCliente){
+        Estado Exito = Estado.ERROR;
         
+        if(datosCorrectos(legajo, nombreCliente)){
+            //Persona nuevoCliente = ModeloInterfaz.get
+            //Exito = ModeloInterfaz.getNuevoAlumno(legajo, personaRecibida);
+        }
+        
+        return Exito;
+    }
+    
+    private boolean datosCorrectos(int legajo, AlfaNumerico nombreCliente){
+        
+        try{
+            boolean exito = false;
+            boolean exitoLegajo = false;
+            boolean exitoNombreCliente = false;
+            if(legajo < 0){
+                exitoLegajo=true;
+            }
+            if(nombreCliente != null){
+                exitoNombreCliente=true;
+            }
+            if(exitoLegajo && exitoNombreCliente){
+                exito = true;
+            }
+        
+        return exito;
+        }   catch(Exception e){
+            return false;
+        }     
     }
 }

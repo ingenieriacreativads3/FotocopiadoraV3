@@ -18,17 +18,18 @@ public class GestorArticulo {
      * @param nombre
      * @param autor
      * @param precio
-     * @param materiaz
+     * @param materia
      * @return
      */
     
-    protected Estado altaArticulo(String nombre, String autor, float precio, String materia){
+    protected Estado altaArticulo(AlfaNumerico nombre, AlfaNumerico autor, float precio, AlfaNumerico materia){
         Estado ArticuloCreado = Estado.ERROR;
         
         //Verificaciones del nombre, autor, precio, materia.
         
         if(datosCorrectos(nombre, autor, precio, materia)){
-            ArticuloCreado = ModeloInterfaz.adicionarArticulo(nombre, autor, precio, materia);
+            //ArticuloCreado = ModeloInterfaz.adicionarArticulo(nombre, autor, precio, materia);
+            //Documento nuevoArticulo = ModeloInterfaz.get
         }
         
         return ArticuloCreado;
@@ -37,17 +38,43 @@ public class GestorArticulo {
     /**
      * 
      * @param IDArticulo 
+     * @return  
      */
-    protected void bajaArticulo(AlfaNumerico IDArticulo){
+    protected Estado bajaArticulo(AlfaNumerico IDArticulo){
+        Estado ArticuloEliminado = Estado.ERROR;
         
+        //Verificaciones del nombre, autor, precio, materia.
+        
+        
+        //ArticuloEliminado = ModeloInterfaz.bajaArticulo(IDArticulo);
+        
+        
+        return ArticuloEliminado;
     }
     
     /**
      *
      * @param IDArticulo
+     * @param nombre
+     * @param autor
+     * @param precio
+     * @param materia
+     * @return 
      */
-    protected void modificacionArticulo(AlfaNumerico IDArticulo){
+    protected Estado modificacionArticulo(AlfaNumerico IDArticulo, AlfaNumerico nombre, AlfaNumerico autor, float precio, AlfaNumerico materia){
+        Estado ArticuloModificadoConExito = Estado.ERROR;
         
+        //Verificaciones del nombreRecibido, autor, precio, materia.
+        
+        if(datosCorrectos(nombre, autor, precio, materia)){
+            
+            //ArticuloModificadoConExito = ModeloInterfaz.modificarArticulo(IDUusuarioRecibido, nombreRecibido, apellidoRecibido, nombreUsuarioRecibido, passwordRecibida, domicilioRecibido, dniRecibido);
+        }
+        else{
+            ArticuloModificadoConExito = Estado.ERROR_DATOS_INVALIDOS;
+        }
+        
+        return ArticuloModificadoConExito;
     }
     
     
@@ -59,7 +86,7 @@ public class GestorArticulo {
      * @param materia
      * @return 
      */
-    private boolean datosCorrectos(String nombre, String autor, float precio, String materia){
+    private boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico autor, float precio, AlfaNumerico materia){
         
         try{
             boolean exito = false;
