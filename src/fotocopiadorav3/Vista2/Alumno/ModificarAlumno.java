@@ -6,6 +6,8 @@
 package fotocopiadorav3.Vista2.Alumno;
 
 import Otros.TextPrompt;
+import fotocopiadorav3.Modelo.Alumno;
+import fotocopiadorav3.Modelo.ModeloInterfaz;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 
 /**
@@ -28,6 +30,8 @@ public class ModificarAlumno extends javax.swing.JFrame {
         TextPrompt textPromptDomicilio = new TextPrompt("Ingrese su domicilio actual", domicilioTF);
         TextPrompt textPromptAltura = new TextPrompt("Ingrese la altura de su domicilio", alturaTF);
         TextPrompt textPromptDni = new TextPrompt("Ingrese su número de documento", dniTF);
+        
+        cargarDatosAlumno();
         
     }
 
@@ -200,8 +204,22 @@ public class ModificarAlumno extends javax.swing.JFrame {
         domicilioTF.setText("");
         alturaTF.setText("");
         dniTF.setText("");
+        
     }//GEN-LAST:event_limpiarCamposActionPerformed
-
+    
+    public void cargarDatosAlumno(){
+        
+        Alumno alumno = ModeloInterfaz.getAlumnoForId(idAlumno);
+        
+        nombreTF.setText(alumno.getPersona().getNombre().toString());
+        apellidoTF.setText(alumno.getPersona().getApellido().toString());
+        legajoTF.setText(Integer.toString(alumno.getLegajo()));
+        domicilioTF.setText(alumno.getPersona().getDireccion().getCalle().toString());
+        alturaTF.setText(Integer.toString(alumno.getPersona().getDireccion().getNumero()));
+        dniTF.setText(Integer.toString(alumno.getPersona().getDni()));
+        
+    }
+    
     public void setIdAlumno(int idAlumno) {
         this.idAlumno = idAlumno;
     }
