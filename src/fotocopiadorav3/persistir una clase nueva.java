@@ -61,7 +61,7 @@ while (rs.next());
 
 ///Copiar la funcion
 
-protected static AlfaNumerico getForId(
+public static AlfaNumerico getForId(
         int idRecibido);
 
 ///Copiar la funcion que recibe,

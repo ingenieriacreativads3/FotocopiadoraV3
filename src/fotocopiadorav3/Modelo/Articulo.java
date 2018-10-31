@@ -44,9 +44,9 @@ public class Articulo {
     
     private int id;                         //tipo bd
     private AlfaNumerico documento;         //id identificador
-    private AlfaNumerico categoria;               //id identificador
+    private AlfaNumerico categoria;         //id identificador
     private double precio;                  //tipo bd
-    private java.util.Date fechaIngreso;    //tipo bd
+    private java.sql.Date fechaIngreso;    //tipo bd
     private AlfaNumerico nombre;            //id identificador
     private AlfaNumerico autor;             //id identificador
     private AlfaNumerico editorial;         //id identificador
@@ -66,6 +66,77 @@ public class Articulo {
     private static Set<Articulo> listaObjetos = new HashSet<>();
     
     //Rutinas
+    
+    public Estado guardar(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatement(CANTIDAD_DE_CAMPOS, NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID_DOCUMENTO, this.idDocumento);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID_CATEGORIA, this.idCategoria);
+            prepared.setDouble(LUGAR_DEL_CAMPO_PRECIO, this.precio);
+            prepared.setDate(LUGAR_DEL_CAMPO_FECHA_INGRESO, this.fechaIngreso);
+            
+            prepared.executeUpdate();
+            
+            estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Usuario.class.toString() + "guardar");
+            
+        } catch (Exception e) {
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
+        
+    }
+    
+    protected static Articulo getForId(int idRecibido){
+        
+        Articulo articuloDevolver = OBJETO_INVALIDO;
+        
+        Estado seObtuvo = Estado.EXITO;
+        //Estado seObtuvo = getInformacion();
+        
+        if(listaObjetos != null){
+            
+            if(seObtuvo == Estado.EXITO){
+
+                for(Articulo articuloActual : listaObjetos){
+
+                    if(articuloActual.id == idRecibido){
+
+                        articuloDevolver = articuloActual;
+
+                    }else{
+
+                        //...se establecion un valor por defecto
+
+                    }
+                }
+
+            }else{
+
+                //TODO capturar el error producido por no haber capturado la info de la db
+                System.out.println("Se rompio en Direccion.getForId();");
+
+            }
+            
+        }else{
+            
+            //...no hacer nada
+            
+        }
+        return articuloDevolver;
+        
+    }
     
     public Estado modificar(double precioRecibida, java.util.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
         
@@ -211,6 +282,9 @@ public class Articulo {
     
     protected static Articulo nuevo(double precioRecibida, java.util.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
 
+        AlfaNumerico documentoRecibido = AlfaNumerico.nuevo("ruta relativa del documento");
+        AlfaNumerico categoria = AlfaNumerico.nuevo("tutorias");
+        
         //Crear un objeto a devolver
         Articulo objetoDevolver = Articulo.OBJETO_INVALIDO;
 

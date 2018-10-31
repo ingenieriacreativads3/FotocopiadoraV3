@@ -53,7 +53,7 @@ public class Usuario{
         return Estado.ERROR;
     }
     
-    protected static Usuario getForId(int idRecibido){
+    public static Usuario getForId(int idRecibido){
         
         Usuario usuarioDevolver = OBJETO_INVALIDO;
         

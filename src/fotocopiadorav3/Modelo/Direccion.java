@@ -223,20 +223,27 @@ public class Direccion{
         
         int numero = 1194;
         AlfaNumerico asd = AlfaNumerico.nuevo("25 de mayo");
+        asd.guardar();
         System.out.println("pasa el primer alfanumerico");
         
         Direccion asdd = Direccion.nuevo(asd, numero);
+        asdd.guardar();
         System.out.println("Pasa la primera direccion");
         
         Persona asddd = Persona.nuevo(asd, asd, numero, asdd);
+        asddd.guardar();
         System.out.println("Pasa la primera persona");
         
         Usuario asdddd = Usuario.nuevo(asddd, asd, asd);
+        asdddd.guardar();
         System.out.println("Pasa el primer usuario");
         
         Alumno asdddddd = Alumno.nuevo(numero, asddd);
+        asdddddd.guardar();
         System.out.println("pasa el primer alumno");
         
+        Articulo lsjflskdf = Articulo.nuevo(12.34, new java.util.Date(), asd, asd, asd, asd, asd);
+        lsjflskdf.guardar();
         System.out.println("sfsdfsdf");
         
         //System.out.println("Despues de pedir un objeto nuevo");
