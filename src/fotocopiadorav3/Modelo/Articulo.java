@@ -113,10 +113,9 @@ public class Articulo {
                 AlfaNumerico edicion = AlfaNumerico.getForId(idEdicion);
                 AlfaNumerico materia = AlfaNumerico.getForId(idMateria);
                 
-                
+                Articulo asd = Articulo.nuevo(id, documento, categoria, precio, fechaIngreso, nombre, autor, editorial, edicion, materia);
                 
                 System.out.println(id);
-                
                 
             }
             
@@ -145,11 +144,11 @@ public class Articulo {
 
             if(estadoConsulta == Estado.EXITO){
 
-                for(Usuario usuarioActual : listaObjetos){
+                for(Articulo articuloActual : listaObjetos){
 
-                    if(usuarioActual.id > ultimoID){
+                    if(articuloActual.id > ultimoID){
 
-                        ultimoID = usuarioActual.id;
+                        ultimoID = articuloActual.id;
 
                     }else{
 
@@ -193,9 +192,24 @@ public class Articulo {
 
     //Constructor
     
-    private Articulo(int idrecibido, AlfaNumerico documentoRecibido, AlfaNumericocategoriarecibida, double precioRecibido, java.util.Date fechaIngreso, AlfaNumerico nombreRecibido, AlfaNumerico)
+    private static Articulo nuevo(int idRecibido, AlfaNumerico documentoRecibido, AlfaNumerico categoriaRecibida, double precioRecibido, java.util.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibido, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
+        
+        Articulo articuloDevolver = new Articulo();
+        
+        articuloDevolver.id = idRecibido;
+        articuloDevolver.documento = documentoRecibido;
+        articuloDevolver.categoria = categoriaRecibida;
+        articuloDevolver.precio = precioRecibido;
+        articuloDevolver.fechaIngreso = fechaIngresoRecibida;
+        articuloDevolver.nombre = nombreRecibido;
+        articuloDevolver.autor = autorRecibido;
+        articuloDevolver.editorial = editorialRecibido;
+        articuloDevolver.materia = materiaRecibida;
+        
+        return articuloDevolver;
+    }
     
-    protected static Articulo nuevo(double precioRecibida, Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
+    protected static Articulo nuevo(double precioRecibida, java.util.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
 
         //Crear un objeto a devolver
         Articulo objetoDevolver = Articulo.OBJETO_INVALIDO;
@@ -324,7 +338,7 @@ public class Articulo {
         
     }
     
-    private Estado setFechaIngreso(Date fechaRecibida){
+    private Estado setFechaIngreso(java.util.Date fechaRecibida){
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -390,7 +404,7 @@ public class Articulo {
         return documento;
     }
 
-    public Estado getCategoria() {
+    public AlfaNumerico getCategoria() {
         return categoria;
     }
 
@@ -398,7 +412,7 @@ public class Articulo {
         return precio;
     }
 
-    public Date getFechaIngreso() {
+    public java.util.Date getFechaIngreso() {
         return fechaIngreso;
     }
 
