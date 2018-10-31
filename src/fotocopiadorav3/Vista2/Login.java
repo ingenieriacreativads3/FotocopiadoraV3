@@ -121,7 +121,7 @@ public class Login extends javax.swing.JFrame {
         //if (validarDatos(usuario, contrasenia)) {
         if(true){
             
-//            Vista2Interfaz.enviarDatosInicioSesion(usuario, contrasenia);
+            Vista2Interfaz.enviarDatosInicioSesion(usuario, contrasenia);
             
         } else{
             
@@ -129,7 +129,7 @@ public class Login extends javax.swing.JFrame {
             
         }
         
-        Vista2Interfaz.renderizarPaginaPrincipal();
+        //Vista2Interfaz.renderizarPaginaPrincipal();
         
     }//GEN-LAST:event_jButtonAceptarMousePressed
 

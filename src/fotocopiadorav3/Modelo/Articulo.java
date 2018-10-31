@@ -13,18 +13,24 @@ import java.util.*;
  */
 public class Articulo {
     
-    private final int id;
-    private Archivo documento;
-    private Estado categoria;
-    private double precio;
-    private Date fechaIngreso;
+    private final int id;               //tipo bd
+    private Archivo documento;          //id identificador
+    private Estado categoria;           //id identificador
+    private double precio;              //tipo bd
+    private Date fechaIngreso;          //tipo bd
+    private AlfaNumerico nombre;        //id identificador
+    private AlfaNumerico autor;         //idIdentificador
+    private AlfaNumerico editorial;     //id identificador
+    private AlfaNumerico edicion;       //id identificador
+    private Materia materia;            //id identificador
     
-    private AlfaNumerico nombre;
-    private AlfaNumerico autor;
-    private AlfaNumerico editorial;
-    private AlfaNumerico edicion;
-    
-    private Materia materia;
+    private int idDocumento;            
+    private int idCategoria;
+    private int idNombre;
+    private int idAutor;
+    private int idEditorial;
+    private int idEdicion;
+    private int idMateria;
             
     protected final static Articulo OBJETO_INVALIDO = new Articulo();
 
