@@ -148,6 +148,11 @@ public class ConexionMySql {
             if(cantidadAtributos == 8){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?)";}
             if(cantidadAtributos == 9){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";}
             if(cantidadAtributos == 10){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 11){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 12){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 13){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 14){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";}
+            if(cantidadAtributos == 15){sqlStmt = "INSERT INTO " + nombreTabla +" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";}
             
         }
         

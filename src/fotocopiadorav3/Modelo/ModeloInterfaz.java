@@ -157,30 +157,35 @@ public class ModeloInterfaz {
         
     }
     
-    /**
-     * 
-     * David Alonso
-     * 
-     * @param nombre
-     * @param autor
-     * @param precio
-     * @param materia
-     * @return 
-     */
-    public static Estado adicionarArticulo(String nombre, String autor, float precio, String materia){
-        Estado creacion = Estado.ERROR;
+    public static Usuario getUsuarioForId(int idUsuarioRecibido){
         
-        //No entiendo tus clases
+        Usuario usuarioDevolver = Usuario.getForId(idUsuarioRecibido);
         
-        return creacion;
+        return usuarioDevolver;
     }
     
-    public static Estado adicionarUsuario(String nombre, String permisos){
-        Estado creacion = Estado.ERROR;
+    public static Alumno getAlumnoForId(int idAlumnoRecibido){
         
-        //No entiendo tus clases
+        Alumno alumnoDevolver = Alumno.getForId(idAlumnoRecibido);
         
-        return creacion;
+        return alumnoDevolver;
+    }
+    
+    public static Articulo getArticuloForId(int idArticuloRecibo){
+        
+        //Articulo articuloDevolver = Articulo.getForId(idArticuloRecibo);
+        
+        Articulo articuloDevolver = Articulo.nuevo();
+        
+        return articuloDevolver;
+    }
+    
+    public static Articulo getNuevoArticulo(AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, double precioRecibido, AlfaNumerico materiaRecibida){
+        
+        //Articulo articuloDevolver = Articulo.nuevo(nombreRecibido, autorRecibido, precioRecibido, materiaRecibida);
+        Articulo articuloDevolver = Articulo.nuevo();
+        
+        return articuloDevolver;
     }
     
 }

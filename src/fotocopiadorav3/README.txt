@@ -32,4 +32,5 @@ create table direccion( id int primary key, numero int, id_alfanumerico int);
 create table persona( id int primary key, dni int, id_nombre int, id_apellido int, id_direccion int);
 create table usuario( id int primary key, id_persona int, id_nombre_usuario int, id_pass int);
 create table alumno ( id int primary key, legajo int, id_persona int);
+create table articulo ( id int primary key, id_documento int, id_categoria int, precio double, fecha_ingreso date, id_nombre int, id_autor int, id_editorial int, id_edicion int, id_materia int);
 
