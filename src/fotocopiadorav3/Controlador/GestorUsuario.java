@@ -22,6 +22,7 @@ public class GestorUsuario {
             
             Usuario usuarioCreado = ModeloInterfaz.getNuevoUsuario(nombreRecibido, apellidoRecibido, dniRecibido, domicilioRecibido, nombreUsuarioRecibido, passwordRecibida);
             
+            usuarioCreadoConExito = usuarioCreado.guardar();
             //usuarioCreadoConExito = ModeloInterfaz.adicionarUsuario(nombreRecibido, apellidoRecibido, nombreUsuarioRecibido, passwordRecibida, domicilioRecibido, dniRecibido);
         }
         else{
@@ -33,9 +34,9 @@ public class GestorUsuario {
     
     protected Estado bajaUsuario(AlfaNumerico IDusuario){
         Estado exitoBaja = Estado.ERROR;
+        //Usuario userABorrar = ModeloInterfaz.getUsuarioForID(IDusuario);
         
-        //exitoBaja = ModeloInterfaz.bajaUsuario(IDusuario);
-        
+        //ModeloInterfaz.borrarUsuario(userABorrar);
         
         return exitoBaja;
     }
