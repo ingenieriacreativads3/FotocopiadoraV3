@@ -25,22 +25,6 @@ public class GestorArticulo {
     
     protected Estado altaArticulo(AlfaNumerico nombre, AlfaNumerico autor, double precio, AlfaNumerico materia){
         Estado ArticuloCreado = Estado.ERROR;
-        
-        //Verificaciones del nombre, autor, precio, materia.
-        
-        if(datosCorrectos(nombre, autor, precio, materia)){
-            //ArticuloCreado = ModeloInterfaz.adicionarArticulo(nombre, autor, precio, materia);
-            AlfaNumerico test1 = ModeloInterfaz.getAlfaNumerico("test");
-            test1.guardar();
-            AlfaNumerico test2 = ModeloInterfaz.getAlfaNumerico("test");
-            test2.guardar();
-            Date fechaActual = new Date();
-            Articulo articuloNuevo = ModeloInterfaz.getNuevoArticulo(nombre, autor, precio, materia, fechaActual, test1, test2);
-            //articuloNuevo.guardar();
-        }
-        
-        return ArticuloCreado;
-    }
     
     /**
      * 

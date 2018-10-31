@@ -7,7 +7,7 @@ package fotocopiadorav3.Vista2.Alumno;
 
 import fotocopiadorav3.Modelo.Alumno;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
-import java.util.ArrayList;
+import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,7 +23,7 @@ public class ListaAlumnos extends javax.swing.JFrame {
         
         initComponents();
         
-        ArrayList<Alumno> alumnos = Vista2Interfaz.obtenerListaAlumnos();
+        Set<Alumno> alumnos = Vista2Interfaz.obtenerListaAlumnos();
         
         cargarTabla(alumnos);
         
@@ -76,19 +76,27 @@ public class ListaAlumnos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void cargarTabla(ArrayList<Alumno> alumnos){
+    private void cargarTabla(Set<Alumno> alumnos){
         
         DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
         
+        int id;
+        String nombre;
+        String apellido;
+        int legajo;
+        String domicilio;
+        int altura;
+        int dni;
+        
         for (Alumno alumno : alumnos) {
             
-            int id=alumno.getId();
-            String nombre=alumno.getPersona().getNombre().toString();
-            String apellido=alumno.getPersona().getApellido().toString();
-            int legajo=alumno.getLegajo();
-            String domicilio=alumno.getPersona().getDireccion().getCalle().toString();
-            int altura=alumno.getPersona().getDireccion().getNumero();
-            int dni=alumno.getPersona().getDni();
+            id=alumno.getId();
+            nombre=alumno.getPersona().getNombre().toString();
+            apellido=alumno.getPersona().getApellido().toString();
+            legajo=alumno.getLegajo();
+            domicilio=alumno.getPersona().getDireccion().getCalle().toString();
+            altura=alumno.getPersona().getDireccion().getNumero();
+            dni=alumno.getPersona().getDni();
 
             defaultTableModel.addRow(new Object[]{id, nombre, apellido, legajo, domicilio, altura, dni});
 

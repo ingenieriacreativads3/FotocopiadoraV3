@@ -18,6 +18,7 @@ import fotocopiadorav3.Modelo.Alumno;
 import fotocopiadorav3.Modelo.Articulo;
 import fotocopiadorav3.Modelo.Pedido;
 import fotocopiadorav3.Modelo.Usuario;
+import fotocopiadorav3.Modelo.ModeloInterfaz;
 import fotocopiadorav3.Vista2.Alumno.ListaAlumnos;
 import fotocopiadorav3.Vista2.Articulo.ListaArticulos;
 import fotocopiadorav3.Vista2.Pedido.ListaPedidos;
@@ -238,45 +239,45 @@ public class Vista2Interfaz {
         
     }
     
-    public static ArrayList<String> obtenerListaInventario(){
-        
-        ArrayList<String> listaInventario = new ArrayList<>();
-        
-        return listaInventario;
-        
-    }
+//    public static Set<String> obtenerListaInventario(){
+//        
+//        Set<String> listaInventario = new Set<>();
+//        
+//        return listaInventario;
+//        
+//    }
     
-    public static ArrayList<Usuario> obtenerListaUsuarios(){
+    public static Set<Usuario> obtenerListaUsuarios(){
         
-        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        Set<Usuario> listaUsuarios = ModeloInterfaz.getListaUsuarios();
         
         return listaUsuarios;
         
     }
     
-    public static ArrayList<Alumno> obtenerListaAlumnos(){
+    public static Set<Alumno> obtenerListaAlumnos(){
         
-        ArrayList<Alumno> listaAlumnos = new ArrayList<>();
+        Set<Alumno> listaAlumnos = ModeloInterfaz.getListaAlumnos();
         
         return listaAlumnos;
         
     }
     
-    public static ArrayList<Articulo> obtenerListaArticulos(){
+    public static Set<Articulo> obtenerListaArticulos(){
         
-        ArrayList<Articulo> listaArticulos = new ArrayList<>();
+        Set<Articulo> listaArticulos = ModeloInterfaz.getListaArticulos();
         
         return listaArticulos;
         
     }
     
-    public static ArrayList<Pedido> obtenerListaPedidos(){
-        
-        ArrayList<Pedido> listaPedidos = new ArrayList<>();
-        
-        return listaPedidos;
-        
-    }
+//    public static Set<Pedido> obtenerListaPedidos(){
+//        
+//        Set<Pedido> listaPedidos = ModeloInterfaz.getListaPedidos();
+//        
+//        return listaPedidos;
+//        
+//    }
     
     public static void guardar(){
         
