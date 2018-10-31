@@ -40,8 +40,8 @@ public class Articulo {
     private static final int LUGAR_DEL_CAMPO_ID_EDICION = 9;
     private static final int LUGAR_DEL_CAMPO_ID_MATERIA = 10;
     
-    private final int id;               //tipo bd
-    private Archivo documento;          //id identificador
+    private int id;               //tipo bd
+    private AlfaNumerico documento;     //id identificador
     private Estado categoria;           //id identificador
     private double precio;              //tipo bd
     private Date fechaIngreso;          //tipo bd
@@ -49,7 +49,7 @@ public class Articulo {
     private AlfaNumerico autor;         //id identificador
     private AlfaNumerico editorial;     //id identificador
     private AlfaNumerico edicion;       //id identificador
-    private Materia materia;            //id identificador
+    private AlfaNumerico materia;       //id identificador
     
     private int idDocumento;            
     private int idCategoria;
@@ -62,6 +62,18 @@ public class Articulo {
     protected final static Articulo OBJETO_INVALIDO = new Articulo();
 
     private static Set<Articulo> listaObjetos = new HashSet<>();
+    
+    //Rutinas
+    
+    public Estado modificar(double precioRecibida, Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
+        
+        return Estado.ERROR;
+    }
+    
+    public Estado borrar(){
+        
+        return Estado.ERROR;
+    }
 
     private static int getNewId(){
 
@@ -80,16 +92,55 @@ public class Articulo {
     }
 
     //Constructor
+    
+    protected static Articulo nuevo(double precioRecibida, Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
 
-    private Articulo() {
+        //Crear un objeto a devolver
+        Articulo objetoDevolver = Articulo.OBJETO_INVALIDO;
 
-        //Asignar un identificador
-        this.id = getNewId();
+        //Obtener el siguiente identificador
+        int identificador = getNewId();
+        
+        //Crear un nuevo objeto
+        Articulo objetoNuevo = new Articulo(identificador);
 
+        //Agregar a la lista de control
+        Estado seAgrego = addNewObjeto(objetoNuevo);
+
+        //Si se agrega con exito
+        if(seAgrego == Estado.EXITO){
+            
+            //Asignar el valor recibido por defecto
+            
+            
+            objetoDevolver = objetoNuevo;
+            
+            //Estado seGuardo = objetoDevolver.guardar();
+
+        }else{
+
+            //TODO capturar el error generado por un ingreso erroneo a la lista
+            listaObjetos.remove(objetoDevolver);
+            //...se establecio un valor por defecto
+
+        }
+
+        //Devolver el objeto requerido
+        return objetoDevolver;
 
     }
 
-    protected static Articulo nuevo(){
+    private Articulo(int identificadorRecibido) {
+
+        //Asignar un identificador
+        this.id = identificadorRecibido;
+
+
+    }
+    
+    private Articulo() {}
+
+    private static Articulo nuevo(){
 
         //Crear un objeto a devolver
         Articulo objetoDevolver = Articulo.OBJETO_INVALIDO;
@@ -160,7 +211,109 @@ public class Articulo {
     
     //Setter
     
+    private Estado setPrecio(double precioRecibido){
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.precio = precioRecibido;
+        
+        return estadoDevolver;
+        
+    }
+    
+    private Estado setFechaIngreso(Date fechaRecibida){
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.fechaIngreso = fechaRecibida;
+        
+        return estadoDevolver;
+        
+    }
+    
+//    autor
+//            editorial
+//            edicion
+//                    materia
+    
+    private Estado setNombre(AlfaNumerico nombreRecibido){
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.nombre = nombreRecibido;
+        
+        return estadoDevolver;
+        
+    }
+    
+    private Estado setAutor(AlfaNumerico autorRecibido){
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.nombre = autorRecibido;
+        
+        return estadoDevolver;
+        
+    }
+    
+    private Estado setEditorial(AlfaNumerico editorialRecibido){
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.nombre = editorialRecibido;
+        
+        return estadoDevolver;
+        
+    }
+    
     //Getter
+
+    public int getId() {
+        return id;
+    }
+
+    public AlfaNumerico getDocumento() {
+        return documento;
+    }
+
+    public Estado getCategoria() {
+        return categoria;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public Date getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public AlfaNumerico getNombre() {
+        return nombre;
+    }
+
+    public AlfaNumerico getAutor() {
+        return autor;
+    }
+
+    public AlfaNumerico getEditorial() {
+        return editorial;
+    }
+
+    public AlfaNumerico getEdicion() {
+        return edicion;
+    }
+
+    public AlfaNumerico getMateria() {
+        return materia;
+    }
+    
+    
     
     //Others
     

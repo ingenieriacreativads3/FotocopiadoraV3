@@ -43,6 +43,16 @@ public class Usuario{
 
     //Rutinas
     
+    public Estado modificar(Persona personaRecibida, AlfaNumerico nombreUsuarioRecibido, AlfaNumerico passRecibida){
+        
+        return Estado.ERROR;
+    }
+    
+    public Estado borrar(){
+        
+        return Estado.ERROR;
+    }
+    
     protected static Usuario getForId(int idRecibido){
         
         Usuario usuarioDevolver = OBJETO_INVALIDO;
@@ -556,7 +566,7 @@ public class Usuario{
 
     //Getter
 
-    private int getId() {
+    public int getId() {
         return id;
     }
 

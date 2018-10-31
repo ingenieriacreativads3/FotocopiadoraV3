@@ -6,6 +6,8 @@
 
 package fotocopiadorav3.Modelo;
 
+import java.util.Date;
+
 /**
  * Esta clase determina la conexion con el exterior del paquete.
  * Aqui se reciben parametros y se solicitan datos por medio
@@ -175,15 +177,15 @@ public class ModeloInterfaz {
         
         //Articulo articuloDevolver = Articulo.getForId(idArticuloRecibo);
         
-        Articulo articuloDevolver = Articulo.nuevo();
+        Articulo articuloDevolver = Articulo.OBJETO_INVALIDO;
         
         return articuloDevolver;
     }
     
-    public static Articulo getNuevoArticulo(AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, double precioRecibido, AlfaNumerico materiaRecibida){
+    public static Articulo getNuevoArticulo(AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, double precioRecibido, AlfaNumerico materiaRecibida, Date fechaIngresoRecibida, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida){
         
         //Articulo articuloDevolver = Articulo.nuevo(nombreRecibido, autorRecibido, precioRecibido, materiaRecibida);
-        Articulo articuloDevolver = Articulo.nuevo();
+        Articulo articuloDevolver = Articulo.nuevo(precioRecibido, fechaIngresoRecibida, nombreRecibido, autorRecibido, editorialRecibida, edicionRecibida, materiaRecibida);
         
         return articuloDevolver;
     }

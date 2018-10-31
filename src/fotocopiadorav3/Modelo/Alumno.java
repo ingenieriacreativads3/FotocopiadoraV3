@@ -33,6 +33,16 @@ public class Alumno{
     
     //Rutinas
     
+    public Estado modificar(int legajoRecibido, Persona personaRecibida){
+        
+        return Estado.ERROR;
+    }
+    
+    public Estado borrar(){
+        
+        return Estado.ERROR;
+    }
+    
     protected static Alumno getForId(int idRecibido){
         
         Alumno alumnoDevolver = OBJETO_INVALIDO;
@@ -378,6 +388,21 @@ public class Alumno{
     }
     
     //Getter
+
+    public int getId() {
+        return id;
+    }
+    
+    
+
+    public int getLegajo() {
+        return legajo;
+    }
+    
+    public Persona getPersona(){
+        
+        return this.persona;
+    }
     
     //Others
     
