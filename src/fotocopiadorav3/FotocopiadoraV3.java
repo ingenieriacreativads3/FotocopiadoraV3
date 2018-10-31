@@ -5,7 +5,8 @@
  */
 package fotocopiadorav3;
 
-import fotocopiadorav3.Controlador.ControladorInterfaz;
+import fotocopiadorav3.Controlador.*;
+import fotocopiadorav3.Modelo.*;
 import javafx.application.*;
 import javafx.stage.Stage;
 
@@ -24,6 +25,8 @@ public class FotocopiadoraV3 extends Application{
      @param args the command line arguments
      */
     public static void main(String[] args){
+        
+        ConexionMySql.getAllInformacion();
         
         //int i = 1;
         ControladorInterfaz.comenzar();

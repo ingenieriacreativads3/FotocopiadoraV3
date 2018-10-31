@@ -31,7 +31,49 @@ public class Alumno{
 
     private static Set<Alumno> listaObjetos = new HashSet<>();
     
-    private Estado guardar(){
+    //Rutinas
+    
+    protected static Alumno getForId(int idRecibido){
+        
+        Alumno alumnoDevolver = OBJETO_INVALIDO;
+        
+        Estado seObtuvo = Estado.EXITO;
+        //Estado seObtuvo = getInformacion();
+        
+        if(listaObjetos != null){
+            
+            if(seObtuvo == Estado.EXITO){
+
+                for(Alumno alumnoActual : listaObjetos){
+
+                    if(alumnoActual.id == idRecibido){
+
+                        alumnoDevolver = alumnoActual;
+
+                    }else{
+
+                        //...se establecion un valor por defecto
+
+                    }
+                }
+
+            }else{
+
+                //TODO capturar el error producido por no haber capturado la info de la db
+                System.out.println("Se rompio en Direccion.getForId();");
+
+            }
+            
+        }else{
+            
+            //...no hacer nada
+            
+        }
+        return alumnoDevolver;
+        
+    }
+    
+    public Estado guardar(){
         
         Estado estadoDevolver = Estado.ERROR;
         
@@ -46,6 +88,8 @@ public class Alumno{
             prepared.executeUpdate();
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Alumno.class.toString() + "guardar");
             
         } catch (Exception e) {
             
@@ -57,9 +101,11 @@ public class Alumno{
         
     }
 
-    private static Estado getInformacion(){
+    protected static Estado getInformacion(){
         
         Estado estadoDevolver = Estado.ERROR;
+        
+        System.out.println("pregunta por los alumnos");
         
         ResultSet rs = null;
         
@@ -80,9 +126,12 @@ public class Alumno{
                 
                 Alumno asd = nuevo(id, legajoActual, personaObjeto, idPersona);
                 
+                System.out.println(id);
             }
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Alumno.class.toString() + "getInformacion");
             
         } catch (Exception e) {
             
@@ -100,7 +149,8 @@ public class Alumno{
         
         int ultimoID = 0;
         
-        Estado estadoConsulta = getInformacion();
+        //Estado estadoConsulta = getInformacion();
+        Estado estadoConsulta = Estado.EXITO;
 
         if(listaObjetos != null){
 
@@ -194,7 +244,7 @@ public class Alumno{
             
             objetoDevolver = objetoNuevo;
             
-            Estado seGuardo = objetoDevolver.guardar();
+            //Estado seGuardo = objetoDevolver.guardar();
 
         }else{
 

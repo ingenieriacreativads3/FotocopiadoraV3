@@ -41,30 +41,38 @@ public class Direccion{
         
         Direccion direccionDevolver = OBJETO_INVALIDO;
         
-        Estado seObtuvo = getInformacion();
+        Estado seObtuvo = Estado.EXITO;
+        //Estado seObtuvo = getInformacion();
         
-        if(seObtuvo == Estado.EXITO){
+        if(listaObjetos != null){
             
-            for(Direccion direccionActual : listaObjetos){
-                
-                if(direccionActual.id == idRecibido){
-                    
-                    direccionDevolver = direccionActual;
-                    
-                }else{
-                    
-                    //...se establecion un valor por defecto
-                    
+            if(seObtuvo == Estado.EXITO){
+
+                for(Direccion direccionActual : listaObjetos){
+
+                    if(direccionActual.id == idRecibido){
+
+                        direccionDevolver = direccionActual;
+
+                    }else{
+
+                        //...se establecion un valor por defecto
+
+                    }
                 }
+
+            }else{
+
+                //TODO capturar el error producido por no haber capturado la info de la db
+                System.out.println("Se rompio en Direccion.getForId();");
+
             }
             
         }else{
             
-            //TODO capturar el error producido por no haber capturado la info de la db
-            System.out.println("Se rompio en Direccion.getForId();");
+            //...no hacer nada
             
         }
-        
         return direccionDevolver;
         
     }
@@ -84,9 +92,11 @@ public class Direccion{
         
     }
     
-    private static Estado getInformacion(){
+    protected static Estado getInformacion(){
         
         Estado estadoDevolver = Estado.ERROR;
+        
+        System.out.println("pregunta por las direcciones");
         
         ResultSet rs = null;
         
@@ -107,6 +117,8 @@ public class Direccion{
                 
                 Direccion asd = nuevo(id, calleActual, numeroActual, idCalle);
                 
+                System.out.println(id);
+                
                 //TODO quitar estos sout
 //                System.out.println("Size: " + getSetSize());
 //                
@@ -115,6 +127,8 @@ public class Direccion{
             }
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Direccion.class.toString() + "getInformacion");
             
         } catch (Exception e) {
             
@@ -132,7 +146,8 @@ public class Direccion{
         
         int ultimoID = 0;
         
-        Estado estadoConsulta = getInformacion();
+        //Estado estadoConsulta = getInformacion();
+        Estado estadoConsulta = Estado.EXITO;
 
         if(listaObjetos != null){
 
@@ -208,10 +223,19 @@ public class Direccion{
         
         int numero = 1194;
         AlfaNumerico asd = AlfaNumerico.nuevo("25 de mayo");
+        System.out.println("pasa el primer alfanumerico");
+        
         Direccion asdd = Direccion.nuevo(asd, numero);
+        System.out.println("Pasa la primera direccion");
+        
         Persona asddd = Persona.nuevo(asd, asd, numero, asdd);
+        System.out.println("Pasa la primera persona");
+        
         Usuario asdddd = Usuario.nuevo(asddd, asd, asd);
+        System.out.println("Pasa el primer usuario");
+        
         Alumno asdddddd = Alumno.nuevo(numero, asddd);
+        System.out.println("pasa el primer alumno");
         
         System.out.println("sfsdfsdf");
         
@@ -229,7 +253,7 @@ public class Direccion{
         
     }
     
-    private Estado guardar(){
+    public Estado guardar(){
         
         Estado estadoDevolver = Estado.ERROR;
         
@@ -244,6 +268,8 @@ public class Direccion{
             prepared.executeUpdate();
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Direccion.class.toString() + "guardar");
             
         } catch (Exception e) {
             
@@ -298,7 +324,7 @@ public class Direccion{
             
             objetoDevolver = objetoNuevo;
             
-            Estado seGuardo = objetoDevolver.guardar();
+            //Estado seGuardo = objetoDevolver.guardar();
 
         }else{
 

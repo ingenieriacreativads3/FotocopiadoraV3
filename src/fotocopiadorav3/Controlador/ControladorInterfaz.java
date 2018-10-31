@@ -32,15 +32,21 @@ public class ControladorInterfaz extends Application{
     */
     
     public static void iniciarSesion(String usuario, String contrasenia){
+        
+        System.out.println("interfaz controlador");
+        
         Estado estadoVerificacion;
         estadoVerificacion = GestorCuenta.VerificarUsuarioYContraseña(usuario, contrasenia);
         if(estadoVerificacion == Estado.USSER_PASS_CORRECTOS){
+            
             cargarPaginaPrincipal();
-        }
-        else{
+            
+        }else{
+            
             String mensajeError = estadoVerificacion.toString();
             int IDError = estadoVerificacion.getID();
             cargarMensajeError(mensajeError, IDError);
+            
         }
     }
     
@@ -56,15 +62,15 @@ public class ControladorInterfaz extends Application{
         //si es admin, se crea el usuario
         //si no lo es, se deniega
         
-        AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
+        AlfaNumerico nombre = ModeloInterfaz.getNuevoAlfaNumerico(nombreRecibido);
         
-        AlfaNumerico apellido = ModeloInterfaz.getAlfaNumerico(apellidoRecibido);
+        AlfaNumerico apellido = ModeloInterfaz.getNuevoAlfaNumerico(apellidoRecibido);
         
-        AlfaNumerico nombreUsuario = ModeloInterfaz.getAlfaNumerico(nombreUsuarioRecibido);
+        AlfaNumerico nombreUsuario = ModeloInterfaz.getNuevoAlfaNumerico(nombreUsuarioRecibido);
         
-        AlfaNumerico contrasenia = ModeloInterfaz.getAlfaNumerico(contraseniaRecibido);
+        AlfaNumerico contrasenia = ModeloInterfaz.getNuevoAlfaNumerico(contraseniaRecibido);
         
-        AlfaNumerico calleDomicilio = ModeloInterfaz.getAlfaNumerico(calleDomicilioRecibido);
+        AlfaNumerico calleDomicilio = ModeloInterfaz.getNuevoAlfaNumerico(calleDomicilioRecibido);
         int numeroDomicilio = Integer.valueOf(numeroDomicilioRecibido);
         Direccion domicilio = ModeloInterfaz.getDireccion(calleDomicilio, numeroDomicilio);
         
