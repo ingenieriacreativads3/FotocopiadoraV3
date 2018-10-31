@@ -183,4 +183,12 @@ public class ModeloInterfaz {
         return creacion;
     }
     
+    public static Usuario getUsuarioForId(int idUsuarioRecibido){
+        
+        Usuario usuarioDevolver = Usuario.getForId(idUsuarioRecibido);
+        
+        return usuarioDevolver;
+        
+    }
+    
 }
