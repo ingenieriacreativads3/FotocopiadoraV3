@@ -6,6 +6,7 @@
 package fotocopiadorav3.Controlador;
 
 import fotocopiadorav3.Modelo.*;
+import java.util.Date;
 
 /**
  *Clase que se encargara del ABM de Articulos
@@ -29,8 +30,13 @@ public class GestorArticulo {
         
         if(datosCorrectos(nombre, autor, precio, materia)){
             //ArticuloCreado = ModeloInterfaz.adicionarArticulo(nombre, autor, precio, materia);
-            //Articulo articuloNuevo = ModeloInterfaz.getNuevoArticulo(nombre, autor, precio, materia);
-            //Documento nuevoArticulo = ModeloInterfaz.get
+            AlfaNumerico test1 = ModeloInterfaz.getAlfaNumerico("test");
+            test1.guardar();
+            AlfaNumerico test2 = ModeloInterfaz.getAlfaNumerico("test");
+            test2.guardar();
+            Date fechaActual = new Date();
+            Articulo articuloNuevo = ModeloInterfaz.getNuevoArticulo(nombre, autor, precio, materia, fechaActual, test1, test2);
+            //articuloNuevo.guardar();
         }
         
         return ArticuloCreado;
@@ -41,15 +47,15 @@ public class GestorArticulo {
      * @param IDArticulo 
      * @return  
      */
-    protected Estado bajaArticulo(AlfaNumerico IDArticulo){
+    protected Estado bajaArticulo(int IDArticulo){
         Estado ArticuloEliminado = Estado.ERROR;
         
         //Verificaciones del nombre, autor, precio, materia.
         
         
         //ArticuloEliminado = ModeloInterfaz.bajaArticulo(IDArticulo);
-        
-        
+        Articulo articuloABajar = ModeloInterfaz.getArticuloForId(IDArticulo);
+        ArticuloEliminado = articuloABajar.borrar();
         
         return ArticuloEliminado;
     }
@@ -63,7 +69,7 @@ public class GestorArticulo {
      * @param materia
      * @return 
      */
-    protected Estado modificacionArticulo(AlfaNumerico IDArticulo, AlfaNumerico nombre, AlfaNumerico autor, double precio, AlfaNumerico materia){
+    protected Estado modificacionArticulo(int IDArticulo, AlfaNumerico nombre, AlfaNumerico autor, double precio, AlfaNumerico materia){
         Estado ArticuloModificadoConExito = Estado.ERROR;
         
         //Verificaciones del nombreRecibido, autor, precio, materia.
@@ -71,6 +77,14 @@ public class GestorArticulo {
         if(datosCorrectos(nombre, autor, precio, materia)){
             
             //ArticuloModificadoConExito = ModeloInterfaz.modificarArticulo(IDUusuarioRecibido, nombreRecibido, apellidoRecibido, nombreUsuarioRecibido, passwordRecibida, domicilioRecibido, dniRecibido);
+            Articulo articuloAModificar = ModeloInterfaz.getArticuloForId(IDArticulo);
+            AlfaNumerico test1 = ModeloInterfaz.getAlfaNumerico("test");
+            test1.guardar();
+            AlfaNumerico test2 = ModeloInterfaz.getAlfaNumerico("test");
+            test2.guardar();
+            Date fechaActual = new Date();
+            ArticuloModificadoConExito = articuloAModificar.modificar(precio, fechaActual, nombre, autor, test1, test2, materia);
+            
         }
         else{
             ArticuloModificadoConExito = Estado.ERROR_DATOS_INVALIDOS;
