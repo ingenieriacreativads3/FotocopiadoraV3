@@ -23,11 +23,15 @@ public class GestorCliente {
         if(datosCorrectos(legajo, nombreCliente, apellidoCliente, direccionClienteRecibido, numeroCalle)){
             
             Direccion direccionCliente = ModeloInterfaz.getDireccion(direccionClienteRecibido, numeroCalle);
+            direccionCliente.guardar();
             Persona nuevoCliente = ModeloInterfaz.getNuevaPersona(nombreCliente, apellidoCliente, DNICliente, direccionCliente);
+            nuevoCliente.guardar();
             Alumno nuevoAlumno = ModeloInterfaz.getNuevoAlumno(legajo, nuevoCliente);
-            nuevoAlumno.guardar();
+            Exito = nuevoAlumno.guardar();
             //Exito = ModeloInterfaz.getNuevoAlumno(legajo, personaRecibida);
             
+        } else {
+            Exito = Estado.ERROR_DATOS_INVALIDOS;
         }
         
         return Exito;
@@ -37,8 +41,8 @@ public class GestorCliente {
         Estado Exito = Estado.ERROR;
         
         //Dar de baja
-        //Alumno alumnoABajar = ModeloInterfaz.getAlumnoForID();
-        //alumnoABajar.borrar();
+        Alumno alumnoABajar = ModeloInterfaz.getAlumnoForId(legajo);
+        Exito = alumnoABajar.borrar();
         
         return Exito;
     }
@@ -49,6 +53,10 @@ public class GestorCliente {
         if(datosCorrectos(legajo, nombreCliente, apellidoCliente, direccionClienteRecibido, numeroCalle)){
             //Persona nuevoCliente = ModeloInterfaz.get
             //Exito = ModeloInterfaz.getNuevoAlumno(legajo, personaRecibida);
+            Alumno alumnoAModificar = ModeloInterfaz.getAlumnoForId(legajo);
+            Persona personaAModificar = alumnoAModificar.getPersona();
+            //Persona personaAModificar = ModeloInterfaz.
+            Exito = alumnoAModificar.modificar(legajo, personaAModificar);
         }
         
         return Exito;

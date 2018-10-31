@@ -90,132 +90,6 @@ public enum Estado{
 
     }
 
-    private static boolean esIncial(Estado estadoActual){
-
-        boolean respuesta = false;
-
-        if(estadoActual == INICIAL){
-
-            respuesta = true;
-
-        }
-
-        return respuesta;
-
-    }
-
-    private static boolean esExito(Estado estadoActual){
-
-        boolean respuesta = false;
-
-        if(estadoActual == EXITO){
-
-            respuesta = true;
-
-        }
-
-        return respuesta;
-
-    }
-
-    private static boolean esFracaso(Estado estadoActual){
-
-        boolean respuesta = false;
-
-        if(estadoActual == ERROR){
-
-            respuesta = true;
-
-        }
-
-        return respuesta;
-
-    }
-
-    private static boolean esErrorDatosIncorrectos(Estado estadoActual){
-
-        boolean respuesta = false;
-
-        if(estadoActual == ERROR_DATOS_INVALIDOS){
-
-            respuesta = true;
-
-        }
-
-        return respuesta;
-
-    }
-
-    private static boolean esErrorApellido(Estado estadoActual){
-
-        boolean respuesta = false;
-
-        if(estadoActual == ERROR_APELLIDO){
-
-            respuesta = true;
-
-        }
-
-        return respuesta;
-
-    }
-
-    private static boolean esErrorCantidad(Estado estadoActual){
-
-        boolean respuesta = false;
-
-        if(estadoActual == ERROR_CANTIDAD){
-
-            respuesta = true;
-
-        }
-
-        return respuesta;
-
-    }
-
-    private static boolean esErrorElemento(Estado estadoActual){
-
-        boolean respuesta = false;
-
-        if(estadoActual == ERROR_ELEMENTO){
-
-            respuesta = true;
-
-        }
-
-        return respuesta;
-
-    }
-
-    private static boolean esErrorCotizacion(Estado estadoActual){
-
-        boolean respuesta = false;
-
-        if(estadoActual == ERROR_COTIZACION){
-
-            respuesta = true;
-
-        }
-
-        return respuesta;
-
-    }
-
-    private static boolean esMensaje(Estado estadoActual){
-
-        boolean respuesta = false;
-
-        if(estadoActual == MENSAJE_MOSTRADO){
-
-            respuesta = true;
-
-        }
-
-        return respuesta;
-
-    }
-
     @Override
     public String toString(){
 
@@ -227,6 +101,20 @@ public enum Estado{
 
         return this.Id;
 
+    }
+    
+    public Estado getForId(int idRecibido){
+        
+        Estado estadoDevolver = ERROR;
+        
+        
+        
+        return estadoDevolver;
+    }
+    
+    public String getMensaje(){
+        
+        return this.mensaje;
     }
     
 }

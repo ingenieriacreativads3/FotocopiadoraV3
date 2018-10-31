@@ -5,7 +5,9 @@
  */
 package fotocopiadorav3.Modelo;
 
+import com.mysql.cj.util.Util;
 import java.util.*;
+import java.sql.*;
 
 /**
  *
@@ -40,16 +42,16 @@ public class Articulo {
     private static final int LUGAR_DEL_CAMPO_ID_EDICION = 9;
     private static final int LUGAR_DEL_CAMPO_ID_MATERIA = 10;
     
-    private int id;               //tipo bd
-    private AlfaNumerico documento;     //id identificador
-    private Estado categoria;           //id identificador
-    private double precio;              //tipo bd
-    private Date fechaIngreso;          //tipo bd
-    private AlfaNumerico nombre;        //id identificador
-    private AlfaNumerico autor;         //id identificador
-    private AlfaNumerico editorial;     //id identificador
-    private AlfaNumerico edicion;       //id identificador
-    private AlfaNumerico materia;       //id identificador
+    private int id;                         //tipo bd
+    private AlfaNumerico documento;         //id identificador
+    private AlfaNumerico categoria;               //id identificador
+    private double precio;                  //tipo bd
+    private java.util.Date fechaIngreso;    //tipo bd
+    private AlfaNumerico nombre;            //id identificador
+    private AlfaNumerico autor;             //id identificador
+    private AlfaNumerico editorial;         //id identificador
+    private AlfaNumerico edicion;           //id identificador
+    private AlfaNumerico materia;           //id identificador
     
     private int idDocumento;            
     private int idCategoria;
@@ -65,7 +67,7 @@ public class Articulo {
     
     //Rutinas
     
-    public Estado modificar(double precioRecibida, Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
+    public Estado modificar(double precioRecibida, java.util.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
         
         return Estado.ERROR;
     }
@@ -75,10 +77,108 @@ public class Articulo {
         return Estado.ERROR;
     }
 
+    protected static Estado getInformacion(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        System.out.println("pregunta por los usuarios");
+        
+        ResultSet rs = null;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatement(NOMBRE_TABLA);
+        
+        try {
+            
+            rs = prepared.executeQuery();
+            
+            while (rs.next()) {
+                
+                int id = rs.getInt(CAMPO_ID);
+                int idDocumento = rs.getInt(CAMPO_ID_DOCUMENTO);
+                int idcategoria = rs.getInt(CAMPO_ID_CATEGORIA);
+                double precio = rs.getDouble(CAMPO_PRECIO);
+                java.util.Date fechaIngreso = rs.getDate(CAMPO_FECHA_INGRESO);
+                int idNombre = rs.getInt(CAMPO_ID_NOMBRE);
+                int idAutor = rs.getInt(CAMPO_ID_AUTOR);
+                int idEditorial = rs.getInt(CAMPO_ID_EDITORIAL);
+                int idEdicion = rs.getInt(CAMPO_ID_EDICION);
+                int idMateria = rs.getInt(CAMPO_ID_MATERIA);
+                
+                AlfaNumerico documento = AlfaNumerico.getForId(idDocumento);
+                AlfaNumerico categoria = AlfaNumerico.getForId(idcategoria);
+                AlfaNumerico nombre = AlfaNumerico.getForId(idNombre);
+                AlfaNumerico autor = AlfaNumerico.getForId(idAutor);
+                AlfaNumerico editorial = AlfaNumerico.getForId(idEditorial);
+                AlfaNumerico edicion = AlfaNumerico.getForId(idEdicion);
+                AlfaNumerico materia = AlfaNumerico.getForId(idMateria);
+                
+                
+                
+                System.out.println(id);
+                
+                
+            }
+            
+            estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Usuario.class.toString() + "getInformacion");
+            
+        } catch (Exception e) {
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
+        
+    }
+    
+    private static int getLastId(){
+        
+        int ultimoID = 0;
+        
+        Estado estadoConsulta = Estado.EXITO;
+        //Estado estadoConsulta = getInformacion();
+
+        if(listaObjetos != null){
+
+            if(estadoConsulta == Estado.EXITO){
+
+                for(Usuario usuarioActual : listaObjetos){
+
+                    if(usuarioActual.id > ultimoID){
+
+                        ultimoID = usuarioActual.id;
+
+                    }else{
+
+                        //...no hacer nada
+
+                    }
+
+                }
+
+            }else{
+
+                //...no hacer nada
+
+            }
+
+        }else{
+
+            //...se establecio unvalor por defecto
+
+        }
+        
+        return ultimoID;
+        
+    }
+
     private static int getNewId(){
 
-        //Crear un nuevo identificador
-        int idActual = listaObjetos.size();
+        //Obtener el ultimo identificador
+        int idActual = getLastId();
 
         //Buscar el siguiente identificador
         int siguienteIdentificador = Valor.SIGUIENTE_IDENTIFICADOR;
@@ -92,6 +192,8 @@ public class Articulo {
     }
 
     //Constructor
+    
+    private Articulo(int idrecibido, AlfaNumerico documentoRecibido, AlfaNumericocategoriarecibida, double precioRecibido, java.util.Date fechaIngreso, AlfaNumerico nombreRecibido, AlfaNumerico)
     
     protected static Articulo nuevo(double precioRecibida, Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
 
@@ -272,6 +374,13 @@ public class Articulo {
     }
     
     //Getter
+    
+    protected static Set<Articulo> getLista(){
+        
+        Set<Articulo> listaDevolver = listaObjetos;
+        
+        return listaDevolver;
+    }
 
     public int getId() {
         return id;
