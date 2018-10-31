@@ -13,13 +13,40 @@ import java.util.*;
  */
 public class Articulo {
     
+    //atributos
+    
+    private static final String NOMBRE_TABLA = "articulo";
+    
+    private static final String CAMPO_ID = "id";
+    private static final String CAMPO_ID_DOCUMENTO = "id_documento";
+    private static final String CAMPO_ID_CATEGORIA = "id_categoria";
+    private static final String CAMPO_PRECIO = "precio";
+    private static final String CAMPO_FECHA_INGRESO = "fecha_ingreso";
+    private static final String CAMPO_ID_NOMBRE = "id_nombre";
+    private static final String CAMPO_ID_AUTOR = "id_autor";
+    private static final String CAMPO_ID_EDITORIAL = "id_editorial";
+    private static final String CAMPO_ID_EDICION = "id_edicion";
+    private static final String CAMPO_ID_MATERIA = "id_materia";
+    
+    private static final int CANTIDAD_DE_CAMPOS = 10;
+    private static final int LUGAR_DEL_CAMPO_ID = 1;
+    private static final int LUGAR_DEL_CAMPO_ID_DOCUMENTO = 2;
+    private static final int LUGAR_DEL_CAMPO_ID_CATEGORIA = 3;
+    private static final int LUGAR_DEL_CAMPO_PRECIO = 4;
+    private static final int LUGAR_DEL_CAMPO_FECHA_INGRESO = 5;
+    private static final int LUGAR_DEL_CAMPO_ID_NOMBRE = 6;
+    private static final int LUGAR_DEL_CAMPO_ID_AUTOR = 7;
+    private static final int LUGAR_DEL_CAMPO_ID_EDITORIAL = 8;
+    private static final int LUGAR_DEL_CAMPO_ID_EDICION = 9;
+    private static final int LUGAR_DEL_CAMPO_ID_MATERIA = 10;
+    
     private final int id;               //tipo bd
     private Archivo documento;          //id identificador
     private Estado categoria;           //id identificador
     private double precio;              //tipo bd
     private Date fechaIngreso;          //tipo bd
     private AlfaNumerico nombre;        //id identificador
-    private AlfaNumerico autor;         //idIdentificador
+    private AlfaNumerico autor;         //id identificador
     private AlfaNumerico editorial;     //id identificador
     private AlfaNumerico edicion;       //id identificador
     private Materia materia;            //id identificador
