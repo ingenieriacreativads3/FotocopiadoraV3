@@ -28,20 +28,30 @@ public class GestorCuenta {
 //   }
 //   
    protected static Estado VerificarUsuarioYContraseña(String usuario, String contraseña){
+       
        Estado exitoAlIniciar = Estado.ERROR;
         //Primero se debe verificar si existe el usuario.
         //Luego se debe verificar si el usuairo y la contraseña son correctas
+        
+        System.out.println("llega hasta el gestor cuenta");
         try{
+            
             if(ModeloInterfaz.existeUsuario(usuario)){
+                
+                System.out.println("el usuario existe");
                 exitoAlIniciar = ModeloInterfaz.verificaUsuarioPassword(usuario, contraseña);
-            }
-            else{
+                
+            }else{
+                
                 exitoAlIniciar = Estado.ERROR_NOMBRE_INEXISTENTE;
+                
             }
-            return exitoAlIniciar;
+            
         }catch(Exception e){
-            return exitoAlIniciar;
+            
         }
+        
+        return exitoAlIniciar;
    }
    
 }

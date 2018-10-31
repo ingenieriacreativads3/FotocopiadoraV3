@@ -115,7 +115,6 @@ public class Login extends javax.swing.JFrame {
 
     private void jButtonAceptarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAceptarMousePressed
         
-        
         String usuario = jTextFieldUsuario.getText();
         String contrasenia = jPasswordField1.getText();
         

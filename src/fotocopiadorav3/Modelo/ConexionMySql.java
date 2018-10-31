@@ -35,6 +35,8 @@ public class ConexionMySql {
     // Clave de usuario
     private String password = Environment.PASSWORD;
     
+    private Connection conn;
+    
     private static ConexionMySql conexionMySql = null;
     
     //Constructor
@@ -83,11 +85,10 @@ public class ConexionMySql {
         
     }
     
-    protected PreparedStatement getPreparedStatement(String nombreTabla){
+    protected PreparedStatement getPreparedStatement(String nombreTablaRecibido){
         
-        Connection conn = null;
         PreparedStatement prepStmtDevolver = null;
-        String sqlStmt = "SELECT * FROM " + nombreTabla;
+        String sqlStmt = "SELECT * FROM " + nombreTablaRecibido;
         
         try {
             
@@ -95,13 +96,15 @@ public class ConexionMySql {
             String connectionUrl = Environment.URL;
             String connectionUser = Environment.USERNAME;
             String connectionPassword = Environment.PASSWORD;
-            conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
-            
-            prepStmtDevolver = conn.prepareStatement(sqlStmt);
+            System.out.println("antes de hacer la conexion");
+            this.conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
+            System.out.println("realiza la conexion en conexionmysql getpreparedstatement");
+            prepStmtDevolver = this.conn.prepareStatement(sqlStmt);
             
         } catch (Exception e) {
             
             //..se establecio un valor por defecto
+            System.out.println("se rompe cuando incia la sesion la conexion");
             
         }
         
@@ -109,9 +112,22 @@ public class ConexionMySql {
         
     }
     
+    protected void closeConn(String nombreClase){
+        
+        try {
+            
+            this.conn.close();
+            
+        } catch (Exception e) {
+            
+            System.out.println("no se cierra la conexion en el metodo: " + nombreClase);
+            
+        }
+        
+    }
+    
     protected PreparedStatement getPreparedStatement(int cantidadAtributos, String nombreTabla){
         
-        Connection conn = null;
         PreparedStatement prepStmtDevolver = null;
         
         String sqlStmt = "asd";
@@ -141,9 +157,9 @@ public class ConexionMySql {
             String connectionUrl = Environment.URL;
             String connectionUser = Environment.USERNAME;
             String connectionPassword = Environment.PASSWORD;
-            conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
+            this.conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
             
-            prepStmtDevolver = conn.prepareStatement(sqlStmt);
+            prepStmtDevolver = this.conn.prepareStatement(sqlStmt);
             
             
         } catch (Exception e) {
@@ -252,6 +268,16 @@ public class ConexionMySql {
         //INSERT INTO alfanumerico (valor, id) VALUES ('sdf', '2');
         
         return estadoDevolver;
+        
+    }
+    
+    public static void getAllInformacion(){
+        
+        AlfaNumerico.getInformacion();
+        Direccion.getInformacion();
+        Persona.getInformacion();
+        Alumno.getInformacion();
+        Usuario.getInformacion();
         
     }
     

@@ -16,6 +16,13 @@ package fotocopiadorav3.Modelo;
  */
 public class ModeloInterfaz {
     
+    public static Persona getNuevaPersona(AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, int dniRecibido, Direccion direccionRecibida){
+        
+        Persona personaDevolver = Persona.nuevo(nombreRecibido, apellidoRecibido, dniRecibido, direccionRecibida);
+        
+        return personaDevolver;
+    }
+    
     public static Direccion getDireccion(AlfaNumerico calleRecibida, int numeroRecibido){
         
         Direccion direccionDevolver = Direccion.OBJETO_INVALIDO;
@@ -87,6 +94,8 @@ public class ModeloInterfaz {
     public static boolean existeUsuario(String nombreActual){
         
         boolean existe = false;
+        
+        System.out.println("entra al modelo interfaz");
         
         if(Usuario.existeNombreUsuario(nombreActual)){
             

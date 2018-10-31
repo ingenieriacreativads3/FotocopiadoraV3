@@ -23,7 +23,7 @@ import javax.swing.JPanel;
  */
 public class Vista2Interfaz {
     
-    private static final PaginaPrincipalMejorada paginaPrincipal = new PaginaPrincipalMejorada();
+    private static PaginaPrincipalMejorada paginaPrincipal = new PaginaPrincipalMejorada();
     
     public static void renderizarLogin(){
         
@@ -141,6 +141,7 @@ public class Vista2Interfaz {
     
     public static void enviarDatosInicioSesion(String nombreUsuario, String contrasenia){
         
+        System.out.println("interfaz vista");
         ControladorInterfaz.iniciarSesion(nombreUsuario, contrasenia);
         
     }

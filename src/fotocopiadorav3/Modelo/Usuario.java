@@ -43,7 +43,47 @@ public class Usuario{
 
     //Rutinas
     
-    private Estado guardar(){
+    protected static Usuario getForId(int idRecibido){
+        
+        Usuario usuarioDevolver = OBJETO_INVALIDO;
+        
+        Estado seObtuvo = Estado.EXITO;
+        //Estado seObtuvo = getInformacion();
+        
+        if(listaObjetos != null){
+            
+            if(seObtuvo == Estado.EXITO){
+
+                for(Usuario usuarioActual : listaObjetos){
+
+                    if(usuarioActual.id == idRecibido){
+
+                        usuarioDevolver = usuarioActual;
+
+                    }else{
+
+                        //...se establecion un valor por defecto
+
+                    }
+                }
+
+            }else{
+
+                //TODO capturar el error producido por no haber capturado la info de la db
+                System.out.println("Se rompio en Direccion.getForId();");
+
+            }
+            
+        }else{
+            
+            //...no hacer nada
+            
+        }
+        return usuarioDevolver;
+        
+    }
+    
+    public Estado guardar(){
         
         Estado estadoDevolver = Estado.ERROR;
         
@@ -60,6 +100,8 @@ public class Usuario{
             prepared.executeUpdate();
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Usuario.class.toString() + "guardar");
             
         } catch (Exception e) {
             
@@ -71,9 +113,11 @@ public class Usuario{
         
     }
     
-    private static Estado getInformacion(){
+    protected static Estado getInformacion(){
         
         Estado estadoDevolver = Estado.ERROR;
+        
+        System.out.println("pregunta por los usuarios");
         
         ResultSet rs = null;
         
@@ -97,9 +141,13 @@ public class Usuario{
                 
                 Usuario asd = Usuario.nuevo(id, personaObjeto, nombreUsuarioObjeto, passObjeto, personaObjeto.getId(), nombreUsuarioObjeto.getId(), passObjeto.getId());
                 
+                System.out.println(id);
+                
             }
             
             estadoDevolver = Estado.EXITO;
+            prepared.close();
+            conn.closeConn(Usuario.class.toString() + "getInformacion");
             
         } catch (Exception e) {
             
@@ -115,7 +163,8 @@ public class Usuario{
         
         int ultimoID = 0;
         
-        Estado estadoConsulta = getInformacion();
+        Estado estadoConsulta = Estado.EXITO;
+        //Estado estadoConsulta = getInformacion();
 
         if(listaObjetos != null){
 
@@ -176,10 +225,12 @@ public class Usuario{
         AlfaNumerico nombreRecibido = AlfaNumerico.nuevo(nombreActual);
         AlfaNumerico passRecibido = AlfaNumerico.nuevo(passActual);
         
+        System.out.println("verificar usser pass");
         if(!existeNombreUsuario(nombreRecibido)){
             
             //...establecer valor de usuarioDevolver inexistente
             loginVerificado = Estado.ERROR_NOMBRE_INEXISTENTE;
+            System.out.println("no existe nombre");
             
         }else{
             
@@ -187,11 +238,13 @@ public class Usuario{
                 
                 //...establecer valor de password inexistente
                 loginVerificado = Estado.ERROR_PASS_INCORRECTA;
+                System.out.println("no existe pass");
                 
             }else{
                 
                 //...establecer valor de login correcto
                 loginVerificado = Estado.USSER_PASS_CORRECTOS;
+                System.out.println("pasa");
                 
             }
             
@@ -213,10 +266,11 @@ public class Usuario{
                     usuarioActual.getPass();
 
             //Si el pass actual es igual al pass recibido
-            if(passUsuarioActual.equals(passRecibido)){
+            if(passUsuarioActual.getValor().equals(passRecibido.getValor())){
 
                 //...establecer la expresion correspondiente
                 existe = true;
+                System.out.println("entra uno");
 
             }
 
@@ -230,6 +284,7 @@ public class Usuario{
 
         boolean existe = false;
 
+        System.out.println("viene a preguntar si existe el usuario");
         //Recorrer el conjunto de usuarios
         for(Usuario usuarioActual : listaObjetos){
 
@@ -237,10 +292,11 @@ public class Usuario{
             AlfaNumerico nombreUsuarioActual = usuarioActual.getNombreUsuario();
 
             //Si el nombre actual es igual al nombre recibido
-            if(nombreUsuarioActual.equals(nombreRecibido)){
+            if(nombreUsuarioActual.getValor().equals(nombreRecibido.getValor())){
 
                 //...establecer la expresion correspondiente
                 existe = true;
+                System.out.println("entra uno");
 
             }
 
@@ -256,7 +312,7 @@ public class Usuario{
         
         //Obtener el argumento recibido
         AlfaNumerico nombreRecibido = AlfaNumerico.nuevo(nombreActual);
-
+        
         //Recorrer el conjunto de usuarios
         for(Usuario usuarioActual : listaObjetos){
 
@@ -264,11 +320,15 @@ public class Usuario{
             AlfaNumerico nombreUsuarioActual = usuarioActual.getNombreUsuario();
 
             //Si el nombre actual es igual al nombre recibido
-            if(nombreUsuarioActual.equals(nombreRecibido)){
+            if(nombreUsuarioActual.getValor().equals(nombreRecibido.getValor())){
 
                 //...establecer la expresion correspondiente
                 existe = true;
 
+            }else{
+                
+                //...se establecio un valor por defecto
+                
             }
 
         }
@@ -351,7 +411,7 @@ public class Usuario{
             
             objetoDevolver = objetoNuevo;
             
-            Estado seGuardo = objetoDevolver.guardar();
+            //Estado seGuardo = objetoDevolver.guardar();
 
         }else{
 
