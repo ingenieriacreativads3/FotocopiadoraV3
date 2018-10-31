@@ -388,6 +388,13 @@ public class Alumno{
     }
     
     //Getter
+    
+    protected static Set<Alumno> getLista(){
+        
+        Set<Alumno> listaDevolver = listaObjetos;
+        
+        return listaDevolver;
+    }
 
     public int getId() {
         return id;

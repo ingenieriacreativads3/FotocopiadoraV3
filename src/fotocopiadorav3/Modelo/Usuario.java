@@ -565,6 +565,13 @@ public class Usuario{
     }
 
     //Getter
+    
+    protected static Set<Usuario> getLista(){
+        
+        Set<Usuario> listaDevolver = listaObjetos;
+        
+        return listaDevolver;
+    }
 
     public int getId() {
         return id;

@@ -7,6 +7,7 @@
 package fotocopiadorav3.Modelo;
 
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Esta clase determina la conexion con el exterior del paquete.
@@ -188,6 +189,27 @@ public class ModeloInterfaz {
         Articulo articuloDevolver = Articulo.nuevo(precioRecibido, fechaIngresoRecibida, nombreRecibido, autorRecibido, editorialRecibida, edicionRecibida, materiaRecibida);
         
         return articuloDevolver;
+    }
+    
+    public static Set<Usuario> getListaUsuarios(){
+        
+        Set<Usuario> listaDevolver = Usuario.getLista();
+        
+        return listaDevolver;
+    }
+    
+    public static Set<Alumno> getListaAlumnos(){
+        
+        Set<Alumno> listaDevolver = Alumno.getLista();
+        
+        return listaDevolver;
+    }
+    
+    public static Set<Articulo> getListaArticulos(){
+        
+        Set<Articulo> listaDevolver = Articulo.getLista();
+        
+        return listaDevolver;
     }
     
 }
