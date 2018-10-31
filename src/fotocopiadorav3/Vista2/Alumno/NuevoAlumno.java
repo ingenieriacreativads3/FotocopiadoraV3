@@ -7,27 +7,41 @@
 package fotocopiadorav3.Vista2.Alumno;
 
 import Otros.TextPrompt;
+import Otros.Validador;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Toshiba
  */
 public class NuevoAlumno extends javax.swing.JFrame {
-
+    
+    private ArrayList<JTextField> listaCampos = new ArrayList<>();
+    private HashMap<JTextField, Boolean> listaValidaciones = new HashMap<>();
+    private boolean datosValidos;
+    
     /** Creates new form NuevoAlumno */
     public NuevoAlumno() {
+        
         initComponents();
         
-        TextPrompt textPromptNombre = new TextPrompt("Ingrese su nombre", nombreTF);
-        TextPrompt textPromptApellido = new TextPrompt("Ingrese su apellido", apellidoTF);
-        TextPrompt textPromptLegajo = new TextPrompt("Ingrese su legajo", legajoTF);
-        TextPrompt textPromptDomicilio = new TextPrompt("Ingrese su domicilio actual", domicilioTF);
-        TextPrompt textPromptAltura = new TextPrompt("Ingrese la altura de su domicilio", alturaTF);
-        TextPrompt textPromptDni = new TextPrompt("Ingrese su número de documento", dniTF);
+        datosValidos = false;
+        
+        agregarPromptText();
+        
+        llenarListaCampos();
+        
+        llenarListaValidaciones();
+        
+        agregarValidacion(listaCampos);
         
     }
-
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -178,16 +192,32 @@ public class NuevoAlumno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-
-        String nombre=nombreTF.getText();
-        String apellido=apellidoTF.getText();
-        String legajo=legajoTF.getText();
-        String domicilio=domicilioTF.getText();
-        String altura=alturaTF.getText();
-        String dni=dniTF.getText();
-
-        Vista2Interfaz.enviarDatosNuevoAlumno(nombre, apellido, legajo, domicilio, altura, dni);
-
+        
+        for (JTextField campo : listaCampos) {
+            
+            campo.grabFocus();
+            
+        }
+        
+        aceptar.grabFocus();
+        
+        if (datosValidos) {
+            
+            String nombre=nombreTF.getText();
+            String apellido=apellidoTF.getText();
+            String legajo=legajoTF.getText();
+            String domicilio=domicilioTF.getText();
+            String altura=alturaTF.getText();
+            String dni=dniTF.getText();
+            System.out.println("se han enviado los datos");
+            Vista2Interfaz.enviarDatosNuevoAlumno(nombre, apellido, legajo, domicilio, altura, dni);
+            
+        } else{
+            
+            System.out.println("datos erroneos");
+            
+        }
+        
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void limpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarCamposActionPerformed
@@ -200,7 +230,55 @@ public class NuevoAlumno extends javax.swing.JFrame {
         dniTF.setText("");
 
     }//GEN-LAST:event_limpiarCamposActionPerformed
+    
+    private void agregarPromptText(){
+        
+        TextPrompt textPromptNombre = new TextPrompt("Ingrese su nombre", nombreTF);
+        TextPrompt textPromptApellido = new TextPrompt("Ingrese su apellido", apellidoTF);
+        TextPrompt textPromptLegajo = new TextPrompt("Ingrese su legajo", legajoTF);
+        TextPrompt textPromptDomicilio = new TextPrompt("Ingrese su domicilio actual", domicilioTF);
+        TextPrompt textPromptAltura = new TextPrompt("Ingrese la altura de su domicilio", alturaTF);
+        TextPrompt textPromptDni = new TextPrompt("Ingrese su número de documento", dniTF);
+        
+    }
+    
+    private void llenarListaCampos(){
+        
+        listaCampos.add(nombreTF);
+        listaCampos.add(apellidoTF);
+        listaCampos.add(legajoTF);
+        listaCampos.add(domicilioTF);
+        listaCampos.add(alturaTF);
+        listaCampos.add(dniTF);
+        
+    }
+    
+    private void llenarListaValidaciones(){
+        
+        
+        
+    }
+    
+    private void agregarValidacion(ArrayList<JTextField> campos){
+        
+        Validador validador = new Validador();
+        
+        for (JTextField campo : campos) {
+            
+            campo.addFocusListener(new FocusListener() {
+                @Override
+                public void focusGained(FocusEvent e) {}
 
+                @Override
+                public void focusLost(FocusEvent e) {
+                    datosValidos = validador.validar(campo);
+                }
+            });
+            
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
