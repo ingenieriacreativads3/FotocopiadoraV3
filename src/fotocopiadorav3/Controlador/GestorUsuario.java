@@ -36,13 +36,13 @@ public class GestorUsuario {
         Estado exitoBaja = Estado.ERROR;
         //Usuario userABorrar = ModeloInterfaz.getUsuarioForID(IDusuario);
         Usuario userABorrar = ModeloInterfaz.getUsuarioForId(IDusuario);
-        //ModeloInterfaz.borrarUsuario(userABorrar);
-        //userABorrar.borrar();
+        
+        exitoBaja = userABorrar.borrar();
         
         return exitoBaja;
     }
     
-    protected Estado modificacionUsuario(AlfaNumerico IDUusuarioRecibido, AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, AlfaNumerico nombreUsuarioRecibido, AlfaNumerico passwordRecibida, Direccion domicilioRecibido, int dniRecibido){
+    protected Estado modificacionUsuario(int IDUusuarioRecibido, AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, AlfaNumerico nombreUsuarioRecibido, AlfaNumerico passwordRecibida, Direccion domicilioRecibido, int dniRecibido){
         Estado usuarioCreadoConExito = Estado.ERROR;
         
         //Verificaciones del nombreRecibido, autor, precio, materia.
@@ -50,6 +50,10 @@ public class GestorUsuario {
         if(datosCorrectos(nombreRecibido, apellidoRecibido, nombreUsuarioRecibido, passwordRecibida, domicilioRecibido, dniRecibido)){
             
             //usuarioCreadoConExito = ModeloInterfaz.modificarUsuario(IDUusuarioRecibido, nombreRecibido, apellidoRecibido, nombreUsuarioRecibido, passwordRecibida, domicilioRecibido, dniRecibido);
+            
+            Usuario usuarioAModificar = ModeloInterfaz.getUsuarioForId(IDUusuarioRecibido);
+            Persona personaAModificar = usuarioAModificar.getPersona();
+            usuarioCreadoConExito = usuarioAModificar.modificar(personaAModificar, nombreUsuarioRecibido, passwordRecibida);
         }
         else{
             usuarioCreadoConExito = Estado.ERROR_DATOS_INVALIDOS;

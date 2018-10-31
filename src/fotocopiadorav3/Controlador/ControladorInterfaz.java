@@ -57,20 +57,21 @@ public class ControladorInterfaz extends Application{
     *
     */
     
-    public void altaUsuario(String nombreRecibido, String apellidoRecibido, String nombreUsuarioRecibido, String contraseniaRecibido, String calleDomicilioRecibido, String numeroDomicilioRecibido, String DNIRecibido){
+    public Estado altaUsuario(String nombreRecibido, String apellidoRecibido, String nombreUsuarioRecibido, String contraseniaRecibido, String calleDomicilioRecibido, String numeroDomicilioRecibido, String DNIRecibido){
         //se verifica que el que de de alta sea admin
         //si es admin, se crea el usuario
         //si no lo es, se deniega
         
         AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
-        
+        nombre.guardar();
         AlfaNumerico apellido = ModeloInterfaz.getAlfaNumerico(apellidoRecibido);
-        
+        apellido.guardar();
         AlfaNumerico nombreUsuario = ModeloInterfaz.getAlfaNumerico(nombreUsuarioRecibido);
-        
+        nombreUsuario.guardar();
         AlfaNumerico contrasenia = ModeloInterfaz.getAlfaNumerico(contraseniaRecibido);
-        
+        contrasenia.guardar();
         AlfaNumerico calleDomicilio = ModeloInterfaz.getAlfaNumerico(calleDomicilioRecibido);
+        calleDomicilio.guardar();
         int numeroDomicilio = Integer.valueOf(numeroDomicilioRecibido);
         Direccion domicilio = ModeloInterfaz.getDireccion(calleDomicilio, numeroDomicilio);
         
@@ -87,34 +88,35 @@ public class ControladorInterfaz extends Application{
         }
         
         
-        
+        return exitoAlta;
     }
     
-    public void bajaUsuario(String IDusuarioRecibido){
+    public Estado bajaUsuario(String IDusuarioRecibido){
         //se verifica que el que de de alta sea admin
         //si es admin, se baja el usuario
         //si no lo es, se deniega
         int IDusuario = Integer.valueOf(IDusuarioRecibido);
         Estado exitoBaja = GestorUsuario.bajaUsuario(IDusuario);
+        return exitoBaja;
     }
     
-    public void modificacionUsuario(String IDusuarioRecibido, String nombreRecibido, String apellidoRecibido, String nombreUsuarioRecibido, String contraseniaRecibido, String calleDomicilioRecibido, String numeroDomicilioRecibido, String DNIRecibido){
+    public Estado modificacionUsuario(String IDusuarioRecibido, String nombreRecibido, String apellidoRecibido, String nombreUsuarioRecibido, String contraseniaRecibido, String calleDomicilioRecibido, String numeroDomicilioRecibido, String DNIRecibido){
         //ningun atributo extra es necesario para automidificarse
         //para modificaciones extras:
         //se verifica que el que de de alta sea admin
         //si es admin, se baja el usuario
         //si no lo es, se deniega
-        AlfaNumerico IDusuario = ModeloInterfaz.getAlfaNumerico(IDusuarioRecibido);
-        
+        int IDusuario = Integer.valueOf(IDusuarioRecibido);
         AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
-        
+        nombre.guardar();
         AlfaNumerico apellido = ModeloInterfaz.getAlfaNumerico(apellidoRecibido);
-        
+        apellido.guardar();
         AlfaNumerico nombreUsuario = ModeloInterfaz.getAlfaNumerico(nombreUsuarioRecibido);
-        
+        nombreUsuario.guardar();
         AlfaNumerico contrasenia = ModeloInterfaz.getAlfaNumerico(contraseniaRecibido);
-        
+        contrasenia.guardar();
         AlfaNumerico calleDomicilio = ModeloInterfaz.getAlfaNumerico(calleDomicilioRecibido);
+        calleDomicilio.guardar();
         int numeroDomicilio = Integer.valueOf(numeroDomicilioRecibido);
         Direccion domicilio = ModeloInterfaz.getDireccion(calleDomicilio, numeroDomicilio);
         
@@ -129,6 +131,7 @@ public class ControladorInterfaz extends Application{
             cargarMensajeError(mensajeError, IDError);
         }
         
+        return exitoModificacion;
     }
     
     /*
@@ -141,32 +144,41 @@ public class ControladorInterfaz extends Application{
         //todo
     }
     
-    public void adicionarClienteComoRegistrado(String legajoRecibido, String nombreClienteRecibido, String apellidoRecibido, String direccionRecibido, String numeroRecibido, String dniClienteRecibido){
+    public Estado adicionarClienteComoRegistrado(String legajoRecibido, String nombreClienteRecibido, String apellidoRecibido, String direccionRecibido, String numeroRecibido, String dniClienteRecibido){
         
         int legajo = Integer.valueOf(legajoRecibido);
         AlfaNumerico nombreCliente = ModeloInterfaz.getAlfaNumerico(nombreClienteRecibido);
+        nombreCliente.guardar();
         AlfaNumerico apellidoCliente = ModeloInterfaz.getAlfaNumerico(apellidoRecibido);
+        apellidoCliente.guardar();
         AlfaNumerico direccionCliente = ModeloInterfaz.getAlfaNumerico(direccionRecibido);
+        direccionCliente.guardar();
         int numeroCalle = Integer.valueOf(numeroRecibido);
         int dniCliente = Integer.valueOf(dniClienteRecibido);
         
         Estado exitoAlta = GestorCliente.altaCliente(legajo, nombreCliente, apellidoCliente, direccionCliente, numeroCalle, dniCliente);
+        return exitoAlta;
     }
     
-    public void modificacionClienteComoRegistrado(String legajoRecibido, String nombreClienteRecibido, String apellidoRecibido, String direccionRecibido, String numeroRecibido, String dniClienteRecibido){
+    public Estado modificacionClienteComoRegistrado(String legajoRecibido, String nombreClienteRecibido, String apellidoRecibido, String direccionRecibido, String numeroRecibido, String dniClienteRecibido){
         int legajo = Integer.valueOf(legajoRecibido);
         AlfaNumerico nombreCliente = ModeloInterfaz.getAlfaNumerico(nombreClienteRecibido);
+        nombreCliente.guardar();
         AlfaNumerico apellidoCliente = ModeloInterfaz.getAlfaNumerico(apellidoRecibido);
+        apellidoCliente.guardar();
         AlfaNumerico direccionCliente = ModeloInterfaz.getAlfaNumerico(direccionRecibido);
+        apellidoCliente.guardar();
         int numeroCalle = Integer.valueOf(numeroRecibido);
         int dniCliente = Integer.valueOf(dniClienteRecibido);
         
         Estado exitoAlta = GestorCliente.modificacionCliente(legajo, nombreCliente, apellidoCliente, direccionCliente, numeroCalle, dniCliente);
+        return exitoAlta;
     }
     
-    public void bajaClienteComoRegistrado(String legajoRecibido){
+    public Estado bajaClienteComoRegistrado(String legajoRecibido){
         int legajo = Integer.valueOf(legajoRecibido);
-        Estado exitoAlta = GestorCliente.bajaCliente(legajo);
+        Estado exitoBaja = GestorCliente.bajaCliente(legajo);
+        return exitoBaja;
     }
     
     /*
@@ -175,38 +187,43 @@ public class ControladorInterfaz extends Application{
     *
     */
     
-    public void crearArticulo(String nombreRecibido, String autorRecibido, String precioRecibido, String materiaRecibido){
+    public Estado crearArticulo(String nombreRecibido, String autorRecibido, String precioRecibido, String materiaRecibido){
         
         AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
-        
+        nombre.guardar();
         AlfaNumerico autor = ModeloInterfaz.getAlfaNumerico(autorRecibido);
-        
+        autor.guardar();
         AlfaNumerico materia = ModeloInterfaz.getAlfaNumerico(materiaRecibido);
-        
+        materia.guardar();
         float precio = Float.valueOf(precioRecibido);
         
         
         Estado exitoAlta = GestorArticulo.altaArticulo(nombre, autor, precio, materia);
+        return exitoAlta;
     }
     
-    public void modificacionArticulo(AlfaNumerico IDArticulo, String nombreRecibido, String autorRecibido, String precioRecibido, String materiaRecibido){
+    public Estado modificacionArticulo(String IDArticuloRecibido, String nombreRecibido, String autorRecibido, String precioRecibido, String materiaRecibido){
+        int IDArticulo = Integer.valueOf(IDArticuloRecibido);
+        
         AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
-        
+        nombre.guardar();
         AlfaNumerico autor = ModeloInterfaz.getAlfaNumerico(autorRecibido);
-        
+        autor.guardar();
         AlfaNumerico materia = ModeloInterfaz.getAlfaNumerico(materiaRecibido);
-        
+        materia.guardar();
         double precio = Double.valueOf(precioRecibido);
         
         
-        GestorArticulo.modificacionArticulo(IDArticulo, nombre, autor, precio, materia);
+        Estado exito = GestorArticulo.modificacionArticulo(IDArticulo, nombre, autor, precio, materia);
         
-        
+        return exito;
         
     }
     
-    public void bajaArticulo(AlfaNumerico IDArticulo){
-        GestorArticulo.bajaArticulo(IDArticulo);
+    public Estado bajaArticulo(String IDArticuloRecibido){
+        int IDArticulo = Integer.valueOf(IDArticuloRecibido);
+        Estado exito = GestorArticulo.bajaArticulo(IDArticulo);
+        return exito;
     }
     /*
     * 
@@ -260,7 +277,7 @@ public class ControladorInterfaz extends Application{
         String IDPedido;
         
         AlfaNumerico codigo = ModeloInterfaz.getSiguienteCodigoTransaccion();
-        
+        codigo.guardar();
         IDPedido = codigo.toString();
         
         return IDPedido;
