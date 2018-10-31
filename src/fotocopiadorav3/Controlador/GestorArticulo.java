@@ -6,7 +6,8 @@
 package fotocopiadorav3.Controlador;
 
 import fotocopiadorav3.Modelo.*;
-import java.util.Date;
+import java.util.*;
+import java.sql.*;
 
 /**
  *Clase que se encargara del ABM de Articulos
@@ -25,7 +26,9 @@ public class GestorArticulo {
     
     protected Estado altaArticulo(AlfaNumerico nombre, AlfaNumerico autor, double precio, AlfaNumerico materia){
         Estado ArticuloCreado = Estado.ERROR;
-    
+        
+        return ArticuloCreado;
+    }
     /**
      * 
      * @param IDArticulo 
@@ -66,7 +69,7 @@ public class GestorArticulo {
             test1.guardar();
             AlfaNumerico test2 = ModeloInterfaz.getAlfaNumerico("test");
             test2.guardar();
-            Date fechaActual = new Date();
+            java.sql.Date fechaActual = new java.sql.Date(2018, 10, 31);
             ArticuloModificadoConExito = articuloAModificar.modificar(precio, fechaActual, nombre, autor, test1, test2, materia);
             
         }

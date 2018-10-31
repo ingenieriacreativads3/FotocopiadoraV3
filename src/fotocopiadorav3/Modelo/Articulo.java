@@ -169,7 +169,7 @@ public class Articulo {
                 int idDocumento = rs.getInt(CAMPO_ID_DOCUMENTO);
                 int idcategoria = rs.getInt(CAMPO_ID_CATEGORIA);
                 double precio = rs.getDouble(CAMPO_PRECIO);
-                java.util.Date fechaIngreso = rs.getDate(CAMPO_FECHA_INGRESO);
+                java.sql.Date fechaIngreso = rs.getDate(CAMPO_FECHA_INGRESO);
                 int idNombre = rs.getInt(CAMPO_ID_NOMBRE);
                 int idAutor = rs.getInt(CAMPO_ID_AUTOR);
                 int idEditorial = rs.getInt(CAMPO_ID_EDITORIAL);
@@ -263,7 +263,7 @@ public class Articulo {
 
     //Constructor
     
-    private static Articulo nuevo(int idRecibido, AlfaNumerico documentoRecibido, AlfaNumerico categoriaRecibida, double precioRecibido, java.util.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibido, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
+    private static Articulo nuevo(int idRecibido, AlfaNumerico documentoRecibido, AlfaNumerico categoriaRecibida, double precioRecibido, java.sql.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibido, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
         
         Articulo articuloDevolver = new Articulo();
         
@@ -412,7 +412,7 @@ public class Articulo {
         
     }
     
-    private Estado setFechaIngreso(java.util.Date fechaRecibida){
+    private Estado setFechaIngreso(java.sql.Date fechaRecibida){
         
         Estado estadoDevolver = Estado.EXITO;
         
