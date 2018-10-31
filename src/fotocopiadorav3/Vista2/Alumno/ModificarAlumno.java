@@ -13,11 +13,13 @@ import fotocopiadorav3.Vista2.Vista2Interfaz;
  * @author Toshiba
  */
 public class ModificarAlumno extends javax.swing.JFrame {
-
+    
+    private int idAlumno;
     /**
      * Creates new form ModificarAlumno
      */
     public ModificarAlumno() {
+        
         initComponents();
         
         TextPrompt textPromptNombre = new TextPrompt("Ingrese su nombre", nombreTF);
@@ -199,6 +201,10 @@ public class ModificarAlumno extends javax.swing.JFrame {
         alturaTF.setText("");
         dniTF.setText("");
     }//GEN-LAST:event_limpiarCamposActionPerformed
+
+    public void setIdAlumno(int idAlumno) {
+        this.idAlumno = idAlumno;
+    }
 
     /**
      * @param args the command line arguments
