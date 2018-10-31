@@ -34,7 +34,7 @@ public class ModeloInterfaz {
         
     }
     
-    public static AlfaNumerico getNuevoAlfaNumerico(String palabraRecibida){
+    public static AlfaNumerico getAlfaNumerico(String palabraRecibida){
         
         AlfaNumerico alfaNumericoDevolver = AlfaNumerico.nuevo(palabraRecibida);
         

@@ -62,15 +62,15 @@ public class ControladorInterfaz extends Application{
         //si es admin, se crea el usuario
         //si no lo es, se deniega
         
-        AlfaNumerico nombre = ModeloInterfaz.getNuevoAlfaNumerico(nombreRecibido);
+        AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
         
-        AlfaNumerico apellido = ModeloInterfaz.getNuevoAlfaNumerico(apellidoRecibido);
+        AlfaNumerico apellido = ModeloInterfaz.getAlfaNumerico(apellidoRecibido);
         
-        AlfaNumerico nombreUsuario = ModeloInterfaz.getNuevoAlfaNumerico(nombreUsuarioRecibido);
+        AlfaNumerico nombreUsuario = ModeloInterfaz.getAlfaNumerico(nombreUsuarioRecibido);
         
-        AlfaNumerico contrasenia = ModeloInterfaz.getNuevoAlfaNumerico(contraseniaRecibido);
+        AlfaNumerico contrasenia = ModeloInterfaz.getAlfaNumerico(contraseniaRecibido);
         
-        AlfaNumerico calleDomicilio = ModeloInterfaz.getNuevoAlfaNumerico(calleDomicilioRecibido);
+        AlfaNumerico calleDomicilio = ModeloInterfaz.getAlfaNumerico(calleDomicilioRecibido);
         int numeroDomicilio = Integer.valueOf(numeroDomicilioRecibido);
         Direccion domicilio = ModeloInterfaz.getDireccion(calleDomicilio, numeroDomicilio);
         
