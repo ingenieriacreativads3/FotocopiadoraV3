@@ -240,12 +240,9 @@ public class Vista2Interfaz {
     
     public static ArrayList<String> obtenerListaInventario(){
         
-        ArrayList<String> asd = new ArrayList<>();
+        ArrayList<String> listaInventario = new ArrayList<>();
         
-        return asd;
-        
-        //return ControladorInterfaz.enviarDatosInventario();
-        
+        return listaInventario;
         
     }
     
@@ -255,8 +252,6 @@ public class Vista2Interfaz {
         
         return listaUsuarios;
         
-        //return ControladorInterfaz.enviarDatosDocumentos();
-        
     }
     
     public static ArrayList<Alumno> obtenerListaAlumnos(){
@@ -264,8 +259,6 @@ public class Vista2Interfaz {
         ArrayList<Alumno> listaAlumnos = new ArrayList<>();
         
         return listaAlumnos;
-        
-        //return ControladorInterfaz.enviarDatosDocumentos();
         
     }
     
@@ -275,8 +268,6 @@ public class Vista2Interfaz {
         
         return listaArticulos;
         
-        //return ControladorInterfaz.enviarDatosDocumentos();
-        
     }
     
     public static ArrayList<Pedido> obtenerListaPedidos(){
@@ -284,8 +275,6 @@ public class Vista2Interfaz {
         ArrayList<Pedido> listaPedidos = new ArrayList<>();
         
         return listaPedidos;
-        
-        //return ControladorInterfaz.enviarDatosPedidos();
         
     }
     

@@ -20,11 +20,13 @@ public class ListaAlumnos extends javax.swing.JFrame {
      * Creates new form ListaAlumnos
      */
     public ListaAlumnos() {
+        
         initComponents();
         
         ArrayList<Alumno> alumnos = Vista2Interfaz.obtenerListaAlumnos();
         
         cargarTabla(alumnos);
+        
     }
 
     /**
@@ -80,13 +82,13 @@ public class ListaAlumnos extends javax.swing.JFrame {
         
         for (Alumno alumno : alumnos) {
             
-            String id="8486";
-            String nombre="sadfadfaf";
-            String apellido="poipupoupu";
-            String legajo="248648";
-            String domicilio="mwwaxfui";
-            String altura="4355";
-            String dni="862762762";
+            int id=alumno.getId();
+            String nombre=alumno.getPersona().getNombre().toString();
+            String apellido=alumno.getPersona().getApellido().toString();
+            int legajo=alumno.getLegajo();
+            String domicilio=alumno.getPersona().getDireccion().getCalle().toString();
+            int altura=alumno.getPersona().getDireccion().getNumero();
+            int dni=alumno.getPersona().getDni();
 
             defaultTableModel.addRow(new Object[]{id, nombre, apellido, legajo, domicilio, altura, dni});
 
