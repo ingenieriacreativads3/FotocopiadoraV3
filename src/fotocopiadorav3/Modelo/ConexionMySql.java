@@ -283,6 +283,8 @@ public class ConexionMySql {
         Persona.getInformacion();
         Alumno.getInformacion();
         Usuario.getInformacion();
+        Articulo.getInformacion();
+        Pedido.getInformacion();
         
     }
     

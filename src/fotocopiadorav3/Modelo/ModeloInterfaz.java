@@ -134,9 +134,9 @@ public class ModeloInterfaz {
      *
      * @return
      */
-    public static Pedido getNuevoPedido() {
+    public static Pedido getNuevoPedido(java.sql.Date fechaRecibida, double importeRecibida, Alumno alumnoRecibido, AlfaNumerico codigoTransaccionrecibido, double pagoAnticipadoRecibido) {
 
-        Pedido pedidoDevolver = Pedido.nuevo();
+        Pedido pedidoDevolver = Pedido.nuevo(fechaRecibida, importeRecibida, alumnoRecibido, codigoTransaccionrecibido, pagoAnticipadoRecibido);
 
         return pedidoDevolver;
 
@@ -184,7 +184,7 @@ public class ModeloInterfaz {
         return articuloDevolver;
     }
     
-    public static Articulo getNuevoArticulo(AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, double precioRecibido, AlfaNumerico materiaRecibida, Date fechaIngresoRecibida, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida){
+    public static Articulo getNuevoArticulo(AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, double precioRecibido, AlfaNumerico materiaRecibida, java.sql.Date fechaIngresoRecibida, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida){
         
         //Articulo articuloDevolver = Articulo.nuevo(nombreRecibido, autorRecibido, precioRecibido, materiaRecibida);
         Articulo articuloDevolver = Articulo.nuevo(precioRecibido, fechaIngresoRecibida, nombreRecibido, autorRecibido, editorialRecibida, edicionRecibida, materiaRecibida);
@@ -209,6 +209,13 @@ public class ModeloInterfaz {
     public static Set<Articulo> getListaArticulos(){
         
         Set<Articulo> listaDevolver = Articulo.getLista();
+        
+        return listaDevolver;
+    }
+    
+    public static Set<Pedido> getListaPedidos(){
+        
+        Set<Pedido> listaDevolver = Pedido.getLista();
         
         return listaDevolver;
     }

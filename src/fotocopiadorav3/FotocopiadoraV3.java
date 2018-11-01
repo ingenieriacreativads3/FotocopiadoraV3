@@ -29,12 +29,12 @@ public class FotocopiadoraV3 extends Application{
         ConexionMySql.getAllInformacion();
         
         //int i = 1;
-        ControladorInterfaz.comenzar();
-//        try{
-//            Direccion.noUsarEstaFuncionJamas(0);
-//        }catch(Exception e){
-//            System.out.println("No entra");
-//        }
+//        ControladorInterfaz.comenzar();
+        try{
+            Direccion.noUsarEstaFuncionJamas(0);
+        }catch(Exception e){
+            System.out.println("No entra");
+        }
         
         
     }

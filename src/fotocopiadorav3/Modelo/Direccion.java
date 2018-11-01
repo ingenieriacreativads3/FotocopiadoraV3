@@ -238,13 +238,17 @@ public class Direccion{
         asdddd.guardar();
         System.out.println("Pasa el primer usuario");
         
-        Alumno asdddddd = Alumno.nuevo(numero, asddd);
-        asdddddd.guardar();
+        Alumno alumnoNuevo = Alumno.nuevo(numero, asddd);
+        alumnoNuevo.guardar();
         System.out.println("pasa el primer alumno");
         
-        Articulo lsjflskdf = Articulo.nuevo(12.34, new java.util.Date(), asd, asd, asd, asd, asd);
-        lsjflskdf.guardar();
-        System.out.println("sfsdfsdf");
+        Articulo articuloNuevo = Articulo.nuevo(12.34, new java.sql.Date(2018, 10, 31), asd, asd, asd, asd, asd);
+        articuloNuevo.guardar();
+        System.out.println("pasa el primer articulo");
+        
+        Pedido pedidoNuevo = Pedido.nuevo(new java.sql.Date(2020, 12, 12), 34.56, alumnoNuevo, asd, 23.78);
+        pedidoNuevo.guardar();
+        System.out.println("pasa el primer pedido");
         
         //System.out.println("Despues de pedir un objeto nuevo");
         

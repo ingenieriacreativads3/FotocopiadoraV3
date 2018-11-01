@@ -221,7 +221,7 @@ public class Vista2Interfaz {
     public static void enviarDatosNuevoAlumno(String nombre, String apellido, String legajo, String domicilio, String altura, String dni){
         
         ControladorInterfaz controladorInterfaz = new ControladorInterfaz();
-        controladorInterfaz.modificacionClienteComoRegistrado(legajo, nombre, apellido, domicilio, altura, dni);
+        controladorInterfaz.adicionarClienteComoRegistrado(legajo, nombre, apellido, domicilio, altura, dni);
         
     }
     
@@ -286,6 +286,8 @@ public class Vista2Interfaz {
     public static void guardar(){
         
 //        ControladorInterfaz.guardarCambios();
+
+        
         
     }
     

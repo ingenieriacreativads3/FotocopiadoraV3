@@ -33,4 +33,4 @@ create table persona( id int primary key, dni int, id_nombre int, id_apellido in
 create table usuario( id int primary key, id_persona int, id_nombre_usuario int, id_pass int);
 create table alumno ( id int primary key, legajo int, id_persona int);
 create table articulo ( id int primary key, id_documento int, id_categoria int, precio double, fecha_ingreso date, id_nombre int, id_autor int, id_editorial int, id_edicion int, id_materia int);
-
+create table pedido ( id int primary key, fecha date, importe double, id_alumno int, id_codigo_transaccion int, pago_anticipado double);

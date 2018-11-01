@@ -201,7 +201,7 @@ public class NuevoAlumno extends javax.swing.JFrame {
         
         aceptar.grabFocus();
         
-        if (datosValidos) {
+        if (true) {
             
             String nombre=nombreTF.getText();
             String apellido=apellidoTF.getText();

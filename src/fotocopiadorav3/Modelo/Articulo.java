@@ -74,6 +74,7 @@ public class Articulo {
         ConexionMySql conn = new ConexionMySql();
         PreparedStatement prepared = conn.getPreparedStatement(CANTIDAD_DE_CAMPOS, NOMBRE_TABLA);
         
+        System.out.println("entra a guardar");
         try {
             
             prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
@@ -87,15 +88,20 @@ public class Articulo {
             prepared.setInt(LUGAR_DEL_CAMPO_ID_EDICION, this.idEdicion);
             prepared.setInt(LUGAR_DEL_CAMPO_ID_MATERIA, this.idMateria);
             
+            System.out.println(prepared.toString());
+            
             prepared.executeUpdate();
             
             estadoDevolver = Estado.EXITO;
             prepared.close();
-            conn.closeConn(Usuario.class.toString() + "guardar");
+            conn.closeConn(Articulo.class.toString() + "guardar");
+            
             
         } catch (Exception e) {
             
             estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            System.out.println("se rompe en la persistencia de " + Articulo.class.toString() + " guardar");
+            e.printStackTrace();
             
         }
         
@@ -157,7 +163,7 @@ public class Articulo {
         
         Estado estadoDevolver = Estado.ERROR;
         
-        System.out.println("pregunta por los usuarios");
+        System.out.println("pregunta por los articulos");
         
         ResultSet rs = null;
         
@@ -191,7 +197,7 @@ public class Articulo {
                 
                 Articulo asd = Articulo.nuevo(id, documento, categoria, precio, fechaIngreso, nombre, autor, editorial, edicion, materia, documento.getId(), categoria.getId(), nombre.getId(), autor.getId(), editorial.getId(), edicion.getId(), materia.getId());
                 
-                System.out.println(id);
+                System.out.println("este es el articulo numero: " + asd.id);
                 
             }
             
@@ -217,6 +223,8 @@ public class Articulo {
         //Estado estadoConsulta = getInformacion();
 
         if(listaObjetos != null){
+            
+            System.out.println("la lista no es nula");
 
             if(estadoConsulta == Estado.EXITO){
 
@@ -260,6 +268,7 @@ public class Articulo {
 
         //Combinar ambos valores
         idActual = idActual + siguienteIdentificador;
+        System.out.println("el valor del siuiente id es " + idActual);
 
         //Devolver el nuevo identificador
         return idActual;
@@ -282,6 +291,7 @@ public class Articulo {
         articuloDevolver.editorial = editorialRecibido;
         articuloDevolver.edicion = edicionRecibida;
         articuloDevolver.materia = materiaRecibida;
+        
         articuloDevolver.idDocumento = idDocumentoRecibido;
         articuloDevolver.idCategoria = idCategoriaRecibida;
         articuloDevolver.idNombre = idNombreRecibido;
@@ -290,14 +300,29 @@ public class Articulo {
         articuloDevolver.idEdicion = idEdicionRecibida;
         articuloDevolver.idMateria = idMateriarecibida;
         
+        Estado seAgrego = Articulo.addNewObjeto(articuloDevolver);
+        
+        if(!(seAgrego == Estado.EXITO)){
+            
+            //listaObjetos.remove(usuarioDevolver);
+            
+        }else{
+            
+            //...no hacer nada
+            
+        }
+        
         return articuloDevolver;
     }
     
-    protected static Articulo nuevo(double precioRecibida, java.util.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
+    protected static Articulo nuevo(double precioRecibido, java.sql.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
 
         AlfaNumerico documentoRecibido = AlfaNumerico.nuevo("ruta relativa del documento");
-        AlfaNumerico categoria = AlfaNumerico.nuevo("tutorias");
+        documentoRecibido.guardar();
+        AlfaNumerico categoriaRecibida = AlfaNumerico.nuevo("tutorias");
+        categoriaRecibida.guardar();
         
+        System.out.println("entra a nuevo");
         //Crear un objeto a devolver
         Articulo objetoDevolver = Articulo.OBJETO_INVALIDO;
 
@@ -314,7 +339,23 @@ public class Articulo {
         if(seAgrego == Estado.EXITO){
             
             //Asignar el valor recibido por defecto
+            Estado seSeteoPrecio = objetoNuevo.setPrecio(precioRecibido);
+            Estado seSeteoDocumento = objetoNuevo.setDocumento(documentoRecibido);
+            Estado seSeteoCategoria = objetoNuevo.setCategoria(categoriaRecibida);
+            Estado seSeteoFechaIngreso = objetoNuevo.setFechaIngreso(fechaIngresoRecibida);
+            Estado seSeteoNombre = objetoNuevo.setNombre(nombreRecibido);
+            Estado seSeteoAutor = objetoNuevo.setAutor(autorRecibido);
+            Estado seSeteoEditorial = objetoNuevo.setEditorial(editorialRecibida);
+            Estado seSeteoEdicion = objetoNuevo.setEdicicon(edicionRecibida);
+            Estado seSeteoMateria = objetoNuevo.setMateria(materiaRecibida);
             
+            Estado seSeteoIdDocumento = objetoNuevo.setIdDocumento(documentoRecibido.getId());
+            Estado seSeteoIdCategoria = objetoNuevo.setIdCategoria(categoriaRecibida.getId());
+            Estado seSeteoIdNombre = objetoNuevo.setIdNombre(nombreRecibido.getId());
+            Estado seSeteoIdAutor = objetoNuevo.setIdAutor(autorRecibido.getId());
+            Estado seSeteoIdEditorial = objetoNuevo.setIdEditorial(editorialRecibida.getId());
+            Estado seSeteoIdEdicion = objetoNuevo.setIdEdicion(edicionRecibida.getId());
+            Estado seSeteoIdMateria = objetoNuevo.setIdMateria(materiaRecibida.getId());
             
             objetoDevolver = objetoNuevo;
             
@@ -425,6 +466,28 @@ public class Articulo {
         
     }
     
+    private Estado setDocumento(AlfaNumerico documentoRecibido){
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.documento = documentoRecibido;
+        
+        return estadoDevolver;
+        
+    }
+    
+    private Estado setCategoria(AlfaNumerico categoriaRecibido){
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.documento = categoriaRecibido;
+        
+        return estadoDevolver;
+        
+    }
+    
     private Estado setFechaIngreso(java.sql.Date fechaRecibida){
         
         Estado estadoDevolver = Estado.EXITO;
@@ -435,11 +498,6 @@ public class Articulo {
         return estadoDevolver;
         
     }
-    
-//    autor
-//            editorial
-//            edicion
-//                    materia
     
     private Estado setNombre(AlfaNumerico nombreRecibido){
         
@@ -457,7 +515,7 @@ public class Articulo {
         Estado estadoDevolver = Estado.EXITO;
         
         //Asignar el valor recibido
-        this.nombre = autorRecibido;
+        this.autor = autorRecibido;
         
         return estadoDevolver;
         
@@ -468,11 +526,98 @@ public class Articulo {
         Estado estadoDevolver = Estado.EXITO;
         
         //Asignar el valor recibido
-        this.nombre = editorialRecibido;
+        this.editorial = editorialRecibido;
         
         return estadoDevolver;
         
     }
+    
+    private Estado setEdicicon(AlfaNumerico edicionRecibido){
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.edicion = edicionRecibido;
+        
+        return estadoDevolver;
+        
+    }
+    
+    private Estado setMateria(AlfaNumerico materiaRecibido){
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        //Asignar el valor recibido
+        this.materia = materiaRecibido;
+        
+        return estadoDevolver;
+        
+    }
+
+    public Estado setIdDocumento(int idDocumentoRecibido) {
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        this.idDocumento = idDocumentoRecibido;
+        
+        return estadoDevolver;
+    }
+
+    public Estado setIdCategoria(int idCategoriaRecibido) {
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        this.idCategoria = idCategoriaRecibido;
+        
+        return estadoDevolver;
+    }
+
+    public Estado setIdNombre(int idNombreRecibido) {
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        this.idNombre = idNombreRecibido;
+        
+        return estadoDevolver;
+    }
+
+    public Estado setIdAutor(int idAutorRecibido) {
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        this.idAutor = idAutorRecibido;
+        
+        return estadoDevolver;
+    }
+
+    public Estado setIdEditorial(int idEditorialRecibido) {
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        this.idEditorial = idEditorialRecibido;
+        
+        return estadoDevolver;
+    }
+
+    public Estado setIdEdicion(int idEdicionRecibido) {
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        this.idEdicion = idEdicionRecibido;
+        
+        return estadoDevolver;
+    }
+
+    public Estado setIdMateria(int idMateriaRecibido) {
+        
+        Estado estadoDevolver = Estado.EXITO;
+        
+        this.idMateria = idMateriaRecibido;
+        
+        return estadoDevolver;
+    }
+    
+    
     
     //Getter
     
