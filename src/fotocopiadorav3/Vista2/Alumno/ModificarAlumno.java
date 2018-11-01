@@ -31,7 +31,7 @@ public class ModificarAlumno extends javax.swing.JFrame {
         TextPrompt textPromptAltura = new TextPrompt("Ingrese la altura de su domicilio", alturaTF);
         TextPrompt textPromptDni = new TextPrompt("Ingrese su número de documento", dniTF);
         
-        cargarDatosAlumno();
+        cargarDatosAlumno(idAlumno);
         
     }
 
@@ -207,7 +207,7 @@ public class ModificarAlumno extends javax.swing.JFrame {
         
     }//GEN-LAST:event_limpiarCamposActionPerformed
     
-    public void cargarDatosAlumno(){
+    public void cargarDatosAlumno(int idAlumno){
         
         Alumno alumno = ModeloInterfaz.getAlumnoForId(idAlumno);
         

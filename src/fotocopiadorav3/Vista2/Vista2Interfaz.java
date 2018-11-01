@@ -220,7 +220,8 @@ public class Vista2Interfaz {
     
     public static void enviarDatosNuevoAlumno(String nombre, String apellido, String legajo, String domicilio, String altura, String dni){
         
-        //ControladorInterfaz.modificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
+        ControladorInterfaz controladorInterfaz = new ControladorInterfaz();
+        controladorInterfaz.modificacionClienteComoRegistrado(legajo, nombre, apellido, domicilio, altura, dni);
         
     }
     
