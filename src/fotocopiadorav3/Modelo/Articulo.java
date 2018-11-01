@@ -81,6 +81,11 @@ public class Articulo {
             prepared.setInt(LUGAR_DEL_CAMPO_ID_CATEGORIA, this.idCategoria);
             prepared.setDouble(LUGAR_DEL_CAMPO_PRECIO, this.precio);
             prepared.setDate(LUGAR_DEL_CAMPO_FECHA_INGRESO, this.fechaIngreso);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID_NOMBRE, this.idNombre);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID_AUTOR, this.idAutor);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID_EDITORIAL, this.idEditorial);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID_EDICION, this.idEdicion);
+            prepared.setInt(LUGAR_DEL_CAMPO_ID_MATERIA, this.idMateria);
             
             prepared.executeUpdate();
             
@@ -184,7 +189,7 @@ public class Articulo {
                 AlfaNumerico edicion = AlfaNumerico.getForId(idEdicion);
                 AlfaNumerico materia = AlfaNumerico.getForId(idMateria);
                 
-                Articulo asd = Articulo.nuevo(id, documento, categoria, precio, fechaIngreso, nombre, autor, editorial, edicion, materia);
+                Articulo asd = Articulo.nuevo(id, documento, categoria, precio, fechaIngreso, nombre, autor, editorial, edicion, materia, documento.getId(), categoria.getId(), nombre.getId(), autor.getId(), editorial.getId(), edicion.getId(), materia.getId());
                 
                 System.out.println(id);
                 
@@ -263,7 +268,7 @@ public class Articulo {
 
     //Constructor
     
-    private static Articulo nuevo(int idRecibido, AlfaNumerico documentoRecibido, AlfaNumerico categoriaRecibida, double precioRecibido, java.sql.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibido, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
+    private static Articulo nuevo(int idRecibido, AlfaNumerico documentoRecibido, AlfaNumerico categoriaRecibida, double precioRecibido, java.sql.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibido, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida, int idDocumentoRecibido, int idCategoriaRecibida, int idNombreRecibido, int idAutorRecibido, int idEitorialRecibida, int idEdicionRecibida, int idMateriarecibida){
         
         Articulo articuloDevolver = new Articulo();
         
@@ -275,7 +280,15 @@ public class Articulo {
         articuloDevolver.nombre = nombreRecibido;
         articuloDevolver.autor = autorRecibido;
         articuloDevolver.editorial = editorialRecibido;
+        articuloDevolver.edicion = edicionRecibida;
         articuloDevolver.materia = materiaRecibida;
+        articuloDevolver.idDocumento = idDocumentoRecibido;
+        articuloDevolver.idCategoria = idCategoriaRecibida;
+        articuloDevolver.idNombre = idNombreRecibido;
+        articuloDevolver.idAutor = idAutorRecibido;
+        articuloDevolver.idEditorial = idEitorialRecibida;
+        articuloDevolver.idEdicion = idEdicionRecibida;
+        articuloDevolver.idMateria = idMateriarecibida;
         
         return articuloDevolver;
     }

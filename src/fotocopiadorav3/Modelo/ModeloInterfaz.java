@@ -104,6 +104,7 @@ public class ModeloInterfaz {
             
             //...establecer un valor de exitencia
             existe = true;
+            System.out.println("existe");
             
         }else{
             
