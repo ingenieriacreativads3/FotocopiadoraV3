@@ -56,7 +56,7 @@ public class GestorArticulo {
      * @param materia
      * @return 
      */
-    protected Estado modificacionArticulo(int IDArticulo, AlfaNumerico nombre, AlfaNumerico autor, double precio, AlfaNumerico materia){
+    protected Estado modificacionArticulo(int IDArticulo, AlfaNumerico nombre, AlfaNumerico autor, double precio, Materia materia){
         Estado ArticuloModificadoConExito = Estado.ERROR;
         
         //Verificaciones del nombreRecibido, autor, precio, materia.
@@ -89,7 +89,7 @@ public class GestorArticulo {
      * @param materia
      * @return 
      */
-    private boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico autor, double precio, AlfaNumerico materia){
+    private boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico autor, double precio, Materia materia){
         
         try{
             boolean exito = false;

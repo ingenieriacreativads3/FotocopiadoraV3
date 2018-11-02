@@ -242,13 +242,31 @@ public class Direccion{
         alumnoNuevo.guardar();
         System.out.println("pasa el primer alumno");
         
-        Articulo articuloNuevo = Articulo.nuevo(12.34, new java.sql.Date(2018, 10, 31), asd, asd, asd, asd, asd);
+        Carrera carreraNueva = Carrera.nuevo(asd, asd);
+        carreraNueva.guardar();
+        System.out.println("pasa la primer carrera");
+        
+        Materia materiaNueva = Materia.nuevo(asd, 3, asddd, asddd, asddd, asddd, carreraNueva);
+        materiaNueva.guardar();
+        System.out.println("pasa la primera materia");
+        
+        Articulo articuloNuevo = Articulo.nuevo(12.34, new java.sql.Date(2018, 10, 31), asd, asd, asd, asd, materiaNueva);
         articuloNuevo.guardar();
         System.out.println("pasa el primer articulo");
         
         Pedido pedidoNuevo = Pedido.nuevo(new java.sql.Date(2020, 12, 12), 34.56, alumnoNuevo, asd, 23.78);
         pedidoNuevo.guardar();
         System.out.println("pasa el primer pedido");
+        
+        java.sql.Date fechaDavid = new java.sql.Date(2018, 11, 1);
+        Pedido pedidoDavid = Pedido.nuevo(fechaDavid, 31.67, alumnoNuevo, asd, 10.50);
+        pedidoDavid.guardar();
+        
+        PedidoArticulo itemPedidoNuevo = PedidoArticulo.nuevo(98.78, 2, Estado.CATEDRA, articuloNuevo, pedidoDavid, 65.34, true);
+        itemPedidoNuevo.guardar();
+        System.out.println("pasa el primer item pedidoarticulo");
+        
+        
         
         //System.out.println("Despues de pedir un objeto nuevo");
         

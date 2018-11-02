@@ -400,8 +400,6 @@ public class Alumno{
         return id;
     }
     
-    
-
     public int getLegajo() {
         return legajo;
     }

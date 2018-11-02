@@ -475,8 +475,6 @@ public class Persona{
         
     }
     
-    
-    
     //Getter
 
     /**
@@ -541,7 +539,12 @@ public class Persona{
         return direccionDevolver;
     }
     
-    
+    protected Set<Persona> getListaObjetos(){
+        
+        Set<Persona> listaDevolver = listaObjetos;
+        
+        return listaDevolver;
+    }
     
     //Others
     

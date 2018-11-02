@@ -7,6 +7,7 @@ package fotocopiadorav3.Modelo;
 
 import fotocopiadorav3.*;
 import java.sql.*;
+import java.util.*;
 
 /**
  *
@@ -36,6 +37,7 @@ public class ConexionMySql {
     private String password = Environment.PASSWORD;
     
     private Connection conn;
+    private static Set<Estado> listaEstados = new HashSet<>();
     
     private static ConexionMySql conexionMySql = null;
     
@@ -283,9 +285,27 @@ public class ConexionMySql {
         Persona.getInformacion();
         Alumno.getInformacion();
         Usuario.getInformacion();
+        Carrera.getInformacion();
+        Materia.getInformacion();
         Articulo.getInformacion();
         Pedido.getInformacion();
+        PedidoArticulo.getInformacion();
         
+    }
+    
+    public static void addNewEstado(Estado estadoRecibido){
+        
+//        Set<Estado> lista = new HashSet<>();
+//        lista.add(estadoRecibido);
+        listaEstados.add(estadoRecibido);
+        
+    }
+    
+    protected static Set<Estado> getListaEstado(){
+        
+        Set<Estado> listaDevolver = listaEstados;
+        
+        return listaDevolver;
     }
     
 }

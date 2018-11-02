@@ -411,7 +411,7 @@ public class Pedido {
  
     //Setter
 
-    public Estado setId(int id) {
+    private Estado setId(int id) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -420,7 +420,7 @@ public class Pedido {
         return estadoDevolver;
     }
 
-    public Estado setFecha(java.sql.Date fecha) {
+    private Estado setFecha(java.sql.Date fecha) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -429,7 +429,7 @@ public class Pedido {
         return estadoDevolver;
     }
 
-    public Estado setImporte(double importe) {
+    private Estado setImporte(double importe) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -438,7 +438,7 @@ public class Pedido {
         return estadoDevolver;
     }
 
-    public Estado setAlumno(Alumno alumno) {
+    private Estado setAlumno(Alumno alumno) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -447,7 +447,7 @@ public class Pedido {
         return estadoDevolver;
     }
 
-    public Estado setCodigoTransaccion(AlfaNumerico codigoTransaccion) {
+    private Estado setCodigoTransaccion(AlfaNumerico codigoTransaccion) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -456,7 +456,7 @@ public class Pedido {
         return estadoDevolver;
     }
 
-    public Estado setPagoAnticipado(double pagoAnticipado) {
+    private Estado setPagoAnticipado(double pagoAnticipado) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -465,7 +465,7 @@ public class Pedido {
         return estadoDevolver;
     }
 
-    public Estado setIdCodigoTransaccion(int idCodigoTransaccion) {
+    private Estado setIdCodigoTransaccion(int idCodigoTransaccion) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -474,7 +474,7 @@ public class Pedido {
         return estadoDevolver;
     }
 
-    public Estado setIdAlumno(int idAlumno) {
+    private Estado setIdAlumno(int idAlumno) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -484,8 +484,32 @@ public class Pedido {
     }
     
     //Getter
+
+    public int getId() {
+        return id;
+    }
+
+    public java.sql.Date getFecha() {
+        return fecha;
+    }
+
+    public double getImporte() {
+        return importe;
+    }
+
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public AlfaNumerico getCodigoTransaccion() {
+        return codigoTransaccion;
+    }
+
+    public double getPagoAnticipado() {
+        return pagoAnticipado;
+    }
     
-    protected static Set<Pedido> getLista(){
+    protected static Set<Pedido> getListaObjetos(){
         
         Set<Pedido> listaDevolver = listaObjetos;
         

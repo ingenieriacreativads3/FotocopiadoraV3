@@ -15,7 +15,7 @@ import java.sql.*;
  */
 public class Articulo {
     
-    //atributos
+    //Atributos
     
     private static final String NOMBRE_TABLA = "articulo";
     
@@ -44,14 +44,14 @@ public class Articulo {
     
     private int id;                         //tipo bd
     private AlfaNumerico documento;         //id identificador
-    private AlfaNumerico categoria;         //id identificador
+    private Estado categoria;               //id identificador
     private double precio;                  //tipo bd
-    private java.sql.Date fechaIngreso;    //tipo bd
+    private java.sql.Date fechaIngreso;     //tipo bd
     private AlfaNumerico nombre;            //id identificador
     private AlfaNumerico autor;             //id identificador
     private AlfaNumerico editorial;         //id identificador
     private AlfaNumerico edicion;           //id identificador
-    private AlfaNumerico materia;           //id identificador
+    private Materia materia;           //id identificador
     
     private int idDocumento;            
     private int idCategoria;
@@ -149,7 +149,7 @@ public class Articulo {
         
     }
     
-    public Estado modificar(double precioRecibida, java.util.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
+    public Estado modificar(double precioRecibida, java.util.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, Materia materiaRecibida){
         
         return Estado.ERROR;
     }
@@ -176,9 +176,9 @@ public class Articulo {
             
             while (rs.next()) {
                 
-                int id = rs.getInt(CAMPO_ID);
+                int idObjeto = rs.getInt(CAMPO_ID);
                 int idDocumento = rs.getInt(CAMPO_ID_DOCUMENTO);
-                int idcategoria = rs.getInt(CAMPO_ID_CATEGORIA);
+                int idCategoria = rs.getInt(CAMPO_ID_CATEGORIA);
                 double precio = rs.getDouble(CAMPO_PRECIO);
                 java.sql.Date fechaIngreso = rs.getDate(CAMPO_FECHA_INGRESO);
                 int idNombre = rs.getInt(CAMPO_ID_NOMBRE);
@@ -187,15 +187,15 @@ public class Articulo {
                 int idEdicion = rs.getInt(CAMPO_ID_EDICION);
                 int idMateria = rs.getInt(CAMPO_ID_MATERIA);
                 
-                AlfaNumerico documento = AlfaNumerico.getForId(idDocumento);
-                AlfaNumerico categoria = AlfaNumerico.getForId(idcategoria);
-                AlfaNumerico nombre = AlfaNumerico.getForId(idNombre);
-                AlfaNumerico autor = AlfaNumerico.getForId(idAutor);
-                AlfaNumerico editorial = AlfaNumerico.getForId(idEditorial);
-                AlfaNumerico edicion = AlfaNumerico.getForId(idEdicion);
-                AlfaNumerico materia = AlfaNumerico.getForId(idMateria);
+                AlfaNumerico documentoObjeto = AlfaNumerico.getForId(idDocumento);
+                Estado categoriaObjeto = Estado.getForId(idCategoria);
+                AlfaNumerico nombreObjeto = AlfaNumerico.getForId(idNombre);
+                AlfaNumerico autorObjeto = AlfaNumerico.getForId(idAutor);
+                AlfaNumerico editorialObjeto = AlfaNumerico.getForId(idEditorial);
+                AlfaNumerico edicionObjeto = AlfaNumerico.getForId(idEdicion);
+                Materia materiaObjeto = Materia.getForId(idMateria);
                 
-                Articulo asd = Articulo.nuevo(id, documento, categoria, precio, fechaIngreso, nombre, autor, editorial, edicion, materia, documento.getId(), categoria.getId(), nombre.getId(), autor.getId(), editorial.getId(), edicion.getId(), materia.getId());
+                Articulo asd = Articulo.nuevo(idObjeto, documentoObjeto, categoriaObjeto, precio, fechaIngreso, nombreObjeto, autorObjeto, editorialObjeto, edicionObjeto, materiaObjeto, documentoObjeto.getId(), categoriaObjeto.getId(), nombreObjeto.getId(), autorObjeto.getId(), editorialObjeto.getId(), edicionObjeto.getId(), materiaObjeto.getId());
                 
                 System.out.println("este es el articulo numero: " + asd.id);
                 
@@ -203,7 +203,7 @@ public class Articulo {
             
             estadoDevolver = Estado.EXITO;
             prepared.close();
-            conn.closeConn(Usuario.class.toString() + "getInformacion");
+            conn.closeConn(Articulo.class.toString() + "getInformacion");
             
         } catch (Exception e) {
             
@@ -277,7 +277,7 @@ public class Articulo {
 
     //Constructor
     
-    private static Articulo nuevo(int idRecibido, AlfaNumerico documentoRecibido, AlfaNumerico categoriaRecibida, double precioRecibido, java.sql.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibido, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida, int idDocumentoRecibido, int idCategoriaRecibida, int idNombreRecibido, int idAutorRecibido, int idEitorialRecibida, int idEdicionRecibida, int idMateriarecibida){
+    private static Articulo nuevo(int idRecibido, AlfaNumerico documentoRecibido, Estado categoriaRecibida, double precioRecibido, java.sql.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibido, AlfaNumerico edicionRecibida, Materia materiaRecibida, int idDocumentoRecibido, int idCategoriaRecibida, int idNombreRecibido, int idAutorRecibido, int idEitorialRecibida, int idEdicionRecibida, int idMateriarecibida){
         
         Articulo articuloDevolver = new Articulo();
         
@@ -315,12 +315,11 @@ public class Articulo {
         return articuloDevolver;
     }
     
-    protected static Articulo nuevo(double precioRecibido, java.sql.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, AlfaNumerico materiaRecibida){
+    protected static Articulo nuevo(double precioRecibido, java.sql.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, Materia materiaRecibida){
 
         AlfaNumerico documentoRecibido = AlfaNumerico.nuevo("ruta relativa del documento");
         documentoRecibido.guardar();
-        AlfaNumerico categoriaRecibida = AlfaNumerico.nuevo("tutorias");
-        categoriaRecibida.guardar();
+        Estado categoriaRecibida = Estado.TUTORIAS;
         
         System.out.println("entra a nuevo");
         //Crear un objeto a devolver
@@ -477,12 +476,12 @@ public class Articulo {
         
     }
     
-    private Estado setCategoria(AlfaNumerico categoriaRecibido){
+    private Estado setCategoria(Estado categoriaRecibido){
         
         Estado estadoDevolver = Estado.EXITO;
         
         //Asignar el valor recibido
-        this.documento = categoriaRecibido;
+        this.categoria = categoriaRecibido;
         
         return estadoDevolver;
         
@@ -543,7 +542,7 @@ public class Articulo {
         
     }
     
-    private Estado setMateria(AlfaNumerico materiaRecibido){
+    private Estado setMateria(Materia materiaRecibido){
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -554,7 +553,7 @@ public class Articulo {
         
     }
 
-    public Estado setIdDocumento(int idDocumentoRecibido) {
+    private Estado setIdDocumento(int idDocumentoRecibido) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -563,7 +562,7 @@ public class Articulo {
         return estadoDevolver;
     }
 
-    public Estado setIdCategoria(int idCategoriaRecibido) {
+    private Estado setIdCategoria(int idCategoriaRecibido) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -572,7 +571,7 @@ public class Articulo {
         return estadoDevolver;
     }
 
-    public Estado setIdNombre(int idNombreRecibido) {
+    private Estado setIdNombre(int idNombreRecibido) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -581,7 +580,7 @@ public class Articulo {
         return estadoDevolver;
     }
 
-    public Estado setIdAutor(int idAutorRecibido) {
+    private Estado setIdAutor(int idAutorRecibido) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -590,7 +589,7 @@ public class Articulo {
         return estadoDevolver;
     }
 
-    public Estado setIdEditorial(int idEditorialRecibido) {
+    private Estado setIdEditorial(int idEditorialRecibido) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -599,7 +598,7 @@ public class Articulo {
         return estadoDevolver;
     }
 
-    public Estado setIdEdicion(int idEdicionRecibido) {
+    private Estado setIdEdicion(int idEdicionRecibido) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -608,7 +607,7 @@ public class Articulo {
         return estadoDevolver;
     }
 
-    public Estado setIdMateria(int idMateriaRecibido) {
+    private Estado setIdMateria(int idMateriaRecibido) {
         
         Estado estadoDevolver = Estado.EXITO;
         
@@ -617,11 +616,9 @@ public class Articulo {
         return estadoDevolver;
     }
     
-    
-    
     //Getter
     
-    protected static Set<Articulo> getLista(){
+    protected static Set<Articulo> getListaObjetos(){
         
         Set<Articulo> listaDevolver = listaObjetos;
         
@@ -636,7 +633,7 @@ public class Articulo {
         return documento;
     }
 
-    public AlfaNumerico getCategoria() {
+    public Estado getCategoria() {
         return categoria;
     }
 
@@ -664,11 +661,9 @@ public class Articulo {
         return edicion;
     }
 
-    public AlfaNumerico getMateria() {
+    public Materia getMateria() {
         return materia;
     }
-    
-    
     
     //Others
     

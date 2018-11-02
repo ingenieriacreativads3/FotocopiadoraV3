@@ -16,7 +16,7 @@ public enum Estado{
     /**
      * Este estado representa una solicitud de statement para obtener informacion
      */
-    GET_PREPARED_STATEMENT_FOR_GET_INFORMATION(301, "Se solicita un PreparedStatement para pedir informacion"),
+    GET_PREPARED_STATEMENT_FOR_GET_INFORMATION(302, "Se solicita un PreparedStatement para pedir informacion"),
     
     /**
      * Este estado representa una solicitud de statement para guardar datos
@@ -29,8 +29,9 @@ public enum Estado{
     ERROR_PERSISTENCIA_INCORRECTA(300, "La persistencia no anda"),
     
     
-    ITEM_PEDIDO_RETIRADO(224, "El item se encuentra retirado"),
-    ITEM_PEDIDO_CANCELADO(223, "El item se encuentra cancelado"),
+    ITEM_PEDIDO_RETIRADO(225, "El item se encuentra retirado"),
+    ITEM_PEDIDO_CANCELADO_SI_FOTOCOPIADO(224, "El item se encuentra cancelado con fotocopias realizadas"),
+    ITEM_PEDIDO_CANCELADO_NO_FOTOCOPIADO(223, "El item se encuentra cancelado sin fotocopias realizadas"),
     ITEM_PEDIDO_FOTOCOPIADO(222, "El item se encuentra fotocopiado"),
     ITEM_PEDIDO_REGISTRADO(221, "El item se encuentra registrado"),
     
@@ -80,14 +81,20 @@ public enum Estado{
     ERROR_COTIZACION(2, "Arreglar esto en la linea /Modelo/Estado.java linea 66"),
     MENSAJE_MOSTRADO(1, "Arreglar esto en la linea /Modelo/Estado.java linea 67");
 
-    private final int Id;
+    private final int id;
     private final String mensaje;
+    private static Set<Estado> listaObjetos = new HashSet<>();
 
     private Estado(int identificador, String mensajeActual) {
 
-        this.Id = identificador;
+        this.id = identificador;
         this.mensaje = mensajeActual;
-
+        try {
+            ConexionMySql.addNewEstado(this);
+        } catch (Exception e) {
+            
+            System.out.println("no se agrega el estado");
+        }
     }
 
     @Override
@@ -97,24 +104,49 @@ public enum Estado{
 
     }
 
-    public int getID(){
+    public int getId(){
 
-        return this.Id;
+        return this.id;
 
-    }
-    
-    public Estado getForId(int idRecibido){
-        
-        Estado estadoDevolver = ERROR;
-        
-        
-        
-        return estadoDevolver;
     }
     
     public String getMensaje(){
         
         return this.mensaje;
+    }
+    
+    private void addNewObjeto(){
+        
+        listaObjetos.add(this);
+        
+    }
+    
+    protected static Set<Estado> getLista(){
+        
+        Set<Estado> listaDevolver = listaObjetos;
+        
+        return listaDevolver;
+    }
+    
+    public static Estado getForId(int idRecibido){
+        
+        Estado estadoDevolver = ERROR;
+        
+        Set<Estado> lista = ConexionMySql.getListaEstado();
+        
+        for(Estado estadoActual : lista){
+            
+            if(estadoActual.getId() == idRecibido){
+                
+                estadoDevolver = estadoActual;
+                
+            }else{
+                
+                //...se establecio un valor por defecto
+            }
+        }
+        
+        return estadoDevolver;
     }
     
 }

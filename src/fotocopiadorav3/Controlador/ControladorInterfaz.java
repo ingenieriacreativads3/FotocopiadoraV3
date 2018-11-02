@@ -44,7 +44,7 @@ public class ControladorInterfaz extends Application{
         }else{
             
             String mensajeError = estadoVerificacion.toString();
-            int IDError = estadoVerificacion.getID();
+            int IDError = estadoVerificacion.getId();
             cargarMensajeError(mensajeError, IDError);
             
         }
@@ -83,7 +83,7 @@ public class ControladorInterfaz extends Application{
         
         if(exitoAlta != Estado.DATOS_VALIDOS){
             String mensajeError = exitoAlta.toString();
-            int IDError = exitoAlta.getID();
+            int IDError = exitoAlta.getId();
             cargarMensajeError(mensajeError, IDError);
         }
         
@@ -127,7 +127,7 @@ public class ControladorInterfaz extends Application{
         
         if(exitoModificacion != Estado.DATOS_VALIDOS){
             String mensajeError = exitoModificacion.toString();
-            int IDError = exitoModificacion.getID();
+            int IDError = exitoModificacion.getId();
             cargarMensajeError(mensajeError, IDError);
         }
         
@@ -202,14 +202,14 @@ public class ControladorInterfaz extends Application{
         return exitoAlta;
     }
     
-    public Estado modificacionArticulo(String IDArticuloRecibido, String nombreRecibido, String autorRecibido, String precioRecibido, String materiaRecibido){
+    public Estado modificacionArticulo(String IDArticuloRecibido, String nombreRecibido, String autorRecibido, String precioRecibido, int idMateriaRecibido){
         int IDArticulo = Integer.valueOf(IDArticuloRecibido);
         
         AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
         nombre.guardar();
         AlfaNumerico autor = ModeloInterfaz.getAlfaNumerico(autorRecibido);
         autor.guardar();
-        AlfaNumerico materia = ModeloInterfaz.getAlfaNumerico(materiaRecibido);
+        Materia materia = ModeloInterfaz.getMateriaForId(idMateriaRecibido);
         materia.guardar();
         double precio = Double.valueOf(precioRecibido);
         

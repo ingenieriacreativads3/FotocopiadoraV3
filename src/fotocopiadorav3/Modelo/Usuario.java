@@ -566,7 +566,7 @@ public class Usuario{
 
     //Getter
     
-    protected static Set<Usuario> getLista(){
+    protected static Set<Usuario> getListaObjetos(){
         
         Set<Usuario> listaDevolver = listaObjetos;
         
@@ -617,10 +617,6 @@ public class Usuario{
 
     private static Usuario getObjetoInvalido() {
         return OBJETO_INVALIDO;
-    }
-
-    private static Set<Usuario> getListaObjetos() {
-        return listaObjetos;
     }
 
     @Override
