@@ -449,21 +449,31 @@ public class Carrera {
     }
 
     public AlfaNumerico getIdentificador() {
-        return identificador;
+        
+        AlfaNumerico alfanumericoDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        alfanumericoDevolver = this.identificador;
+        
+        return alfanumericoDevolver;
     }
 
     public AlfaNumerico getNombre() {
-        return nombre;
+        
+        AlfaNumerico alfanumericoDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        alfanumericoDevolver = this.nombre;
+        
+        return alfanumericoDevolver;
     }
 
     protected static Set<Carrera> getListaObjetos() {
         
-        Set<Carrera> listaDevolver = listaObjetos;
+        Set<Carrera> listaDevolver = new HashSet<>();
+        
+        listaDevolver = listaObjetos;
         
         return listaDevolver;
     }
-    
-    
     
     //Others
     

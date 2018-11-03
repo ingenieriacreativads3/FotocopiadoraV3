@@ -537,7 +537,12 @@ public class Materia {
     }
 
     public AlfaNumerico getNombre() {
-        return nombre;
+        
+        AlfaNumerico alfanumericoDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        alfanumericoDevolver = this.nombre;
+        
+        return alfanumericoDevolver;
     }
 
     public int getAnio() {
@@ -545,30 +550,57 @@ public class Materia {
     }
 
     public Persona getTitular() {
-        return titular;
+        
+        Persona personaDevolver = Persona.OBJETO_INVALIDO;
+        
+        personaDevolver = this.titular;
+        
+        return personaDevolver;
     }
 
     public Persona getAyudante() {
-        return ayudante;
+        
+        Persona personaDevolver = Persona.OBJETO_INVALIDO;
+        
+        personaDevolver = this.ayudante;
+        
+        return personaDevolver;
     }
 
     public Persona getTutor() {
-        return tutor;
+        
+        Persona personaDevolver = Persona.OBJETO_INVALIDO;
+        
+        personaDevolver = this.tutor;
+        
+        return personaDevolver;
     }
 
     public Carrera getCarrera() {
-        return carrera;
+        
+        Carrera carreraDevolver = Carrera.OBJETO_INVALIDO;
+        
+        carreraDevolver = this.carrera;
+        
+        return carreraDevolver;
     }
 
     protected static Set<Materia> getListaObjetos() {
         
-        Set<Materia> listaDevolver = listaObjetos;
+        Set<Materia> listaDevolver = new HashSet<>();
+        
+        listaDevolver = listaObjetos;
         
         return listaDevolver;
     }
 
     public Persona getJtp() {
-        return jtp;
+        
+        Persona personaDevolver = Persona.OBJETO_INVALIDO;
+        
+        personaDevolver = this.jtp;
+        
+        return personaDevolver;
     }
     
     //Others

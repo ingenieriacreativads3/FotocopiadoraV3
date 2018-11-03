@@ -670,9 +670,11 @@ public class Articulo {
     
     //Getter
     
-    protected static Set<Articulo> getListaObjetos(){
+    protected static Set<Articulo> getListaObjetos() {
         
-        Set<Articulo> listaDevolver = listaObjetos;
+        Set<Articulo> listaDevolver = new HashSet<>();
+        
+        listaDevolver = listaObjetos;
         
         return listaDevolver;
     }
@@ -682,11 +684,21 @@ public class Articulo {
     }
 
     public AlfaNumerico getDocumento() {
-        return documento;
+        
+        AlfaNumerico alfanumericoDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        alfanumericoDevolver = this.documento;
+        
+        return alfanumericoDevolver;
     }
 
     public Estado getCategoria() {
-        return categoria;
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        estadoDevolver = this.categoria;
+        
+        return estadoDevolver;
     }
 
     public double getPrecio() {
@@ -694,27 +706,57 @@ public class Articulo {
     }
 
     public java.util.Date getFechaIngreso() {
-        return fechaIngreso;
+        
+        java.sql.Date fechaDevolver = new java.sql.Date(1);
+        
+        fechaDevolver = this.fechaIngreso;
+        
+        return fechaDevolver;
     }
 
     public AlfaNumerico getNombre() {
-        return nombre;
+        
+        AlfaNumerico alfanumericoDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        alfanumericoDevolver = this.nombre;
+        
+        return alfanumericoDevolver;
     }
 
     public AlfaNumerico getAutor() {
-        return autor;
+        
+        AlfaNumerico alfanumericoDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        alfanumericoDevolver = this.autor;
+        
+        return alfanumericoDevolver;
     }
 
     public AlfaNumerico getEditorial() {
-        return editorial;
+        
+        AlfaNumerico alfanumericoDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        alfanumericoDevolver = this.editorial;
+        
+        return alfanumericoDevolver;
     }
 
     public AlfaNumerico getEdicion() {
-        return edicion;
+        
+        AlfaNumerico alfanumericoDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        alfanumericoDevolver = this.edicion;
+        
+        return alfanumericoDevolver;
     }
 
     public Materia getMateria() {
-        return materia;
+        
+        Materia materiaDevolver = Materia.OBJETO_INVALIDO;
+        
+        materiaDevolver = this.materia;
+        
+        return materiaDevolver;
     }
     
     //Others

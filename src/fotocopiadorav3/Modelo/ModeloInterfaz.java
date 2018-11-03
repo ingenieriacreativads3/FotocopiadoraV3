@@ -183,6 +183,20 @@ public class ModeloInterfaz {
     
     //getForId
     
+    public static AlfaNumerico getAlfanumericoForId(int idAlfanumericoRecibido){
+        
+        AlfaNumerico alfanumericoDevolver = AlfaNumerico.getForId(idAlfanumericoRecibido);
+        
+        return alfanumericoDevolver;
+    }
+    
+    public static Direccion getDireccionForId(int idDireccionRecibido){
+        
+        Direccion direccionDevolver = Direccion.getForId(idDireccionRecibido);
+        
+        return direccionDevolver;
+    }
+    
     public static Usuario getUsuarioForId(int idUsuarioRecibido){
         
         Usuario usuarioDevolver = Usuario.getForId(idUsuarioRecibido);
@@ -223,6 +237,35 @@ public class ModeloInterfaz {
         
         return materiaDevolver;
     }
+    
+    public static Pedido getPedidoForId(int idPedidoRecibido){
+        
+        Pedido pedidoDevolver = Pedido.OBJETO_INVALIDO;
+        
+        pedidoDevolver = Pedido.getForId(idPedidoRecibido);
+        
+        return pedidoDevolver;
+    }
+    
+    public static PedidoArticulo getPedidoArticuloForId(int idPedidoArticuloRecibido){
+        
+        PedidoArticulo pedidoArticuloDevolver = PedidoArticulo.OBJETO_INVALIDO;
+        
+        pedidoArticuloDevolver = PedidoArticulo.getForId(idPedidoArticuloRecibido);
+        
+        return pedidoArticuloDevolver;
+    }
+    
+    public static Persona getPersonaForId(int idPersonaRecibido){
+        
+        Persona personaDevolver = Persona.OBJETO_INVALIDO;
+        
+        personaDevolver = Persona.getForId(idPersonaRecibido);
+        
+        return personaDevolver;
+    }
+            
+    //getListaForId
     
     public static Set<PedidoArticulo> getListaPedidoArticuloForIdPedido(int idPedidorecibido){
         
@@ -287,7 +330,7 @@ public class ModeloInterfaz {
         return listaDevolver;
     }
     
-    //getFor
+    //getListaFor
     
     public static Set<PedidoArticulo> getListaPedidoArticuloForPedido(Pedido pedidoRecibido){
         
@@ -351,16 +394,27 @@ public class ModeloInterfaz {
     
     //getListas
     
+    public static Set<AlfaNumerico> getListaAlfanumerico(){
+        
+        Set<AlfaNumerico> listaDevolver = new HashSet<>();
+        
+        listaDevolver = AlfaNumerico.getListaObjetos();
+        
+        return listaDevolver;
+    }
+    
     public static Set<Usuario> getListaUsuarios(){
         
-        Set<Usuario> listaDevolver = Usuario.getListaObjetos();
+        Set<Usuario> listaDevolver = new HashSet<>();
+                
+        listaDevolver = Usuario.getListaObjetos();
         
         return listaDevolver;
     }
     
     public static Set<Alumno> getListaAlumnos(){
         
-        Set<Alumno> listaDevolver = Alumno.getLista();
+        Set<Alumno> listaDevolver = Alumno.getListaObjetos();
         
         return listaDevolver;
     }

@@ -513,6 +513,15 @@ public class AlfaNumerico implements Serializable{
     
     //Getter
     
+    protected static Set<AlfaNumerico> getListaObjetos() {
+        
+        Set<AlfaNumerico> listaDevolver = new HashSet<>();
+        
+        listaDevolver = listaObjetos;
+        
+        return listaDevolver;
+    }
+    
     protected static int getSetSize(){
         
         int size = listaObjetos.size();

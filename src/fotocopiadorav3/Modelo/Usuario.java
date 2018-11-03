@@ -618,9 +618,11 @@ public class Usuario{
 
     //Getter
     
-    protected static Set<Usuario> getListaObjetos(){
+    protected static Set<Usuario> getListaObjetos() {
         
-        Set<Usuario> listaDevolver = listaObjetos;
+        Set<Usuario> listaDevolver = new HashSet<>();
+        
+        listaDevolver = listaObjetos;
         
         return listaDevolver;
     }
@@ -631,7 +633,7 @@ public class Usuario{
 
     public Persona getPersona() {
         
-        Persona personaDevolver = null;
+        Persona personaDevolver = Persona.OBJETO_INVALIDO;
         
         personaDevolver = persona;
         
@@ -665,10 +667,6 @@ public class Usuario{
         passDevolver = this.pass;
         
         return passDevolver;
-    }
-
-    private static Usuario getObjetoInvalido() {
-        return OBJETO_INVALIDO;
     }
 
     @Override

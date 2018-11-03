@@ -27,7 +27,7 @@ public class Alumno{
     private Persona persona;
     private int idPersona;
             
-    private final static Alumno OBJETO_INVALIDO = new Alumno();
+    protected final static Alumno OBJETO_INVALIDO = new Alumno();
 
     private static Set<Alumno> listaObjetos = new HashSet<>();
     
@@ -441,9 +441,11 @@ public class Alumno{
     
     //Getter
     
-    protected static Set<Alumno> getLista(){
+    protected static Set<Alumno> getListaObjetos() {
         
-        Set<Alumno> listaDevolver = listaObjetos;
+        Set<Alumno> listaDevolver = new HashSet<>();
+        
+        listaDevolver = listaObjetos;
         
         return listaDevolver;
     }
@@ -458,7 +460,11 @@ public class Alumno{
     
     public Persona getPersona(){
         
-        return this.persona;
+        Persona personaDevolver = Persona.OBJETO_INVALIDO;
+        
+        personaDevolver = this.persona;
+        
+        return personaDevolver;
     }
     
     //Others

@@ -529,15 +529,30 @@ public class PedidoArticulo {
     }
 
     public Estado getEstado() {
-        return estado;
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        estadoDevolver = this.estado;
+        
+        return estadoDevolver;
     }
 
     public Articulo getArticulo() {
-        return articulo;
+        
+        Articulo articuloDevolver = Articulo.OBJETO_INVALIDO;
+        
+        articuloDevolver = this.articulo;
+        
+        return articuloDevolver;
     }
 
     public Pedido getPedido() {
-        return pedido;
+        
+        Pedido pedidoDevolver = Pedido.OBJETO_INVALIDO;
+        
+        pedidoDevolver = this.pedido;
+        
+        return pedidoDevolver;
     }
 
     public double getImporteConDescuento() {
@@ -550,9 +565,11 @@ public class PedidoArticulo {
 
     protected static Set<PedidoArticulo> getListaObjetos() {
         
-        Set<PedidoArticulo> listeDevolver = listaObjetos;
+        Set<PedidoArticulo> listaDevolver = new HashSet<>();
         
-        return listeDevolver;
+        listaDevolver = listaObjetos;
+        
+        return listaDevolver;
     }
     
     //Others

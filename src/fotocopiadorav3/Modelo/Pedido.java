@@ -548,7 +548,12 @@ public class Pedido {
     }
 
     public java.sql.Date getFecha() {
-        return fecha;
+        
+        java.sql.Date fechaDevolver = new java.sql.Date(1);
+        
+        fechaDevolver = this.fecha;
+        
+        return fechaDevolver;
     }
 
     public double getImporte() {
@@ -556,20 +561,32 @@ public class Pedido {
     }
 
     public Alumno getAlumno() {
-        return alumno;
+        
+        Alumno alumnoDevolver = Alumno.OBJETO_INVALIDO;
+        
+        alumnoDevolver = this.alumno;
+        
+        return alumnoDevolver;
     }
 
     public AlfaNumerico getCodigoTransaccion() {
-        return codigoTransaccion;
+        
+        AlfaNumerico codigoTransaccionDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        codigoTransaccionDevolver = this.codigoTransaccion;
+        
+        return codigoTransaccionDevolver;
     }
 
     public double getPagoAnticipado() {
         return pagoAnticipado;
     }
     
-    protected static Set<Pedido> getListaObjetos(){
+    protected static Set<Pedido> getListaObjetos() {
         
-        Set<Pedido> listaDevolver = listaObjetos;
+        Set<Pedido> listaDevolver = new HashSet<>();
+        
+        listaDevolver = listaObjetos;
         
         return listaDevolver;
     }

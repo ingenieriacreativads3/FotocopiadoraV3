@@ -307,11 +307,7 @@ public class Persona{
 
     //Constructor
     
-    private Persona(){
-        
-        
-        
-    }
+    private Persona(){}
 
     private Persona(int idRecibido) {
 
@@ -601,9 +597,11 @@ public class Persona{
         return direccionDevolver;
     }
     
-    protected Set<Persona> getListaObjetos(){
+    protected static Set<Persona> getListaObjetos() {
         
-        Set<Persona> listaDevolver = listaObjetos;
+        Set<Persona> listaDevolver = new HashSet<>();
+        
+        listaDevolver = listaObjetos;
         
         return listaDevolver;
     }

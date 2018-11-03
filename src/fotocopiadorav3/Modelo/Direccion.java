@@ -325,8 +325,11 @@ public class Direccion{
 //        System.out.println("pasa el primer item pedidoarticulo");
         
         AlfaNumerico alfaBorrado = AlfaNumerico.getForId(5);
-        alfaBorrado.modificar("gallo");
 
+        Direccion diremoficcar = Direccion.getForId(4);
+        diremoficcar.modificar(alfaBorrado, 456);
+        
+        
         
         //System.out.println("Despues de pedir un objeto nuevo");
         
@@ -573,6 +576,15 @@ public class Direccion{
         numeroDevolver = numero;
         
         return numeroDevolver;
+    }
+    
+    protected static Set<Direccion> getListaObjetos() {
+        
+        Set<Direccion> listaDevolver = new HashSet<>();
+        
+        listaDevolver = listaObjetos;
+        
+        return listaDevolver;
     }
     
     //Others
