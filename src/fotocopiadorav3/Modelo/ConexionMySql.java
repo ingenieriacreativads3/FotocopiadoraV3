@@ -87,6 +87,30 @@ public class ConexionMySql {
         
     }
     
+    protected PreparedStatement getPreparedStatementD(String nombreTablaRecibido){
+        
+        PreparedStatement prepStmtDevolver = null;
+        String sqlStmt = "DELETE FROM " + nombreTablaRecibido + " WHERE id = ?;";
+        
+        try {
+            
+            Class.forName(Environment.DRIVER).newInstance();
+            String connectionUrl = Environment.URL;
+            String connectionUser = Environment.USERNAME;
+            String connectionPassword = Environment.PASSWORD;
+            this.conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
+            prepStmtDevolver = this.conn.prepareStatement(sqlStmt);
+            
+        } catch (Exception e) {
+            
+            System.out.println("se rompe en la conexion del delete");
+            e.printStackTrace();
+            
+        }
+        
+        return prepStmtDevolver;
+    }
+    
     protected PreparedStatement getPreparedStatement(String nombreTablaRecibido){
         
         PreparedStatement prepStmtDevolver = null;
@@ -98,9 +122,7 @@ public class ConexionMySql {
             String connectionUrl = Environment.URL;
             String connectionUser = Environment.USERNAME;
             String connectionPassword = Environment.PASSWORD;
-            System.out.println("antes de hacer la conexion");
             this.conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
-            System.out.println("realiza la conexion en conexionmysql getpreparedstatement");
             prepStmtDevolver = this.conn.prepareStatement(sqlStmt);
             
         } catch (Exception e) {
@@ -191,9 +213,9 @@ public class ConexionMySql {
         PreparedStatement prepStmt = null;
         ResultSet rs = null;
         
-        System.out.println(2.1);
+        //System.out.println(2.1);
         try {
-            System.out.println(2.2);
+            //System.out.println(2.2);
             Class.forName(Environment.DRIVER).newInstance();
             String connectionUrl = Environment.URL;
             String connectionUser = Environment.USERNAME;
@@ -201,7 +223,7 @@ public class ConexionMySql {
             conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
             
             
-            System.out.println(2.3);
+            //System.out.println(2.3);
             
             //String sqlStmt = "SELECT * FROM " + AlfaNumerico.NOMBRE_TABLA;
             String sqlStmt = "INSERT INTO alfanumerico VALUES (?,?)";
@@ -212,7 +234,7 @@ public class ConexionMySql {
             prepStmt.setString(2, valorAgregar);
             
             
-            System.out.println(prepStmt.toString());
+            //System.out.println(prepStmt.toString());
             
             prepStmt.executeUpdate();
             
@@ -220,8 +242,8 @@ public class ConexionMySql {
             //prepStmt.executeQuery();
             
             
-            System.out.println("Query ejecutada");
-            System.out.println(2.4);
+            //System.out.println("Query ejecutada");
+            //System.out.println(2.4);
 //            while (rs.next()) {
 //                
 //                String id = rs.getString("id");
@@ -230,16 +252,16 @@ public class ConexionMySql {
 //                System.out.println("ID: " + id + ", Valor: " + valor);
 //                
 //            }
-            System.out.println(2.5);
+            //System.out.println(2.5);
             
         } catch (Exception e) {
             
-            System.out.println(2.6);
+            //System.out.println(2.6);
             
         }finally {
-            System.out.println(2.7);
+            //System.out.println(2.7);
             try {
-                System.out.println(2.8);
+                //System.out.println(2.8);
                 
                 if (rs != null) rs.close();
                     
@@ -249,7 +271,7 @@ public class ConexionMySql {
                     
             }
             try { 
-                System.out.println(2.9);
+                //System.out.println(2.9);
                     
                 if (prepStmt != null) prepStmt.close();
                 
@@ -259,7 +281,7 @@ public class ConexionMySql {
                 
             }
             try {
-                System.out.println(2.1234);
+                //System.out.println(2.1234);
                     
                 if (conn != null) conn.close();
                 
@@ -269,7 +291,7 @@ public class ConexionMySql {
                 
             }
         }
-        System.out.println(2.11);
+        //System.out.println(2.11);
         
         //INSERT INTO Store_Information (Store_Name, Sales, Txn_Date) VALUES ('Los Angeles', 900, '10-Jan-1999');
         //INSERT INTO alfanumerico (valor, id) VALUES ('sdf', '2');

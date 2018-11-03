@@ -25,16 +25,16 @@ public class FotocopiadoraV3 extends Application{
      @param args the command line arguments
      */
     public static void main(String[] args){
-        
+        System.out.println("entra");
         ConexionMySql.getAllInformacion();
         
         //int i = 1;
-//        ControladorInterfaz.comenzar();
-        try{
-            Direccion.noUsarEstaFuncionJamas(0);
-        }catch(Exception e){
-            System.out.println("No entra");
-        }
+        ControladorInterfaz.comenzar();
+//        try{
+//            Direccion.noUsarEstaFuncionJamas(0);
+//        }catch(Exception e){
+//            System.out.println("No entra");
+//        }
         
     }
     

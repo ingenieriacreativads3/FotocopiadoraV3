@@ -27,7 +27,7 @@ public enum Estado{
      * Este estado representa un error de bd
      */
     ERROR_PERSISTENCIA_INCORRECTA(300, "La persistencia no anda"),
-    
+    ERROR_LISTA_REMOVE(299, "No se removio correctamente el objeto de la lista"),
     
     ITEM_PEDIDO_RETIRADO(225, "El item se encuentra retirado"),
     ITEM_PEDIDO_CANCELADO_SI_FOTOCOPIADO(224, "El item se encuentra cancelado con fotocopias realizadas"),

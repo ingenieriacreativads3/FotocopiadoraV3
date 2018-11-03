@@ -35,12 +35,60 @@ public class Alumno{
     
     public Estado modificar(int legajoRecibido, Persona personaRecibida){
         
-        return Estado.ERROR;
+        Estado estadoDevolver = Estado.ERROR;
+        
+        this.borrar();
+        Alumno nuevoObjeto = Alumno.nuevo(legajoRecibido, personaRecibida);
+        nuevoObjeto.setId(this.id);
+        
+        if(nuevoObjeto.guardar() == Estado.EXITO){
+            
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            nuevoObjeto.borrar();
+            
+        }
+        
+        return estadoDevolver;
     }
     
     public Estado borrar(){
         
-        return Estado.ERROR;
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatementD(NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            
+            //System.out.println(prepared.toString());
+            
+            if(listaObjetos.remove(this)){
+                
+                prepared.executeUpdate();
+                estadoDevolver = Estado.EXITO;
+                
+            }else{
+                
+                estadoDevolver = Estado.ERROR_LISTA_REMOVE;
+                
+            }
+            
+            prepared.close();
+            conn.closeConn("borrar");
+            
+        } catch (Exception e) {
+            System.out.println("se rompe en borrar");
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
     }
     
     protected static Alumno getForId(int idRecibido){
@@ -115,7 +163,7 @@ public class Alumno{
         
         Estado estadoDevolver = Estado.ERROR;
         
-        System.out.println("pregunta por los alumnos");
+        //System.out.println("pregunta por los alumnos");
         
         ResultSet rs = null;
         
@@ -136,7 +184,7 @@ public class Alumno{
                 
                 Alumno asd = nuevo(id, legajoActual, personaObjeto, idPersona);
                 
-                System.out.println(id);
+                //System.out.println(id);
             }
             
             estadoDevolver = Estado.EXITO;
@@ -353,6 +401,10 @@ public class Alumno{
     }//...fin funcion
 
     //Setter
+    
+    private void setId(int id) {
+        this.id = id;
+    }
     
     private Estado setLegajo(int idLegajorecibido){
         

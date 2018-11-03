@@ -37,6 +37,64 @@ public class Direccion{
     
     //Rutinas
     
+    public Estado modificar(AlfaNumerico calleRecibida, int numeroRecibida){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        this.borrar();
+        Direccion nuevoObjeto = Direccion.nuevo(calleRecibida, numeroRecibida);
+        nuevoObjeto.setId(this.id);
+        
+        if(nuevoObjeto.guardar() == Estado.EXITO){
+            
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            nuevoObjeto.borrar();
+            
+        }
+        
+        return estadoDevolver;
+    }
+    
+    public Estado borrar(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatementD(NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            
+            //System.out.println(prepared.toString());
+            
+            if(listaObjetos.remove(this)){
+                
+                prepared.executeUpdate();
+                estadoDevolver = Estado.EXITO;
+                
+            }else{
+                
+                estadoDevolver = Estado.ERROR_LISTA_REMOVE;
+                
+            }
+            
+            prepared.close();
+            conn.closeConn("borrar");
+            
+        } catch (Exception e) {
+            System.out.println("se rompe en borrar");
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
+    }
+    
     protected static Direccion getForId(int idRecibido){
         
         Direccion direccionDevolver = OBJETO_INVALIDO;
@@ -96,7 +154,7 @@ public class Direccion{
         
         Estado estadoDevolver = Estado.ERROR;
         
-        System.out.println("pregunta por las direcciones");
+        //System.out.println("pregunta por las direcciones");
         
         ResultSet rs = null;
         
@@ -117,7 +175,7 @@ public class Direccion{
                 
                 Direccion asd = nuevo(id, calleActual, numeroActual, idCalle);
                 
-                System.out.println(id);
+                //System.out.println(id);
                 
                 //TODO quitar estos sout
 //                System.out.println("Size: " + getSetSize());
@@ -221,52 +279,54 @@ public class Direccion{
         
         //System.out.println("Antes de pedir un objeto nuevo");
         
-        int numero = 1194;
-        AlfaNumerico asd = AlfaNumerico.nuevo("25 de mayo");
-        asd.guardar();
-        System.out.println("pasa el primer alfanumerico");
+//        int numero = 1194;
+//        AlfaNumerico asd = AlfaNumerico.nuevo("25 de mayo");
+//        asd.guardar();
+//        System.out.println("pasa el primer alfanumerico");
+//        
+//        Direccion asdd = Direccion.nuevo(asd, numero);
+//        asdd.guardar();
+//        System.out.println("Pasa la primera direccion");
+//        
+//        Persona asddd = Persona.nuevo(asd, asd, numero, asdd);
+//        asddd.guardar();
+//        System.out.println("Pasa la primera persona");
+//        
+//        Usuario asdddd = Usuario.nuevo(asddd, asd, asd);
+//        asdddd.guardar();
+//        System.out.println("Pasa el primer usuario");
+//        
+//        Alumno alumnoNuevo = Alumno.nuevo(numero, asddd);
+//        alumnoNuevo.guardar();
+//        System.out.println("pasa el primer alumno");
+//        
+//        Carrera carreraNueva = Carrera.nuevo(asd, asd);
+//        carreraNueva.guardar();
+//        System.out.println("pasa la primer carrera");
+//        
+//        Materia materiaNueva = Materia.nuevo(asd, 3, asddd, asddd, asddd, asddd, carreraNueva);
+//        materiaNueva.guardar();
+//        System.out.println("pasa la primera materia");
+//        
+//        Articulo articuloNuevo = Articulo.nuevo(12.34, new java.sql.Date(2018, 10, 31), asd, asd, asd, asd, materiaNueva);
+//        articuloNuevo.guardar();
+//        System.out.println("pasa el primer articulo");
+//        
+//        Pedido pedidoNuevo = Pedido.nuevo(new java.sql.Date(2020, 12, 12), 34.56, alumnoNuevo, asd, 23.78);
+//        pedidoNuevo.guardar();
+//        System.out.println("pasa el primer pedido");
+//        
+//        java.sql.Date fechaDavid = new java.sql.Date(2018, 11, 1);
+//        Pedido pedidoDavid = Pedido.nuevo(fechaDavid, 31.67, alumnoNuevo, asd, 10.50);
+//        pedidoDavid.guardar();
+//        
+//        PedidoArticulo itemPedidoNuevo = PedidoArticulo.nuevo(98.78, 2, Estado.CATEDRA, articuloNuevo, pedidoDavid, 65.34, true);
+//        itemPedidoNuevo.guardar();
+//        System.out.println("pasa el primer item pedidoarticulo");
         
-        Direccion asdd = Direccion.nuevo(asd, numero);
-        asdd.guardar();
-        System.out.println("Pasa la primera direccion");
-        
-        Persona asddd = Persona.nuevo(asd, asd, numero, asdd);
-        asddd.guardar();
-        System.out.println("Pasa la primera persona");
-        
-        Usuario asdddd = Usuario.nuevo(asddd, asd, asd);
-        asdddd.guardar();
-        System.out.println("Pasa el primer usuario");
-        
-        Alumno alumnoNuevo = Alumno.nuevo(numero, asddd);
-        alumnoNuevo.guardar();
-        System.out.println("pasa el primer alumno");
-        
-        Carrera carreraNueva = Carrera.nuevo(asd, asd);
-        carreraNueva.guardar();
-        System.out.println("pasa la primer carrera");
-        
-        Materia materiaNueva = Materia.nuevo(asd, 3, asddd, asddd, asddd, asddd, carreraNueva);
-        materiaNueva.guardar();
-        System.out.println("pasa la primera materia");
-        
-        Articulo articuloNuevo = Articulo.nuevo(12.34, new java.sql.Date(2018, 10, 31), asd, asd, asd, asd, materiaNueva);
-        articuloNuevo.guardar();
-        System.out.println("pasa el primer articulo");
-        
-        Pedido pedidoNuevo = Pedido.nuevo(new java.sql.Date(2020, 12, 12), 34.56, alumnoNuevo, asd, 23.78);
-        pedidoNuevo.guardar();
-        System.out.println("pasa el primer pedido");
-        
-        java.sql.Date fechaDavid = new java.sql.Date(2018, 11, 1);
-        Pedido pedidoDavid = Pedido.nuevo(fechaDavid, 31.67, alumnoNuevo, asd, 10.50);
-        pedidoDavid.guardar();
-        
-        PedidoArticulo itemPedidoNuevo = PedidoArticulo.nuevo(98.78, 2, Estado.CATEDRA, articuloNuevo, pedidoDavid, 65.34, true);
-        itemPedidoNuevo.guardar();
-        System.out.println("pasa el primer item pedidoarticulo");
-        
-        
+        AlfaNumerico alfaBorrado = AlfaNumerico.getForId(5);
+        alfaBorrado.modificar("gallo");
+
         
         //System.out.println("Despues de pedir un objeto nuevo");
         
@@ -438,6 +498,10 @@ public class Direccion{
     }//...fin funcion
     
     //Setter
+    
+    private void setId(int id) {
+        this.id = id;
+    }
     
     private Estado setIdAlfa(int idAlfaRecibido){
         

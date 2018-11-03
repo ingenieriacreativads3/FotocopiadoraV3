@@ -74,7 +74,7 @@ public class Articulo {
         ConexionMySql conn = new ConexionMySql();
         PreparedStatement prepared = conn.getPreparedStatement(CANTIDAD_DE_CAMPOS, NOMBRE_TABLA);
         
-        System.out.println("entra a guardar");
+        //System.out.println("entra a guardar");
         try {
             
             prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
@@ -88,7 +88,7 @@ public class Articulo {
             prepared.setInt(LUGAR_DEL_CAMPO_ID_EDICION, this.idEdicion);
             prepared.setInt(LUGAR_DEL_CAMPO_ID_MATERIA, this.idMateria);
             
-            System.out.println(prepared.toString());
+            //System.out.println(prepared.toString());
             
             prepared.executeUpdate();
             
@@ -149,21 +149,69 @@ public class Articulo {
         
     }
     
-    public Estado modificar(double precioRecibida, java.util.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, Materia materiaRecibida){
+    public Estado modificar(double precioRecibido, java.sql.Date fechaIngresoRecibida, AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida, Materia materiaRecibida){
         
-        return Estado.ERROR;
+        Estado estadoDevolver = Estado.ERROR;
+        
+        this.borrar();
+        Articulo nuevoObjeto = Articulo.nuevo(precioRecibido, fechaIngresoRecibida, nombreRecibido, autorRecibido, editorialRecibida, edicionRecibida, materiaRecibida);
+        nuevoObjeto.setId(this.id);
+        
+        if(nuevoObjeto.guardar() == Estado.EXITO){
+            
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            nuevoObjeto.borrar();
+            
+        }
+        
+        return estadoDevolver;
     }
     
     public Estado borrar(){
         
-        return Estado.ERROR;
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatementD(NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            
+            //System.out.println(prepared.toString());
+            
+            if(listaObjetos.remove(this)){
+                
+                prepared.executeUpdate();
+                estadoDevolver = Estado.EXITO;
+                
+            }else{
+                
+                estadoDevolver = Estado.ERROR_LISTA_REMOVE;
+                
+            }
+            
+            prepared.close();
+            conn.closeConn("borrar");
+            
+        } catch (Exception e) {
+            System.out.println("se rompe en borrar");
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
     }
 
     protected static Estado getInformacion(){
         
         Estado estadoDevolver = Estado.ERROR;
         
-        System.out.println("pregunta por los articulos");
+        //System.out.println("pregunta por los articulos");
         
         ResultSet rs = null;
         
@@ -197,7 +245,7 @@ public class Articulo {
                 
                 Articulo asd = Articulo.nuevo(idObjeto, documentoObjeto, categoriaObjeto, precio, fechaIngreso, nombreObjeto, autorObjeto, editorialObjeto, edicionObjeto, materiaObjeto, documentoObjeto.getId(), categoriaObjeto.getId(), nombreObjeto.getId(), autorObjeto.getId(), editorialObjeto.getId(), edicionObjeto.getId(), materiaObjeto.getId());
                 
-                System.out.println("este es el articulo numero: " + asd.id);
+                //System.out.println("este es el articulo numero: " + asd.id);
                 
             }
             
@@ -268,7 +316,7 @@ public class Articulo {
 
         //Combinar ambos valores
         idActual = idActual + siguienteIdentificador;
-        System.out.println("el valor del siuiente id es " + idActual);
+        //System.out.println("el valor del siuiente id es " + idActual);
 
         //Devolver el nuevo identificador
         return idActual;
@@ -321,7 +369,7 @@ public class Articulo {
         documentoRecibido.guardar();
         Estado categoriaRecibida = Estado.TUTORIAS;
         
-        System.out.println("entra a nuevo");
+        //System.out.println("entra a nuevo");
         //Crear un objeto a devolver
         Articulo objetoDevolver = Articulo.OBJETO_INVALIDO;
 
@@ -453,6 +501,10 @@ public class Articulo {
     }//...fin funcion
     
     //Setter
+    
+    private void setId(int id) {
+        this.id = id;
+    }
     
     private Estado setPrecio(double precioRecibido){
         

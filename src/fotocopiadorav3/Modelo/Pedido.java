@@ -54,6 +54,64 @@ public class Pedido {
     
     //Rutinas
     
+    public Estado modificar(java.sql.Date fechaRecibida, double importeRecibida, Alumno alumnoRecibido, AlfaNumerico codigoTransaccionrecibido, double pagoAnticipadoRecibido){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        this.borrar();
+        Pedido nuevoObjeto = Pedido.nuevo(fechaRecibida, importeRecibida, alumnoRecibido, codigoTransaccionrecibido, pagoAnticipadoRecibido);
+        nuevoObjeto.setId(this.id);
+        
+        if(nuevoObjeto.guardar() == Estado.EXITO){
+            
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            nuevoObjeto.borrar();
+            
+        }
+        
+        return estadoDevolver;
+    }
+    
+    public Estado borrar(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatementD(NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            
+            //System.out.println(prepared.toString());
+            
+            if(listaObjetos.remove(this)){
+                
+                prepared.executeUpdate();
+                estadoDevolver = Estado.EXITO;
+                
+            }else{
+                
+                estadoDevolver = Estado.ERROR_LISTA_REMOVE;
+                
+            }
+            
+            prepared.close();
+            conn.closeConn("borrar");
+            
+        } catch (Exception e) {
+            System.out.println("se rompe en borrar");
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
+    }
+    
     public static Pedido getForId(int idRecibido){
         
         Pedido pedidoDevolver = OBJETO_INVALIDO;
@@ -104,7 +162,7 @@ public class Pedido {
         try {
             
             prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
-            System.out.println("lugar del campo " + LUGAR_DEL_CAMPO_ID + " id " + this.id);
+            //System.out.println("lugar del campo " + LUGAR_DEL_CAMPO_ID + " id " + this.id);
             prepared.setDate(LUGAR_DEL_CAMPO_FECHA, this.fecha);
             prepared.setDouble(LUGAR_DEL_CAMPO_IMPORTE, this.importe);
             prepared.setInt(LUGAR_DEL_CAMPO_ID_ALUMNO, this.idAlumno);
@@ -133,7 +191,7 @@ public class Pedido {
         
         Estado estadoDevolver = Estado.ERROR;
         
-        System.out.println("pregunta por los usuarios");
+        //System.out.println("pregunta por los usuarios");
         
         ResultSet rs = null;
         
@@ -158,7 +216,7 @@ public class Pedido {
                 
                 Pedido asd = Pedido.nuevo(id, fechaObjeto, importeObjeto, alumnoObjeto, codigoTransaccionObjeto, pagoAnticipadoObjeto, alumnoObjeto.getId(), codigoTransaccionObjeto.getId());
                 
-                System.out.println(id);
+                //System.out.println(id);
                 
             }
             
@@ -312,14 +370,14 @@ public class Pedido {
             Estado seSeteoIdAlumno = objetoNuevo.setIdAlumno(alumnoRecibido.getId());
             Estado seSeteoIdCodigoTransaccion = objetoNuevo.setIdCodigoTransaccion(codigoTransaccionrecibido.getId());
             
-            System.out.println("se setean lso nuevos valores");
+            //System.out.println("se setean lso nuevos valores");
             objetoDevolver = objetoNuevo;
             
             //Estado seGuardo = objetoDevolver.guardar();
 
         }else{
             
-            System.out.println("se quita el objeto de la lista de pedidos");
+            //System.out.println("se quita el objeto de la lista de pedidos");
 
             //TODO capturar el error generado por un ingreso erroneo a la lista
             listaObjetos.remove(objetoDevolver);

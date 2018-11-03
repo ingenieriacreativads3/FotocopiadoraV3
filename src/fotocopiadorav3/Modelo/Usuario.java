@@ -45,12 +45,60 @@ public class Usuario{
     
     public Estado modificar(Persona personaRecibida, AlfaNumerico nombreUsuarioRecibido, AlfaNumerico passRecibida){
         
-        return Estado.ERROR;
+        Estado estadoDevolver = Estado.ERROR;
+        
+        this.borrar();
+        Usuario nuevoObjeto = Usuario.nuevo(personaRecibida, nombreUsuarioRecibido, passRecibida);
+        nuevoObjeto.setId(this.id);
+        
+        if(nuevoObjeto.guardar() == Estado.EXITO){
+            
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            nuevoObjeto.borrar();
+            
+        }
+        
+        return estadoDevolver;
     }
     
     public Estado borrar(){
         
-        return Estado.ERROR;
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatementD(NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            
+            //System.out.println(prepared.toString());
+            
+            if(listaObjetos.remove(this)){
+                
+                prepared.executeUpdate();
+                estadoDevolver = Estado.EXITO;
+                
+            }else{
+                
+                estadoDevolver = Estado.ERROR_LISTA_REMOVE;
+                
+            }
+            
+            prepared.close();
+            conn.closeConn("borrar");
+            
+        } catch (Exception e) {
+            System.out.println("se rompe en borrar");
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
     }
     
     public static Usuario getForId(int idRecibido){
@@ -127,7 +175,7 @@ public class Usuario{
         
         Estado estadoDevolver = Estado.ERROR;
         
-        System.out.println("pregunta por los usuarios");
+        //System.out.println("pregunta por los usuarios");
         
         ResultSet rs = null;
         
@@ -151,7 +199,7 @@ public class Usuario{
                 
                 Usuario asd = Usuario.nuevo(id, personaObjeto, nombreUsuarioObjeto, passObjeto, personaObjeto.getId(), nombreUsuarioObjeto.getId(), passObjeto.getId());
                 
-                System.out.println(id);
+                ////System.out.println(id);
                 
             }
             
@@ -235,12 +283,12 @@ public class Usuario{
         AlfaNumerico nombreRecibido = AlfaNumerico.nuevo(nombreActual);
         AlfaNumerico passRecibido = AlfaNumerico.nuevo(passActual);
         
-        System.out.println("verificar usser pass");
+        //System.out.println("verificar usser pass");
         if(!existeNombreUsuario(nombreRecibido)){
             
             //...establecer valor de usuarioDevolver inexistente
             loginVerificado = Estado.ERROR_NOMBRE_INEXISTENTE;
-            System.out.println("no existe nombre");
+            //System.out.println("no existe nombre");
             
         }else{
             
@@ -248,13 +296,13 @@ public class Usuario{
                 
                 //...establecer valor de password inexistente
                 loginVerificado = Estado.ERROR_PASS_INCORRECTA;
-                System.out.println("no existe pass");
+                //System.out.println("no existe pass");
                 
             }else{
                 
                 //...establecer valor de login correcto
                 loginVerificado = Estado.USSER_PASS_CORRECTOS;
-                System.out.println("pasa");
+                //System.out.println("pasa");
                 
             }
             
@@ -280,7 +328,7 @@ public class Usuario{
 
                 //...establecer la expresion correspondiente
                 existe = true;
-                System.out.println("entra uno");
+                //System.out.println("entra uno");
 
             }
 
@@ -294,7 +342,7 @@ public class Usuario{
 
         boolean existe = false;
 
-        System.out.println("viene a preguntar si existe el usuario");
+        //System.out.println("viene a preguntar si existe el usuario");
         //Recorrer el conjunto de usuarios
         for(Usuario usuarioActual : listaObjetos){
 
@@ -306,7 +354,7 @@ public class Usuario{
 
                 //...establecer la expresion correspondiente
                 existe = true;
-                System.out.println("entra uno");
+                //System.out.println("entra uno");
 
             }
 
@@ -505,6 +553,10 @@ public class Usuario{
     }//...fin funcion
 
     //Setter
+    
+    private void setId(int id) {
+        this.id = id;
+    }
 
     private Estado setIdPersona(int idPersona) {
         

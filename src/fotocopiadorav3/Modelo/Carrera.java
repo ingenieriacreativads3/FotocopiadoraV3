@@ -37,6 +37,66 @@ public class Carrera {
     protected final static Carrera OBJETO_INVALIDO = new Carrera();
 
     private static Set<Carrera> listaObjetos = new HashSet<>();
+    
+    //Rutinas
+    
+    public Estado modificar(AlfaNumerico identificadorRecibido, AlfaNumerico nombreRecibido){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        this.borrar();
+        Carrera nuevoObjeto = Carrera.nuevo(identificadorRecibido, nombreRecibido);
+        nuevoObjeto.setId(this.id);
+        
+        if(nuevoObjeto.guardar() == Estado.EXITO){
+            
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            nuevoObjeto.borrar();
+            
+        }
+        
+        return estadoDevolver;
+    }
+    
+    public Estado borrar(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatementD(NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            
+            //System.out.println(prepared.toString());
+            
+            if(listaObjetos.remove(this)){
+                
+                prepared.executeUpdate();
+                estadoDevolver = Estado.EXITO;
+                
+            }else{
+                
+                estadoDevolver = Estado.ERROR_LISTA_REMOVE;
+                
+            }
+            
+            prepared.close();
+            conn.closeConn("borrar");
+            
+        } catch (Exception e) {
+            System.out.println("se rompe en borrar");
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
+    }
 
     protected static Carrera getForId(int idRecibido){
         
@@ -85,7 +145,7 @@ public class Carrera {
         ConexionMySql conn = new ConexionMySql();
         PreparedStatement prepared = conn.getPreparedStatement(CANTIDAD_DE_CAMPOS, NOMBRE_TABLA);
         
-        System.out.println("entra a guardar");
+        //System.out.println("entra a guardar");
         try {
             
             prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
@@ -208,7 +268,7 @@ public class Carrera {
 
         //Combinar ambos valores
         idActual = idActual + siguienteIdentificador;
-        System.out.println("el valor del siuiente id es " + idActual);
+        //System.out.println("el valor del siuiente id es " + idActual);
 
         //Devolver el nuevo identificador
         return idActual;

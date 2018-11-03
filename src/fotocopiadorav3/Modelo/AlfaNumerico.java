@@ -18,9 +18,12 @@ import java.sql.*;
 @Table(name = "alfanumerico")
 public class AlfaNumerico implements Serializable{
     
+    //Atributos
+    
     private static final String NOMBRE_TABLA = "alfanumerico";
     private static final String CAMPO_ID = "id";
     private static final String CAMPO_VALOR = "valor";
+    
     private static final int CANTIDAD_DE_CAMPOS = 2;
     private static final int LUGAR_DEL_CAMPO_ID = 1;
     private static final int LUGAR_DEL_CAMPO_VALOR = 2;
@@ -37,6 +40,64 @@ public class AlfaNumerico implements Serializable{
     private static Set<AlfaNumerico> listaObjetos = new HashSet<>();
     
     //Rutinas
+    
+    public Estado modificar(String palabraRecibida){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        this.borrar();
+        AlfaNumerico nuevoObjeto = AlfaNumerico.nuevo(palabraRecibida);
+        nuevoObjeto.setId(this.id);
+        
+        if(nuevoObjeto.guardar() == Estado.EXITO){
+            
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            nuevoObjeto.borrar();
+            
+        }
+        
+        return estadoDevolver;
+    }
+    
+    public Estado borrar(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatementD(NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            
+            //System.out.println(prepared.toString());
+            
+            if(listaObjetos.remove(this)){
+                
+                prepared.executeUpdate();
+                estadoDevolver = Estado.EXITO;
+                
+            }else{
+                
+                estadoDevolver = Estado.ERROR_LISTA_REMOVE;
+                
+            }
+            
+            prepared.close();
+            conn.closeConn("borrar");
+            
+        } catch (Exception e) {
+            System.out.println("se rompe en borrar");
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
+    }
     
     protected static AlfaNumerico getForId(int idRecibido){
         
@@ -123,7 +184,6 @@ public class AlfaNumerico implements Serializable{
     protected static Estado getInformacion(){
         
         Estado estadoDevolver = Estado.ERROR;
-        System.out.println("Pregunta por los alfaNumericos");
         
         ResultSet rs = null;
         
@@ -141,7 +201,7 @@ public class AlfaNumerico implements Serializable{
                 
                 AlfaNumerico asd = nuevo(id, valor);
                 
-                System.out.println(id);
+                //System.out.println(id);
                 
                
 //                TODO quitar estos sout
@@ -422,13 +482,6 @@ public class AlfaNumerico implements Serializable{
     }//...fin funcion
 
     //Setter
-
-    /**
-     * Esta funcion fue reemplazada por una funcion autoincremental.
-     * 
-     * @deprecated 
-     * @param id 
-     */
     
     private void setId(int id) {
         this.id = id;

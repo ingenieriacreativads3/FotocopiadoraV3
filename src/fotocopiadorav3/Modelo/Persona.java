@@ -44,6 +44,64 @@ public class Persona{
     
     //Rutinas
     
+    public Estado modificar(AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, int dniRecibido, Direccion direccionRecibida){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        this.borrar();
+        Persona nuevoObjeto = Persona.nuevo(nombreRecibido, apellidoRecibido, dniRecibido, direccionRecibida);
+        nuevoObjeto.setId(this.id);
+        
+        if(nuevoObjeto.guardar() == Estado.EXITO){
+            
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            nuevoObjeto.borrar();
+            
+        }
+        
+        return estadoDevolver;
+    }
+    
+    public Estado borrar(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatementD(NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            
+            //System.out.println(prepared.toString());
+            
+            if(listaObjetos.remove(this)){
+                
+                prepared.executeUpdate();
+                estadoDevolver = Estado.EXITO;
+                
+            }else{
+                
+                estadoDevolver = Estado.ERROR_LISTA_REMOVE;
+                
+            }
+            
+            prepared.close();
+            conn.closeConn("borrar");
+            
+        } catch (Exception e) {
+            System.out.println("se rompe en borrar");
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
+    }
+    
     protected static Persona getForId(int idRecibido){
         
         Persona personaDevolver = OBJETO_INVALIDO;
@@ -147,7 +205,7 @@ public class Persona{
         
         Estado estadoDevolver = Estado.ERROR;
         
-        System.out.println("pregunta por las personas");
+        //System.out.println("pregunta por las personas");
         
         ResultSet rs = null;
         
@@ -172,7 +230,7 @@ public class Persona{
                 
                 Persona asd = Persona.nuevo(id, nombreObjeto, apellidoObjeto, dniObjeto, direccionObjeto, nombreObjeto.getId(), apellidoObjeto.getId(), direccionObjeto.getId());
                 
-                System.out.println(id);
+                //System.out.println(id);
                 
             }
             
@@ -383,6 +441,10 @@ public class Persona{
     }
     
     //Setter
+    
+    private void setId(int id) {
+        this.id = id;
+    }
 
     private Estado setIdNombre(int idNombre) {
         

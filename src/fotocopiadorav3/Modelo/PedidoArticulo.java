@@ -64,6 +64,64 @@ public class PedidoArticulo {
 
     //Rutinas
     
+    public Estado modificar(double subtotalRecibido, int cantidadRecibida, Estado estadoRecibido, Articulo articuloRecibido, Pedido pedidoRecibido, double importeConDescuentoRecibido, boolean  seCobroConDescuentoRecibido){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        this.borrar();
+        PedidoArticulo nuevoObjeto = PedidoArticulo.nuevo(subtotalRecibido, cantidadRecibida, estadoRecibido, articuloRecibido, pedidoRecibido, importeConDescuentoRecibido, seCobroConDescuentoRecibido);
+        nuevoObjeto.setId(this.id);
+        
+        if(nuevoObjeto.guardar() == Estado.EXITO){
+            
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            nuevoObjeto.borrar();
+            
+        }
+        
+        return estadoDevolver;
+    }
+    
+    public Estado borrar(){
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        ConexionMySql conn = new ConexionMySql();
+        PreparedStatement prepared = conn.getPreparedStatementD(NOMBRE_TABLA);
+        
+        try {
+            
+            prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
+            
+            //System.out.println(prepared.toString());
+            
+            if(listaObjetos.remove(this)){
+                
+                prepared.executeUpdate();
+                estadoDevolver = Estado.EXITO;
+                
+            }else{
+                
+                estadoDevolver = Estado.ERROR_LISTA_REMOVE;
+                
+            }
+            
+            prepared.close();
+            conn.closeConn("borrar");
+            
+        } catch (Exception e) {
+            System.out.println("se rompe en borrar");
+            
+            estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
+            
+        }
+        
+        return estadoDevolver;
+    }
+    
     protected static PedidoArticulo getForId(int idRecibido){
         
         PedidoArticulo pedidoArticuloDevolver = OBJETO_INVALIDO;
@@ -111,7 +169,7 @@ public class PedidoArticulo {
         ConexionMySql conn = new ConexionMySql();
         PreparedStatement prepared = conn.getPreparedStatement(CANTIDAD_DE_CAMPOS, NOMBRE_TABLA);
         
-        System.out.println("entra a guardar");
+        //System.out.println("entra a guardar");
         try {
             
             prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
@@ -245,7 +303,7 @@ public class PedidoArticulo {
 
         //Combinar ambos valores
         idActual = idActual + siguienteIdentificador;
-        System.out.println("el valor del siuiente id es " + idActual);
+        //System.out.println("el valor del siuiente id es " + idActual);
 
         //Devolver el nuevo identificador
         return idActual;
@@ -411,6 +469,10 @@ public class PedidoArticulo {
     }//...fin funcion
     
     //Setter
+    
+    private void setId(int id) {
+        this.id = id;
+    }
 
     private void setSubtotal(double subtotalRecibido) {
         this.subtotal = subtotalRecibido;

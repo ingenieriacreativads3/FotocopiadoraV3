@@ -66,13 +66,13 @@ public class ModeloInterfaz {
         
         boolean existe = false;
         
-        System.out.println("entra al modelo interfaz");
+        //System.out.println("entra al modelo interfaz");
         
         if(Usuario.existeNombreUsuario(nombreActual)){
             
             //...establecer un valor de exitencia
             existe = true;
-            System.out.println("existe");
+            //System.out.println("existe");
             
         }else{
             
