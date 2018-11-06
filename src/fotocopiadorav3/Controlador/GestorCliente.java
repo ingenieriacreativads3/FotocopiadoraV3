@@ -20,7 +20,10 @@ public class GestorCliente {
     
     protected Estado altaCliente(int legajo, AlfaNumerico nombreCliente, AlfaNumerico apellidoCliente, AlfaNumerico direccionClienteRecibido, int numeroCalle, int DNICliente){
         Estado Exito = Estado.ERROR;
-        if(datosCorrectos(legajo, nombreCliente, apellidoCliente, direccionClienteRecibido, numeroCalle)){
+        
+        System.out.println("entra a hacer un nuevo alumno");
+        //if(datosCorrectos(legajo, nombreCliente, apellidoCliente, direccionClienteRecibido, numeroCalle)){
+        if(true){
             
             Direccion direccionCliente = ModeloInterfaz.getDireccion(direccionClienteRecibido, numeroCalle);
             direccionCliente.guardar();
@@ -28,6 +31,7 @@ public class GestorCliente {
             nuevoCliente.guardar();
             Alumno nuevoAlumno = ModeloInterfaz.getNuevoAlumno(legajo, nuevoCliente);
             Exito = nuevoAlumno.guardar();
+            System.out.println("guarda un alumno nuevo");
             //Exito = ModeloInterfaz.getNuevoAlumno(legajo, personaRecibida);
             
         } else {
