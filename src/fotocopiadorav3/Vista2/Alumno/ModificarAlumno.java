@@ -211,12 +211,25 @@ public class ModificarAlumno extends javax.swing.JFrame {
         
         Alumno alumno = ModeloInterfaz.getAlumnoForId(idAlumno);
         
-        nombreTF.setText(alumno.getPersona().getNombre().toString());
-        apellidoTF.setText(alumno.getPersona().getApellido().toString());
-        legajoTF.setText(Integer.toString(alumno.getLegajo()));
-        domicilioTF.setText(alumno.getPersona().getDireccion().getCalle().toString());
-        alturaTF.setText(Integer.toString(alumno.getPersona().getDireccion().getNumero()));
-        dniTF.setText(Integer.toString(alumno.getPersona().getDni()));
+        //Verificar la existencia de todos los argumentos
+        String nombre = alumno.getPersona().getNombre().toString();
+        String apellido = alumno.getPersona().getApellido().toString();
+        
+        if(nombre != null){
+            
+            nombreTF.setText(nombre);
+            
+        }
+        
+        if(apellido != null){
+            
+            apellidoTF.setText(apellido);
+        }
+        
+        //legajoTF.setText(Integer.toString(alumno.getLegajo()));
+        //domicilioTF.setText(alumno.getPersona().getDireccion().getCalle().toString());
+        //alturaTF.setText(Integer.toString(alumno.getPersona().getDireccion().getNumero()));
+        //dniTF.setText(Integer.toString(alumno.getPersona().getDni()));
         
     }
     
