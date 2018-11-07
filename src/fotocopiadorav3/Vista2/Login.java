@@ -6,6 +6,7 @@
 package fotocopiadorav3.Vista2;
 
 import Otros.TextPrompt;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -60,6 +61,11 @@ public class Login extends javax.swing.JFrame {
         jTextFieldUsuario.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jTextFieldUsuario.setForeground(new java.awt.Color(102, 0, 153));
         jTextFieldUsuario.setToolTipText("Ingrese su nombre de usuario");
+        jTextFieldUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usuarioEnter(evt);
+            }
+        });
         jPanel1.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, 40));
 
         Titulo.setFont(new java.awt.Font("Arial Black", 2, 24)); // NOI18N
@@ -81,6 +87,11 @@ public class Login extends javax.swing.JFrame {
                 jButtonCancelarActionPerformed(evt);
             }
         });
+        jButtonCancelar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cancelarEnter(evt);
+            }
+        });
         jPanel1.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         jButtonAceptar.setBackground(new java.awt.Color(42, 16, 16));
@@ -95,12 +106,22 @@ public class Login extends javax.swing.JFrame {
                 jButtonAceptarMousePressed(evt);
             }
         });
+        jButtonAceptar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                aceptarEnter(evt);
+            }
+        });
         jPanel1.add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
 
         jPasswordField1.setBackground(new java.awt.Color(16, 16, 16));
         jPasswordField1.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(102, 0, 153));
         jPasswordField1.setToolTipText("Ingrese su contraseña");
+        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                contraseniaEnter(evt);
+            }
+        });
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 260, 40));
 
         jLabelUsuario1.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
@@ -114,6 +135,45 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAceptarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAceptarMousePressed
+        
+        iniciarSesion();
+        
+    }//GEN-LAST:event_jButtonAceptarMousePressed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        
+        salir();
+        
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void usuarioEnter(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioEnter
+        
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            iniciarSesion();
+        }
+    }//GEN-LAST:event_usuarioEnter
+
+    private void contraseniaEnter(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contraseniaEnter
+        
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            iniciarSesion();
+        }
+    }//GEN-LAST:event_contraseniaEnter
+
+    private void aceptarEnter(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aceptarEnter
+        
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            iniciarSesion();
+        }
+    }//GEN-LAST:event_aceptarEnter
+
+    private void cancelarEnter(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cancelarEnter
+        
+        salir();
+        
+    }//GEN-LAST:event_cancelarEnter
+    
+    private void iniciarSesion(){
         
         String usuario = jTextFieldUsuario.getText();
         String contrasenia = jPasswordField1.getText();
@@ -131,12 +191,14 @@ public class Login extends javax.swing.JFrame {
         
         Vista2Interfaz.renderizarPaginaPrincipal();
         
-    }//GEN-LAST:event_jButtonAceptarMousePressed
-
-    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+    }
+    
+    private void salir(){
+        
         System.exit(0);
-    }//GEN-LAST:event_jButtonCancelarActionPerformed
-
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
