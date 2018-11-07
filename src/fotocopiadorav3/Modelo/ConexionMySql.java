@@ -313,6 +313,18 @@ public class ConexionMySql {
         Pedido.getInformacion();
         PedidoArticulo.getInformacion();
         
+        System.out.println("recolecta toda la info");
+        
+        Alumno alumno = Alumno.getForId(47);
+        if(alumno.getPersona().getNombre().toString() != null){
+            
+            System.out.println("nombre del alumno" + alumno.getPersona().getNombre().toString());
+            
+        }else{
+            
+            System.out.println("el nombre es nulo");
+        }
+        
     }
     
     public static void addNewEstado(Estado estadoRecibido){

@@ -206,9 +206,9 @@ public class ModeloInterfaz {
     
     public static Alumno getAlumnoForId(int idAlumnoRecibido){
         
-        Alumno alumnoDevolver = Alumno.getForId(idAlumnoRecibido);
+        //Alumno alumnoDevolver = Alumno.getForId(idAlumnoRecibido);
         
-        return alumnoDevolver;
+        return Alumno.getForId(idAlumnoRecibido);
     }
     
     public static Articulo getArticuloForId(int idArticuloRecibo){

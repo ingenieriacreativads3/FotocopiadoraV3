@@ -27,7 +27,7 @@ public class Alumno{
     private Persona persona;
     private int idPersona;
             
-    protected final static Alumno OBJETO_INVALIDO = new Alumno();
+    public final static Alumno OBJETO_INVALIDO = new Alumno();
 
     private static Set<Alumno> listaObjetos = new HashSet<>();
     
@@ -93,13 +93,14 @@ public class Alumno{
     
     protected static Alumno getForId(int idRecibido){
         
-        Alumno alumnoDevolver = OBJETO_INVALIDO;
+        Alumno alumnoDevolver = null;
         
         Estado seObtuvo = Estado.EXITO;
         //Estado seObtuvo = getInformacion();
         
         if(listaObjetos != null){
             
+            System.out.println("la lista no es nula");
             if(seObtuvo == Estado.EXITO){
 
                 for(Alumno alumnoActual : listaObjetos){
@@ -288,9 +289,11 @@ public class Alumno{
         //Crear un nuevo objeto
         Alumno objetoNuevo = new Alumno(identificador);
 
+        System.out.println("antes de guardar size: " + listaObjetos.size());
         //Agregar a la lista de control
         Estado seAgrego = addNewObjeto(objetoNuevo);
 
+        System.out.println("despues de guardar size: " + listaObjetos.size());
         //Si se agrega con exito
         if(seAgrego == Estado.EXITO){
             

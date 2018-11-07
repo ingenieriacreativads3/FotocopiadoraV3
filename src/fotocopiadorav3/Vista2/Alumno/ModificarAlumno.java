@@ -31,6 +31,7 @@ public class ModificarAlumno extends javax.swing.JFrame {
         TextPrompt textPromptAltura = new TextPrompt("Ingrese la altura de su domicilio", alturaTF);
         TextPrompt textPromptDni = new TextPrompt("Ingrese su número de documento", dniTF);
         
+        System.out.println("id alumno par emi: " + idAlumno);
         cargarDatosAlumno(idAlumno);
         
     }
@@ -209,7 +210,22 @@ public class ModificarAlumno extends javax.swing.JFrame {
     
     public void cargarDatosAlumno(int idAlumno){
         
+        System.out.println("id alumno: " + idAlumno);
         Alumno alumno = ModeloInterfaz.getAlumnoForId(idAlumno);
+        
+        System.out.println("tamanio de lista alumnos: " + ModeloInterfaz.getListaAlumnos().size());
+        
+        if(alumno != null){
+            
+            System.out.println("nombre del alumno:" + alumno.getPersona().getNombre().toString());
+            
+        }else{
+            
+            System.out.println(" el numbre es nulo");
+            
+        }
+        
+        System.out.println("nombre del alumno:" + alumno.getPersona().getNombre().toString());
         
         //Verificar la existencia de todos los argumentos
         String nombre = alumno.getPersona().getNombre().toString();

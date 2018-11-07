@@ -228,7 +228,9 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         
         if (listaAlumnos.getTabla().getModel().getValueAt(listaAlumnos.getTabla().getSelectedRow(), 0)!=null) {
             
+            
             int idAlumno = (int) listaAlumnos.getTabla().getModel().getValueAt(listaAlumnos.getTabla().getSelectedRow(), 0);
+            System.out.println("id alumno: " + idAlumno);
             Vista2Interfaz.renderizarModificarAlumno(idAlumno);
             
         }
