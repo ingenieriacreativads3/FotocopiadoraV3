@@ -75,7 +75,10 @@ public class Vista2Interfaz {
         } else{
             
             paginaPrincipal.getAreaTrabajo().setSelectedIndex(0);
-            listaAlumnos.recargarTabla();
+            
+            Set<Alumno> alumnos = Vista2Interfaz.obtenerListaAlumnos();
+        
+            listaAlumnos.recargarTabla(alumnos);
             
         }
         
