@@ -109,8 +109,34 @@ public class ListaAlumnos extends javax.swing.JFrame {
         }
     }
     
-    public void recargarTabla(){
+    public void recargarTabla(Set<Alumno> alumnos){
         
+        DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
+        
+        int id=0;
+        String nombre="";
+        String apellido="";
+        int legajo=0;
+        String domicilio="";
+        int altura=0;
+        int dni=0;
+        
+        if (!alumnos.isEmpty()) {
+            
+            for (Alumno alumno : alumnos) {
+
+                id=alumno.getId();
+                nombre=alumno.getPersona().getNombre().toString();
+                apellido=alumno.getPersona().getApellido().toString();
+                legajo=alumno.getLegajo();
+                domicilio=alumno.getPersona().getDireccion().getCalle().toString();
+                altura=alumno.getPersona().getDireccion().getNumero();
+                dni=alumno.getPersona().getDni();
+
+                defaultTableModel.addRow(new Object[]{id, nombre, apellido, legajo, domicilio, altura, dni});
+
+            }
+        }
     }
     
     public boolean isExiste() {
