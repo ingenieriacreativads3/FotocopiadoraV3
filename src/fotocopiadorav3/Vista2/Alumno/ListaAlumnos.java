@@ -16,7 +16,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Toshiba
  */
 public class ListaAlumnos extends javax.swing.JFrame {
-
+    
+    private boolean existe=false;
+    
     /**
      * Creates new form ListaAlumnos
      */
@@ -105,6 +107,18 @@ public class ListaAlumnos extends javax.swing.JFrame {
 
             }
         }
+    }
+    
+    public void recargarTabla(){
+        
+    }
+    
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
     }
 
     public JTable getTabla() {

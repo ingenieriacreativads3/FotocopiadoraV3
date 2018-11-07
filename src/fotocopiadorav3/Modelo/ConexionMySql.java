@@ -118,17 +118,21 @@ public class ConexionMySql {
         
         try {
             
+            System.out.println("1");
             Class.forName(Environment.DRIVER).newInstance();
             String connectionUrl = Environment.URL;
             String connectionUser = Environment.USERNAME;
             String connectionPassword = Environment.PASSWORD;
+            System.out.println("2");
             this.conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
+            System.out.println("3");
             prepStmtDevolver = this.conn.prepareStatement(sqlStmt);
             
         } catch (Exception e) {
             
             //..se establecio un valor por defecto
             System.out.println("se rompe cuando incia la sesion la conexion");
+            e.printStackTrace();
             
         }
         
