@@ -5,17 +5,31 @@
  */
 package fotocopiadorav3.Vista2.Usuario;
 
+import fotocopiadorav3.Modelo.Usuario;
+import fotocopiadorav3.Vista2.Vista2Interfaz;
+import java.util.Set;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Toshiba
  */
 public class ListaUsuarios extends javax.swing.JFrame {
-
+    
+    private boolean existe=false;
+    
     /**
      * Creates new form ListaUsuarios
      */
     public ListaUsuarios() {
+        
         initComponents();
+        
+        Set<Usuario> usuarios = Vista2Interfaz.obtenerListaUsuarios();
+        
+        cargarTabla(usuarios);
+        
     }
 
     /**
@@ -34,15 +48,20 @@ public class ListaUsuarios extends javax.swing.JFrame {
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Nombre", "Apellido", "Nombre de Usuario", "Domicilio", "Altura", "Dni"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(Tabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -65,6 +84,86 @@ public class ListaUsuarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cargarTabla(Set<Usuario> usuarios){
+        
+        DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
+        
+        int id=0;
+        String nombre="";
+        String apellido="";
+        String nombreUsuario="";
+        String domicilio="";
+        int altura=0;
+        int dni=0;
+        
+        if (!usuarios.isEmpty()) {
+            
+            for (Usuario usuario : usuarios) {
+
+                id=usuario.getId();
+                nombre=usuario.getPersona().getNombre().toString();
+                apellido=usuario.getPersona().getApellido().toString();
+                nombreUsuario=usuario.getNombreUsuario().toString();
+                domicilio=usuario.getPersona().getDireccion().getCalle().toString();
+                altura=usuario.getPersona().getDireccion().getNumero();
+                dni=usuario.getPersona().getDni();
+
+                defaultTableModel.addRow(new Object[]{id, nombre, apellido, nombreUsuario, domicilio, altura, dni});
+
+            }
+        }
+    }
+    
+    public void recargarTabla(Set<Usuario> usuarios){
+        
+        DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
+        
+        int cantidadFilas = defaultTableModel.getRowCount(); 
+        
+        for (int i = 0; i < cantidadFilas; i++) {
+            
+            defaultTableModel.removeRow(i);
+            
+        }
+        
+        int id=0;
+        String nombre="";
+        String apellido="";
+        String nombreUsuario="";
+        String domicilio="";
+        int altura=0;
+        int dni=0;
+        
+        if (!usuarios.isEmpty()) {
+            
+            for (Usuario usuario : usuarios) {
+
+                id=usuario.getId();
+                nombre=usuario.getPersona().getNombre().toString();
+                apellido=usuario.getPersona().getApellido().toString();
+                nombreUsuario=usuario.getNombreUsuario().toString();
+                domicilio=usuario.getPersona().getDireccion().getCalle().toString();
+                altura=usuario.getPersona().getDireccion().getNumero();
+                dni=usuario.getPersona().getDni();
+
+                defaultTableModel.addRow(new Object[]{id, nombre, apellido, nombreUsuario, domicilio, altura, dni});
+
+            }
+        }
+    }
+    
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
+    }
+
+    public JTable getTabla() {
+        return Tabla;
+    }
+    
     /**
      * @param args the command line arguments
      */

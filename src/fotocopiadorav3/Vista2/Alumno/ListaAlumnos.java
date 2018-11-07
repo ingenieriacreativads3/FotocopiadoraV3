@@ -53,7 +53,15 @@ public class ListaAlumnos extends javax.swing.JFrame {
             new String [] {
                 "Id", "Nombre", "Apellido", "Legajo", "Domicilio", "Altura", "Dni"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         scrollpane.setViewportView(Tabla);
         if (Tabla.getColumnModel().getColumnCount() > 0) {
             Tabla.getColumnModel().getColumn(0).setResizable(false);

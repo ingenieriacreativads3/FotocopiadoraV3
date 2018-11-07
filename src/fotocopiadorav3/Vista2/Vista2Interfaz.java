@@ -18,6 +18,7 @@ import fotocopiadorav3.Modelo.Alumno;
 import fotocopiadorav3.Modelo.Articulo;
 import fotocopiadorav3.Modelo.Usuario;
 import fotocopiadorav3.Modelo.ModeloInterfaz;
+import fotocopiadorav3.Modelo.Pedido;
 import fotocopiadorav3.Vista2.Alumno.ListaAlumnos;
 import fotocopiadorav3.Vista2.Articulo.ListaArticulos;
 import fotocopiadorav3.Vista2.Pedido.ListaPedidos;
@@ -35,7 +36,11 @@ public class Vista2Interfaz {
     private static ListaAlumnos listaAlumnos = new ListaAlumnos();
     private static ListaArticulos listaArticulos = new ListaArticulos();
     private static ListaUsuarios listaUsuarios = new ListaUsuarios();
+    private static ListaPedidos listaPedidos = new ListaPedidos();
     private static int numeroListaAlumnosTab;
+    private static int numeroListaArticulosTab;
+    private static int numeroListaUsuariosTab;
+    private static int numeroListaPedidosTab;
     
     public static void renderizarLogin(){
         
@@ -82,34 +87,66 @@ public class Vista2Interfaz {
             listaAlumnos.recargarTabla(alumnos);
             
         }
-        
     }
 
     public static void renderizarListadoUsuarios(){
         
-        ListaUsuarios listaUsuarios = new ListaUsuarios();
-        JPanel panel = new JPanel();
-        panel.add(listaUsuarios.getContentPane());
-        paginaPrincipal.getAreaTrabajo().addTab("Listado Usuarios", panel);
+        if (!listaUsuarios.isExiste()) {
+            
+            listaUsuarios.setExiste(true);
+            JPanel panel = new JPanel();
+            panel.add(listaUsuarios.getContentPane());
+            paginaPrincipal.getAreaTrabajo().addTab("Listado Usuarios", panel);
+            numeroListaUsuariosTab = paginaPrincipal.getAreaTrabajo().getTabCount()-1;
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaUsuariosTab);
         
+        } else{
+            
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaUsuariosTab);
+            Set<Usuario> usuarios = Vista2Interfaz.obtenerListaUsuarios();
+            listaUsuarios.recargarTabla(usuarios);
+            
+        }
     }
 
     public static void renderizarListadoArticulos(){
         
-        ListaArticulos listaArticulos = new ListaArticulos();
-        JPanel panel = new JPanel();
-        panel.add(listaArticulos.getContentPane());
-        paginaPrincipal.getAreaTrabajo().addTab("Listado Artículos", panel);
+        if (!listaArticulos.isExiste()) {
+            
+            listaArticulos.setExiste(true);
+            JPanel panel = new JPanel();
+            panel.add(listaArticulos.getContentPane());
+            paginaPrincipal.getAreaTrabajo().addTab("Listado Artículos", panel);
+            numeroListaArticulosTab = paginaPrincipal.getAreaTrabajo().getTabCount()-1;
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaArticulosTab);
         
+        } else{
+            
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaArticulosTab);
+            Set<Articulo> articulos = Vista2Interfaz.obtenerListaArticulos();
+            listaArticulos.recargarTabla(articulos);
+            
+        }
     }
 
     public static void renderizarListadoPedidos(){
         
-        ListaPedidos listaPedidos = new ListaPedidos();
-        JPanel panel = new JPanel();
-        panel.add(listaPedidos.getContentPane());
-        paginaPrincipal.getAreaTrabajo().addTab("Listado Pedidos", panel);
+        if (!listaPedidos.isExiste()) {
+            
+            listaPedidos.setExiste(true);
+            JPanel panel = new JPanel();
+            panel.add(listaPedidos.getContentPane());
+            paginaPrincipal.getAreaTrabajo().addTab("Listado Pedidos", panel);
+            numeroListaPedidosTab = paginaPrincipal.getAreaTrabajo().getTabCount()-1;
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaPedidosTab);
         
+        } else{
+            
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaPedidosTab);
+            Set<Pedido> pedidos = Vista2Interfaz.obtenerListaPedidos();
+            listaPedidos.recargarTabla(pedidos);
+            
+        }
     }
 
     public static void renderizarNuevoPedido(){
@@ -289,13 +326,13 @@ public class Vista2Interfaz {
         
     }
     
-//    public static Set<Pedido> obtenerListaPedidos(){
-//        
-//        Set<Pedido> listaPedidos = ModeloInterfaz.getListaPedidos();
-//        
-//        return listaPedidos;
-//        
-//    }
+    public static Set<Pedido> obtenerListaPedidos(){
+        
+        Set<Pedido> listaPedidos = ModeloInterfaz.getListaPedidos();
+        
+        return listaPedidos;
+        
+    }
     
     public static void guardar(){
         

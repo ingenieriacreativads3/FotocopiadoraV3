@@ -5,17 +5,31 @@
  */
 package fotocopiadorav3.Vista2.Articulo;
 
+import fotocopiadorav3.Modelo.Articulo;
+import fotocopiadorav3.Vista2.Vista2Interfaz;
+import java.util.Set;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Toshiba
  */
 public class ListaArticulos extends javax.swing.JFrame {
-
+    
+    private boolean existe=false;
+    
     /**
      * Creates new form ListaArticulos
      */
     public ListaArticulos() {
+        
         initComponents();
+        
+        Set<Articulo> articulos = Vista2Interfaz.obtenerListaArticulos();
+        
+        cargarTabla(articulos);
+        
     }
 
     /**
@@ -34,15 +48,20 @@ public class ListaArticulos extends javax.swing.JFrame {
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Nombre", "Categoría", "Materia", "Editorial", "Edición", "Autor", "Ruta Documento", "Precio"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(Tabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -65,6 +84,94 @@ public class ListaArticulos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cargarTabla(Set<Articulo> articulos){
+        
+        DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
+        
+        int id=0;
+        String nombre="";
+        String categoria="";
+        String editorial="";
+        String edicion="";
+        String materia="";
+        String rutaDocumento="";
+        String autor="";
+        double precio=0.0;
+        
+        if (!articulos.isEmpty()) {
+            
+            for (Articulo articulo : articulos) {
+
+                id=articulo.getId();
+                nombre=articulo.getNombre().toString();
+                categoria=articulo.getCategoria().toString();
+                editorial=articulo.getEditorial().toString();
+                edicion=articulo.getEdicion().toString();
+                materia=articulo.getMateria().toString();
+                rutaDocumento=articulo.getDocumento().toString();
+                autor=articulo.getAutor().toString();
+                precio=articulo.getPrecio();
+
+                defaultTableModel.addRow(new Object[]{id, nombre, categoria, materia, editorial, edicion, autor, rutaDocumento, precio});
+
+            }
+        }
+    }
+    
+    public void recargarTabla(Set<Articulo> articulos){
+        
+        DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
+        
+        int cantidadFilas = defaultTableModel.getRowCount(); 
+        
+        for (int i = 0; i < cantidadFilas; i++) {
+            
+            defaultTableModel.removeRow(i);
+            
+        }
+        
+        int id=0;
+        String nombre="";
+        String categoria="";
+        String editorial="";
+        String edicion="";
+        String materia="";
+        String rutaDocumento="";
+        String autor="";
+        double precio=0.0;
+        
+        if (!articulos.isEmpty()) {
+            
+            for (Articulo articulo : articulos) {
+
+                id=articulo.getId();
+                nombre=articulo.getNombre().toString();
+                categoria=articulo.getCategoria().toString();
+                editorial=articulo.getEditorial().toString();
+                edicion=articulo.getEdicion().toString();
+                materia=articulo.getMateria().toString();
+                rutaDocumento=articulo.getDocumento().toString();
+                autor=articulo.getAutor().toString();
+                precio=articulo.getPrecio();
+
+                defaultTableModel.addRow(new Object[]{id, nombre, categoria, materia, editorial, edicion, autor, rutaDocumento, precio});
+
+            }
+        }
+    }
+    
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
+    }
+
+    public JTable getTabla() {
+        return Tabla;
+    }
+    
     /**
      * @param args the command line arguments
      */
