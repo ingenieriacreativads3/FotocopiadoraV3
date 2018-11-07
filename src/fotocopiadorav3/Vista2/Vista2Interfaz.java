@@ -65,9 +65,19 @@ public class Vista2Interfaz {
 
     public static void renderizarListadoAlumnos(){
         
-        JPanel panel = new JPanel();
-        panel.add(listaAlumnos.getContentPane());
-        paginaPrincipal.getAreaTrabajo().addTab("Listado Alumnos", panel);
+        if (!listaAlumnos.isExiste()) {
+            
+            listaAlumnos.setExiste(true);
+            JPanel panel = new JPanel();
+            panel.add(listaAlumnos.getContentPane());
+            paginaPrincipal.getAreaTrabajo().addTab("Listado Alumnos", panel);
+        
+        } else{
+            
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(0);
+            listaAlumnos.recargarTabla();
+            
+        }
         
     }
 

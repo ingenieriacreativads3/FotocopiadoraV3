@@ -118,17 +118,21 @@ public class ConexionMySql {
         
         try {
             
+            System.out.println("1");
             Class.forName(Environment.DRIVER).newInstance();
             String connectionUrl = Environment.URL;
             String connectionUser = Environment.USERNAME;
             String connectionPassword = Environment.PASSWORD;
+            System.out.println("2");
             this.conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
+            System.out.println("3");
             prepStmtDevolver = this.conn.prepareStatement(sqlStmt);
             
         } catch (Exception e) {
             
             //..se establecio un valor por defecto
             System.out.println("se rompe cuando incia la sesion la conexion");
+            e.printStackTrace();
             
         }
         
@@ -312,18 +316,6 @@ public class ConexionMySql {
         Articulo.getInformacion();
         Pedido.getInformacion();
         PedidoArticulo.getInformacion();
-        
-        System.out.println("recolecta toda la info");
-        
-        Alumno alumno = Alumno.getForId(47);
-        if(alumno.getPersona().getNombre().toString() != null){
-            
-            System.out.println("nombre del alumno" + alumno.getPersona().getNombre().toString());
-            
-        }else{
-            
-            System.out.println("el nombre es nulo");
-        }
         
     }
     

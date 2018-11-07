@@ -31,9 +31,6 @@ public class ModificarAlumno extends javax.swing.JFrame {
         TextPrompt textPromptAltura = new TextPrompt("Ingrese la altura de su domicilio", alturaTF);
         TextPrompt textPromptDni = new TextPrompt("Ingrese su número de documento", dniTF);
         
-        System.out.println("id alumno par emi: " + idAlumno);
-        cargarDatosAlumno(idAlumno);
-        
     }
 
     /**
@@ -193,6 +190,7 @@ public class ModificarAlumno extends javax.swing.JFrame {
         String domicilio=domicilioTF.getText();
         String altura=alturaTF.getText();
         String dni=dniTF.getText();
+        System.out.println("nombre:" + nombre);
 
         Vista2Interfaz.enviarDatosModificarAlumno(nombre, apellido, legajo, domicilio, altura, dni);
     }//GEN-LAST:event_aceptarActionPerformed
@@ -210,47 +208,22 @@ public class ModificarAlumno extends javax.swing.JFrame {
     
     public void cargarDatosAlumno(int idAlumno){
         
-        System.out.println("id alumno: " + idAlumno);
         Alumno alumno = ModeloInterfaz.getAlumnoForId(idAlumno);
         
-        System.out.println("tamanio de lista alumnos: " + ModeloInterfaz.getListaAlumnos().size());
-        
-        if(alumno != null){
-            
-            System.out.println("nombre del alumno:" + alumno.getPersona().getNombre().toString());
-            
-        }else{
-            
-            System.out.println(" el numbre es nulo");
-            
-        }
-        
-        System.out.println("nombre del alumno:" + alumno.getPersona().getNombre().toString());
-        
-        //Verificar la existencia de todos los argumentos
-        String nombre = alumno.getPersona().getNombre().toString();
-        String apellido = alumno.getPersona().getApellido().toString();
-        
-        if(nombre != null){
-            
-            nombreTF.setText(nombre);
-            
-        }
-        
-        if(apellido != null){
-            
-            apellidoTF.setText(apellido);
-        }
-        
-        //legajoTF.setText(Integer.toString(alumno.getLegajo()));
-        //domicilioTF.setText(alumno.getPersona().getDireccion().getCalle().toString());
-        //alturaTF.setText(Integer.toString(alumno.getPersona().getDireccion().getNumero()));
-        //dniTF.setText(Integer.toString(alumno.getPersona().getDni()));
+        nombreTF.setText(alumno.getPersona().getNombre().toString());
+        apellidoTF.setText(alumno.getPersona().getApellido().toString());
+        legajoTF.setText(Integer.toString(alumno.getLegajo()));
+        domicilioTF.setText(alumno.getPersona().getDireccion().getCalle().toString());
+        alturaTF.setText(Integer.toString(alumno.getPersona().getDireccion().getNumero()));
+        dniTF.setText(Integer.toString(alumno.getPersona().getDni()));
         
     }
     
     public void setIdAlumno(int idAlumno) {
         this.idAlumno = idAlumno;
+        
+        cargarDatosAlumno(idAlumno);
+        
     }
 
     /**
