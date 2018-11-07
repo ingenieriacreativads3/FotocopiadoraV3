@@ -35,6 +35,7 @@ public class Vista2Interfaz {
     private static ListaAlumnos listaAlumnos = new ListaAlumnos();
     private static ListaArticulos listaArticulos = new ListaArticulos();
     private static ListaUsuarios listaUsuarios = new ListaUsuarios();
+    private static int numeroListaAlumnosTab;
     
     public static void renderizarLogin(){
         
@@ -71,13 +72,13 @@ public class Vista2Interfaz {
             JPanel panel = new JPanel();
             panel.add(listaAlumnos.getContentPane());
             paginaPrincipal.getAreaTrabajo().addTab("Listado Alumnos", panel);
+            numeroListaAlumnosTab = paginaPrincipal.getAreaTrabajo().getTabCount()-1;
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaAlumnosTab);
         
         } else{
             
-            paginaPrincipal.getAreaTrabajo().setSelectedIndex(0);
-            
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaAlumnosTab);
             Set<Alumno> alumnos = Vista2Interfaz.obtenerListaAlumnos();
-        
             listaAlumnos.recargarTabla(alumnos);
             
         }

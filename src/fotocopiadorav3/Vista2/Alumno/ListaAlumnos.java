@@ -113,6 +113,14 @@ public class ListaAlumnos extends javax.swing.JFrame {
         
         DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
         
+        int cantidadFilas = defaultTableModel.getRowCount(); 
+        
+        for (int i = 0; i < cantidadFilas; i++) {
+            
+            defaultTableModel.removeRow(i);
+            
+        }
+        
         int id=0;
         String nombre="";
         String apellido="";
