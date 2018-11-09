@@ -231,56 +231,41 @@ public class ControladorInterfaz extends Application{
     *
     */
     
-    /**
-     * Clase que se encarga de la creacion del pedido
-     * @param nombreYApellidoPersona
-     * @param identificadorDocumento
-     * @param seña
-     * Se calcula fecha actual?
-     * @return: true si se creo el pedido, false en caso contrario
-     */
-    public String crearPedido(String nombreYApellidoPersona, String identificadorDocumento, double seña){
-        
-        String identificadorPedido;
-        
-        try {
-            identificadorPedido = GestorPedidos.crearPedido (nombreYApellidoPersona, identificadorDocumento, seña);
-            return identificadorPedido;
-        }catch (Exception e) {
-            return null;
-        }
-    }
     
-    /*
-    crea un pedido
-    */
-    public void nuevoPedido(String nombre, String apellido, List<String>documento, int cantidad, float seña){
+    public Estado nuevoPedido(String IDAlumnoRecibido, String importeRecibido, String SeniaRecibido, List<Articulo>Articulos){
         //se toman los datos de los parametros
         //se crea un pedido con sus items
-        //ModeloInterfaz.
+        int IDAlumno = Integer.valueOf(IDAlumnoRecibido);
+        double importe = Double.valueOf(importeRecibido);
+        double senia = Double.valueOf(SeniaRecibido);
+        java.sql.Date fechaActual = new java.sql.Date(0);
+        
+        
+        
+        Estado exitoAlta = GestorPedidos.crearPedido(IDAlumno, fechaActual, importe, senia);
+        
+        return exitoAlta;
         
         //se genera un estado: Pendiente
         //se persisten
     }
     
     //En el modificar me deberia llegar un documento
-    public void modificaconPedido(){
+    public Estado modificacionPedido(String IDPedidoRecibido, String IDAlumnoRecibido, String importeRecibido, String SeniaRecibido, String fechaPedidoRecibido, String codigoTransaccionRecibido){
+        Estado exitoModificado = Estado.ERROR;
         
-    }
-    
-    //se cambia el estado de pedido, si ya esta impreso el pedido va al inventario como "cancelado"
-    public void cancelarPedido(){
+        int IDAlumno = Integer.valueOf(IDAlumnoRecibido);
+        double importe = Double.valueOf(importeRecibido);
+        double senia = Double.valueOf(SeniaRecibido);
+        java.sql.Date fechaPedido = java.sql.Date.valueOf(fechaPedidoRecibido);
         
-    }
-    
-    protected String getNumeroDeTransaccion(){
-        String IDPedido;
+        int IDPedido = Integer.valueOf(IDPedidoRecibido);
         
-        AlfaNumerico codigo = ModeloInterfaz.getSiguienteCodigoTransaccion();
-        codigo.guardar();
-        IDPedido = codigo.toString();
+        AlfaNumerico codigoTransaccion = ModeloInterfaz.getAlfaNumerico(codigoTransaccionRecibido);
         
-        return IDPedido;
+        exitoModificado = GestorPedidos.modificarPedido(IDPedido, IDAlumno, importe, senia, fechaPedido, codigoTransaccion);
+        
+        return exitoModificado;
     }
     
     

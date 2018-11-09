@@ -19,27 +19,28 @@ public class GestorPedido {
      *
      * El method deberia devolver una clave de pedido. La clave de pedido es el
      * valor con el cual un cliente puede retirar el pedido.
-     * @param nombreYApellidoPersona
-     * @param IDFotocopia
-     * @param seña
+     * @param IDAlumno
+     * @param fechaActual
+     * @param importe
+     * @param senia
      * @return 
      */
-    protected String crearPedido(String nombreYApellidoPersona, String IDFotocopia, double seña) {
+    protected Estado crearPedido(int IDAlumno, java.sql.Date fechaActual, double importe, double senia) {
         /**
          * Se inicializan las variabes. Generar una clave de pedido "IDPedido"
          * Persistir en la base de datos un nuevo pedido. Devolver un ID de
          * pedido
          *
          */
-        String IDPedido = null;
-        
-        //ModeloInterfaz.
-        //DB.Persistir(Pedido);
-        
-        //Modelo.getCodigo();
-        AlfaNumerico codigo = ModeloInterfaz.getSiguienteCodigoTransaccion();
 
-        return codigo.toString();
+        Estado exitoAlta = Estado.ERROR;
+        
+        Alumno alumnoExistente = ModeloInterfaz.getAlumnoForId(IDAlumno);
+        
+        Pedido nuevoPedido = ModeloInterfaz.getNuevoPedido(fechaActual, importe, alumnoExistente, ModeloInterfaz.getSiguienteCodigoTransaccion(), importe);
+        exitoAlta = nuevoPedido.guardar();
+
+        return exitoAlta;
     }
 
     /**
@@ -48,34 +49,13 @@ public class GestorPedido {
      * Agrega libros o quita libros del pedido.
      *
      */
-    protected void modificarPedido() {
-
-    }
-
-    /**
-     * Method que deja sentado que el fotocopiado de algun libro fue hecho
-     */
-    protected void registrarFotocopiado() {
-
-    }
-
-    /**
-     * Method para cancelar pedido.
-     * 
-     */
-    protected void cancelarPedido() {
-
-    }
-
-    /**
-     * Method que registra un retiro de pedido. Recibe como paremetro un numero
-     * de pedido.
-     */
-    protected void retirarPedido() {
-
-    }
-
-    protected void registrarItemPedido(){
+    protected Estado modificarPedido(int IDPedido, int IDAlumno, double importe, double senia, java.sql.Date fechaPedido, AlfaNumerico codigoTransaccion) {
+        Estado exitoModificado = Estado.ERROR;
         
+        Pedido pedidoAModificar = ModeloInterfaz.getPedidoForId(IDPedido);
+        Alumno alumnoDelPedido = ModeloInterfaz.getAlumnoForId(IDAlumno);
+        exitoModificado = pedidoAModificar.modificar(fechaPedido, importe, alumnoDelPedido, codigoTransaccion, importe);
+        
+        return exitoModificado;
     }
 }
