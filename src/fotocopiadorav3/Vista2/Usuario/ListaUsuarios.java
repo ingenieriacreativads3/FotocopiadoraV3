@@ -28,7 +28,7 @@ public class ListaUsuarios extends javax.swing.JFrame {
         
         Set<Usuario> usuarios = Vista2Interfaz.obtenerListaUsuarios();
         
-        cargarTabla(usuarios);
+        //cargarTabla(usuarios);
         
     }
 
