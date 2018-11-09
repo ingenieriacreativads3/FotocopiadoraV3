@@ -10,25 +10,41 @@ public class Validador{
     
     public boolean validar(JTextField campo){
         
-        boolean datosValidos;
+        boolean datosValidos = false;
         
         if (!campo.getText().isEmpty()) {
             
-            campo.setBorder(BorderFactory.createLineBorder(Color.green));
-            //inicio validación específica
+            datosValidos = validarCampo();
             
-            //fin validación
-            datosValidos = true;
+            if(datosValidos){
+                
+                campo.setBorder(BorderFactory.createLineBorder(Color.green));
+                
+            } else{
+                
+                campo.setBorder(BorderFactory.createLineBorder(Color.red));
+                
+            }
             
         } else{
             
             campo.setBorder(BorderFactory.createLineBorder(Color.red));
-            datosValidos = false;
             
         }
         
         return datosValidos;
     }
+    
+    private boolean validarCampo(){
+        
+        
+        return true;
+    }
+    
+    
+    
+    
+    
     
     
 }
