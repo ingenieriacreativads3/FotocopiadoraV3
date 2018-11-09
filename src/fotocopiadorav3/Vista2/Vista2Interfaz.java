@@ -56,6 +56,15 @@ public class Vista2Interfaz {
         
     }
     
+    public static void renderizarMensajeConfirmacion(String titulo, String mensaje){
+        
+        MensajeConfirmacion mensajeConfirmacion = new MensajeConfirmacion();
+        mensajeConfirmacion.setTituloConfirmacion(titulo);
+        mensajeConfirmacion.setMensajeConfirmacion(mensaje);
+        mensajeConfirmacion.setVisible(true);
+        
+    }
+    
     public static void renderizarMensajeError(String codigo, String mensaje){
         
         MensajeError mensajeError = new MensajeError();

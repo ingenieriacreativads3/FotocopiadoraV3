@@ -50,6 +50,9 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         Alumnos = new javax.swing.JButton();
         Usuarios = new javax.swing.JButton();
         Guardar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         BarraMenuSuperior = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         PanelPrincipalCentral = new javax.swing.JPanel();
@@ -183,6 +186,18 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
             }
         });
         BarraMenuLateral.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 370, 50));
+
+        jButton1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jButton1.setText("Eliminar Pedido");
+        BarraMenuLateral.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 370, -1));
+
+        jButton2.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jButton2.setText("Eliminar Artículo");
+        BarraMenuLateral.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 370, -1));
+
+        jButton3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jButton3.setText("Eliminar Alumno");
+        BarraMenuLateral.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 370, -1));
 
         getContentPane().add(BarraMenuLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 370, 620));
 
@@ -325,6 +340,9 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     private javax.swing.JButton Pedidos;
     private javax.swing.JButton Usuarios;
     private javax.swing.JTabbedPane areaTrabajo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton modificarArticulo;
     private javax.swing.JButton modificarCliente;
