@@ -195,6 +195,15 @@ public class ModeloInterfaz {
         return materiaDevolver;
     }
     
+    public static PedidoArticulo getNuevoPedidoArticulo(double subtotalRecibido, int cantidadRecibida, Estado estadoRecibido, Articulo articuloRecibido, Pedido pedidoRecibido, double importeConDescuentoRecibido, boolean  seCobroConDescuentoRecibido){
+        
+        PedidoArticulo pedidoArticuloDevolver = PedidoArticulo.OBJETO_INVALIDO;
+        
+        pedidoArticuloDevolver = PedidoArticulo.nuevo(subtotalRecibido, cantidadRecibida, estadoRecibido, articuloRecibido, pedidoRecibido, importeConDescuentoRecibido, seCobroConDescuentoRecibido);
+        
+        return pedidoArticuloDevolver;
+    }
+    
     //getForId
     
     public static AlfaNumerico getAlfanumericoForId(int idAlfanumericoRecibido){
