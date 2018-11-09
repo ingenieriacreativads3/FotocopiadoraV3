@@ -91,6 +91,8 @@ public class Vista2Interfaz {
             default: renderizarMensajeError("", "");
         }
         
+        mensajeConfirmacion.setTipoElemento(tipoMensaje);
+        mensajeConfirmacion.setIdElemento(idElemento);
         mensajeConfirmacion.setTituloConfirmacion(titulo);
         mensajeConfirmacion.setMensajeConfirmacion(mensaje);
         mensajeConfirmacion.setVisible(true);

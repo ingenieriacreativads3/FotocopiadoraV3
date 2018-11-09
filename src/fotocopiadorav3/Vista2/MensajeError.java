@@ -79,7 +79,9 @@ public class MensajeError extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+        
         dispose();
+        
     }//GEN-LAST:event_aceptarActionPerformed
     
     public JFrame getFrame(){

@@ -5,12 +5,18 @@
  */
 package fotocopiadorav3.Vista2;
 
+import fotocopiadorav3.Controlador.ControladorInterfaz;
+import static fotocopiadorav3.Vista2.Vista2Interfaz.renderizarMensajeError;
+
 /**
  *
  * @author Toshiba
  */
 public class MensajeConfirmacion extends javax.swing.JFrame {
-
+    
+    private int tipoElemento;
+    private String idElemento;
+    
     /**
      * Creates new form MensajeConfirmacion
      */
@@ -89,12 +95,41 @@ public class MensajeConfirmacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        // TODO add your handling code here:
+        
+        ControladorInterfaz controladorInterfaz = new ControladorInterfaz();
+        
+        switch(tipoElemento){
+            
+            case 0: controladorInterfaz.cancelarPedido();
+            
+            case 1: controladorInterfaz.bajaArticulo(idElemento);
+            
+            case 2: controladorInterfaz.bajaClienteComoRegistrado(idElemento);
+            
+            case 3: controladorInterfaz.bajaUsuario(idElemento);
+            
+            default: renderizarMensajeError("", "");
+        }
+        
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        // TODO add your handling code here:
+        
+        dispose();
+        
     }//GEN-LAST:event_cancelarActionPerformed
+
+    public void setIdElemento(int idElemento) {
+        
+        this.idElemento = Integer.toString(idElemento);
+        
+    }
+
+    public void setTipoElemento(int tipoElemento) {
+        
+        this.tipoElemento = tipoElemento;
+        
+    }
     
     public void setTituloConfirmacion(String titulo){
         
