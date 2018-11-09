@@ -67,15 +67,26 @@ public class Vista2Interfaz {
             
             case 0: titulo.concat("Pedido");
                         mensaje.concat("pedido: ");
+                        Pedido pedido = ModeloInterfaz.getPedidoForId(idElemento);
+                        mensaje.concat("id: " + Integer.toString(pedido.getId()));
             
             case 1: titulo.concat("Artículo");
                         mensaje.concat("artículo: ");
+                        Articulo articulo = ModeloInterfaz.getArticuloForId(idElemento);
+                        mensaje.concat("id: " + Integer.toString(articulo.getId()));
+                        mensaje.concat("\nnombre" + articulo.getNombre().toString());
             
             case 2: titulo.concat("Alumno");
                         mensaje.concat("alumno: ");
+                        Alumno alumno = ModeloInterfaz.getAlumnoForId(idElemento);
+                        mensaje.concat("id: " + Integer.toString(alumno.getId()));
+                        mensaje.concat("\nnombre: " + alumno.getPersona().getNombre().toString());
             
             case 3: titulo.concat("Usuario");
                         mensaje.concat("Usuario: ");
+                        Usuario usuario = ModeloInterfaz.getUsuarioForId(idElemento);
+                        mensaje.concat("id: " + Integer.toString(usuario.getId()));
+                        mensaje.concat("\nnombre: " + usuario.getPersona().getNombre().toString());
             
             default: renderizarMensajeError("", "");
         }
