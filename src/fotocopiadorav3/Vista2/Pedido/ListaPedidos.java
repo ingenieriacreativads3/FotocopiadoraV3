@@ -5,17 +5,31 @@
  */
 package fotocopiadorav3.Vista2.Pedido;
 
+import fotocopiadorav3.Modelo.Pedido;
+import fotocopiadorav3.Vista2.Vista2Interfaz;
+import java.util.Set;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Toshiba
  */
 public class ListaPedidos extends javax.swing.JFrame {
-
+    
+    private boolean existe=false;
+    
     /**
      * Creates new form ListaPedidos
      */
     public ListaPedidos() {
+        
         initComponents();
+        
+        Set<Pedido> pedidos = Vista2Interfaz.obtenerListaPedidos();
+        
+        cargarTabla(pedidos);
+        
     }
 
     /**
@@ -27,22 +41,117 @@ public class ListaPedidos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabla = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Alumno", "Importe", "Seña"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(Tabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 898, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cargarTabla(Set<Pedido> pedidos){
+        
+        DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
+        
+        int id=0;
+        String alumno="";
+        double importe=0.0;
+        double senia=0.0;
+        
+        if (!pedidos.isEmpty()) {
+            
+            for (Pedido pedido : pedidos) {
+
+                id=pedido.getId();
+                alumno=pedido.getAlumno().getPersona().getNombre().toString() + pedido.getAlumno().getPersona().getApellido().toString();
+                importe=pedido.getImporte();
+                senia=pedido.getPagoAnticipado();
+
+                defaultTableModel.addRow(new Object[]{id, alumno, importe, senia});
+
+            }
+        }
+    }
+    
+    public void recargarTabla(Set<Pedido> pedidos){
+        
+        DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
+        
+        int cantidadFilas = defaultTableModel.getRowCount(); 
+        
+        for (int i = 0; i < cantidadFilas; i++) {
+            
+            defaultTableModel.removeRow(i);
+            
+        }
+        
+        int id=0;
+        String alumno="";
+        double importe=0.0;
+        double senia=0.0;
+        
+        if (!pedidos.isEmpty()) {
+            
+            for (Pedido pedido : pedidos) {
+
+                id=pedido.getId();
+                alumno=pedido.getAlumno().getPersona().getNombre().toString() + pedido.getAlumno().getPersona().getApellido().toString();
+                importe=pedido.getImporte();
+                senia=pedido.getPagoAnticipado();
+
+                defaultTableModel.addRow(new Object[]{id, alumno, importe, senia});
+
+            }
+        }
+    }
+    
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
+    }
+
+    public JTable getTabla() {
+        return Tabla;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -79,5 +188,7 @@ public class ListaPedidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tabla;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -53,7 +53,15 @@ public class ListaAlumnos extends javax.swing.JFrame {
             new String [] {
                 "Id", "Nombre", "Apellido", "Legajo", "Domicilio", "Altura", "Dni"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         scrollpane.setViewportView(Tabla);
         if (Tabla.getColumnModel().getColumnCount() > 0) {
             Tabla.getColumnModel().getColumn(0).setResizable(false);
@@ -112,6 +120,14 @@ public class ListaAlumnos extends javax.swing.JFrame {
     public void recargarTabla(Set<Alumno> alumnos){
         
         DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
+        
+        int cantidadFilas = defaultTableModel.getRowCount(); 
+        
+        for (int i = 0; i < cantidadFilas; i++) {
+            
+            defaultTableModel.removeRow(i);
+            
+        }
         
         int id=0;
         String nombre="";

@@ -6,6 +6,8 @@
 package fotocopiadorav3.Vista2.Pedido;
 
 import Otros.TextPrompt;
+import fotocopiadorav3.Modelo.ModeloInterfaz;
+import fotocopiadorav3.Modelo.Pedido;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 import java.util.ArrayList;
 
@@ -15,6 +17,8 @@ import java.util.ArrayList;
  */
 public class ModificarPedido extends javax.swing.JFrame {
 
+    private int idPedido;
+    
     /**
      * Creates new form ModificarPedido
      */
@@ -185,6 +189,20 @@ public class ModificarPedido extends javax.swing.JFrame {
     private void limpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarCamposActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_limpiarCamposActionPerformed
+
+    public void cargarDatosPedido(int idPedido){
+        
+        Pedido pedido = ModeloInterfaz.getPedidoForId(idPedido);
+        
+    }
+    
+    public void setIdPedido(int idPedido) {
+        
+        this.idPedido = idPedido;
+        
+        cargarDatosPedido(idPedido);
+        
+    }
 
     /**
      * @param args the command line arguments

@@ -18,6 +18,7 @@ import fotocopiadorav3.Modelo.Alumno;
 import fotocopiadorav3.Modelo.Articulo;
 import fotocopiadorav3.Modelo.Usuario;
 import fotocopiadorav3.Modelo.ModeloInterfaz;
+import fotocopiadorav3.Modelo.Pedido;
 import fotocopiadorav3.Vista2.Alumno.ListaAlumnos;
 import fotocopiadorav3.Vista2.Articulo.ListaArticulos;
 import fotocopiadorav3.Vista2.Pedido.ListaPedidos;
@@ -35,6 +36,11 @@ public class Vista2Interfaz {
     private static ListaAlumnos listaAlumnos = new ListaAlumnos();
     private static ListaArticulos listaArticulos = new ListaArticulos();
     private static ListaUsuarios listaUsuarios = new ListaUsuarios();
+    private static ListaPedidos listaPedidos = new ListaPedidos();
+    private static int numeroListaAlumnosTab;
+    private static int numeroListaArticulosTab;
+    private static int numeroListaUsuariosTab;
+    private static int numeroListaPedidosTab;
     
     public static void renderizarLogin(){
         
@@ -47,6 +53,49 @@ public class Vista2Interfaz {
         
         paginaPrincipal.establecerListados(listaAlumnos, listaArticulos, listaUsuarios);
         paginaPrincipal.setVisible(true);
+        
+    }
+    
+    public static void renderizarMensajeConfirmacion(int tipoMensaje, int idElemento){
+        
+        MensajeConfirmacion mensajeConfirmacion = new MensajeConfirmacion();
+        
+        String titulo = "Eliminar ";
+        String mensaje = "Está seguro de que quiere eliminar el ";
+        
+        switch(tipoMensaje){
+            
+            case 0: titulo.concat("Pedido");
+                        mensaje.concat("pedido: ");
+                        Pedido pedido = ModeloInterfaz.getPedidoForId(idElemento);
+                        mensaje.concat("id: " + Integer.toString(pedido.getId()));
+            
+            case 1: titulo.concat("Artículo");
+                        mensaje.concat("artículo: ");
+                        Articulo articulo = ModeloInterfaz.getArticuloForId(idElemento);
+                        mensaje.concat("id: " + Integer.toString(articulo.getId()));
+                        mensaje.concat("\nnombre" + articulo.getNombre().toString());
+            
+            case 2: titulo.concat("Alumno");
+                        mensaje.concat("alumno: ");
+                        Alumno alumno = ModeloInterfaz.getAlumnoForId(idElemento);
+                        mensaje.concat("id: " + Integer.toString(alumno.getId()));
+                        mensaje.concat("\nnombre: " + alumno.getPersona().getNombre().toString());
+            
+            case 3: titulo.concat("Usuario");
+                        mensaje.concat("Usuario: ");
+                        Usuario usuario = ModeloInterfaz.getUsuarioForId(idElemento);
+                        mensaje.concat("id: " + Integer.toString(usuario.getId()));
+                        mensaje.concat("\nnombre: " + usuario.getPersona().getNombre().toString());
+            
+            default: renderizarMensajeError("", "");
+        }
+        
+        mensajeConfirmacion.setTipoElemento(tipoMensaje);
+        mensajeConfirmacion.setIdElemento(idElemento);
+        mensajeConfirmacion.setTituloConfirmacion(titulo);
+        mensajeConfirmacion.setMensajeConfirmacion(mensaje);
+        mensajeConfirmacion.setVisible(true);
         
     }
     
@@ -71,44 +120,76 @@ public class Vista2Interfaz {
             JPanel panel = new JPanel();
             panel.add(listaAlumnos.getContentPane());
             paginaPrincipal.getAreaTrabajo().addTab("Listado Alumnos", panel);
+            numeroListaAlumnosTab = paginaPrincipal.getAreaTrabajo().getTabCount()-1;
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaAlumnosTab);
         
         } else{
             
-            paginaPrincipal.getAreaTrabajo().setSelectedIndex(0);
-            
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaAlumnosTab);
             Set<Alumno> alumnos = Vista2Interfaz.obtenerListaAlumnos();
-        
             listaAlumnos.recargarTabla(alumnos);
             
         }
-        
     }
 
     public static void renderizarListadoUsuarios(){
         
-        ListaUsuarios listaUsuarios = new ListaUsuarios();
-        JPanel panel = new JPanel();
-        panel.add(listaUsuarios.getContentPane());
-        paginaPrincipal.getAreaTrabajo().addTab("Listado Usuarios", panel);
+        if (!listaUsuarios.isExiste()) {
+            
+            listaUsuarios.setExiste(true);
+            JPanel panel = new JPanel();
+            panel.add(listaUsuarios.getContentPane());
+            paginaPrincipal.getAreaTrabajo().addTab("Listado Usuarios", panel);
+            numeroListaUsuariosTab = paginaPrincipal.getAreaTrabajo().getTabCount()-1;
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaUsuariosTab);
         
+        } else{
+            
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaUsuariosTab);
+            Set<Usuario> usuarios = Vista2Interfaz.obtenerListaUsuarios();
+            listaUsuarios.recargarTabla(usuarios);
+            
+        }
     }
 
     public static void renderizarListadoArticulos(){
         
-        ListaArticulos listaArticulos = new ListaArticulos();
-        JPanel panel = new JPanel();
-        panel.add(listaArticulos.getContentPane());
-        paginaPrincipal.getAreaTrabajo().addTab("Listado Artículos", panel);
+        if (!listaArticulos.isExiste()) {
+            
+            listaArticulos.setExiste(true);
+            JPanel panel = new JPanel();
+            panel.add(listaArticulos.getContentPane());
+            paginaPrincipal.getAreaTrabajo().addTab("Listado Artículos", panel);
+            numeroListaArticulosTab = paginaPrincipal.getAreaTrabajo().getTabCount()-1;
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaArticulosTab);
         
+        } else{
+            
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaArticulosTab);
+            Set<Articulo> articulos = Vista2Interfaz.obtenerListaArticulos();
+            listaArticulos.recargarTabla(articulos);
+            
+        }
     }
 
     public static void renderizarListadoPedidos(){
         
-        ListaPedidos listaPedidos = new ListaPedidos();
-        JPanel panel = new JPanel();
-        panel.add(listaPedidos.getContentPane());
-        paginaPrincipal.getAreaTrabajo().addTab("Listado Pedidos", panel);
+        if (!listaPedidos.isExiste()) {
+            
+            listaPedidos.setExiste(true);
+            JPanel panel = new JPanel();
+            panel.add(listaPedidos.getContentPane());
+            paginaPrincipal.getAreaTrabajo().addTab("Listado Pedidos", panel);
+            numeroListaPedidosTab = paginaPrincipal.getAreaTrabajo().getTabCount()-1;
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaPedidosTab);
         
+        } else{
+            
+            paginaPrincipal.getAreaTrabajo().setSelectedIndex(numeroListaPedidosTab);
+            Set<Pedido> pedidos = Vista2Interfaz.obtenerListaPedidos();
+            listaPedidos.recargarTabla(pedidos);
+            
+        }
     }
 
     public static void renderizarNuevoPedido(){
@@ -120,9 +201,10 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarModificarPedido(){
+    public static void renderizarModificarPedido(int idPedido){
         
         ModificarPedido modificarPedido = new ModificarPedido();
+        modificarPedido.setIdPedido(idPedido);
         JPanel panel = new JPanel();
         panel.add(modificarPedido.getContentPane());
         paginaPrincipal.getAreaTrabajo().addTab("Modificar Pedido", panel);
@@ -142,9 +224,10 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarModificarArticulo(){
+    public static void renderizarModificarArticulo(int idArticulo){
         
         ModificarArticulo modificarArticulo = new ModificarArticulo();
+        modificarArticulo.setIdArticulo(idArticulo);
         JPanel panel = new JPanel();
         panel.add(modificarArticulo.getContentPane());
         paginaPrincipal.getAreaTrabajo().addTab("Modificar Articulo", panel);
@@ -164,9 +247,10 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarModificarUsuario(){
+    public static void renderizarModificarUsuario(int idUsuario){
         
         ModificarUsuario modificarUsuario = new ModificarUsuario();
+        modificarUsuario.setIdUsuario(idUsuario);
         JPanel panel = new JPanel();
         panel.add(modificarUsuario.getContentPane());
         paginaPrincipal.getAreaTrabajo().addTab("Modificar Usuario", panel);
@@ -288,13 +372,13 @@ public class Vista2Interfaz {
         
     }
     
-//    public static Set<Pedido> obtenerListaPedidos(){
-//        
-//        Set<Pedido> listaPedidos = ModeloInterfaz.getListaPedidos();
-//        
-//        return listaPedidos;
-//        
-//    }
+    public static Set<Pedido> obtenerListaPedidos(){
+        
+        Set<Pedido> listaPedidos = ModeloInterfaz.getListaPedidos();
+        
+        return listaPedidos;
+        
+    }
     
     public static void guardar(){
         

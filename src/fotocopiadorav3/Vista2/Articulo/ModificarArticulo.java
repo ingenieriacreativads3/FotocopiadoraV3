@@ -7,6 +7,8 @@
 package fotocopiadorav3.Vista2.Articulo;
 
 import Otros.TextPrompt;
+import fotocopiadorav3.Modelo.Articulo;
+import fotocopiadorav3.Modelo.ModeloInterfaz;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 
 /**
@@ -15,6 +17,8 @@ import fotocopiadorav3.Vista2.Vista2Interfaz;
  */
 public class ModificarArticulo extends javax.swing.JFrame {
 
+    private int idArticulo;
+    
     /** Creates new form ModificarArticulo */
     public ModificarArticulo() {
         initComponents();
@@ -239,6 +243,29 @@ public class ModificarArticulo extends javax.swing.JFrame {
         documentoTF.setText("");
 
     }//GEN-LAST:event_limpiarCamposActionPerformed
+
+    public void cargarDatosArticulo(int idArticulo){
+        
+        Articulo articulo = ModeloInterfaz.getArticuloForId(idArticulo);
+        
+        nombreTF.setText(articulo.getNombre().toString());
+        categoriaTF.setText(articulo.getCategoria().toString());
+        editorialTF.setText(articulo.getEditorial().toString());
+        edicionTF.setText(articulo.getEdicion().toString());
+        materiaTF.setText(articulo.getMateria().toString());
+        autorTF.setText(articulo.getAutor().toString());
+        precioTF.setText(Double.toString(articulo.getPrecio()));
+        documentoTF.setText(articulo.getDocumento().toString());
+
+    }
+    
+    public void setIdArticulo(int idArticulo) {
+        
+        this.idArticulo = idArticulo;
+        
+        cargarDatosArticulo(idArticulo);
+        
+    }
 
     /**
      * @param args the command line arguments
