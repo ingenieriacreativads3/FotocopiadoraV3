@@ -56,6 +56,49 @@ public class Vista2Interfaz {
         
     }
     
+    public static void renderizarMensajeConfirmacion(int tipoMensaje, int idElemento){
+        
+        MensajeConfirmacion mensajeConfirmacion = new MensajeConfirmacion();
+        
+        String titulo = "Eliminar ";
+        String mensaje = "Está seguro de que quiere eliminar el ";
+        
+        switch(tipoMensaje){
+            
+            case 0: titulo.concat("Pedido");
+                        mensaje.concat("pedido: ");
+                        Pedido pedido = ModeloInterfaz.getPedidoForId(idElemento);
+                        mensaje.concat("id: " + Integer.toString(pedido.getId()));
+            
+            case 1: titulo.concat("Artículo");
+                        mensaje.concat("artículo: ");
+                        Articulo articulo = ModeloInterfaz.getArticuloForId(idElemento);
+                        mensaje.concat("id: " + Integer.toString(articulo.getId()));
+                        mensaje.concat("\nnombre" + articulo.getNombre().toString());
+            
+            case 2: titulo.concat("Alumno");
+                        mensaje.concat("alumno: ");
+                        Alumno alumno = ModeloInterfaz.getAlumnoForId(idElemento);
+                        mensaje.concat("id: " + Integer.toString(alumno.getId()));
+                        mensaje.concat("\nnombre: " + alumno.getPersona().getNombre().toString());
+            
+            case 3: titulo.concat("Usuario");
+                        mensaje.concat("Usuario: ");
+                        Usuario usuario = ModeloInterfaz.getUsuarioForId(idElemento);
+                        mensaje.concat("id: " + Integer.toString(usuario.getId()));
+                        mensaje.concat("\nnombre: " + usuario.getPersona().getNombre().toString());
+            
+            default: renderizarMensajeError("", "");
+        }
+        
+        mensajeConfirmacion.setTipoElemento(tipoMensaje);
+        mensajeConfirmacion.setIdElemento(idElemento);
+        mensajeConfirmacion.setTituloConfirmacion(titulo);
+        mensajeConfirmacion.setMensajeConfirmacion(mensaje);
+        mensajeConfirmacion.setVisible(true);
+        
+    }
+    
     public static void renderizarMensajeError(String codigo, String mensaje){
         
         MensajeError mensajeError = new MensajeError();
@@ -158,9 +201,10 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarModificarPedido(){
+    public static void renderizarModificarPedido(int idPedido){
         
         ModificarPedido modificarPedido = new ModificarPedido();
+        modificarPedido.setIdPedido(idPedido);
         JPanel panel = new JPanel();
         panel.add(modificarPedido.getContentPane());
         paginaPrincipal.getAreaTrabajo().addTab("Modificar Pedido", panel);
@@ -180,9 +224,10 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarModificarArticulo(){
+    public static void renderizarModificarArticulo(int idArticulo){
         
         ModificarArticulo modificarArticulo = new ModificarArticulo();
+        modificarArticulo.setIdArticulo(idArticulo);
         JPanel panel = new JPanel();
         panel.add(modificarArticulo.getContentPane());
         paginaPrincipal.getAreaTrabajo().addTab("Modificar Articulo", panel);
@@ -202,9 +247,10 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarModificarUsuario(){
+    public static void renderizarModificarUsuario(int idUsuario){
         
         ModificarUsuario modificarUsuario = new ModificarUsuario();
+        modificarUsuario.setIdUsuario(idUsuario);
         JPanel panel = new JPanel();
         panel.add(modificarUsuario.getContentPane());
         paginaPrincipal.getAreaTrabajo().addTab("Modificar Usuario", panel);

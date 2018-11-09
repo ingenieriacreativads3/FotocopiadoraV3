@@ -11,7 +11,6 @@ import Otros.Validador;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JTextField;
 
@@ -21,7 +20,7 @@ import javax.swing.JTextField;
  */
 public class NuevoAlumno extends javax.swing.JFrame {
     
-    private ArrayList<JTextField> listaCampos = new ArrayList<>();
+    private HashMap<JTextField, Integer> listaCampos = new HashMap<>();
     private HashMap<JTextField, Boolean> listaValidaciones = new HashMap<>();
     private boolean datosValidos;
     
@@ -29,8 +28,6 @@ public class NuevoAlumno extends javax.swing.JFrame {
     public NuevoAlumno() {
         
         initComponents();
-        
-        datosValidos = false;
         
         agregarPromptText();
         
@@ -193,15 +190,15 @@ public class NuevoAlumno extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         
-        for (JTextField campo : listaCampos) {
-            
-            campo.grabFocus();
-            
-        }
+        datosValidos = true;
+        
+        listaCampos.forEach((k, v) -> k.grabFocus());
         
         aceptar.grabFocus();
         
-        if (true) {
+//        listaValidaciones.forEach((k, v) -> realizarValidaciones(v));
+        
+        if (datosValidos) {
             
             String nombre=nombreTF.getText();
             String apellido=apellidoTF.getText();
@@ -209,7 +206,7 @@ public class NuevoAlumno extends javax.swing.JFrame {
             String domicilio=domicilioTF.getText();
             String altura=alturaTF.getText();
             String dni=dniTF.getText();
-            System.out.println("se han enviado los datos");
+            
             Vista2Interfaz.enviarDatosNuevoAlumno(nombre, apellido, legajo, domicilio, altura, dni);
             
         } else{
@@ -244,12 +241,12 @@ public class NuevoAlumno extends javax.swing.JFrame {
     
     private void llenarListaCampos(){
         
-        listaCampos.add(nombreTF);
-        listaCampos.add(apellidoTF);
-        listaCampos.add(legajoTF);
-        listaCampos.add(domicilioTF);
-        listaCampos.add(alturaTF);
-        listaCampos.add(dniTF);
+        listaCampos.put(nombreTF, Integer.valueOf(0));
+        listaCampos.put(apellidoTF, Integer.valueOf(0));
+        listaCampos.put(legajoTF, Integer.valueOf(0));
+        listaCampos.put(domicilioTF, Integer.valueOf(0));
+        listaCampos.put(alturaTF, Integer.valueOf(0));
+        listaCampos.put(dniTF, Integer.valueOf(0));
         
     }
     
@@ -257,32 +254,31 @@ public class NuevoAlumno extends javax.swing.JFrame {
         
         Boolean booleanObject = new Boolean(false);
         
-        for (JTextField campo : listaCampos) {
-            
-            listaValidaciones.put(campo, booleanObject);
-            
-        }
+        listaCampos.forEach((k, v) -> listaValidaciones.put(k, booleanObject));
     }
     
-    private void agregarValidacion(ArrayList<JTextField> listaCampos){
+    private void agregarValidacion(HashMap<JTextField, Integer> listaCampos){
         
         Validador validador = new Validador();
         
-        for (JTextField campo : listaCampos) {
-            
-            campo.addFocusListener(new FocusListener() {
+        listaCampos.forEach((k, v) -> k.addFocusListener(new FocusListener() {
+                
                 @Override
                 public void focusGained(FocusEvent e) {}
 
                 @Override
                 public void focusLost(FocusEvent e) {
                     
-//                    listaValidaciones. = validador.validar(campo);
+                    listaValidaciones.replace(k, new Boolean(false), validador.validar(k));
                     
                 }
-            });
-            
-        }
+            })
+        );
+    }
+    
+    private void realizarValidaciones(Boolean v){
+        
+        datosValidos &= v.booleanValue();
         
     }
     

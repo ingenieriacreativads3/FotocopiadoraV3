@@ -6,6 +6,8 @@
 package fotocopiadorav3.Vista2.Usuario;
 
 import Otros.TextPrompt;
+import fotocopiadorav3.Modelo.ModeloInterfaz;
+import fotocopiadorav3.Modelo.Usuario;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 
 /**
@@ -14,6 +16,8 @@ import fotocopiadorav3.Vista2.Vista2Interfaz;
  */
 public class ModificarUsuario extends javax.swing.JFrame {
 
+    private int idUsuario;
+    
     /**
      * Creates new form ModificarUsuario
      */
@@ -40,7 +44,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        aceptar1 = new javax.swing.JButton();
+        aceptar = new javax.swing.JButton();
         limpiarCampos = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -61,10 +65,10 @@ public class ModificarUsuario extends javax.swing.JFrame {
 
         jLabel1.setText("Modificar Usuario");
 
-        aceptar1.setText("Aceptar");
-        aceptar1.addActionListener(new java.awt.event.ActionListener() {
+        aceptar.setText("Aceptar");
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aceptar1ActionPerformed(evt);
+                aceptarActionPerformed(evt);
             }
         });
 
@@ -113,7 +117,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(limpiarCampos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(aceptar1))
+                        .addComponent(aceptar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(253, 253, 253)
                         .addComponent(jLabel1)
@@ -185,7 +189,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
                     .addComponent(dniTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aceptar1)
+                    .addComponent(aceptar)
                     .addComponent(limpiarCampos))
                 .addContainerGap())
         );
@@ -193,7 +197,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void aceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar1ActionPerformed
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
 
         String nombre=nombreTF.getText();
         String apellido=apellidoTF.getText();
@@ -205,7 +209,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
 
         Vista2Interfaz.enviarDatosModificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
 
-    }//GEN-LAST:event_aceptar1ActionPerformed
+    }//GEN-LAST:event_aceptarActionPerformed
 
     private void limpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarCamposActionPerformed
 
@@ -218,6 +222,27 @@ public class ModificarUsuario extends javax.swing.JFrame {
         dniTF.setText("");
 
     }//GEN-LAST:event_limpiarCamposActionPerformed
+
+    public void cargarDatosUsuario(int idUsuario){
+        
+        Usuario usuario = ModeloInterfaz.getUsuarioForId(idUsuario);
+        
+        nombreTF.setText(usuario.getPersona().getNombre().toString());
+        apellidoTF.setText(usuario.getPersona().getApellido().toString());
+        nombreUsuarioTF.setText(usuario.getNombreUsuario().toString());
+        domicilioTF.setText(usuario.getPersona().getDireccion().getCalle().toString());
+        alturaTF.setText(Integer.toString(usuario.getPersona().getDireccion().getNumero()));
+        dniTF.setText(Integer.toString(usuario.getPersona().getDni()));
+        
+    }
+    
+    public void setIdUsuario(int idUsuario) {
+        
+        this.idUsuario = idUsuario;
+        
+        cargarDatosUsuario(idUsuario);
+        
+    }
 
     /**
      * @param args the command line arguments
@@ -255,7 +280,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aceptar1;
+    private javax.swing.JButton aceptar;
     private javax.swing.JTextField alturaTF;
     private javax.swing.JTextField apellidoTF;
     private javax.swing.JTextField contraseniaTF;
