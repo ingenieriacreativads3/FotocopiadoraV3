@@ -19,6 +19,7 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     private static ListaAlumnos listaAlumnos;
     private static ListaArticulos listaArticulos;
     private static ListaUsuarios listaUsuarios;
+    private static ListaUsuarios listaPedidos;
     
     /**
      * Creates new form PaginaPrincipal
@@ -49,12 +50,13 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         Articulos = new javax.swing.JButton();
         Alumnos = new javax.swing.JButton();
         Usuarios = new javax.swing.JButton();
-        Guardar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        eliminarPedido = new javax.swing.JButton();
+        eliminarArticulo = new javax.swing.JButton();
+        eliminarAlumno = new javax.swing.JButton();
+        eliminarUsuario = new javax.swing.JButton();
         BarraMenuSuperior = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        Guardar = new javax.swing.JButton();
         PanelPrincipalCentral = new javax.swing.JPanel();
         areaTrabajo = new javax.swing.JTabbedPane();
 
@@ -177,27 +179,41 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         });
         BarraMenuLateral.add(Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 370, 60));
 
-        Guardar.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        Guardar.setText("Guardar");
-        Guardar.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
-        Guardar.addActionListener(new java.awt.event.ActionListener() {
+        eliminarPedido.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        eliminarPedido.setText("Eliminar Pedido");
+        eliminarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarActionPerformed(evt);
+                eliminarPedidoActionPerformed(evt);
             }
         });
-        BarraMenuLateral.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 370, 50));
+        BarraMenuLateral.add(eliminarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 370, 30));
 
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton1.setText("Eliminar Pedido");
-        BarraMenuLateral.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 370, -1));
+        eliminarArticulo.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        eliminarArticulo.setText("Eliminar Artículo");
+        eliminarArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarArticuloActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(eliminarArticulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 370, 30));
 
-        jButton2.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton2.setText("Eliminar Artículo");
-        BarraMenuLateral.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 370, -1));
+        eliminarAlumno.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        eliminarAlumno.setText("Eliminar Alumno");
+        eliminarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarAlumnoActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(eliminarAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 370, 30));
 
-        jButton3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton3.setText("Eliminar Alumno");
-        BarraMenuLateral.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 370, -1));
+        eliminarUsuario.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        eliminarUsuario.setText("Eliminar Usuario");
+        eliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarUsuarioActionPerformed(evt);
+            }
+        });
+        BarraMenuLateral.add(eliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 370, 30));
 
         getContentPane().add(BarraMenuLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 370, 620));
 
@@ -206,6 +222,16 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ajustes.png"))); // NOI18N
         BarraMenuSuperior.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 20, -1, -1));
+
+        Guardar.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        Guardar.setText("Guardar");
+        Guardar.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
+        Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarActionPerformed(evt);
+            }
+        });
+        BarraMenuSuperior.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 370, 50));
 
         getContentPane().add(BarraMenuSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
 
@@ -224,7 +250,11 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     }//GEN-LAST:event_nuevoPedidoActionPerformed
 
     private void modificarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPedidoActionPerformed
-        Vista2Interfaz.renderizarModificarPedido();
+        
+        int idPedido = getIdPedido();
+        
+        Vista2Interfaz.renderizarModificarPedido(idPedido);
+        
     }//GEN-LAST:event_modificarPedidoActionPerformed
 
     private void nuevoArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoArticuloActionPerformed
@@ -232,7 +262,11 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     }//GEN-LAST:event_nuevoArticuloActionPerformed
 
     private void modificarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarArticuloActionPerformed
-        Vista2Interfaz.renderizarModificarArticulo();
+        
+        int idArticulo = getIdArticulo();
+        
+        Vista2Interfaz.renderizarModificarArticulo(idArticulo);
+        
     }//GEN-LAST:event_modificarArticuloActionPerformed
 
     private void nuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoClienteActionPerformed
@@ -241,14 +275,10 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
 
     private void modificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarClienteActionPerformed
         
-        if (listaAlumnos.getTabla().getModel().getValueAt(listaAlumnos.getTabla().getSelectedRow(), 0)!=null) {
-            
-            
-            int idAlumno = (int) listaAlumnos.getTabla().getModel().getValueAt(listaAlumnos.getTabla().getSelectedRow(), 0);
-            System.out.println("id alumno: " + idAlumno);
-            Vista2Interfaz.renderizarModificarAlumno(idAlumno);
-            
-        }
+        int idAlumno = getIdAlumno();
+        
+        Vista2Interfaz.renderizarModificarAlumno(idAlumno);
+        
     }//GEN-LAST:event_modificarClienteActionPerformed
 
     private void nuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoUsuarioActionPerformed
@@ -256,7 +286,11 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     }//GEN-LAST:event_nuevoUsuarioActionPerformed
 
     private void modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUsuarioActionPerformed
-        Vista2Interfaz.renderizarModificarUsuario();
+        
+        int idUsuario = getIdUsuario();
+        
+        Vista2Interfaz.renderizarModificarUsuario(idUsuario);
+        
     }//GEN-LAST:event_modificarUsuarioActionPerformed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
@@ -278,12 +312,45 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     private void UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuariosActionPerformed
         Vista2Interfaz.renderizarListadoUsuarios();
     }//GEN-LAST:event_UsuariosActionPerformed
+
+    private void eliminarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPedidoActionPerformed
+        
+        int idPedido = getIdPedido();
+        
+        Vista2Interfaz.renderizarMensajeConfirmacion(0, idPedido);
+        
+    }//GEN-LAST:event_eliminarPedidoActionPerformed
+
+    private void eliminarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarArticuloActionPerformed
+        
+        int idArticulo = getIdArticulo();
+        
+        Vista2Interfaz.renderizarMensajeConfirmacion(1, idArticulo);
+        
+    }//GEN-LAST:event_eliminarArticuloActionPerformed
+
+    private void eliminarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarAlumnoActionPerformed
+        
+        int idAlumno = getIdAlumno();
+        
+        Vista2Interfaz.renderizarMensajeConfirmacion(2, idAlumno);
+        
+    }//GEN-LAST:event_eliminarAlumnoActionPerformed
+
+    private void eliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarUsuarioActionPerformed
+        
+        int idUsuario = getIdUsuario();
+        
+        Vista2Interfaz.renderizarMensajeConfirmacion(3, idUsuario);
+        
+    }//GEN-LAST:event_eliminarUsuarioActionPerformed
     
     public void establecerListados(ListaAlumnos listaAlumnos, ListaArticulos listaArticulos, ListaUsuarios listaUsuarios){
         
         this.listaAlumnos = listaAlumnos;
         this.listaArticulos = listaArticulos;
         this.listaUsuarios = listaUsuarios;
+//        this.listaPedidos = listaPedidos;
         
     }
     
@@ -323,6 +390,86 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         });
     }
     
+    private int getIdAlumno(){
+        
+        int idAlumno = 0;
+        
+        if (alumnoSeleccionado()) {
+            
+            idAlumno = (int) listaAlumnos.getTabla().getModel().getValueAt(listaAlumnos.getTabla().getSelectedRow(), 0);
+            
+        }
+        
+        return idAlumno;
+    }
+    
+    private int getIdArticulo(){
+        
+        int idArticulo = 0;
+        
+        if (articuloSeleccionado()) {
+            
+            idArticulo = (int) listaArticulos.getTabla().getModel().getValueAt(listaArticulos.getTabla().getSelectedRow(), 0);
+            
+        }
+        
+        return idArticulo;
+    }
+    
+    private int getIdUsuario(){
+        
+        int idUsuario = 0;
+        
+        if (usuarioSeleccionado()) {
+            
+            idUsuario = (int) listaUsuarios.getTabla().getModel().getValueAt(listaUsuarios.getTabla().getSelectedRow(), 0);
+            
+        }
+        
+        return idUsuario;
+    }
+    
+    private int getIdPedido(){
+        
+        int idPedido = 0;
+        
+        if (pedidoSeleccionado()) {
+            
+            idPedido = (int) listaPedidos.getTabla().getModel().getValueAt(listaPedidos.getTabla().getSelectedRow(), 0);
+            
+        }
+        
+        return idPedido;
+    }
+    
+    private boolean alumnoSeleccionado(){
+        
+        boolean hayAlumnoSeleccionado = listaAlumnos.getTabla().getModel().getValueAt(listaAlumnos.getTabla().getSelectedRow(), 0)!=null;
+        
+        return hayAlumnoSeleccionado;
+    }
+    
+    private boolean pedidoSeleccionado(){
+        
+        boolean hayPedidoSeleccionado = listaPedidos.getTabla().getModel().getValueAt(listaPedidos.getTabla().getSelectedRow(), 0)!=null;
+        
+        return hayPedidoSeleccionado;
+    }
+    
+    private boolean articuloSeleccionado(){
+        
+        boolean hayArticuloSeleccionado = listaArticulos.getTabla().getModel().getValueAt(listaArticulos.getTabla().getSelectedRow(), 0)!=null;
+        
+        return hayArticuloSeleccionado;
+    }
+    
+    private boolean usuarioSeleccionado(){
+        
+        boolean hayUsuarioSeleccionado = listaUsuarios.getTabla().getModel().getValueAt(listaUsuarios.getTabla().getSelectedRow(), 0)!=null;
+        
+        return hayUsuarioSeleccionado;
+    }
+    
     public JTabbedPane getAreaTrabajo(){
         return areaTrabajo;
     }
@@ -340,9 +487,10 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     private javax.swing.JButton Pedidos;
     private javax.swing.JButton Usuarios;
     private javax.swing.JTabbedPane areaTrabajo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton eliminarAlumno;
+    private javax.swing.JButton eliminarArticulo;
+    private javax.swing.JButton eliminarPedido;
+    private javax.swing.JButton eliminarUsuario;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton modificarArticulo;
     private javax.swing.JButton modificarCliente;

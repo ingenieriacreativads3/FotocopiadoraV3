@@ -17,6 +17,7 @@ import fotocopiadorav3.Vista2.Vista2Interfaz;
 public class ModificarAlumno extends javax.swing.JFrame {
     
     private int idAlumno;
+    
     /**
      * Creates new form ModificarAlumno
      */
@@ -220,6 +221,7 @@ public class ModificarAlumno extends javax.swing.JFrame {
     }
     
     public void setIdAlumno(int idAlumno) {
+        
         this.idAlumno = idAlumno;
         
         cargarDatosAlumno(idAlumno);

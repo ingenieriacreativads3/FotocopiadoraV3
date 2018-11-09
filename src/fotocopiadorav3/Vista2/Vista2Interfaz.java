@@ -56,9 +56,30 @@ public class Vista2Interfaz {
         
     }
     
-    public static void renderizarMensajeConfirmacion(String titulo, String mensaje){
+    public static void renderizarMensajeConfirmacion(int tipoMensaje, int idElemento){
         
         MensajeConfirmacion mensajeConfirmacion = new MensajeConfirmacion();
+        
+        String titulo = "Eliminar ";
+        String mensaje = "Está seguro de que quiere eliminar el ";
+        
+        switch(tipoMensaje){
+            
+            case 0: titulo.concat("Pedido");
+                        mensaje.concat("pedido: ");
+            
+            case 1: titulo.concat("Artículo");
+                        mensaje.concat("artículo: ");
+            
+            case 2: titulo.concat("Alumno");
+                        mensaje.concat("alumno: ");
+            
+            case 3: titulo.concat("Usuario");
+                        mensaje.concat("Usuario: ");
+            
+            default: renderizarMensajeError("", "");
+        }
+        
         mensajeConfirmacion.setTituloConfirmacion(titulo);
         mensajeConfirmacion.setMensajeConfirmacion(mensaje);
         mensajeConfirmacion.setVisible(true);
@@ -167,9 +188,10 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarModificarPedido(){
+    public static void renderizarModificarPedido(int idPedido){
         
         ModificarPedido modificarPedido = new ModificarPedido();
+        modificarPedido.setIdPedido(idPedido);
         JPanel panel = new JPanel();
         panel.add(modificarPedido.getContentPane());
         paginaPrincipal.getAreaTrabajo().addTab("Modificar Pedido", panel);
@@ -189,9 +211,10 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarModificarArticulo(){
+    public static void renderizarModificarArticulo(int idArticulo){
         
         ModificarArticulo modificarArticulo = new ModificarArticulo();
+        modificarArticulo.setIdArticulo(idArticulo);
         JPanel panel = new JPanel();
         panel.add(modificarArticulo.getContentPane());
         paginaPrincipal.getAreaTrabajo().addTab("Modificar Articulo", panel);
@@ -211,9 +234,10 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarModificarUsuario(){
+    public static void renderizarModificarUsuario(int idUsuario){
         
         ModificarUsuario modificarUsuario = new ModificarUsuario();
+        modificarUsuario.setIdUsuario(idUsuario);
         JPanel panel = new JPanel();
         panel.add(modificarUsuario.getContentPane());
         paginaPrincipal.getAreaTrabajo().addTab("Modificar Usuario", panel);
