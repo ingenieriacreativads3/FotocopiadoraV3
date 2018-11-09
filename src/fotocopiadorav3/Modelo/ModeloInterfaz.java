@@ -90,7 +90,7 @@ public class ModeloInterfaz {
      */
     public static AlfaNumerico getSiguienteCodigoTransaccion() {
 
-        AlfaNumerico nombreDevolver = AlfaNumerico.nuevo("siguienteCodigo");
+        AlfaNumerico nombreDevolver = AlfaNumerico.nuevo("siguienteCodigoTransaccion");
         
         return nombreDevolver;
 
@@ -100,7 +100,9 @@ public class ModeloInterfaz {
     
     public static Persona getNuevaPersona(AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, int dniRecibido, Direccion direccionRecibida){
         
-        Persona personaDevolver = Persona.nuevo(nombreRecibido, apellidoRecibido, dniRecibido, direccionRecibida);
+        Persona personaDevolver = Persona.OBJETO_INVALIDO;
+        
+        personaDevolver = Persona.nuevo(nombreRecibido, apellidoRecibido, dniRecibido, direccionRecibida);
         
         return personaDevolver;
     }
@@ -118,7 +120,9 @@ public class ModeloInterfaz {
     
     public static AlfaNumerico getAlfaNumerico(String palabraRecibida){
         
-        AlfaNumerico alfaNumericoDevolver = AlfaNumerico.nuevo(palabraRecibida);
+        AlfaNumerico alfaNumericoDevolver = AlfaNumerico.OBJETO_INVALIDO;
+        
+        alfaNumericoDevolver = AlfaNumerico.nuevo(palabraRecibida);
         
         return alfaNumericoDevolver;
         
@@ -126,7 +130,9 @@ public class ModeloInterfaz {
     
     public static Usuario getNuevoUsuario(Persona personaRecibida, AlfaNumerico nombreRecibido, AlfaNumerico passRecibida){
         
-        Usuario usuarioDevolver = Usuario.nuevo(personaRecibida, nombreRecibido, passRecibida);
+        Usuario usuarioDevolver = Usuario.OBJETO_INVALIDO;
+        
+        usuarioDevolver = Usuario.nuevo(personaRecibida, nombreRecibido, passRecibida);
         
         return usuarioDevolver;
         
@@ -134,7 +140,9 @@ public class ModeloInterfaz {
     
     public static Pedido getNuevoPedido(java.sql.Date fechaRecibida, double importeRecibida, Alumno alumnoRecibido, AlfaNumerico codigoTransaccionrecibido, double pagoAnticipadoRecibido) {
 
-        Pedido pedidoDevolver = Pedido.nuevo(fechaRecibida, importeRecibida, alumnoRecibido, codigoTransaccionrecibido, pagoAnticipadoRecibido);
+        Pedido pedidoDevolver = Pedido.OBJETO_INVALIDO;
+        
+        pedidoDevolver = Pedido.nuevo(fechaRecibida, importeRecibida, alumnoRecibido, codigoTransaccionrecibido, pagoAnticipadoRecibido);
 
         return pedidoDevolver;
 
@@ -142,9 +150,9 @@ public class ModeloInterfaz {
     
     public static Alumno getNuevoAlumno(int legajorecibido, Persona personaRecibida){
         
-        Alumno alumnoDevolver = Alumno.nuevo(legajorecibido, personaRecibida);
+        Alumno alumnoDevolver = Alumno.OBJETO_INVALIDO;
         
-        
+        alumnoDevolver = Alumno.nuevo(legajorecibido, personaRecibida);
         
         return alumnoDevolver;
         
@@ -161,22 +169,28 @@ public class ModeloInterfaz {
     
     public static Articulo getNuevoArticulo(AlfaNumerico nombreRecibido, AlfaNumerico autorRecibido, double precioRecibido, Materia materiaRecibida, java.sql.Date fechaIngresoRecibida, AlfaNumerico editorialRecibida, AlfaNumerico edicionRecibida){
         
+        Articulo articuloDevolver = Articulo.OBJETO_INVALIDO;
+        
         //Articulo articuloDevolver = Articulo.nuevo(nombreRecibido, autorRecibido, precioRecibido, materiaRecibida);
-        Articulo articuloDevolver = Articulo.nuevo(precioRecibido, fechaIngresoRecibida, nombreRecibido, autorRecibido, editorialRecibida, edicionRecibida, materiaRecibida);
+        articuloDevolver = Articulo.nuevo(precioRecibido, fechaIngresoRecibida, nombreRecibido, autorRecibido, editorialRecibida, edicionRecibida, materiaRecibida);
         
         return articuloDevolver;
     }
     
     public static Carrera getNuevoCarrera(AlfaNumerico identificadorRecibido, AlfaNumerico nombreRecibido){
         
-        Carrera carreraDevolver = Carrera.nuevo(identificadorRecibido, nombreRecibido);
+        Carrera carreraDevolver = Carrera.OBJETO_INVALIDO;
+        
+        carreraDevolver = Carrera.nuevo(identificadorRecibido, nombreRecibido);
         
         return carreraDevolver;
     }
     
     public static Materia geNuevoMateria(AlfaNumerico nombreRecibido, int anioRecibido, Persona titularRecibido, Persona ayudanteRecibido, Persona tutorRecibido, Persona jtpRecibido, Carrera carreraRecibida){
         
-        Materia materiaDevolver = Materia.nuevo(nombreRecibido, anioRecibido, titularRecibido, ayudanteRecibido, tutorRecibido, jtpRecibido, carreraRecibida);
+        Materia materiaDevolver = Materia.OBJETO_INVALIDO;
+        
+        materiaDevolver = Materia.nuevo(nombreRecibido, anioRecibido, titularRecibido, ayudanteRecibido, tutorRecibido, jtpRecibido, carreraRecibida);
         
         return materiaDevolver;
     }
