@@ -499,5 +499,5 @@ public class Alumno{
         return super.toString();
         
     }
-    
+
 }
