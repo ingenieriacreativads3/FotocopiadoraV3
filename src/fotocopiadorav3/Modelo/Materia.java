@@ -629,7 +629,29 @@ public class Materia {
     @Override
     public String toString() {
         
-        return this.nombre.toString();
+        String nombreDevolver = "no tiene valor materia.tostring";
+        
+        if(this != null){
+            
+            if(this.nombre != null){
+                
+                if(this.nombre.toString() != null){
+                    
+                    nombreDevolver = this.nombre.toString();
+                    
+                }else{
+                    
+                    //...se establecio un valor por defecto
+                }
+                
+            }else{
+                
+                //...se establecio un valor por defecto
+                
+            }
+            
+        }
+        return nombreDevolver;
         
     }
     
