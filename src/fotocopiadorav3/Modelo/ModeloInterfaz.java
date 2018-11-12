@@ -437,7 +437,9 @@ public class ModeloInterfaz {
     
     public static Set<Alumno> getListaAlumnos(){
         
-        Set<Alumno> listaDevolver = Alumno.getListaObjetos();
+        Set<Alumno> listaDevolver = new HashSet<>();
+        
+        listaDevolver = Alumno.getListaObjetos();
         
         return listaDevolver;
     }

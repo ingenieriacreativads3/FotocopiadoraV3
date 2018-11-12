@@ -87,7 +87,7 @@ public class ListaAlumnos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void cargarTabla(Set<Alumno> alumnos){
+    private void cargarTabla(Set<Alumno> listaRecibida){
         
         DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
         
@@ -99,9 +99,9 @@ public class ListaAlumnos extends javax.swing.JFrame {
         int altura=0;
         int dni=0;
         
-        if (!alumnos.isEmpty()) {
+        if (!listaRecibida.isEmpty()) {
             
-            for (Alumno alumno : alumnos) {
+            for (Alumno alumno : listaRecibida) {
 
                 id=alumno.getId();
                 nombre=alumno.getPersona().getNombre().toString();

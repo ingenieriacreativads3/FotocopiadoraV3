@@ -146,8 +146,8 @@ public class ControladorInterfaz extends Application{
     
     public Estado adicionarClienteComoRegistrado(String legajoRecibido, String nombreClienteRecibido, String apellidoRecibido, String direccionRecibido, String numeroRecibido, String dniClienteRecibido){
         
-        int legajo = Integer.valueOf(legajoRecibido);
         AlfaNumerico nombreCliente = ModeloInterfaz.getAlfaNumerico(nombreClienteRecibido);
+        int legajo = Integer.valueOf(legajoRecibido);
         nombreCliente.guardar();
         AlfaNumerico apellidoCliente = ModeloInterfaz.getAlfaNumerico(apellidoRecibido);
         apellidoCliente.guardar();
