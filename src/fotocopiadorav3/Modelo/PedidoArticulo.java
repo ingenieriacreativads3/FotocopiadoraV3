@@ -370,7 +370,7 @@ public class PedidoArticulo {
             //Asignar el valor recibido por defecto
             objetoNuevo.setSubtotal(subtotalRecibido);
             objetoNuevo.setCantidad(cantidadRecibida);
-            objetoNuevo.setEstado(estadoRecibido);
+            Estado seSeteoEstado = objetoNuevo.setEstado(estadoRecibido);
             objetoNuevo.setArticulo(articuloRecibido);
             objetoNuevo.setPedido(pedidoRecibido);
             objetoNuevo.setImporteConDescuento(importeConDescuentoRecibido);
@@ -482,8 +482,26 @@ public class PedidoArticulo {
         this.cantidad = cantidadRecibido;
     }
 
-    private void setEstado(Estado estadoRecibido) {
-        this.estado = estadoRecibido;
+    private Estado setEstado(Estado estadoRecibido) {
+        
+        Estado estadoDevolver = Estado.ERROR;
+        
+        //TODO verificar la entrada de un tipo de dato, tipo estado.
+        
+        //if(isEstado(estadoRecibido)){
+        if(true){
+            
+            this.estado = estadoRecibido;
+            estadoDevolver = Estado.EXITO;
+            
+        }else{
+            
+            //...se establecio un valor por defecto
+            
+        }
+        
+        
+        return estadoDevolver;
     }
 
     private void setArticulo(Articulo articuloRecibido) {
