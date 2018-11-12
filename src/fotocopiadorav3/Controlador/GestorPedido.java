@@ -82,8 +82,8 @@ public class GestorPedido {
     
     protected Estado retirarItemPedido(int IDPedido){
         Estado exitoCancelado = Estado.ERROR;
-        PedidoArticulo pedidoACancelar = ModeloInterfaz.getPedidoArticuloForId(IDPedido);
-        //pedidoACancelar.estado = Estado.ITEM_PEDIDO_RETIRADO;
+        PedidoArticulo pedidoARetirar = ModeloInterfaz.getPedidoArticuloForId(IDPedido);
+        //pedidoARetirar.estado = Estado.ITEM_PEDIDO_RETIRADO;
         return exitoCancelado;
     }
     
