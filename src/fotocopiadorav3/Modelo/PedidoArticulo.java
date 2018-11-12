@@ -482,7 +482,7 @@ public class PedidoArticulo {
         this.cantidad = cantidadRecibido;
     }
 
-    private Estado setEstado(Estado estadoRecibido) {
+    public Estado setEstado(Estado estadoRecibido) {
         
         Estado estadoDevolver = Estado.ERROR;
         
