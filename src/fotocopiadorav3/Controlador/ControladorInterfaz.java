@@ -242,7 +242,7 @@ public class ControladorInterfaz extends Application{
         
         
         
-        Estado exitoAlta = GestorPedidos.crearPedido(IDAlumno, fechaActual, importe, senia);
+        Estado exitoAlta = GestorPedidos.crearPedido(IDAlumno, fechaActual, importe, senia, Articulos);
         
         return exitoAlta;
         
@@ -251,7 +251,7 @@ public class ControladorInterfaz extends Application{
     }
     
     //En el modificar me deberia llegar un documento
-    public Estado modificacionPedido(String IDPedidoRecibido, String IDAlumnoRecibido, String importeRecibido, String SeniaRecibido, String fechaPedidoRecibido, String codigoTransaccionRecibido){
+    public Estado modificacionPedido(String IDPedidoRecibido, String IDAlumnoRecibido, String importeRecibido, String SeniaRecibido, String fechaPedidoRecibido, String codigoTransaccionRecibido, List<Articulo>Articulos){
         Estado exitoModificado = Estado.ERROR;
         
         int IDAlumno = Integer.valueOf(IDAlumnoRecibido);
@@ -263,11 +263,31 @@ public class ControladorInterfaz extends Application{
         
         AlfaNumerico codigoTransaccion = ModeloInterfaz.getAlfaNumerico(codigoTransaccionRecibido);
         
-        exitoModificado = GestorPedidos.modificarPedido(IDPedido, IDAlumno, importe, senia, fechaPedido, codigoTransaccion);
+        exitoModificado = GestorPedidos.modificarPedido(IDPedido, IDAlumno, importe, senia, fechaPedido, codigoTransaccion, Articulos);
+        
+        return exitoModificado;
+    }
+    public Estado cancelarItemPedido(String IDItemPedidoRecibido){
+        Estado exitoModificado = Estado.ERROR;
+        int IDItemPedido = Integer.valueOf(IDItemPedidoRecibido);
+        
+        
+        exitoModificado = GestorPedidos.cancelarItemPedido(IDItemPedido);
+        
         
         return exitoModificado;
     }
     
+    public Estado retirarItemPedido(String IDItemPedidoRecibido){
+        Estado exitoModificado = Estado.ERROR;
+        int IDItemPedido = Integer.valueOf(IDItemPedidoRecibido);
+        
+        
+        exitoModificado = GestorPedidos.retirarItemPedido(IDItemPedido);
+        
+        
+        return exitoModificado;
+    }
     
     /*
     * 

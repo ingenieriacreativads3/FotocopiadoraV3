@@ -5,6 +5,8 @@
  */
 package fotocopiadorav3.Controlador;
 import fotocopiadorav3.Modelo.*;
+import java.util.*;
+import jdk.nashorn.internal.objects.NativeArray;
 /**
  * Esta clase se encarga de las cuestiones relacionadas con la gestion de los
  * pedidos. Crear pedidos, modificar pedidos, cancelar pedidos.
@@ -25,7 +27,7 @@ public class GestorPedido {
      * @param senia
      * @return 
      */
-    protected Estado crearPedido(int IDAlumno, java.sql.Date fechaActual, double importe, double senia) {
+    protected Estado crearPedido(int IDAlumno, java.sql.Date fechaActual, double importe, double senia, List<Articulo>Articulos) {
         /**
          * Se inicializan las variabes. Generar una clave de pedido "IDPedido"
          * Persistir en la base de datos un nuevo pedido. Devolver un ID de
@@ -36,10 +38,16 @@ public class GestorPedido {
         Estado exitoAlta = Estado.ERROR;
         
         Alumno alumnoExistente = ModeloInterfaz.getAlumnoForId(IDAlumno);
-        
-        Pedido nuevoPedido = ModeloInterfaz.getNuevoPedido(fechaActual, importe, alumnoExistente, ModeloInterfaz.getSiguienteCodigoTransaccion(), importe);
+        AlfaNumerico codTransaccion = ModeloInterfaz.getSiguienteCodigoTransaccion();
+        codTransaccion.guardar();
+        Pedido nuevoPedido = ModeloInterfaz.getNuevoPedido(fechaActual, importe, alumnoExistente, codTransaccion, importe);
         exitoAlta = nuevoPedido.guardar();
 
+        for (Articulo Articuloitem : Articulos) {
+            PedidoArticulo nuevoItemPedido = ModeloInterfaz.getNuevoPedidoArticulo(importe, 1, Estado.ITEM_PEDIDO_REGISTRADO, Articuloitem, nuevoPedido, importe, true);
+            nuevoItemPedido.guardar();
+        }
+       
         return exitoAlta;
     }
 
@@ -49,13 +57,34 @@ public class GestorPedido {
      * Agrega libros o quita libros del pedido.
      *
      */
-    protected Estado modificarPedido(int IDPedido, int IDAlumno, double importe, double senia, java.sql.Date fechaPedido, AlfaNumerico codigoTransaccion) {
+    protected Estado modificarPedido(int IDPedido, int IDAlumno, double importe, double senia, java.sql.Date fechaPedido, AlfaNumerico codigoTransaccion, List<Articulo>Articulos) {
         Estado exitoModificado = Estado.ERROR;
         
         Pedido pedidoAModificar = ModeloInterfaz.getPedidoForId(IDPedido);
         Alumno alumnoDelPedido = ModeloInterfaz.getAlumnoForId(IDAlumno);
         exitoModificado = pedidoAModificar.modificar(fechaPedido, importe, alumnoDelPedido, codigoTransaccion, importe);
         
+        for (Articulo Articuloitem : Articulos) {
+            PedidoArticulo nuevoItemPedido = ModeloInterfaz.getNuevoPedidoArticulo(importe, 1, Estado.ITEM_PEDIDO_REGISTRADO, Articuloitem, pedidoAModificar, importe, true);
+            nuevoItemPedido.guardar();
+        }
+        
+        
         return exitoModificado;
     }
+    
+    protected Estado cancelarItemPedido(int IDPedido){
+        Estado exitoCancelado = Estado.ERROR;
+        PedidoArticulo pedidoACancelar = ModeloInterfaz.getPedidoArticuloForId(IDPedido);
+        //pedidoACancelar.estado = Estado.ITEM_PEDIDO_CANCELADO;
+        return exitoCancelado;
+    }
+    
+    protected Estado retirarItemPedido(int IDPedido){
+        Estado exitoCancelado = Estado.ERROR;
+        PedidoArticulo pedidoARetirar = ModeloInterfaz.getPedidoArticuloForId(IDPedido);
+        //pedidoARetirar.estado = Estado.ITEM_PEDIDO_RETIRADO;
+        return exitoCancelado;
+    }
+    
 }
