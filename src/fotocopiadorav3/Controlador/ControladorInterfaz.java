@@ -270,9 +270,21 @@ public class ControladorInterfaz extends Application{
     public Estado cancelarItemPedido(String IDItemPedidoRecibido){
         Estado exitoModificado = Estado.ERROR;
         int IDItemPedido = Integer.valueOf(IDItemPedidoRecibido);
-        ModeloInterfaz.getPedidoArticuloForId(IDItemPedido);
         
-        //exitoModificado = GestorPedidos.cancelarItemPedido(IDItemPedido);
+        
+        exitoModificado = GestorPedidos.cancelarItemPedido(IDItemPedido);
+        
+        
+        return exitoModificado;
+    }
+    
+    public Estado retirarItemPedido(String IDItemPedidoRecibido){
+        Estado exitoModificado = Estado.ERROR;
+        int IDItemPedido = Integer.valueOf(IDItemPedidoRecibido);
+        
+        
+        exitoModificado = GestorPedidos.retirarItemPedido(IDItemPedido);
+        
         
         return exitoModificado;
     }
