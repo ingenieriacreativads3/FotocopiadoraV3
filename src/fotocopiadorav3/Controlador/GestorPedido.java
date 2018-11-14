@@ -89,10 +89,25 @@ public class GestorPedido {
     }
     
     protected Estado retirarItemPedido(int IDPedido){
-        Estado exitoCancelado = Estado.ERROR;
+        Estado exitoRetiro = Estado.ERROR;
         PedidoArticulo pedidoARetirar = ModeloInterfaz.getPedidoArticuloForId(IDPedido);
-        pedidoARetirar.setEstado(Estado.ITEM_PEDIDO_RETIRADO);
-        return exitoCancelado;
+        if(pedidoARetirar.getEstado()==Estado.ITEM_PEDIDO_FOTOCOPIADO){
+            exitoRetiro = pedidoARetirar.setEstado(Estado.ITEM_PEDIDO_RETIRADO);
+            pedidoARetirar.guardar();
+        }
+        else{
+            exitoRetiro = Estado.ERROR;
+        }
+        
+        return exitoRetiro;
+    }
+    
+    protected Estado registrarFotocopiado(int IDPedido){
+        Estado exitoFotocopiado = Estado.ERROR;
+        PedidoArticulo pedidoAFotocopiar = ModeloInterfaz.getPedidoArticuloForId(IDPedido);
+        exitoFotocopiado = pedidoAFotocopiar.setEstado(Estado.ITEM_PEDIDO_FOTOCOPIADO);
+        pedidoAFotocopiar.guardar();
+        return exitoFotocopiado;
     }
     
 }
