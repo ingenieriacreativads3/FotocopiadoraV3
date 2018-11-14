@@ -76,14 +76,22 @@ public class GestorPedido {
     protected Estado cancelarItemPedido(int IDPedido){
         Estado exitoCancelado = Estado.ERROR;
         PedidoArticulo pedidoACancelar = ModeloInterfaz.getPedidoArticuloForId(IDPedido);
-        //pedidoACancelar.estado = Estado.ITEM_PEDIDO_CANCELADO;
+        if(pedidoACancelar.getEstado()==Estado.ITEM_PEDIDO_FOTOCOPIADO){
+            exitoCancelado = pedidoACancelar.setEstado(Estado.ITEM_PEDIDO_CANCELADO_SI_FOTOCOPIADO);
+            pedidoACancelar.guardar();
+        }
+        else{
+            exitoCancelado = pedidoACancelar.setEstado(Estado.ITEM_PEDIDO_CANCELADO_NO_FOTOCOPIADO);
+            pedidoACancelar.guardar();
+        }
+        
         return exitoCancelado;
     }
     
     protected Estado retirarItemPedido(int IDPedido){
         Estado exitoCancelado = Estado.ERROR;
         PedidoArticulo pedidoARetirar = ModeloInterfaz.getPedidoArticuloForId(IDPedido);
-        //pedidoARetirar.estado = Estado.ITEM_PEDIDO_RETIRADO;
+        pedidoARetirar.setEstado(Estado.ITEM_PEDIDO_RETIRADO);
         return exitoCancelado;
     }
     
