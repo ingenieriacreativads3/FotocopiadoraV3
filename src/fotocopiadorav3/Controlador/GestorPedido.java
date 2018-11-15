@@ -27,7 +27,7 @@ public class GestorPedido {
      * @param senia
      * @return 
      */
-    protected Estado crearPedido(int IDAlumno, java.sql.Date fechaActual, double importe, double senia, List<Articulo>Articulos) {
+    protected static Estado crearPedido(int IDAlumno, java.sql.Date fechaActual, double importe, double senia, List<Articulo>Articulos) {
         /**
          * Se inicializan las variabes. Generar una clave de pedido "IDPedido"
          * Persistir en la base de datos un nuevo pedido. Devolver un ID de
@@ -57,7 +57,7 @@ public class GestorPedido {
      * Agrega libros o quita libros del pedido.
      *
      */
-    protected Estado modificarPedido(int IDPedido, int IDAlumno, double importe, double senia, java.sql.Date fechaPedido, AlfaNumerico codigoTransaccion, List<Articulo>Articulos) {
+    protected static Estado modificarPedido(int IDPedido, int IDAlumno, double importe, double senia, java.sql.Date fechaPedido, AlfaNumerico codigoTransaccion, List<Articulo>Articulos) {
         Estado exitoModificado = Estado.ERROR;
         
         Pedido pedidoAModificar = ModeloInterfaz.getPedidoForId(IDPedido);
@@ -73,7 +73,7 @@ public class GestorPedido {
         return exitoModificado;
     }
     
-    protected Estado cancelarItemPedido(int IDPedido){
+    protected static Estado cancelarItemPedido(int IDPedido){
         Estado exitoCancelado = Estado.ERROR;
         PedidoArticulo pedidoACancelar = ModeloInterfaz.getPedidoArticuloForId(IDPedido);
         if(pedidoACancelar.getEstado()==Estado.ITEM_PEDIDO_FOTOCOPIADO){
@@ -88,7 +88,7 @@ public class GestorPedido {
         return exitoCancelado;
     }
     
-    protected Estado retirarItemPedido(int IDPedido){
+    protected static Estado retirarItemPedido(int IDPedido){
         Estado exitoRetiro = Estado.ERROR;
         PedidoArticulo pedidoARetirar = ModeloInterfaz.getPedidoArticuloForId(IDPedido);
         if(pedidoARetirar.getEstado()==Estado.ITEM_PEDIDO_FOTOCOPIADO){
@@ -102,7 +102,7 @@ public class GestorPedido {
         return exitoRetiro;
     }
     
-    protected Estado registrarFotocopiado(int IDPedido){
+    protected static Estado registrarFotocopiado(int IDPedido){
         Estado exitoFotocopiado = Estado.ERROR;
         PedidoArticulo pedidoAFotocopiar = ModeloInterfaz.getPedidoArticuloForId(IDPedido);
         exitoFotocopiado = pedidoAFotocopiar.setEstado(Estado.ITEM_PEDIDO_FOTOCOPIADO);

@@ -17,11 +17,11 @@ import javafx.stage.Stage;
  */
 public class ControladorInterfaz extends Application{
     
-    protected GestorPedido GestorPedidos = new GestorPedido();
-    //protected GestorCuenta GestorCuenta = new GestorCuenta();
-    protected GestorUsuario GestorUsuario = new GestorUsuario();
-    protected GestorCliente GestorCliente = new GestorCliente();
-    protected GestorArticulo GestorArticulo = new GestorArticulo();
+//    protected GestorPedido GestorPedidos = new GestorPedido();
+//    protected GestorCuenta GestorCuenta = new GestorCuenta();
+//    protected GestorUsuario GestorUsuario = new GestorUsuario();
+//    protected GestorCliente GestorCliente = new GestorCliente();
+//    protected GestorArticulo GestorArticulo = new GestorArticulo();
     public static String[] argumentos;
     
     
@@ -57,7 +57,7 @@ public class ControladorInterfaz extends Application{
     *
     */
     
-    public Estado altaUsuario(String nombreRecibido, String apellidoRecibido, String nombreUsuarioRecibido, String contraseniaRecibido, String calleDomicilioRecibido, String numeroDomicilioRecibido, String DNIRecibido){
+    public static Estado altaUsuario(String nombreRecibido, String apellidoRecibido, String nombreUsuarioRecibido, String contraseniaRecibido, String calleDomicilioRecibido, String numeroDomicilioRecibido, String DNIRecibido){
         //se verifica que el que de de alta sea admin
         //si es admin, se crea el usuario
         //si no lo es, se deniega
@@ -91,7 +91,7 @@ public class ControladorInterfaz extends Application{
         return exitoAlta;
     }
     
-    public Estado bajaUsuario(String IDusuarioRecibido){
+    public static Estado bajaUsuario(String IDusuarioRecibido){
         //se verifica que el que de de alta sea admin
         //si es admin, se baja el usuario
         //si no lo es, se deniega
@@ -100,7 +100,7 @@ public class ControladorInterfaz extends Application{
         return exitoBaja;
     }
     
-    public Estado modificacionUsuario(String IDusuarioRecibido, String nombreRecibido, String apellidoRecibido, String nombreUsuarioRecibido, String contraseniaRecibido, String calleDomicilioRecibido, String numeroDomicilioRecibido, String DNIRecibido){
+    public static Estado modificacionUsuario(String IDusuarioRecibido, String nombreRecibido, String apellidoRecibido, String nombreUsuarioRecibido, String contraseniaRecibido, String calleDomicilioRecibido, String numeroDomicilioRecibido, String DNIRecibido){
         //ningun atributo extra es necesario para automidificarse
         //para modificaciones extras:
         //se verifica que el que de de alta sea admin
@@ -144,7 +144,7 @@ public class ControladorInterfaz extends Application{
         //todo
     }
     
-    public Estado adicionarClienteComoRegistrado(String legajoRecibido, String nombreClienteRecibido, String apellidoRecibido, String direccionRecibido, String numeroRecibido, String dniClienteRecibido){
+    public static Estado adicionarClienteComoRegistrado(String legajoRecibido, String nombreClienteRecibido, String apellidoRecibido, String direccionRecibido, String numeroRecibido, String dniClienteRecibido){
         
         AlfaNumerico nombreCliente = ModeloInterfaz.getAlfaNumerico(nombreClienteRecibido);
         int legajo = Integer.valueOf(legajoRecibido);
@@ -160,7 +160,7 @@ public class ControladorInterfaz extends Application{
         return exitoAlta;
     }
     
-    public Estado modificacionClienteComoRegistrado(String legajoRecibido, String nombreClienteRecibido, String apellidoRecibido, String direccionRecibido, String numeroRecibido, String dniClienteRecibido){
+    public static Estado modificacionClienteComoRegistrado(String legajoRecibido, String nombreClienteRecibido, String apellidoRecibido, String direccionRecibido, String numeroRecibido, String dniClienteRecibido){
         int legajo = Integer.valueOf(legajoRecibido);
         AlfaNumerico nombreCliente = ModeloInterfaz.getAlfaNumerico(nombreClienteRecibido);
         nombreCliente.guardar();
@@ -175,7 +175,7 @@ public class ControladorInterfaz extends Application{
         return exitoAlta;
     }
     
-    public Estado bajaClienteComoRegistrado(String legajoRecibido){
+    public static Estado bajaClienteComoRegistrado(String legajoRecibido){
         int legajo = Integer.valueOf(legajoRecibido);
         Estado exitoBaja = GestorCliente.bajaCliente(legajo);
         return exitoBaja;
@@ -187,7 +187,7 @@ public class ControladorInterfaz extends Application{
     *
     */
     
-    public Estado crearArticulo(String nombreRecibido, String autorRecibido, String precioRecibido, String materiaRecibido){
+    public static Estado crearArticulo(String nombreRecibido, String autorRecibido, String precioRecibido, String materiaRecibido){
         
         AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
         nombre.guardar();
@@ -202,7 +202,7 @@ public class ControladorInterfaz extends Application{
         return exitoAlta;
     }
     
-    public Estado modificacionArticulo(String IDArticuloRecibido, String nombreRecibido, String autorRecibido, String precioRecibido, int idMateriaRecibido){
+    public static Estado modificacionArticulo(String IDArticuloRecibido, String nombreRecibido, String autorRecibido, String precioRecibido, int idMateriaRecibido){
         int IDArticulo = Integer.valueOf(IDArticuloRecibido);
         
         AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
@@ -220,7 +220,7 @@ public class ControladorInterfaz extends Application{
         
     }
     
-    public Estado bajaArticulo(String IDArticuloRecibido){
+    public static Estado bajaArticulo(String IDArticuloRecibido){
         int IDArticulo = Integer.valueOf(IDArticuloRecibido);
         Estado exito = GestorArticulo.bajaArticulo(IDArticulo);
         return exito;
@@ -232,7 +232,7 @@ public class ControladorInterfaz extends Application{
     */
     
     
-    public Estado nuevoPedido(String IDAlumnoRecibido, String importeRecibido, String SeniaRecibido, List<Articulo>Articulos){
+    public static Estado nuevoPedido(String IDAlumnoRecibido, String importeRecibido, String SeniaRecibido, List<Articulo>Articulos){
         //se toman los datos de los parametros
         //se crea un pedido con sus items
         int IDAlumno = Integer.valueOf(IDAlumnoRecibido);
@@ -242,7 +242,7 @@ public class ControladorInterfaz extends Application{
         
         
         
-        Estado exitoAlta = GestorPedidos.crearPedido(IDAlumno, fechaActual, importe, senia, Articulos);
+        Estado exitoAlta = GestorPedido.crearPedido(IDAlumno, fechaActual, importe, senia, Articulos);
         
         return exitoAlta;
         
@@ -251,7 +251,7 @@ public class ControladorInterfaz extends Application{
     }
     
     //En el modificar me deberia llegar un documento
-    public Estado modificacionPedido(String IDPedidoRecibido, String IDAlumnoRecibido, String importeRecibido, String SeniaRecibido, String fechaPedidoRecibido, String codigoTransaccionRecibido, List<Articulo>Articulos){
+    public static Estado modificacionPedido(String IDPedidoRecibido, String IDAlumnoRecibido, String importeRecibido, String SeniaRecibido, String fechaPedidoRecibido, String codigoTransaccionRecibido, List<Articulo>Articulos){
         Estado exitoModificado = Estado.ERROR;
         
         int IDAlumno = Integer.valueOf(IDAlumnoRecibido);
@@ -263,27 +263,27 @@ public class ControladorInterfaz extends Application{
         
         AlfaNumerico codigoTransaccion = ModeloInterfaz.getAlfaNumerico(codigoTransaccionRecibido);
         
-        exitoModificado = GestorPedidos.modificarPedido(IDPedido, IDAlumno, importe, senia, fechaPedido, codigoTransaccion, Articulos);
+        exitoModificado = GestorPedido.modificarPedido(IDPedido, IDAlumno, importe, senia, fechaPedido, codigoTransaccion, Articulos);
         
         return exitoModificado;
     }
-    public Estado cancelarItemPedido(String IDItemPedidoRecibido){
+    public static Estado cancelarItemPedido(String IDItemPedidoRecibido){
         Estado exitoModificado = Estado.ERROR;
         int IDItemPedido = Integer.valueOf(IDItemPedidoRecibido);
         
         
-        exitoModificado = GestorPedidos.cancelarItemPedido(IDItemPedido);
+        exitoModificado = GestorPedido.cancelarItemPedido(IDItemPedido);
         
         
         return exitoModificado;
     }
     
-    public Estado retirarItemPedido(String IDItemPedidoRecibido){
+    public static Estado retirarItemPedido(String IDItemPedidoRecibido){
         Estado exitoModificado = Estado.ERROR;
         int IDItemPedido = Integer.valueOf(IDItemPedidoRecibido);
         
         
-        exitoModificado = GestorPedidos.retirarItemPedido(IDItemPedido);
+        exitoModificado = GestorPedido.retirarItemPedido(IDItemPedido);
         
         
         return exitoModificado;
