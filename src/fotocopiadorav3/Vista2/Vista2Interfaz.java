@@ -42,6 +42,10 @@ public class Vista2Interfaz {
     private static int numeroListaUsuariosTab;
     private static int numeroListaPedidosTab;
     
+    
+    
+    /*RENDERIZADO DE VENTANAS Y FORMULARIOS*/
+    
     public static void renderizarLogin(){
         
         Login login = new Login();
@@ -284,47 +288,33 @@ public class Vista2Interfaz {
         
     }
     
+    /*FIN DE RENDERIZADOS*/
+    
+    /*ENVÍO DE DATOS -> ControladorInterfaz*/
+    
     public static void enviarDatosInicioSesion(String nombreUsuario, String contrasenia){
         
-        System.out.println("interfaz vista");
         ControladorInterfaz.iniciarSesion(nombreUsuario, contrasenia);
         
     }
     
+    /*ALTAS*/
+    
     public static void enviarDatosNuevoArticulo(String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
         
-        //ControladorInterfaz.crearNuevoDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
-        
-    }
-    
-    public static void enviarDatosModificarArticulo(String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
-        
-        //ControladorInterfaz.modificarDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
+        ControladorInterfaz.crearArticulo(nombre, autor, precio, materia);
         
     }
     
     public static void enviarDatosNuevoUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String altura, String dni){
         
-        //ControladorInterfaz.crearNuevoUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
-        
-    }
-    
-    public static void enviarDatosModificarUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String altura, String dni){
-        
-        //ControladorInterfaz.modificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
+        ControladorInterfaz.altaUsuario(nombreUsuario, apellido, nombreUsuario, contrasenia, domicilio, domicilio, dni);
         
     }
     
     public static void enviarDatosNuevoAlumno(String nombre, String apellido, String legajo, String domicilio, String altura, String dni){
         
-        ControladorInterfaz controladorInterfaz = new ControladorInterfaz();
-        controladorInterfaz.adicionarClienteComoRegistrado(legajo, nombre, apellido, domicilio, altura, dni);
-        
-    }
-    
-    public static void enviarDatosModificarAlumno(String nombre, String apellido, String legajo, String domicilio, String altura, String dni){
-        
-        //ControladorInterfaz.modificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
+        ControladorInterfaz.adicionarClienteComoRegistrado(legajo, nombre, apellido, domicilio, altura, dni);
         
     }
     
@@ -334,11 +324,37 @@ public class Vista2Interfaz {
         
     }
     
+    /*MODIFICACIONES*/
+    
+    public static void enviarDatosModificarArticulo(String idArticulo, String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
+        
+        ControladorInterfaz.modificacionArticulo(idArticulo, nombre, autor, precio, 0);     //idMateria
+        
+    }
+    
+    public static void enviarDatosModificarUsuario(String idUsuario, String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String altura, String dni){
+        
+        ControladorInterfaz.modificacionUsuario(idUsuario, nombreUsuario, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
+        
+    }
+    
+    public static void enviarDatosModificarAlumno(String nombre, String apellido, String legajo, String domicilio, String altura, String dni){
+        
+        ControladorInterfaz.modificacionClienteComoRegistrado(legajo, nombre, apellido, domicilio, altura, dni);
+        
+    }
+    
     public static void enviarDatosModificarPedido(String alumno, ArrayList<String> nombresArticulos, ArrayList<String> fechaEstimadaArticulos, ArrayList<String> cantidadArticulos, ArrayList<String> precioUnitarioArticulos, ArrayList<String> precioTotalArticulos, String importeTotal, String senia){
         
         //ControladorInterfaz.modificarPedido(alumno, nombresArticulos, fechaEstimadaArticulos, cantidadArticulos, precioUnitarioArticulos, precioTotalArticulos, importeTotal, senia);
         
     }
+    
+    /*BAJAS*/
+    
+    /*FIN DE ENVÍOS DE DATOS*/
+    
+    /*OBTENCIÓN DE DATOS -> ModeloInterfaz*/
     
 //    public static Set<String> obtenerListaInventario(){
 //        
@@ -380,12 +396,6 @@ public class Vista2Interfaz {
         
     }
     
-    public static void guardar(){
-        
-//        ControladorInterfaz.guardarCambios();
-
-        
-        
-    }
+    /*FIN DE OBTENCIÓN DE DATOS*/
     
 }

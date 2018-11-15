@@ -207,7 +207,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
         String altura=alturaTF.getText();
         String dni=dniTF.getText();
 
-        Vista2Interfaz.enviarDatosModificarUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
+        Vista2Interfaz.enviarDatosModificarUsuario(Integer.toString(idUsuario), nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
 
     }//GEN-LAST:event_aceptarActionPerformed
 
