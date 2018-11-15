@@ -21,7 +21,11 @@ public class MensajeConfirmacion extends javax.swing.JFrame {
      * Creates new form MensajeConfirmacion
      */
     public MensajeConfirmacion() {
+        
         initComponents();
+        
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**

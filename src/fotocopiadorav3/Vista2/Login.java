@@ -18,7 +18,10 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
+        
         initComponents();
+        
+        this.setLocationRelativeTo(null);
         
         TextPrompt textPromptUsuario = new TextPrompt("Ingrese su nombre de Usuario", jTextFieldUsuario);
         TextPrompt textPromptContrasenia = new TextPrompt("Ingrese su contraseña", jPasswordField1);
