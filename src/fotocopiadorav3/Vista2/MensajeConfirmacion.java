@@ -38,7 +38,7 @@ public class MensajeConfirmacion extends javax.swing.JFrame {
         tituloConfirmacion = new javax.swing.JLabel();
         mensajeConfirmacion = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {

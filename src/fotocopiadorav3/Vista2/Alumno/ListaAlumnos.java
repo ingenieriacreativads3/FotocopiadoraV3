@@ -87,47 +87,9 @@ public class ListaAlumnos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void cargarTabla(Set<Alumno> listaRecibida){
+    private void cargarTabla(Set<Alumno> alumnos){
         
         DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
-        
-        int id=0;
-        String nombre="";
-        String apellido="";
-        int legajo=0;
-        String domicilio="";
-        int altura=0;
-        int dni=0;
-        
-        if (!listaRecibida.isEmpty()) {
-            
-            for (Alumno alumno : listaRecibida) {
-
-                id=alumno.getId();
-                nombre=alumno.getPersona().getNombre().toString();
-                apellido=alumno.getPersona().getApellido().toString();
-                legajo=alumno.getLegajo();
-                domicilio=alumno.getPersona().getDireccion().getCalle().toString();
-                altura=alumno.getPersona().getDireccion().getNumero();
-                dni=alumno.getPersona().getDni();
-
-                defaultTableModel.addRow(new Object[]{id, nombre, apellido, legajo, domicilio, altura, dni});
-
-            }
-        }
-    }
-    
-    public void recargarTabla(Set<Alumno> alumnos){
-        
-        DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
-        
-        int cantidadFilas = defaultTableModel.getRowCount(); 
-        
-        for (int i = 0; i < cantidadFilas; i++) {
-            
-            defaultTableModel.removeRow(i);
-            
-        }
         
         int id=0;
         String nombre="";
@@ -153,6 +115,19 @@ public class ListaAlumnos extends javax.swing.JFrame {
 
             }
         }
+    }
+    
+    public void recargarTabla(Set<Alumno> alumnos){
+        
+        DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
+        
+        while (defaultTableModel.getRowCount()>0) {
+            
+            defaultTableModel.removeRow(0);
+            
+        }
+        
+        cargarTabla(alumnos);
     }
     
     public boolean isExiste() {

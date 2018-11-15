@@ -291,13 +291,13 @@ public class Vista2Interfaz {
         
     }
     
-    public static void enviarDatosNuevoDocumento(String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
+    public static void enviarDatosNuevoArticulo(String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
         
         //ControladorInterfaz.crearNuevoDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
         
     }
     
-    public static void enviarDatosModificarDocumento(String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
+    public static void enviarDatosModificarArticulo(String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
         
         //ControladorInterfaz.modificarDocumento(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
         

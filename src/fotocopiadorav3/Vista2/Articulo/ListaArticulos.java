@@ -122,42 +122,13 @@ public class ListaArticulos extends javax.swing.JFrame {
         
         DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
         
-        int cantidadFilas = defaultTableModel.getRowCount(); 
-        
-        for (int i = 0; i < cantidadFilas; i++) {
+        while (defaultTableModel.getRowCount()>0) {
             
-            defaultTableModel.removeRow(i);
+            defaultTableModel.removeRow(0);
             
         }
         
-        int id=0;
-        String nombre="";
-        String categoria="";
-        String editorial="";
-        String edicion="";
-        String materia="";
-        String rutaDocumento="";
-        String autor="";
-        double precio=0.0;
-        
-        if (!articulos.isEmpty()) {
-            
-            for (Articulo articulo : articulos) {
-
-                id=articulo.getId();
-                nombre=articulo.getNombre().toString();
-                categoria=articulo.getCategoria().toString();
-                editorial=articulo.getEditorial().toString();
-                edicion=articulo.getEdicion().toString();
-                materia=articulo.getMateria().toString();
-                rutaDocumento=articulo.getDocumento().toString();
-                autor=articulo.getAutor().toString();
-                precio=articulo.getPrecio();
-
-                defaultTableModel.addRow(new Object[]{id, nombre, categoria, materia, editorial, edicion, autor, rutaDocumento, precio});
-
-            }
-        }
+        cargarTabla(articulos);
     }
     
     public boolean isExiste() {
