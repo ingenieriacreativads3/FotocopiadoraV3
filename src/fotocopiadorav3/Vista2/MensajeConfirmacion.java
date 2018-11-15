@@ -96,17 +96,15 @@ public class MensajeConfirmacion extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         
-        ControladorInterfaz controladorInterfaz = new ControladorInterfaz();
-        
         switch(tipoElemento){
             
             //case 0: controladorInterfaz.cancelarPedido();
             
-            case 1: controladorInterfaz.bajaArticulo(idElemento);
+            case 1: ControladorInterfaz.bajaArticulo(idElemento);
             
-            case 2: controladorInterfaz.bajaClienteComoRegistrado(idElemento);
+            case 2: ControladorInterfaz.bajaClienteComoRegistrado(idElemento);
             
-            case 3: controladorInterfaz.bajaUsuario(idElemento);
+            case 3: ControladorInterfaz.bajaUsuario(idElemento);
             
             default: renderizarMensajeError("", "");
         }
