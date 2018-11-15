@@ -196,7 +196,7 @@ public class NuevoAlumno extends javax.swing.JFrame {
         
         aceptar.grabFocus();
         
-//        listaValidaciones.forEach((k, v) -> realizarValidaciones(v));
+        listaValidaciones.forEach((k, v) -> realizarValidaciones(v));
         
         if (datosValidos) {
             
@@ -269,7 +269,7 @@ public class NuevoAlumno extends javax.swing.JFrame {
                 @Override
                 public void focusLost(FocusEvent e) {
                     
-                    listaValidaciones.replace(k, new Boolean(false), validador.validar(k));
+                    listaValidaciones.replace(k, new Boolean(false), validador.validar(k, v));
                     
                 }
             })

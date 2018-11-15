@@ -28,7 +28,7 @@ public class ListaUsuarios extends javax.swing.JFrame {
         
         Set<Usuario> usuarios = Vista2Interfaz.obtenerListaUsuarios();
         
-        //cargarTabla(usuarios);
+        cargarTabla(usuarios);
         
     }
 
@@ -118,38 +118,13 @@ public class ListaUsuarios extends javax.swing.JFrame {
         
         DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
         
-        int cantidadFilas = defaultTableModel.getRowCount(); 
-        
-        for (int i = 0; i < cantidadFilas; i++) {
+        while (defaultTableModel.getRowCount()>0) {
             
-            defaultTableModel.removeRow(i);
+            defaultTableModel.removeRow(0);
             
         }
         
-        int id=0;
-        String nombre="";
-        String apellido="";
-        String nombreUsuario="";
-        String domicilio="";
-        int altura=0;
-        int dni=0;
-        
-        if (!usuarios.isEmpty()) {
-            
-            for (Usuario usuario : usuarios) {
-
-                id=usuario.getId();
-                nombre=usuario.getPersona().getNombre().toString();
-                apellido=usuario.getPersona().getApellido().toString();
-                nombreUsuario=usuario.getNombreUsuario().toString();
-                domicilio=usuario.getPersona().getDireccion().getCalle().toString();
-                altura=usuario.getPersona().getDireccion().getNumero();
-                dni=usuario.getPersona().getDni();
-
-                defaultTableModel.addRow(new Object[]{id, nombre, apellido, nombreUsuario, domicilio, altura, dni});
-
-            }
-        }
+        cargarTabla(usuarios);
     }
     
     public boolean isExiste() {

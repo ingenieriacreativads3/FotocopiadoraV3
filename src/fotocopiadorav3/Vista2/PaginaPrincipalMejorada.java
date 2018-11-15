@@ -56,7 +56,6 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         eliminarUsuario = new javax.swing.JButton();
         BarraMenuSuperior = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        Guardar = new javax.swing.JButton();
         PanelPrincipalCentral = new javax.swing.JPanel();
         areaTrabajo = new javax.swing.JTabbedPane();
 
@@ -223,16 +222,6 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ajustes.png"))); // NOI18N
         BarraMenuSuperior.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 20, -1, -1));
 
-        Guardar.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        Guardar.setText("Guardar");
-        Guardar.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
-        Guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarActionPerformed(evt);
-            }
-        });
-        BarraMenuSuperior.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 370, 50));
-
         getContentPane().add(BarraMenuSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
 
         PanelPrincipalCentral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -292,10 +281,6 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         Vista2Interfaz.renderizarModificarUsuario(idUsuario);
         
     }//GEN-LAST:event_modificarUsuarioActionPerformed
-
-    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-        Vista2Interfaz.guardar();
-    }//GEN-LAST:event_GuardarActionPerformed
 
     private void PedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PedidosActionPerformed
         Vista2Interfaz.renderizarListadoPedidos();
@@ -482,7 +467,6 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     private javax.swing.JButton Articulos;
     private javax.swing.JPanel BarraMenuLateral;
     private javax.swing.JPanel BarraMenuSuperior;
-    private javax.swing.JButton Guardar;
     private javax.swing.JPanel PanelPrincipalCentral;
     private javax.swing.JButton Pedidos;
     private javax.swing.JButton Usuarios;

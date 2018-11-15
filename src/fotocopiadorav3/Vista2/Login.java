@@ -189,6 +189,7 @@ public class Login extends javax.swing.JFrame {
             
         }
         
+        /*backdoor -> con esta función salteamos la validación para pruebas*/
         Vista2Interfaz.renderizarPaginaPrincipal();
         
     }

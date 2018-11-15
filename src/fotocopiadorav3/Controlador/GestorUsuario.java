@@ -13,7 +13,7 @@ import fotocopiadorav3.Modelo.*;
  */
 public class GestorUsuario {
     
-    protected Estado altaUsuario(AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, AlfaNumerico nombreUsuarioRecibido, AlfaNumerico passwordRecibida, Direccion domicilioRecibido, int dniRecibido){
+    protected static Estado altaUsuario(AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, AlfaNumerico nombreUsuarioRecibido, AlfaNumerico passwordRecibida, Direccion domicilioRecibido, int dniRecibido){
         Estado usuarioCreadoConExito = Estado.ERROR;
         
         //Verificaciones del nombreRecibido, autor, precio, materia.
@@ -32,7 +32,7 @@ public class GestorUsuario {
         return usuarioCreadoConExito;
     }
     
-    protected Estado bajaUsuario(int IDusuario){
+    protected static Estado bajaUsuario(int IDusuario){
         Estado exitoBaja = Estado.ERROR;
         //Usuario userABorrar = ModeloInterfaz.getUsuarioForID(IDusuario);
         Usuario userABorrar = ModeloInterfaz.getUsuarioForId(IDusuario);
@@ -42,7 +42,7 @@ public class GestorUsuario {
         return exitoBaja;
     }
     
-    protected Estado modificacionUsuario(int IDUusuarioRecibido, AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, AlfaNumerico nombreUsuarioRecibido, AlfaNumerico passwordRecibida, Direccion domicilioRecibido, int dniRecibido){
+    protected static Estado modificacionUsuario(int IDUusuarioRecibido, AlfaNumerico nombreRecibido, AlfaNumerico apellidoRecibido, AlfaNumerico nombreUsuarioRecibido, AlfaNumerico passwordRecibida, Direccion domicilioRecibido, int dniRecibido){
         Estado usuarioCreadoConExito = Estado.ERROR;
         
         //Verificaciones del nombreRecibido, autor, precio, materia.
@@ -62,7 +62,7 @@ public class GestorUsuario {
         return usuarioCreadoConExito;
     }
     
-    private boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico apellido, AlfaNumerico nombreUsuario, AlfaNumerico contrasenia, Direccion Domicilio, int DNI){
+    private static boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico apellido, AlfaNumerico nombreUsuario, AlfaNumerico contrasenia, Direccion Domicilio, int DNI){
         boolean exito = false;
         boolean exitoNombre = false;
         boolean exitoApellido = false;
