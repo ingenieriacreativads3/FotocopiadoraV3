@@ -105,12 +105,15 @@ public class MensajeConfirmacion extends javax.swing.JFrame {
             //case 0: controladorInterfaz.cancelarPedido();
             
             case 1: ControladorInterfaz.bajaArticulo(idElemento);
+                        break;
             
             case 2: ControladorInterfaz.bajaClienteComoRegistrado(idElemento);
+                        break;
             
             case 3: ControladorInterfaz.bajaUsuario(idElemento);
+                        break;
             
-            default: renderizarMensajeError("", "");
+            default: renderizarMensajeError("Error de eliminación", "Há ocurrido un error al intentar dar de baja a algún elemento en el sistema");
         }
         
     }//GEN-LAST:event_aceptarActionPerformed
