@@ -18,7 +18,7 @@ import fotocopiadorav3.Modelo.Persona;
  */
 public class GestorCliente {
     
-    protected Estado altaCliente(int legajo, AlfaNumerico nombreCliente, AlfaNumerico apellidoCliente, AlfaNumerico direccionClienteRecibido, int numeroCalle, int DNICliente){
+    protected static Estado altaCliente(int legajo, AlfaNumerico nombreCliente, AlfaNumerico apellidoCliente, AlfaNumerico direccionClienteRecibido, int numeroCalle, int DNICliente){
         Estado Exito = Estado.ERROR;
         
         System.out.println("entra a hacer un nuevo alumno");
@@ -41,7 +41,7 @@ public class GestorCliente {
         return Exito;
     }
     
-    protected Estado bajaCliente(int legajo){
+    protected static Estado bajaCliente(int legajo){
         Estado Exito = Estado.ERROR;
         
         //Dar de baja
@@ -51,7 +51,7 @@ public class GestorCliente {
         return Exito;
     }
     
-    protected Estado modificacionCliente(int legajo, AlfaNumerico nombreCliente, AlfaNumerico apellidoCliente, AlfaNumerico direccionClienteRecibido, int numeroCalle, int DNICliente){
+    protected static Estado modificacionCliente(int legajo, AlfaNumerico nombreCliente, AlfaNumerico apellidoCliente, AlfaNumerico direccionClienteRecibido, int numeroCalle, int DNICliente){
         Estado Exito = Estado.ERROR;
         
         if(datosCorrectos(legajo, nombreCliente, apellidoCliente, direccionClienteRecibido, numeroCalle)){
@@ -66,7 +66,7 @@ public class GestorCliente {
         return Exito;
     }
     
-    private boolean datosCorrectos(int legajo, AlfaNumerico nombreCliente, AlfaNumerico apellidoCliente, AlfaNumerico direccionCliente, int numeroCalle){
+    private static boolean datosCorrectos(int legajo, AlfaNumerico nombreCliente, AlfaNumerico apellidoCliente, AlfaNumerico direccionCliente, int numeroCalle){
         
         try{
             boolean exito = false;

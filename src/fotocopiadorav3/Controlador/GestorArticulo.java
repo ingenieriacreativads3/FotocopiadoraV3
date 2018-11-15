@@ -24,7 +24,7 @@ public class GestorArticulo {
      * @return
      */
     
-    protected Estado altaArticulo(AlfaNumerico nombre, AlfaNumerico autor, double precio, AlfaNumerico materia){
+    protected static Estado altaArticulo(AlfaNumerico nombre, AlfaNumerico autor, double precio, AlfaNumerico materia){
         Estado ArticuloCreado = Estado.ERROR;
         
         return ArticuloCreado;
@@ -34,7 +34,7 @@ public class GestorArticulo {
      * @param IDArticulo 
      * @return  
      */
-    protected Estado bajaArticulo(int IDArticulo){
+    protected static Estado bajaArticulo(int IDArticulo){
         Estado ArticuloEliminado = Estado.ERROR;
         
         //Verificaciones del nombre, autor, precio, materia.
@@ -56,7 +56,7 @@ public class GestorArticulo {
      * @param materia
      * @return 
      */
-    protected Estado modificacionArticulo(int IDArticulo, AlfaNumerico nombre, AlfaNumerico autor, double precio, Materia materia){
+    protected static Estado modificacionArticulo(int IDArticulo, AlfaNumerico nombre, AlfaNumerico autor, double precio, Materia materia){
         Estado ArticuloModificadoConExito = Estado.ERROR;
         
         //Verificaciones del nombreRecibido, autor, precio, materia.
@@ -89,7 +89,7 @@ public class GestorArticulo {
      * @param materia
      * @return 
      */
-    private boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico autor, double precio, Materia materia){
+    private static boolean datosCorrectos(AlfaNumerico nombre, AlfaNumerico autor, double precio, Materia materia){
         
         try{
             boolean exito = false;
