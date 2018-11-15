@@ -500,7 +500,6 @@ public class PedidoArticulo {
             
         }
         
-        
         return estadoDevolver;
     }
 
