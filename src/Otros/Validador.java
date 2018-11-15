@@ -42,12 +42,12 @@ public class Validador{
         
         switch(tipoValidacion){
             
-            case 0: validarAlfanumerico(contenido);
-            case 1: validarNombre(contenido);
-            case 2: validarLegajo(contenido);
-            case 3: validarAltura(contenido);
-            case 4: validarDni(contenido);
-            case 5: validarContrasenia(contenido);
+            case 0: datosValidos = validarAlfanumerico(contenido);
+            case 1: datosValidos = validarNombre(contenido);
+            case 2: datosValidos = validarLegajo(contenido);
+            case 3: datosValidos = validarAltura(contenido);
+            case 4: datosValidos = validarDni(contenido);
+            case 5: datosValidos = validarContrasenia(contenido);
             
         }
         
@@ -57,14 +57,20 @@ public class Validador{
     
     private boolean validarAlfanumerico(String contenido){
         
-        boolean datosValidos = false;
+        boolean datosValidos = true;
+        
+        if (contenido.length() < 3 || contenido.length() > 25) {
+            
+            datosValidos = false;
+            
+        }
         
         return datosValidos;
     }
     
     private boolean esTexto(String contenido){
         
-        boolean datosValidos = false;
+        boolean datosValidos = true;
         
         for (int i = 0; i < contenido.length(); i++) {
             
@@ -96,12 +102,19 @@ public class Validador{
     
     private boolean validarNombre(String contenido){
         
-        boolean datosValidos = false;
+        boolean datosValidos = true;
         
         if (esTexto(contenido)) {
             
+            if (contenido.length() < 2 || contenido.length() > 20) {
+                
+                datosValidos = false;
+                
+            }
             
+        } else{
             
+            datosValidos = false;
             
         }
         
@@ -110,12 +123,29 @@ public class Validador{
     
     private boolean validarAltura(String contenido){
         
-        boolean datosValidos = false;
+        boolean datosValidos = true;
         
         if (esNumero(contenido)) {
             
+            try {
+                
+                int altura = Integer.valueOf(contenido);
+                
+                if (altura < 0 || altura > 10000) {
+                    
+                    datosValidos = false;
+                    
+                }
+                
+            } catch (Exception e) {
+                
+                datosValidos = false;
+                
+            }
             
+        } else{
             
+            datosValidos = false;
             
         }
         
@@ -124,12 +154,29 @@ public class Validador{
     
     private boolean validarLegajo(String contenido){
         
-        boolean datosValidos = false;
+        boolean datosValidos = true;
         
         if (esNumero(contenido)) {
             
+            try {
+                
+                int altura = Integer.valueOf(contenido);
+                
+                if (altura < 0 || altura > 50000) {
+                    
+                    datosValidos = false;
+                    
+                }
+                
+            } catch (Exception e) {
+                
+                datosValidos = false;
+                
+            }
             
+        } else{
             
+            datosValidos = false;
             
         }
         
@@ -138,12 +185,29 @@ public class Validador{
     
     private boolean validarDni(String contenido){
         
-        boolean datosValidos = false;
+        boolean datosValidos = true;
         
         if (esNumero(contenido)) {
             
+            try {
+                
+                long altura = Long.valueOf(contenido);
+                
+                if (altura < 10000000 || altura > 50000000) {
+                    
+                    datosValidos = false;
+                    
+                }
+                
+            } catch (Exception e) {
+                
+                datosValidos = false;
+                
+            }
             
+        } else{
             
+            datosValidos = false;
             
         }
         
@@ -152,13 +216,14 @@ public class Validador{
     
     private boolean validarContrasenia(String contenido){
         
-        boolean datosValidos = false;
+        boolean datosValidos = true;
+        
+        if (contenido.length() < 6 || contenido.length() > 16) {
+            
+            datosValidos = false;
+            
+        }
         
         return datosValidos;
     }
-    
-    
-    
-    
-    
 }
