@@ -90,7 +90,7 @@ public class Vista2Interfaz {
                         mensaje.concat("Usuario: ");
                         Usuario usuario = ModeloInterfaz.getUsuarioForId(idElemento);
                         mensaje.concat("id: " + Integer.toString(usuario.getId()));
-                        mensaje.concat("\nnombre: " + usuario.getPersona().getNombre().toString());
+                        //mensaje.concat("\nnombre: " + usuario.getPersona().getNombre().toString());
             
             default: renderizarMensajeError("", "");
         }

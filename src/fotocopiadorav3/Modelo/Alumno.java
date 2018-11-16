@@ -82,6 +82,7 @@ public class Alumno{
             conn.closeConn("borrar");
             
         } catch (Exception e) {
+            
             System.out.println("se rompe en borrar");
             
             estadoDevolver = Estado.ERROR_PERSISTENCIA_INCORRECTA;
@@ -89,6 +90,46 @@ public class Alumno{
         }
         
         return estadoDevolver;
+    }
+    
+    protected static Alumno getForLegajo(int legajoRecibido){
+        
+        Alumno alumnoDevolver = null;
+        
+        Estado seObtuvo = Estado.EXITO;
+        //Estado seObtuvo = getInformacion();
+        
+        if(listaObjetos != null){
+            
+            if(seObtuvo == Estado.EXITO){
+
+                for(Alumno alumnoActual : listaObjetos){
+
+                    if(alumnoActual.legajo == legajoRecibido){
+
+                        alumnoDevolver = alumnoActual;
+
+                    }else{
+
+                        //...se establecion un valor por defecto
+
+                    }
+                }
+
+            }else{
+
+                //TODO capturar el error producido por no haber capturado la info de la db
+                System.out.println("Se rompio en alumno.geforlegajo()");
+
+            }
+            
+        }else{
+            
+            //...no hacer nada
+            
+        }
+        return alumnoDevolver;
+        
     }
     
     protected static Alumno getForId(int idRecibido){

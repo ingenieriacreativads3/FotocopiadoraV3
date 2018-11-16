@@ -41,12 +41,25 @@ public class GestorCliente {
         return Exito;
     }
     
-    protected static Estado bajaCliente(int legajo){
+    protected static Estado bajaCliente(int idRecibido){
+        
         Estado Exito = Estado.ERROR;
         
+        System.out.println("id alumno: " + idRecibido);
+        
         //Dar de baja
-        Alumno alumnoABajar = ModeloInterfaz.getAlumnoForId(legajo);
-        Exito = alumnoABajar.borrar();
+        Alumno alumnoABajar = ModeloInterfaz.getAlumnoForId(idRecibido);
+        
+        if(alumnoABajar != Alumno.OBJETO_INVALIDO){
+        
+            Exito = alumnoABajar.borrar();
+            
+        }else{
+            
+            //...se establecio un valor por defecto
+            
+        }
+        
         
         return Exito;
     }

@@ -104,7 +104,7 @@ public class ListaUsuarios extends javax.swing.JFrame {
                 nombre=usuario.getPersona().getNombre().toString();
                 apellido=usuario.getPersona().getApellido().toString();
                 nombreUsuario=usuario.getNombreUsuario().toString();
-                domicilio=usuario.getPersona().getDireccion().getCalle().toString();
+                //domicilio=usuario.getPersona().getDireccion().getCalle().toString();
                 altura=usuario.getPersona().getDireccion().getNumero();
                 dni=usuario.getPersona().getDni();
 

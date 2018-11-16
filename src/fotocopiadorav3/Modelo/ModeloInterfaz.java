@@ -206,6 +206,14 @@ public class ModeloInterfaz {
     
     //getForId
     
+    public static Alumno getAlumnoForLegajo(int legajoRecibido){
+        
+        Alumno alumnoDevolver = Alumno.getForLegajo(legajoRecibido);
+        
+        return alumnoDevolver;
+        
+    }
+    
     public static AlfaNumerico getAlfanumericoForId(int idAlfanumericoRecibido){
         
         AlfaNumerico alfanumericoDevolver = AlfaNumerico.getForId(idAlfanumericoRecibido);
@@ -229,9 +237,9 @@ public class ModeloInterfaz {
     
     public static Alumno getAlumnoForId(int idAlumnoRecibido){
         
-        //Alumno alumnoDevolver = Alumno.getForId(idAlumnoRecibido);
+        Alumno alumnoDevolver = Alumno.getForId(idAlumnoRecibido);
         
-        return Alumno.getForId(idAlumnoRecibido);
+        return alumnoDevolver;
     }
     
     public static Articulo getArticuloForId(int idArticuloRecibo){
