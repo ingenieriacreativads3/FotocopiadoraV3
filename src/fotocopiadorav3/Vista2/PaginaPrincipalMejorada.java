@@ -25,7 +25,11 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
      * Creates new form PaginaPrincipal
      */
     public PaginaPrincipalMejorada() {
+        
         initComponents();
+        
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**

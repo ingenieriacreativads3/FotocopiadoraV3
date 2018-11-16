@@ -17,7 +17,11 @@ public class MensajeError extends javax.swing.JFrame {
      * Creates new form MensajeError
      */
     public MensajeError() {
+        
         initComponents();
+        
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**

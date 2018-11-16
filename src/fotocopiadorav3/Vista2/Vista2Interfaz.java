@@ -73,26 +73,30 @@ public class Vista2Interfaz {
                         mensaje.concat("pedido: ");
                         Pedido pedido = ModeloInterfaz.getPedidoForId(idElemento);
                         mensaje.concat("id: " + Integer.toString(pedido.getId()));
+                        break;
             
             case 1: titulo.concat("Artículo");
                         mensaje.concat("artículo: ");
                         Articulo articulo = ModeloInterfaz.getArticuloForId(idElemento);
                         mensaje.concat("id: " + Integer.toString(articulo.getId()));
                         mensaje.concat("\nnombre" + articulo.getNombre().toString());
+                        break;
             
             case 2: titulo.concat("Alumno");
                         mensaje.concat("alumno: ");
                         Alumno alumno = ModeloInterfaz.getAlumnoForId(idElemento);
                         mensaje.concat("id: " + Integer.toString(alumno.getId()));
                         mensaje.concat("\nnombre: " + alumno.getPersona().getNombre().toString());
+                        break;
             
             case 3: titulo.concat("Usuario");
                         mensaje.concat("Usuario: ");
                         Usuario usuario = ModeloInterfaz.getUsuarioForId(idElemento);
                         mensaje.concat("id: " + Integer.toString(usuario.getId()));
-                        //mensaje.concat("\nnombre: " + usuario.getPersona().getNombre().toString());
+                        mensaje.concat("\nnombre: " + usuario.getPersona().getNombre().toString());
+                        break;
             
-            default: renderizarMensajeError("", "");
+            default: renderizarMensajeError("Error de eliminación", "Há ocurrido un error al intentar dar de baja a algún elemento en el sistema");
         }
         
         mensajeConfirmacion.setTipoElemento(tipoMensaje);
