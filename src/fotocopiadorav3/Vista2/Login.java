@@ -6,7 +6,7 @@
 package fotocopiadorav3.Vista2;
 
 import Otros.TextPrompt;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 /**
  *
