@@ -6,7 +6,12 @@
 package fotocopiadorav3.Vista2.Usuario;
 
 import Otros.TextPrompt;
+import Otros.Validador;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.util.HashMap;
+import javax.swing.JTextField;
 
 /**
  *
@@ -14,19 +19,24 @@ import fotocopiadorav3.Vista2.Vista2Interfaz;
  */
 public class NuevoUsuario extends javax.swing.JFrame {
 
+    private HashMap<JTextField, Integer> listaCampos = new HashMap<>();
+    private HashMap<JTextField, Boolean> listaValidaciones = new HashMap<>();
+    private boolean datosValidos;
+    
     /**
      * Creates new form NuevoUsuario
      */
     public NuevoUsuario() {
+        
         initComponents();
         
-        TextPrompt textPromptNombre = new TextPrompt("Ingrese su nombre", nombreTF);
-        TextPrompt textPromptApellido = new TextPrompt("Ingrese su apellido", apellidoTF);
-        TextPrompt textPromptNombreUsuario = new TextPrompt("Ingrese su nombre de usuario", nombreUsuarioTF);
-        TextPrompt textPromptContrasenia = new TextPrompt("Ingrese su contraseña", contraseniaTF);
-        TextPrompt textPromptDomicilio = new TextPrompt("Ingrese su domicilio actual", domicilioTF);
-        TextPrompt textPromptAltura = new TextPrompt("Ingrese la altura de su domicilio", alturaTF);
-        TextPrompt textPromptDni = new TextPrompt("Ingrese su número de documento", dniTF);
+        agregarPromptText();
+        
+        llenarListaCampos();
+        
+        llenarListaValidaciones();
+        
+        agregarValidacion(listaCampos);
         
     }
 
@@ -195,15 +205,30 @@ public class NuevoUsuario extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         
-        String nombre=nombreTF.getText();
-        String apellido=apellidoTF.getText();
-        String nombreUsuario=nombreUsuarioTF.getText();
-        String contrasenia=contraseniaTF.getText();
-        String domicilio=domicilioTF.getText();
-        String altura=alturaTF.getText();
-        String dni=dniTF.getText();
+        datosValidos = true;
         
-        Vista2Interfaz.enviarDatosNuevoUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
+        listaCampos.forEach((k, v) -> k.grabFocus());
+        aceptar.grabFocus();
+        
+        listaValidaciones.forEach((k, v) -> realizarValidaciones(v));
+        
+        if (datosValidos) {
+            
+            String nombre=nombreTF.getText();
+            String apellido=apellidoTF.getText();
+            String nombreUsuario=nombreUsuarioTF.getText();
+            String contrasenia=contraseniaTF.getText();
+            String domicilio=domicilioTF.getText();
+            String altura=alturaTF.getText();
+            String dni=dniTF.getText();
+
+            Vista2Interfaz.enviarDatosNuevoUsuario(nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
+
+        } else{
+            
+            System.out.println("datos erroneos");
+            
+        }
         
     }//GEN-LAST:event_aceptarActionPerformed
 
@@ -219,6 +244,62 @@ public class NuevoUsuario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_limpiarCamposActionPerformed
 
+    private void agregarPromptText(){
+        
+        TextPrompt textPromptNombre = new TextPrompt("Ingrese su nombre", nombreTF);
+        TextPrompt textPromptApellido = new TextPrompt("Ingrese su apellido", apellidoTF);
+        TextPrompt textPromptNombreUsuario = new TextPrompt("Ingrese su nombre de usuario", nombreUsuarioTF);
+        TextPrompt textPromptContrasenia = new TextPrompt("Ingrese su contraseña", contraseniaTF);
+        TextPrompt textPromptDomicilio = new TextPrompt("Ingrese su domicilio actual", domicilioTF);
+        TextPrompt textPromptAltura = new TextPrompt("Ingrese la altura de su domicilio", alturaTF);
+        TextPrompt textPromptDni = new TextPrompt("Ingrese su número de documento", dniTF);
+        
+    }
+    
+    private void llenarListaCampos(){
+        
+        listaCampos.put(nombreTF, Integer.valueOf(1));
+        listaCampos.put(apellidoTF, Integer.valueOf(1));
+        listaCampos.put(nombreUsuarioTF, Integer.valueOf(0));
+        listaCampos.put(contraseniaTF, Integer.valueOf(5));
+        listaCampos.put(domicilioTF, Integer.valueOf(0));
+        listaCampos.put(alturaTF, Integer.valueOf(3));
+        listaCampos.put(dniTF, Integer.valueOf(4));
+        
+    }
+    
+    private void llenarListaValidaciones(){
+        
+        Boolean booleanObject = new Boolean(false);
+        
+        listaCampos.forEach((k, v) -> listaValidaciones.put(k, booleanObject));
+    }
+    
+    private void agregarValidacion(HashMap<JTextField, Integer> listaCampos){
+        
+        Validador validador = new Validador();
+        
+        listaCampos.forEach((k, v) -> k.addFocusListener(new FocusListener() {
+                
+                @Override
+                public void focusGained(FocusEvent e) {}
+
+                @Override
+                public void focusLost(FocusEvent e) {
+                    
+                    listaValidaciones.replace(k, new Boolean(false), validador.validar(k, v));
+                    
+                }
+            })
+        );
+    }
+    
+    private void realizarValidaciones(Boolean v){
+        
+        datosValidos &= v.booleanValue();
+        
+    }
+    
     /**
      * @param args the command line arguments
      */

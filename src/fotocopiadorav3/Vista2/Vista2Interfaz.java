@@ -219,10 +219,6 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarCancelarPedido(){
-        
-    }
-
     public static void renderizarNuevoArticulo(){
         
         NuevoArticulo nuevoArticulo = new NuevoArticulo();
@@ -242,10 +238,6 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarEliminarArticulo(){
-        
-    }
-    
     public static void renderizarNuevoUsuario(){
         
         NuevoUsuario nuevoUsuario = new NuevoUsuario();
@@ -265,10 +257,6 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarEliminarUsuario(){
-        
-    }
-    
     public static void renderizarNuevoAlumno(){
         
         NuevoAlumno nuevoAlumno = new NuevoAlumno();
@@ -288,10 +276,6 @@ public class Vista2Interfaz {
         
     }
 
-    public static void renderizarEliminarAlumno(){
-        
-    }
-    
     /*FIN DE RENDERIZADOS*/
     
     /*ENVÍO DE DATOS -> ControladorInterfaz*/

@@ -43,11 +43,19 @@ public class Validador{
         switch(tipoValidacion){
             
             case 0: datosValidos = validarAlfanumerico(contenido);
+                        break;
             case 1: datosValidos = validarNombre(contenido);
+                        break;
             case 2: datosValidos = validarLegajo(contenido);
+                        break;
             case 3: datosValidos = validarAltura(contenido);
+                        break;
             case 4: datosValidos = validarDni(contenido);
+                        break;
             case 5: datosValidos = validarContrasenia(contenido);
+                        break;
+            case 6: datosValidos = esNumero(contenido);
+                        break;
             
         }
         

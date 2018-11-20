@@ -116,6 +116,7 @@ public class MensajeConfirmacion extends javax.swing.JFrame {
             default: renderizarMensajeError("Error de eliminación", "Há ocurrido un error al intentar dar de baja a algún elemento en el sistema");
         }
         
+        dispose();
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed

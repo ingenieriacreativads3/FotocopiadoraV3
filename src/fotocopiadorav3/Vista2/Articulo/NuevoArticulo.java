@@ -6,7 +6,12 @@
 package fotocopiadorav3.Vista2.Articulo;
 
 import Otros.TextPrompt;
+import Otros.Validador;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.util.HashMap;
+import javax.swing.JTextField;
 
 /**
  *
@@ -14,20 +19,24 @@ import fotocopiadorav3.Vista2.Vista2Interfaz;
  */
 public class NuevoArticulo extends javax.swing.JFrame {
 
+    private HashMap<JTextField, Integer> listaCampos = new HashMap<>();
+    private HashMap<JTextField, Boolean> listaValidaciones = new HashMap<>();
+    private boolean datosValidos;
+    
     /**
      * Creates new form NuevoDocumento
      */
     public NuevoArticulo() {
+        
         initComponents();
         
-        TextPrompt textPromptNombre = new TextPrompt("Ingrese el nombre del artículo", nombreTF);
-        TextPrompt textPromptCategoria = new TextPrompt("Ingrese la categoría del artículo", categoriaTF);
-        TextPrompt textPromptEditorial = new TextPrompt("Ingrese el número de editorial", editorialTF);
-        TextPrompt textPromptEdición = new TextPrompt("Ingrese el número de edición", edicionTF);
-        TextPrompt textPromptMateria = new TextPrompt("Ingrese la materia a la que corresponde el artículo", materiaTF);
-        TextPrompt textPromptAutor = new TextPrompt("Ingrese el nombre del autor", autorTF);
-        TextPrompt textPromptPrecio = new TextPrompt("Ingrese el precio", precioTF);
-        TextPrompt textPromptDocumento = new TextPrompt("Ingrese la ruta del documento", documentoTF);
+        agregarPromptText();
+        
+        llenarListaCampos();
+        
+        llenarListaValidaciones();
+        
+        agregarValidacion(listaCampos);
         
     }
 
@@ -215,16 +224,31 @@ public class NuevoArticulo extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         
-        String nombre=nombreTF.getText();
-        String categoria=categoriaTF.getText();
-        String editorial=editorialTF.getText();
-        String edicion=edicionTF.getText();
-        String materia=materiaTF.getText();
-        String autor=autorTF.getText();
-        String precio=precioTF.getText();
-        String documento=documentoTF.getText();
+        datosValidos = true;
         
-        Vista2Interfaz.enviarDatosNuevoArticulo(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
+        listaCampos.forEach((k, v) -> k.grabFocus());
+        aceptar.grabFocus();
+        
+        listaValidaciones.forEach((k, v) -> realizarValidaciones(v));
+        
+        if (datosValidos) {
+            
+            String nombre=nombreTF.getText();
+            String categoria=categoriaTF.getText();
+            String editorial=editorialTF.getText();
+            String edicion=edicionTF.getText();
+            String materia=materiaTF.getText();
+            String autor=autorTF.getText();
+            String precio=precioTF.getText();
+            String documento=documentoTF.getText();
+
+            Vista2Interfaz.enviarDatosNuevoArticulo(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
+
+        } else{
+            
+            System.out.println("datos erroneos");
+            
+        }
         
     }//GEN-LAST:event_aceptarActionPerformed
 
@@ -241,6 +265,64 @@ public class NuevoArticulo extends javax.swing.JFrame {
         
     }//GEN-LAST:event_limpiarCamposActionPerformed
 
+    private void agregarPromptText(){
+        
+        TextPrompt textPromptNombre = new TextPrompt("Ingrese el nombre del artículo", nombreTF);
+        TextPrompt textPromptCategoria = new TextPrompt("Ingrese la categoría del artículo", categoriaTF);
+        TextPrompt textPromptEditorial = new TextPrompt("Ingrese el número de editorial", editorialTF);
+        TextPrompt textPromptEdición = new TextPrompt("Ingrese el número de edición", edicionTF);
+        TextPrompt textPromptMateria = new TextPrompt("Ingrese la materia a la que corresponde el artículo", materiaTF);
+        TextPrompt textPromptAutor = new TextPrompt("Ingrese el nombre del autor", autorTF);
+        TextPrompt textPromptPrecio = new TextPrompt("Ingrese el precio", precioTF);
+        TextPrompt textPromptDocumento = new TextPrompt("Ingrese la ruta del documento", documentoTF);
+        
+    }
+    
+    private void llenarListaCampos(){
+        
+        listaCampos.put(nombreTF, Integer.valueOf(1));
+        listaCampos.put(categoriaTF, Integer.valueOf(1));
+        listaCampos.put(editorialTF, Integer.valueOf(6));
+        listaCampos.put(edicionTF, Integer.valueOf(0));
+        listaCampos.put(materiaTF, Integer.valueOf(1));
+        listaCampos.put(autorTF, Integer.valueOf(1));
+        listaCampos.put(precioTF, Integer.valueOf(6));
+        listaCampos.put(documentoTF, Integer.valueOf(0));
+        
+    }
+    
+    private void llenarListaValidaciones(){
+        
+        Boolean booleanObject = new Boolean(false);
+        
+        listaCampos.forEach((k, v) -> listaValidaciones.put(k, booleanObject));
+    }
+    
+    private void agregarValidacion(HashMap<JTextField, Integer> listaCampos){
+        
+        Validador validador = new Validador();
+        
+        listaCampos.forEach((k, v) -> k.addFocusListener(new FocusListener() {
+                
+                @Override
+                public void focusGained(FocusEvent e) {}
+
+                @Override
+                public void focusLost(FocusEvent e) {
+                    
+                    listaValidaciones.replace(k, new Boolean(false), validador.validar(k, v));
+                    
+                }
+            })
+        );
+    }
+    
+    private void realizarValidaciones(Boolean v){
+        
+        datosValidos &= v.booleanValue();
+        
+    }
+    
     /**
      * @param args the command line arguments
      */

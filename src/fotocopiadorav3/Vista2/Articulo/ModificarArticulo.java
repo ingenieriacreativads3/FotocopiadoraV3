@@ -7,9 +7,14 @@
 package fotocopiadorav3.Vista2.Articulo;
 
 import Otros.TextPrompt;
+import Otros.Validador;
 import fotocopiadorav3.Modelo.Articulo;
 import fotocopiadorav3.Modelo.ModeloInterfaz;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.util.HashMap;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,20 +22,24 @@ import fotocopiadorav3.Vista2.Vista2Interfaz;
  */
 public class ModificarArticulo extends javax.swing.JFrame {
 
+    private HashMap<JTextField, Integer> listaCampos = new HashMap<>();
+    private HashMap<JTextField, Boolean> listaValidaciones = new HashMap<>();
+    private boolean datosValidos;
+    
     private int idArticulo;
     
     /** Creates new form ModificarArticulo */
     public ModificarArticulo() {
+        
         initComponents();
         
-        TextPrompt textPromptNombre = new TextPrompt("Ingrese el nombre del artículo", nombreTF);
-        TextPrompt textPromptCategoria = new TextPrompt("Ingrese la categoría del artículo", categoriaTF);
-        TextPrompt textPromptEditorial = new TextPrompt("Ingrese el número de editorial", editorialTF);
-        TextPrompt textPromptEdición = new TextPrompt("Ingrese el número de edición", edicionTF);
-        TextPrompt textPromptMateria = new TextPrompt("Ingrese la materia a la que corresponde el artículo", materiaTF);
-        TextPrompt textPromptAutor = new TextPrompt("Ingrese el nombre del autor", autorTF);
-        TextPrompt textPromptPrecio = new TextPrompt("Ingrese el precio", precioTF);
-        TextPrompt textPromptDocumento = new TextPrompt("Ingrese la ruta del documento", documentoTF);
+        agregarPromptText();
+        
+        llenarListaCampos();
+        
+        llenarListaValidaciones();
+        
+        agregarValidacion(listaCampos);
         
     }
 
@@ -43,7 +52,7 @@ public class ModificarArticulo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        aceptar2 = new javax.swing.JButton();
+        aceptar = new javax.swing.JButton();
         limpiarCampos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -65,10 +74,10 @@ public class ModificarArticulo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        aceptar2.setText("Aceptar");
-        aceptar2.addActionListener(new java.awt.event.ActionListener() {
+        aceptar.setText("Aceptar");
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aceptar2ActionPerformed(evt);
+                aceptarActionPerformed(evt);
             }
         });
 
@@ -169,7 +178,7 @@ public class ModificarArticulo extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(limpiarCampos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(aceptar2)))
+                        .addComponent(aceptar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -208,7 +217,7 @@ public class ModificarArticulo extends javax.swing.JFrame {
                     .addComponent(precioTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aceptar2)
+                    .addComponent(aceptar)
                     .addComponent(limpiarCampos))
                 .addContainerGap())
         );
@@ -216,20 +225,35 @@ public class ModificarArticulo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void aceptar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar2ActionPerformed
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
 
-        String nombre=nombreTF.getText();
-        String categoria=categoriaTF.getText();
-        String editorial=editorialTF.getText();
-        String edicion=edicionTF.getText();
-        String materia=materiaTF.getText();
-        String autor=autorTF.getText();
-        String precio=precioTF.getText();
-        String documento=documentoTF.getText();
+        datosValidos = true;
+        
+        listaCampos.forEach((k, v) -> k.grabFocus());
+        aceptar.grabFocus();
+        
+        listaValidaciones.forEach((k, v) -> realizarValidaciones(v));
+        
+        if (datosValidos) {
+            
+            String nombre=nombreTF.getText();
+            String categoria=categoriaTF.getText();
+            String editorial=editorialTF.getText();
+            String edicion=edicionTF.getText();
+            String materia=materiaTF.getText();
+            String autor=autorTF.getText();
+            String precio=precioTF.getText();
+            String documento=documentoTF.getText();
 
-        Vista2Interfaz.enviarDatosModificarArticulo(Integer.toString(idArticulo), nombre, editorial, categoria, autor, edicion, materia, precio, documento);
+            Vista2Interfaz.enviarDatosModificarArticulo(Integer.toString(idArticulo), nombre, editorial, categoria, autor, edicion, materia, precio, documento);
 
-    }//GEN-LAST:event_aceptar2ActionPerformed
+        } else{
+            
+            System.out.println("datos erroneos");
+            
+        }
+        
+    }//GEN-LAST:event_aceptarActionPerformed
 
     private void limpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarCamposActionPerformed
 
@@ -257,6 +281,64 @@ public class ModificarArticulo extends javax.swing.JFrame {
         precioTF.setText(Double.toString(articulo.getPrecio()));
         documentoTF.setText(articulo.getDocumento().toString());
 
+    }
+    
+    private void agregarPromptText(){
+        
+        TextPrompt textPromptNombre = new TextPrompt("Ingrese el nombre del artículo", nombreTF);
+        TextPrompt textPromptCategoria = new TextPrompt("Ingrese la categoría del artículo", categoriaTF);
+        TextPrompt textPromptEditorial = new TextPrompt("Ingrese el número de editorial", editorialTF);
+        TextPrompt textPromptEdición = new TextPrompt("Ingrese el número de edición", edicionTF);
+        TextPrompt textPromptMateria = new TextPrompt("Ingrese la materia a la que corresponde el artículo", materiaTF);
+        TextPrompt textPromptAutor = new TextPrompt("Ingrese el nombre del autor", autorTF);
+        TextPrompt textPromptPrecio = new TextPrompt("Ingrese el precio", precioTF);
+        TextPrompt textPromptDocumento = new TextPrompt("Ingrese la ruta del documento", documentoTF);
+        
+    }
+    
+    private void llenarListaCampos(){
+        
+        listaCampos.put(nombreTF, Integer.valueOf(1));
+        listaCampos.put(categoriaTF, Integer.valueOf(1));
+        listaCampos.put(editorialTF, Integer.valueOf(6));
+        listaCampos.put(edicionTF, Integer.valueOf(0));
+        listaCampos.put(materiaTF, Integer.valueOf(1));
+        listaCampos.put(autorTF, Integer.valueOf(1));
+        listaCampos.put(precioTF, Integer.valueOf(6));
+        listaCampos.put(documentoTF, Integer.valueOf(0));
+        
+    }
+    
+    private void llenarListaValidaciones(){
+        
+        Boolean booleanObject = new Boolean(false);
+        
+        listaCampos.forEach((k, v) -> listaValidaciones.put(k, booleanObject));
+    }
+    
+    private void agregarValidacion(HashMap<JTextField, Integer> listaCampos){
+        
+        Validador validador = new Validador();
+        
+        listaCampos.forEach((k, v) -> k.addFocusListener(new FocusListener() {
+                
+                @Override
+                public void focusGained(FocusEvent e) {}
+
+                @Override
+                public void focusLost(FocusEvent e) {
+                    
+                    listaValidaciones.replace(k, new Boolean(false), validador.validar(k, v));
+                    
+                }
+            })
+        );
+    }
+    
+    private void realizarValidaciones(Boolean v){
+        
+        datosValidos &= v.booleanValue();
+        
     }
     
     public void setIdArticulo(int idArticulo) {
@@ -303,7 +385,7 @@ public class ModificarArticulo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aceptar2;
+    private javax.swing.JButton aceptar;
     private javax.swing.JTextField autorTF;
     private javax.swing.JTextField categoriaTF;
     private javax.swing.JTextField documentoTF;

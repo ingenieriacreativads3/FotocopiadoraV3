@@ -193,7 +193,6 @@ public class NuevoAlumno extends javax.swing.JFrame {
         datosValidos = true;
         
         listaCampos.forEach((k, v) -> k.grabFocus());
-        
         aceptar.grabFocus();
         
         listaValidaciones.forEach((k, v) -> realizarValidaciones(v));
@@ -241,12 +240,12 @@ public class NuevoAlumno extends javax.swing.JFrame {
     
     private void llenarListaCampos(){
         
-        listaCampos.put(nombreTF, Integer.valueOf(0));
-        listaCampos.put(apellidoTF, Integer.valueOf(0));
-        listaCampos.put(legajoTF, Integer.valueOf(0));
+        listaCampos.put(nombreTF, Integer.valueOf(1));
+        listaCampos.put(apellidoTF, Integer.valueOf(1));
+        listaCampos.put(legajoTF, Integer.valueOf(2));
         listaCampos.put(domicilioTF, Integer.valueOf(0));
-        listaCampos.put(alturaTF, Integer.valueOf(0));
-        listaCampos.put(dniTF, Integer.valueOf(0));
+        listaCampos.put(alturaTF, Integer.valueOf(3));
+        listaCampos.put(dniTF, Integer.valueOf(4));
         
     }
     
