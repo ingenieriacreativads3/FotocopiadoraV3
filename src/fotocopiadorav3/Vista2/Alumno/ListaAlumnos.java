@@ -112,7 +112,7 @@ public class ListaAlumnos extends javax.swing.JFrame {
                 dni=alumno.getPersona().getDni();
 
                 defaultTableModel.addRow(new Object[]{id, nombre, apellido, legajo, domicilio, altura, dni});
-
+                
             }
         }
     }

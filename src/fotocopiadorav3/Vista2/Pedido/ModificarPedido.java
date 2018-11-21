@@ -13,6 +13,7 @@ import fotocopiadorav3.Vista2.Vista2Interfaz;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,6 +31,8 @@ public class ModificarPedido extends javax.swing.JFrame {
         initComponents();
         
         agregarPromptText();
+        
+        
         
     }
 
@@ -63,14 +66,7 @@ public class ModificarPedido extends javax.swing.JFrame {
 
         tablaArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Artículo", "Precio Unit", "Cant", "Fecha Est", "Subtotal"
@@ -207,7 +203,37 @@ public class ModificarPedido extends javax.swing.JFrame {
     
     public void cargarDatosPedido(int idPedido){
         
+        DefaultTableModel defaultTableModel = (DefaultTableModel) tablaArticulos.getModel();
+        
         Pedido pedido = ModeloInterfaz.getPedidoForId(idPedido);
+        
+        alumnoTF.setText(Integer.toString(pedido.getAlumno().getId()));
+        importeTF.setText(Double.toString(pedido.getImporte()));
+        seniaTF.setText(Double.toString(pedido.getPagoAnticipado()));
+        
+        String idArticulo="";
+        String precioUnitario="";
+        String cantidad="";
+        String fechaEstimada="";
+        String subtotal="";
+        
+        List<Articulo> articulos = new ArrayList<>();
+        
+        if (!articulos.isEmpty()) {
+            
+            for (Articulo articulo : articulos) {
+                
+                idArticulo=Integer.toString(articulo.getId());
+                precioUnitario=Double.toString(articulo.getPrecio());
+                cantidad="1";
+                fechaEstimada=new Date().toString();
+                subtotal=Integer.toString(Integer.valueOf(cantidad)*Integer.valueOf(precioUnitario));
+                
+                defaultTableModel.addRow(new Object[]{idArticulo, precioUnitario, cantidad, fechaEstimada, subtotal});
+                
+            }
+        }
+        
         
     }
     
