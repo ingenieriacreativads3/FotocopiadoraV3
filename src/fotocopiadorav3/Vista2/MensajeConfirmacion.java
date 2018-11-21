@@ -102,7 +102,8 @@ public class MensajeConfirmacion extends javax.swing.JFrame {
         
         switch(tipoElemento){
             
-            //case 0: controladorInterfaz.cancelarPedido();
+            case 0: //ControladorInterfaz.;
+                        break;
             
             case 1: ControladorInterfaz.bajaArticulo(idElemento);
                         break;

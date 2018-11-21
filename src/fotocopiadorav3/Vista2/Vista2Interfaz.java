@@ -55,7 +55,7 @@ public class Vista2Interfaz {
     
     public static void renderizarPaginaPrincipal(){
         
-        paginaPrincipal.establecerListados(listaAlumnos, listaArticulos, listaUsuarios);
+        paginaPrincipal.establecerListados(listaAlumnos, listaArticulos, listaUsuarios, listaPedidos);
         paginaPrincipal.setVisible(true);
         
     }
@@ -85,6 +85,7 @@ public class Vista2Interfaz {
             case 2: titulo.concat("Alumno");
                         mensaje.concat("alumno: ");
                         Alumno alumno = ModeloInterfaz.getAlumnoForId(idElemento);
+                        System.out.println("id Alumno: " + idElemento);
                         mensaje.concat("id: " + Integer.toString(alumno.getId()));
                         mensaje.concat("\nnombre: " + alumno.getPersona().getNombre().toString());
                         break;
@@ -306,9 +307,9 @@ public class Vista2Interfaz {
         
     }
     
-    public static void enviarDatosNuevoPedido(String alumno, ArrayList<String> nombresArticulos, ArrayList<String> fechaEstimadaArticulos, ArrayList<String> cantidadArticulos, ArrayList<String> precioUnitarioArticulos, ArrayList<String> precioTotalArticulos, String importeTotal, String senia){
+    public static void enviarDatosNuevoPedido(String idAlumno, String importeTotal, String senia, List<Articulo> articulos){
         
-        //ControladorInterfaz.crearNuevoPedido(alumno, nombresArticulos, fechaEstimadaArticulos, cantidadArticulos, precioUnitarioArticulos, precioTotalArticulos, importeTotal, senia);
+        ControladorInterfaz.nuevoPedido(idAlumno, importeTotal, senia, articulos);
         
     }
     
@@ -332,9 +333,9 @@ public class Vista2Interfaz {
         
     }
     
-    public static void enviarDatosModificarPedido(String alumno, ArrayList<String> nombresArticulos, ArrayList<String> fechaEstimadaArticulos, ArrayList<String> cantidadArticulos, ArrayList<String> precioUnitarioArticulos, ArrayList<String> precioTotalArticulos, String importeTotal, String senia){
+    public static void enviarDatosModificarPedido(String idPedido, String idAlumno, String importeTotal, String senia, String fecha, String codigoTransaccion, List<Articulo> articulos){
         
-        //ControladorInterfaz.modificarPedido(alumno, nombresArticulos, fechaEstimadaArticulos, cantidadArticulos, precioUnitarioArticulos, precioTotalArticulos, importeTotal, senia);
+        ControladorInterfaz.modificacionPedido(idPedido, idAlumno, importeTotal, senia, fecha, codigoTransaccion, articulos);
         
     }
     

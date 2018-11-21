@@ -7,6 +7,7 @@ package fotocopiadorav3.Vista2;
 
 import fotocopiadorav3.Vista2.Alumno.ListaAlumnos;
 import fotocopiadorav3.Vista2.Articulo.ListaArticulos;
+import fotocopiadorav3.Vista2.Pedido.ListaPedidos;
 import fotocopiadorav3.Vista2.Usuario.ListaUsuarios;
 import javax.swing.JTabbedPane;
 
@@ -19,7 +20,7 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
     private static ListaAlumnos listaAlumnos;
     private static ListaArticulos listaArticulos;
     private static ListaUsuarios listaUsuarios;
-    private static ListaUsuarios listaPedidos;
+    private static ListaPedidos listaPedidos;
     
     /**
      * Creates new form PaginaPrincipal
@@ -334,12 +335,12 @@ public class PaginaPrincipalMejorada extends javax.swing.JFrame {
         
     }//GEN-LAST:event_eliminarUsuarioActionPerformed
     
-    public void establecerListados(ListaAlumnos listaAlumnos, ListaArticulos listaArticulos, ListaUsuarios listaUsuarios){
+    public void establecerListados(ListaAlumnos listaAlumnos, ListaArticulos listaArticulos, ListaUsuarios listaUsuarios, ListaPedidos listaPedidos){
         
         this.listaAlumnos = listaAlumnos;
         this.listaArticulos = listaArticulos;
         this.listaUsuarios = listaUsuarios;
-//        this.listaPedidos = listaPedidos;
+        this.listaPedidos = listaPedidos;
         
     }
     

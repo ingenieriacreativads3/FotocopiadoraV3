@@ -6,8 +6,11 @@
 package fotocopiadorav3.Vista2.Pedido;
 
 import Otros.TextPrompt;
+import fotocopiadorav3.Modelo.Articulo;
+import fotocopiadorav3.Modelo.ModeloInterfaz;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,11 +22,10 @@ public class NuevoPedido extends javax.swing.JFrame {
      * Creates new form NuevoPedido
      */
     public NuevoPedido() {
+        
         initComponents();
         
-        TextPrompt textPromptAlumno = new TextPrompt("Ingrese el nombre del alumno", alumnoTF);
-        TextPrompt textPromptImporte = new TextPrompt("Ingrese el importe total", importeTF);
-        TextPrompt textPromptSenia = new TextPrompt("Ingrese el importe de la seña", seniaTF);
+        agregarPromptText();
         
     }
 
@@ -39,7 +41,7 @@ public class NuevoPedido extends javax.swing.JFrame {
         alumnoTF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        articulos = new javax.swing.JTable();
+        tablaArticulos = new javax.swing.JTable();
         aceptar = new javax.swing.JButton();
         limpiarCampos = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -51,11 +53,11 @@ public class NuevoPedido extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        alumnoTF.setToolTipText("Ingrese el nombre del alumno");
+        alumnoTF.setToolTipText("Ingrese el id del alumno");
 
         jLabel1.setText("Alumno:");
 
-        articulos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -70,7 +72,7 @@ public class NuevoPedido extends javax.swing.JFrame {
                 "Artículo", "Precio Unit", "Cant", "Fecha Est", "Subtotal"
             }
         ));
-        jScrollPane2.setViewportView(articulos);
+        jScrollPane2.setViewportView(tablaArticulos);
 
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -169,23 +171,34 @@ public class NuevoPedido extends javax.swing.JFrame {
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         
         String alumno=alumnoTF.getText();
-        ArrayList<String> articulosNombres=new ArrayList<>();
-        ArrayList<String> articulosPreciosUnit=new ArrayList<>();
-        ArrayList<String> articulosFechasEst=new ArrayList<>();
-        ArrayList<String> articulosCantidades=new ArrayList<>();
-        ArrayList<String> articulosSubtotales=new ArrayList<>();
-        articulosNombres.add(articulos.getValueAt(0, 0).toString());
-        articulosCantidades.add(articulos.getValueAt(0, 2).toString());
-        articulosFechasEst.add(articulos.getValueAt(0, 3).toString());
-        articulosPreciosUnit.add(articulos.getValueAt(0, 1).toString());
-        articulosSubtotales.add(articulos.getValueAt(0, 4).toString());
         String importe=importeTF.getText();
         String senia=seniaTF.getText();
+        List<Articulo> articulos = new ArrayList<>();
         
-        Vista2Interfaz.enviarDatosNuevoPedido(alumno, articulosNombres, articulosFechasEst, articulosCantidades, articulosPreciosUnit, articulosSubtotales, importe, senia);
+        Articulo articulo;
+        
+        for (int i = 0; i < tablaArticulos.getRowCount(); i++) {
+            
+            if (tablaArticulos.getValueAt(i, 0)!=null) {
+                
+                articulo = ModeloInterfaz.getArticuloForId(Integer.valueOf(tablaArticulos.getValueAt(i, 0).toString()));
+                articulos.add(articulo);
+                
+            }
+        }
+        
+        Vista2Interfaz.enviarDatosNuevoPedido(alumno, importe, senia, articulos);
         
     }//GEN-LAST:event_aceptarActionPerformed
 
+    private void agregarPromptText(){
+        
+        TextPrompt textPromptAlumno = new TextPrompt("Ingrese el nombre del alumno", alumnoTF);
+        TextPrompt textPromptImporte = new TextPrompt("Ingrese el importe total", importeTF);
+        TextPrompt textPromptSenia = new TextPrompt("Ingrese el importe de la seña", seniaTF);
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -224,7 +237,6 @@ public class NuevoPedido extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
     private javax.swing.JTextField alumnoTF;
-    private javax.swing.JTable articulos;
     private javax.swing.JTextField importeTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -234,5 +246,6 @@ public class NuevoPedido extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton limpiarCampos;
     private javax.swing.JTextField seniaTF;
+    private javax.swing.JTable tablaArticulos;
     // End of variables declaration//GEN-END:variables
 }
