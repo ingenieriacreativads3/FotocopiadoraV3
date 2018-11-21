@@ -72,14 +72,14 @@ public class Vista2Interfaz {
             case 0: titulo.concat("Pedido");
                         mensaje.concat("pedido: ");
                         Pedido pedido = ModeloInterfaz.getPedidoForId(idElemento);
-                        mensaje.concat("id: " + Integer.toString(pedido.getId()));
+                        try {mensaje.concat("id: " + Integer.toString(pedido.getId()));} catch (Exception e) {}
                         break;
             
             case 1: titulo.concat("Artículo");
                         mensaje.concat("artículo: ");
                         Articulo articulo = ModeloInterfaz.getArticuloForId(idElemento);
                         mensaje.concat("id: " + Integer.toString(articulo.getId()));
-                        mensaje.concat("\nnombre" + articulo.getNombre().toString());
+                        try {mensaje.concat("\nnombre" + articulo.getNombre().toString());} catch (Exception e) {}
                         break;
             
             case 2: titulo.concat("Alumno");
@@ -87,14 +87,15 @@ public class Vista2Interfaz {
                         Alumno alumno = ModeloInterfaz.getAlumnoForId(idElemento);
                         System.out.println("id Alumno: " + idElemento);
                         mensaje.concat("id: " + Integer.toString(alumno.getId()));
-                        mensaje.concat("\nnombre: " + alumno.getPersona().getNombre().toString());
+                        try {mensaje.concat("\nnombre: " + alumno.getPersona().getNombre().toString());} catch (Exception e) {}
                         break;
             
             case 3: titulo.concat("Usuario");
                         mensaje.concat("Usuario: ");
                         Usuario usuario = ModeloInterfaz.getUsuarioForId(idElemento);
                         mensaje.concat("id: " + Integer.toString(usuario.getId()));
-                        mensaje.concat("\nnombre: " + usuario.getPersona().getNombre().toString());
+                        try {mensaje.concat("\nnombre: " + usuario.getPersona().getNombre().toString());} catch (Exception e) {}
+                        
                         break;
             
             default: renderizarMensajeError("Error de eliminación", "Há ocurrido un error al intentar dar de baja a algún elemento en el sistema");
@@ -291,7 +292,7 @@ public class Vista2Interfaz {
     
     public static void enviarDatosNuevoArticulo(String nombre, String editorial, String categoria, String autor, String edicion, String materia, String precio, String documento){
         
-        ControladorInterfaz.crearArticulo(nombre, autor, precio, materia);
+        ControladorInterfaz.crearArticulo(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
         
     }
     
@@ -323,7 +324,7 @@ public class Vista2Interfaz {
     
     public static void enviarDatosModificarUsuario(String idUsuario, String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String altura, String dni){
         
-        ControladorInterfaz.modificacionUsuario(idUsuario, nombreUsuario, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
+        ControladorInterfaz.modificacionUsuario(idUsuario, nombre, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
         
     }
     

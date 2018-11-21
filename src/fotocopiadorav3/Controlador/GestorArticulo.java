@@ -17,17 +17,26 @@ public class GestorArticulo {
     
     /**
      * 
-     * @param nombre
-     * @param autor
-     * @param precio
+     * @param nombreRecibido
+     * @param autorRecibido
+     * @param precioRecibido
      * @param materia
      * @return
      */
     
-    protected static Estado altaArticulo(AlfaNumerico nombre, AlfaNumerico autor, double precio, AlfaNumerico materia){
+    protected static Estado altaArticulo(AlfaNumerico nombreRecibido, AlfaNumerico editorialRecibida, Estado estadoRecibido, AlfaNumerico autorRecibido, AlfaNumerico edicionRecibida, Materia materiaRecibida, double precioRecibido, AlfaNumerico documentorecibido){
+        
         Estado ArticuloCreado = Estado.ERROR;
         
-        return ArticuloCreado;
+        //materi
+        //nombre,categoria, materia, editorial, edicion, rutadocumento, autor, precio
+        
+        java.sql.Date fechaActual = new java.sql.Date(2018, 10, 31);
+        
+        Articulo articuloNuevo = ModeloInterfaz.getNuevoArticulo(nombreRecibido, autorRecibido, precioRecibido, materiaRecibida, fechaActual, editorialRecibida, edicionRecibida);
+        articuloNuevo.guardar();
+        
+        return Estado.EXITO;
     }
     /**
      * 
@@ -35,16 +44,21 @@ public class GestorArticulo {
      * @return  
      */
     protected static Estado bajaArticulo(int IDArticulo){
+        
+        
         Estado ArticuloEliminado = Estado.ERROR;
         
         //Verificaciones del nombre, autor, precio, materia.
         
         
         //ArticuloEliminado = ModeloInterfaz.bajaArticulo(IDArticulo);
+        
+        System.out.println("idArticulo a borrar:" + IDArticulo); 
         Articulo articuloABajar = ModeloInterfaz.getArticuloForId(IDArticulo);
+        
         ArticuloEliminado = articuloABajar.borrar();
         
-        return ArticuloEliminado;
+        return Estado.EXITO;
     }
     
     /**

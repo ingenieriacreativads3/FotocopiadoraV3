@@ -43,7 +43,7 @@ public enum Estado{
      * Representa un documento para tutorias de una materia en partcular.
      * 
      */
-    TUTORIAS(22, "Este documento corresponde a las tutorias de la materia"),
+    TUTORIAS(22, "tutorias"),
     
     /**
      * Representa un documento para la catedra de una materia en particular.

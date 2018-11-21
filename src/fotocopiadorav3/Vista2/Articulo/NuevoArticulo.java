@@ -242,6 +242,7 @@ public class NuevoArticulo extends javax.swing.JFrame {
             String precio=precioTF.getText();
             String documento=documentoTF.getText();
 
+            System.out.println("llega hasta aca 1");
             Vista2Interfaz.enviarDatosNuevoArticulo(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
 
         } else{

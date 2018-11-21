@@ -101,24 +101,14 @@ public class ListaUsuarios extends javax.swing.JFrame {
             for (Usuario usuario : usuarios) {
 
                 id=usuario.getId();
-                try{
+                try {nombre=usuario.getPersona().getNombre().toString();} catch (Exception e) {}
+                try {apellido=usuario.getPersona().getApellido().toString();} catch (Exception e) {}
+                try {nombreUsuario=usuario.getNombreUsuario().toString();} catch (Exception e) {}
+                try {domicilio=usuario.getPersona().getDireccion().getCalle().toString();} catch (Exception e) {}
+                try {altura=usuario.getPersona().getDireccion().getNumero();} catch (Exception e) {}
+                try {dni=usuario.getPersona().getDni();} catch (Exception e) {}
+                try {defaultTableModel.addRow(new Object[]{id, nombre, apellido, nombreUsuario, domicilio, altura, dni});} catch (Exception e) {}
                 
-                    if(usuario.getPersona().getApellido() != AlfaNumerico.OBJETO_INVALIDO){nombre=usuario.getPersona().getNombre().toString();}
-                    if(usuario.getPersona().getApellido() != AlfaNumerico.OBJETO_INVALIDO){apellido=usuario.getPersona().getApellido().toString();}
-                    if(usuario.getNombreUsuario() != AlfaNumerico.OBJETO_INVALIDO){nombreUsuario=usuario.getNombreUsuario().toString();}
-
-                    if(usuario.getPersona().getDireccion().getCalle() != AlfaNumerico.OBJETO_INVALIDO){domicilio=usuario.getPersona().getDireccion().getCalle().toString();}
-                    if(usuario.getPersona().getDireccion() != Direccion.OBJETO_INVALIDO){altura=usuario.getPersona().getDireccion().getNumero();}
-                    if(usuario.getPersona() != Persona.OBJETO_INVALIDO){dni=usuario.getPersona().getDni();}
-
-                    defaultTableModel.addRow(new Object[]{id, nombre, apellido, nombreUsuario, domicilio, altura, dni});
-                
-                
-                }catch(Exception e){
-                    
-                    
-                }
-
             }
         }
     }

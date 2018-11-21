@@ -116,6 +116,46 @@ public class Materia {
         
         return estadoDevolver;
     }
+    
+    protected static Materia getForNombre(String nombreRecibido){
+        
+        Materia materiaDevolver = OBJETO_INVALIDO;
+        
+        Estado seObtuvo = Estado.EXITO;
+        //Estado seObtuvo = getInformacion();
+        
+        if(listaObjetos != null){
+            
+            if(seObtuvo == Estado.EXITO){
+
+                for(Materia materiaActual : listaObjetos){
+
+                    if(materiaActual.nombre.getValor().equals(nombreRecibido)){
+
+                        materiaDevolver = materiaActual;
+
+                    }else{
+
+                        //...se establecion un valor por defecto
+
+                    }
+                }
+
+            }else{
+
+                //TODO capturar el error producido por no haber capturado la info de la db
+                System.out.println("Se rompio en Direccion.getForId();");
+
+            }
+            
+        }else{
+            
+            //...no hacer nada
+            
+        }
+        return materiaDevolver;
+        
+    }
 
     protected static Materia getForId(int idRecibido){
         

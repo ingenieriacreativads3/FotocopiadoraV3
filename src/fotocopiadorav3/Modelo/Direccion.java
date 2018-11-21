@@ -319,34 +319,37 @@ public class Direccion{
         
         //System.out.println("Antes de pedir un objeto nuevo");
         
-//        int numero = 1194;
-//        AlfaNumerico asd = AlfaNumerico.nuevo("25 de mayo");
-//        asd.guardar();
-//        System.out.println("pasa el primer alfanumerico");
-//        
-//        Direccion asdd = Direccion.nuevo(asd, numero);
-//        asdd.guardar();
-//        System.out.println("Pasa la primera direccion");
-//        
-//        Persona asddd = Persona.nuevo(asd, asd, numero, asdd);
-//        asddd.guardar();
-//        System.out.println("Pasa la primera persona");
-//        
-//        Usuario asdddd = Usuario.nuevo(asddd, asd, asd);
-//        asdddd.guardar();
-//        System.out.println("Pasa el primer usuario");
-//        
-//        Alumno alumnoNuevo = Alumno.nuevo(numero, asddd);
-//        alumnoNuevo.guardar();
-//        System.out.println("pasa el primer alumno");
-//        
-//        Carrera carreraNueva = Carrera.nuevo(asd, asd);
-//        carreraNueva.guardar();
-//        System.out.println("pasa la primer carrera");
-//        
-//        Materia materiaNueva = Materia.nuevo(asd, 3, asddd, asddd, asddd, asddd, carreraNueva);
-//        materiaNueva.guardar();
-//        System.out.println("pasa la primera materia");
+        int numero = 1194;
+        AlfaNumerico asd = AlfaNumerico.nuevo("25 de mayo");
+        asd.guardar();
+        System.out.println("pasa el primer alfanumerico");
+        
+        Direccion asdd = Direccion.nuevo(asd, numero);
+        asdd.guardar();
+        System.out.println("Pasa la primera direccion");
+        
+        Persona asddd = Persona.nuevo(asd, asd, numero, asdd);
+        asddd.guardar();
+        System.out.println("Pasa la primera persona");
+        
+        Usuario asdddd = Usuario.nuevo(asddd, asd, asd);
+        asdddd.guardar();
+        System.out.println("Pasa el primer usuario");
+        
+        Alumno alumnoNuevo = Alumno.nuevo(numero, asddd);
+        alumnoNuevo.guardar();
+        System.out.println("pasa el primer alumno");
+   
+        Carrera carreraNueva = Carrera.nuevo(asd, asd);
+        carreraNueva.guardar();
+        System.out.println("pasa la primer carrera");
+        
+        AlfaNumerico nombreMateria = ModeloInterfaz.getAlfaNumerico("Analisis I");
+        nombreMateria.guardar();
+        
+        Materia materiaNueva = Materia.nuevo(nombreMateria, 3, asddd, asddd, asddd, asddd, carreraNueva);
+        materiaNueva.guardar();
+        System.out.println("pasa la primera materia");
 //        
 //        Articulo articuloNuevo = Articulo.nuevo(12.34, new java.sql.Date(2018, 10, 31), asd, asd, asd, asd, materiaNueva);
 //        articuloNuevo.guardar();

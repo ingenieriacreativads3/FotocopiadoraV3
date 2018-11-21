@@ -251,9 +251,7 @@ public class ModeloInterfaz {
     
     public static Articulo getArticuloForId(int idArticuloRecibo){
         
-        //Articulo articuloDevolver = Articulo.getForId(idArticuloRecibo);
-        
-        Articulo articuloDevolver = Articulo.OBJETO_INVALIDO;
+        Articulo articuloDevolver = Articulo.getForId(idArticuloRecibo);
         
         return articuloDevolver;
     }
@@ -272,6 +270,15 @@ public class ModeloInterfaz {
         Materia materiaDevolver = Materia.OBJETO_INVALIDO;
         
         materiaDevolver = Materia.getForId(idMateriaRecibida);
+        
+        return materiaDevolver;
+    }
+    
+    public static Materia getMateriaForNombre(String nombreMateriaRecibida){
+        
+        Materia materiaDevolver = Materia.OBJETO_INVALIDO;
+        
+        materiaDevolver = Materia.getForNombre(nombreMateriaRecibida);
         
         return materiaDevolver;
     }
@@ -302,7 +309,21 @@ public class ModeloInterfaz {
         
         return personaDevolver;
     }
+    
+    public static Estado getCategoriaForNombre(String categoriaRecibida){
+        
+        Estado estadoDevolver = Estado.CATEDRA;
+        
+        if(Estado.TUTORIAS.getMensaje().equals(categoriaRecibida)){
             
+            estadoDevolver = Estado.TUTORIAS;
+            
+        }
+        
+        return estadoDevolver;
+        
+    }
+    
     //getListaForId
     
     public static Set<PedidoArticulo> getListaPedidoArticuloForIdPedido(int idPedidorecibido){

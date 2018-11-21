@@ -72,6 +72,11 @@ public class NuevoPedido extends javax.swing.JFrame {
                 "Artículo", "Precio Unit", "Cant", "Fecha Est", "Subtotal"
             }
         ));
+        tablaArticulos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tablaArticulosKeyPressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaArticulos);
 
         aceptar.setText("Aceptar");
@@ -190,6 +195,12 @@ public class NuevoPedido extends javax.swing.JFrame {
         Vista2Interfaz.enviarDatosNuevoPedido(alumno, importe, senia, articulos);
         
     }//GEN-LAST:event_aceptarActionPerformed
+
+    private void tablaArticulosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tablaArticulosKeyPressed
+        
+        
+        
+    }//GEN-LAST:event_tablaArticulosKeyPressed
 
     private void agregarPromptText(){
         

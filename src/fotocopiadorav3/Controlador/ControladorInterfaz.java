@@ -198,18 +198,32 @@ public class ControladorInterfaz extends Application{
     *
     */
     
-    public static Estado crearArticulo(String nombreRecibido, String autorRecibido, String precioRecibido, String materiaRecibido){
+    public static Estado crearArticulo(String nombreRecibido, String editorialRecibida, String categoriaRecibida, String autorRecibido, String edicionRecibida, String materiaRecibido, String precioRecibido, String documentoRecibido){
         
-        AlfaNumerico nombre = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
-        nombre.guardar();
-        AlfaNumerico autor = ModeloInterfaz.getAlfaNumerico(autorRecibido);
-        autor.guardar();
-        AlfaNumerico materia = ModeloInterfaz.getAlfaNumerico(materiaRecibido);
-        materia.guardar();
-        float precio = Float.valueOf(precioRecibido);
+        //ControladorInterfaz.crearArticulo(nombre, editorial, categoria, autor, edicion, materia, precio, documento);
         
+        AlfaNumerico nombreActual = ModeloInterfaz.getAlfaNumerico(nombreRecibido);
+        nombreActual.guardar();
         
-        Estado exitoAlta = GestorArticulo.altaArticulo(nombre, autor, precio, materia);
+        AlfaNumerico editorialActual = ModeloInterfaz.getAlfaNumerico(editorialRecibida);
+        editorialActual.guardar();
+        
+        Estado categoriaActual = ModeloInterfaz.getCategoriaForNombre(categoriaRecibida);
+        
+        AlfaNumerico autorActual = ModeloInterfaz.getAlfaNumerico(autorRecibido);
+        autorActual.guardar();
+        
+        AlfaNumerico edicionActual = ModeloInterfaz.getAlfaNumerico(edicionRecibida);
+        edicionActual.guardar();
+        
+        Materia materiaActual = ModeloInterfaz.getMateriaForNombre(materiaRecibido);
+        
+        double precioActual = Double.valueOf(precioRecibido);
+        
+        AlfaNumerico documentoAcutal = ModeloInterfaz.getAlfaNumerico(documentoRecibido);
+        
+        Estado exitoAlta = GestorArticulo.altaArticulo(nombreActual, editorialActual, categoriaActual, autorActual, edicionActual, materiaActual, precioActual, documentoAcutal);
+        
         return exitoAlta;
     }
     
@@ -233,15 +247,10 @@ public class ControladorInterfaz extends Application{
     
     public static Estado bajaArticulo(String IDArticuloRecibido){
         int IDArticulo = Integer.valueOf(IDArticuloRecibido);
+        
         Estado exito = GestorArticulo.bajaArticulo(IDArticulo);
         return exito;
     }
-    /*
-    * 
-    *   PEDIDO
-    *
-    */
-    
     
     public static Estado nuevoPedido(String IDAlumnoRecibido, String importeRecibido, String SeniaRecibido, List<Articulo>Articulos){
         //se toman los datos de los parametros
@@ -268,7 +277,7 @@ public class ControladorInterfaz extends Application{
         int IDAlumno = Integer.valueOf(IDAlumnoRecibido);
         double importe = Double.valueOf(importeRecibido);
         double senia = Double.valueOf(SeniaRecibido);
-        java.sql.Date fechaPedido = java.sql.Date.valueOf(fechaPedidoRecibido);
+        java.sql.Date fechaPedido = new java.sql.Date(2018, 11, 27);
         
         int IDPedido = Integer.valueOf(IDPedidoRecibido);
         

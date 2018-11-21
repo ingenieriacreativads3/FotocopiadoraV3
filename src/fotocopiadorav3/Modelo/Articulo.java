@@ -182,10 +182,14 @@ public class Articulo {
             prepared.setInt(LUGAR_DEL_CAMPO_ID, this.id);
             
             //System.out.println(prepared.toString());
-            
-            if(listaObjetos.remove(this)){
+            listaObjetos.remove(this);
+            System.out.println("se remueve el objeto");
+            if(true){
                 
                 prepared.executeUpdate();
+                
+                
+                System.out.println("ejecuta a sentencia" + prepared.toString());
                 estadoDevolver = Estado.EXITO;
                 
             }else{

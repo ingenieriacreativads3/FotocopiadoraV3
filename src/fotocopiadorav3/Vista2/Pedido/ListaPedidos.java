@@ -112,32 +112,42 @@ public class ListaPedidos extends javax.swing.JFrame {
         
         DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
         
-        int cantidadFilas = defaultTableModel.getRowCount(); 
-        
-        for (int i = 0; i < cantidadFilas; i++) {
+        while (defaultTableModel.getRowCount()>0) {
             
-            defaultTableModel.removeRow(i);
+            defaultTableModel.removeRow(0);
             
         }
         
-        int id=0;
-        String alumno="";
-        double importe=0.0;
-        double senia=0.0;
+        cargarTabla(pedidos);
         
-        if (!pedidos.isEmpty()) {
-            
-            for (Pedido pedido : pedidos) {
-
-                id=pedido.getId();
-                alumno=pedido.getAlumno().getPersona().getNombre().toString() + pedido.getAlumno().getPersona().getApellido().toString();
-                importe=pedido.getImporte();
-                senia=pedido.getPagoAnticipado();
-
-                defaultTableModel.addRow(new Object[]{id, alumno, importe, senia});
-
-            }
-        }
+//        DefaultTableModel defaultTableModel = (DefaultTableModel) Tabla.getModel();
+//        
+//        int cantidadFilas = defaultTableModel.getRowCount(); 
+//        
+//        for (int i = 0; i < cantidadFilas; i++) {
+//            
+//            defaultTableModel.removeRow(i);
+//            
+//        }
+//        
+//        int id=0;
+//        String alumno="";
+//        double importe=0.0;
+//        double senia=0.0;
+//        
+//        if (!pedidos.isEmpty()) {
+//            
+//            for (Pedido pedido : pedidos) {
+//
+//                id=pedido.getId();
+//                alumno=pedido.getAlumno().getPersona().getNombre().toString() + pedido.getAlumno().getPersona().getApellido().toString();
+//                importe=pedido.getImporte();
+//                senia=pedido.getPagoAnticipado();
+//
+//                defaultTableModel.addRow(new Object[]{id, alumno, importe, senia});
+//
+//            }
+//        }
     }
     
     public boolean isExiste() {

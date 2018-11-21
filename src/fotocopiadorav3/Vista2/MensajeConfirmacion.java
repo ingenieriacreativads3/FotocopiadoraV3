@@ -100,6 +100,8 @@ public class MensajeConfirmacion extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         
+        System.out.println("idArticulo a eliminar:" + idElemento);
+        
         switch(tipoElemento){
             
             case 0: //ControladorInterfaz.;

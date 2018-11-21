@@ -252,12 +252,12 @@ public class ModificarUsuario extends javax.swing.JFrame {
         
         Usuario usuario = ModeloInterfaz.getUsuarioForId(idUsuario);
         
-        nombreTF.setText(usuario.getPersona().getNombre().toString());
-        apellidoTF.setText(usuario.getPersona().getApellido().toString());
-        nombreUsuarioTF.setText(usuario.getNombreUsuario().toString());
-        domicilioTF.setText(usuario.getPersona().getDireccion().getCalle().toString());
-        alturaTF.setText(Integer.toString(usuario.getPersona().getDireccion().getNumero()));
-        dniTF.setText(Integer.toString(usuario.getPersona().getDni()));
+        try {nombreTF.setText(usuario.getPersona().getNombre().toString());} catch (Exception e) {}
+        try {apellidoTF.setText(usuario.getPersona().getApellido().toString());} catch (Exception e) {}
+        try {nombreUsuarioTF.setText(usuario.getNombreUsuario().toString());} catch (Exception e) {}
+        try {domicilioTF.setText(usuario.getPersona().getDireccion().getCalle().toString());} catch (Exception e) {}
+        try {alturaTF.setText(Integer.toString(usuario.getPersona().getDireccion().getNumero()));} catch (Exception e) {}
+        try {dniTF.setText(Integer.toString(usuario.getPersona().getDni()));} catch (Exception e) {}
         
     }
     
