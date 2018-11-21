@@ -72,6 +72,8 @@ public class ControladorInterfaz extends Application{
         contrasenia.guardar();
         AlfaNumerico calleDomicilio = ModeloInterfaz.getAlfaNumerico(calleDomicilioRecibido);
         calleDomicilio.guardar();
+        
+        System.out.println("numero domicilio:" + numeroDomicilioRecibido);
         int numeroDomicilio = Integer.valueOf(numeroDomicilioRecibido);
         Direccion domicilio = ModeloInterfaz.getDireccion(calleDomicilio, numeroDomicilio);
         
@@ -161,17 +163,26 @@ public class ControladorInterfaz extends Application{
     }
     
     public static Estado modificacionClienteComoRegistrado(String legajoRecibido, String nombreClienteRecibido, String apellidoRecibido, String direccionRecibido, String numeroRecibido, String dniClienteRecibido){
+        
         int legajo = Integer.valueOf(legajoRecibido);
+        
         AlfaNumerico nombreCliente = ModeloInterfaz.getAlfaNumerico(nombreClienteRecibido);
         nombreCliente.guardar();
+        
         AlfaNumerico apellidoCliente = ModeloInterfaz.getAlfaNumerico(apellidoRecibido);
         apellidoCliente.guardar();
-        AlfaNumerico direccionCliente = ModeloInterfaz.getAlfaNumerico(direccionRecibido);
-        apellidoCliente.guardar();
+        
+        AlfaNumerico calleDireccionCliente = ModeloInterfaz.getAlfaNumerico(direccionRecibido);
+        calleDireccionCliente.guardar();
+        
         int numeroCalle = Integer.valueOf(numeroRecibido);
         int dniCliente = Integer.valueOf(dniClienteRecibido);
         
-        Estado exitoAlta = GestorCliente.modificacionCliente(legajo, nombreCliente, apellidoCliente, direccionCliente, numeroCalle, dniCliente);
+        Direccion direccionCliente = ModeloInterfaz.getDireccion(calleDireccionCliente, numeroCalle);
+        direccionCliente.guardar();
+        
+        
+        Estado exitoAlta = GestorCliente.modificacionCliente(legajo, nombreCliente, apellidoCliente, direccionCliente, dniCliente);
         return exitoAlta;
     }
     

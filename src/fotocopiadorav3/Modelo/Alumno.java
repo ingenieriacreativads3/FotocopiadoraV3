@@ -201,7 +201,7 @@ public class Alumno{
         
     }
 
-    protected static Estado getInformacion(){
+    public static Estado getInformacion(){
         
         Estado estadoDevolver = Estado.ERROR;
         

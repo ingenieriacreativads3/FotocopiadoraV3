@@ -95,6 +95,46 @@ public class Direccion{
         return estadoDevolver;
     }
     
+    protected static Direccion getForString(String stringRecibido){
+        
+        Direccion direccionDevolver = OBJETO_INVALIDO;
+        
+        Estado seObtuvo = Estado.EXITO;
+        //Estado seObtuvo = getInformacion();
+        
+        if(listaObjetos != null){
+            
+            if(seObtuvo == Estado.EXITO){
+
+                for(Direccion direccionActual : listaObjetos){
+
+                    if(direccionActual.calle.getValor().equals(stringRecibido)){
+
+                        direccionDevolver = direccionActual;
+
+                    }else{
+
+                        //...se establecion un valor por defecto
+
+                    }
+                }
+
+            }else{
+
+                //TODO capturar el error producido por no haber capturado la info de la db
+                System.out.println("Se rompio en Direccion.getForString();");
+
+            }
+            
+        }else{
+            
+            //...no hacer nada
+            
+        }
+        return direccionDevolver;
+        
+    }
+    
     protected static Direccion getForId(int idRecibido){
         
         Direccion direccionDevolver = OBJETO_INVALIDO;

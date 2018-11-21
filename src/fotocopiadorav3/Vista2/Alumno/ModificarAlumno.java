@@ -202,7 +202,7 @@ public class ModificarAlumno extends javax.swing.JFrame {
         
         listaValidaciones.forEach((k, v) -> realizarValidaciones(v));
         
-        if (datosValidos) {
+        if (true) {
             
             String nombre=nombreTF.getText();
             String apellido=apellidoTF.getText();
@@ -211,7 +211,9 @@ public class ModificarAlumno extends javax.swing.JFrame {
             String altura=alturaTF.getText();
             String dni=dniTF.getText();
             
+            System.out.println("antes de enviar los datos");
             Vista2Interfaz.enviarDatosModificarAlumno(nombre, apellido, legajo, domicilio, altura, dni);
+            System.out.println("dsps de enviar los datos");
             
         } else{
             

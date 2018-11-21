@@ -35,7 +35,7 @@ public class AlfaNumerico implements Serializable{
     @Column(name = "valor")
     private String valor;
             
-    protected final static AlfaNumerico OBJETO_INVALIDO = new AlfaNumerico();
+    public final static AlfaNumerico OBJETO_INVALIDO = new AlfaNumerico();
 
     private static Set<AlfaNumerico> listaObjetos = new HashSet<>();
     

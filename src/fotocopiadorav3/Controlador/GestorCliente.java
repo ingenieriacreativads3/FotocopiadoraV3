@@ -64,16 +64,18 @@ public class GestorCliente {
         return Exito;
     }
     
-    protected static Estado modificacionCliente(int legajo, AlfaNumerico nombreCliente, AlfaNumerico apellidoCliente, AlfaNumerico direccionClienteRecibido, int numeroCalle, int DNICliente){
+    protected static Estado modificacionCliente(int legajoRecibido, AlfaNumerico nombreCliente, AlfaNumerico apellidoCliente, Direccion direccionClienteRecibido, int DNICliente){
         Estado Exito = Estado.ERROR;
         
-        if(datosCorrectos(legajo, nombreCliente, apellidoCliente, direccionClienteRecibido, numeroCalle)){
+        //if(datosCorrectos(legajo, nombreCliente, apellidoCliente, direccionClienteRecibido, numeroCalle)){
+        if(true){
             //Persona nuevoCliente = ModeloInterfaz.get
             //Exito = ModeloInterfaz.getNuevoAlumno(legajo, personaRecibida);
-            Alumno alumnoAModificar = ModeloInterfaz.getAlumnoForId(legajo);
+            Alumno alumnoAModificar = ModeloInterfaz.getAlumnoForLegajo(legajoRecibido);
+            
             Persona personaAModificar = alumnoAModificar.getPersona();
-            //Persona personaAModificar = ModeloInterfaz.
-            Exito = alumnoAModificar.modificar(legajo, personaAModificar);
+            personaAModificar.modificar(nombreCliente, apellidoCliente, DNICliente, direccionClienteRecibido);
+            Exito = alumnoAModificar.modificar(legajoRecibido, personaAModificar);
         }
         
         return Exito;

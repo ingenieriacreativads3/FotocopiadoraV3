@@ -296,7 +296,7 @@ public class Vista2Interfaz {
     
     public static void enviarDatosNuevoUsuario(String nombre, String apellido, String nombreUsuario, String contrasenia, String domicilio, String altura, String dni){
         
-        ControladorInterfaz.altaUsuario(nombreUsuario, apellido, nombreUsuario, contrasenia, domicilio, domicilio, dni);
+        ControladorInterfaz.altaUsuario(nombreUsuario, apellido, nombreUsuario, contrasenia, domicilio, altura, dni);
         
     }
     

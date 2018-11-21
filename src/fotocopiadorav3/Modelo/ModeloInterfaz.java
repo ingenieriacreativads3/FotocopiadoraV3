@@ -228,6 +228,13 @@ public class ModeloInterfaz {
         return direccionDevolver;
     }
     
+    public static Direccion getDireccionForString(String direccionRecibida){
+        
+        Direccion direccionDevolver = Direccion.getForString(direccionRecibida);
+        
+        return direccionDevolver;
+    }
+    
     public static Usuario getUsuarioForId(int idUsuarioRecibido){
         
         Usuario usuarioDevolver = Usuario.getForId(idUsuarioRecibido);

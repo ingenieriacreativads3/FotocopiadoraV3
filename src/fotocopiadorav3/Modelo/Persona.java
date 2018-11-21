@@ -38,7 +38,7 @@ public class Persona{
     private int idApellido;
     private int idDireccion;
     
-    protected final static Persona OBJETO_INVALIDO = new Persona();
+    public final static Persona OBJETO_INVALIDO = new Persona();
 
     private static Set<Persona> listaObjetos = new HashSet<>();
     

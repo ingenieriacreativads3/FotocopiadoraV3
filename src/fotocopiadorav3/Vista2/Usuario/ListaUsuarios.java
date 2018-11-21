@@ -5,7 +5,7 @@
  */
 package fotocopiadorav3.Vista2.Usuario;
 
-import fotocopiadorav3.Modelo.Usuario;
+import fotocopiadorav3.Modelo.*;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 import java.util.Set;
 import javax.swing.JTable;
@@ -101,14 +101,23 @@ public class ListaUsuarios extends javax.swing.JFrame {
             for (Usuario usuario : usuarios) {
 
                 id=usuario.getId();
-                nombre=usuario.getPersona().getNombre().toString();
-                apellido=usuario.getPersona().getApellido().toString();
-                nombreUsuario=usuario.getNombreUsuario().toString();
-                //domicilio=usuario.getPersona().getDireccion().getCalle().toString();
-                altura=usuario.getPersona().getDireccion().getNumero();
-                dni=usuario.getPersona().getDni();
+                try{
+                
+                    if(usuario.getPersona().getApellido() != AlfaNumerico.OBJETO_INVALIDO){nombre=usuario.getPersona().getNombre().toString();}
+                    if(usuario.getPersona().getApellido() != AlfaNumerico.OBJETO_INVALIDO){apellido=usuario.getPersona().getApellido().toString();}
+                    if(usuario.getNombreUsuario() != AlfaNumerico.OBJETO_INVALIDO){nombreUsuario=usuario.getNombreUsuario().toString();}
 
-                defaultTableModel.addRow(new Object[]{id, nombre, apellido, nombreUsuario, domicilio, altura, dni});
+                    if(usuario.getPersona().getDireccion().getCalle() != AlfaNumerico.OBJETO_INVALIDO){domicilio=usuario.getPersona().getDireccion().getCalle().toString();}
+                    if(usuario.getPersona().getDireccion() != Direccion.OBJETO_INVALIDO){altura=usuario.getPersona().getDireccion().getNumero();}
+                    if(usuario.getPersona() != Persona.OBJETO_INVALIDO){dni=usuario.getPersona().getDni();}
+
+                    defaultTableModel.addRow(new Object[]{id, nombre, apellido, nombreUsuario, domicilio, altura, dni});
+                
+                
+                }catch(Exception e){
+                    
+                    
+                }
 
             }
         }
