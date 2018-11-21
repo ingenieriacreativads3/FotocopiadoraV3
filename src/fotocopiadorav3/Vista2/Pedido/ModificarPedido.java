@@ -6,10 +6,14 @@
 package fotocopiadorav3.Vista2.Pedido;
 
 import Otros.TextPrompt;
+import fotocopiadorav3.Modelo.Articulo;
 import fotocopiadorav3.Modelo.ModeloInterfaz;
 import fotocopiadorav3.Modelo.Pedido;
 import fotocopiadorav3.Vista2.Vista2Interfaz;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,11 +27,12 @@ public class ModificarPedido extends javax.swing.JFrame {
      * Creates new form ModificarPedido
      */
     public ModificarPedido() {
+        
         initComponents();
         
-        TextPrompt textPromptAlumno = new TextPrompt("Ingrese el nombre del alumno", alumnoTF);
-        TextPrompt textPromptImporte = new TextPrompt("Ingrese el importe total", importeTF);
-        TextPrompt textPromptSenia = new TextPrompt("Ingrese el importe de la seña", seniaTF);
+        agregarPromptText();
+        
+        
         
     }
 
@@ -43,7 +48,7 @@ public class ModificarPedido extends javax.swing.JFrame {
         alumnoTF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        articulos = new javax.swing.JTable();
+        tablaArticulos = new javax.swing.JTable();
         aceptar = new javax.swing.JButton();
         limpiarCampos = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -55,26 +60,19 @@ public class ModificarPedido extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        alumnoTF.setToolTipText("Ingrese el nombre del alumno");
+        alumnoTF.setToolTipText("Ingrese el id del alumno");
 
         jLabel1.setText("Alumno:");
 
-        articulos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Artículo", "Precio Unit", "Cant", "Fecha Est", "Subtotal"
             }
         ));
-        jScrollPane2.setViewportView(articulos);
+        jScrollPane2.setViewportView(tablaArticulos);
 
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -169,20 +167,25 @@ public class ModificarPedido extends javax.swing.JFrame {
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
 
         String alumno=alumnoTF.getText();
-        ArrayList<String> articulosNombres=new ArrayList<>();
-        ArrayList<String> articulosPreciosUnit=new ArrayList<>();
-        ArrayList<String> articulosFechasEst=new ArrayList<>();
-        ArrayList<String> articulosCantidades=new ArrayList<>();
-        ArrayList<String> articulosSubtotales=new ArrayList<>();
-        articulosNombres.add(articulos.getValueAt(0, 0).toString());
-        articulosCantidades.add(articulos.getValueAt(0, 2).toString());
-        articulosFechasEst.add(articulos.getValueAt(0, 3).toString());
-        articulosPreciosUnit.add(articulos.getValueAt(0, 1).toString());
-        articulosSubtotales.add(articulos.getValueAt(0, 4).toString());
         String importe=importeTF.getText();
         String senia=seniaTF.getText();
-
-        Vista2Interfaz.enviarDatosModificarPedido(alumno, articulosNombres, articulosFechasEst, articulosCantidades, articulosPreciosUnit, articulosSubtotales, importe, senia);
+        String fecha=new Date().toString();
+        String codigoTransaccion="";
+        List<Articulo> articulos = new ArrayList<>();
+        
+        Articulo articulo;
+        
+        for (int i = 0; i < tablaArticulos.getRowCount(); i++) {
+            
+            if (tablaArticulos.getValueAt(i, 0)!=null) {
+                
+                articulo = ModeloInterfaz.getArticuloForId(Integer.valueOf(tablaArticulos.getValueAt(i, 0).toString()));
+                articulos.add(articulo);
+                
+            }
+        }
+        
+        Vista2Interfaz.enviarDatosModificarPedido(Integer.toString(idPedido), alumno, importe, senia, fecha, codigoTransaccion, articulos);
 
     }//GEN-LAST:event_aceptarActionPerformed
 
@@ -190,9 +193,47 @@ public class ModificarPedido extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_limpiarCamposActionPerformed
 
+    private void agregarPromptText(){
+        
+        TextPrompt textPromptAlumno = new TextPrompt("Ingrese el nombre del alumno", alumnoTF);
+        TextPrompt textPromptImporte = new TextPrompt("Ingrese el importe total", importeTF);
+        TextPrompt textPromptSenia = new TextPrompt("Ingrese el importe de la seña", seniaTF);
+        
+    }
+    
     public void cargarDatosPedido(int idPedido){
         
+        DefaultTableModel defaultTableModel = (DefaultTableModel) tablaArticulos.getModel();
+        
         Pedido pedido = ModeloInterfaz.getPedidoForId(idPedido);
+        
+        alumnoTF.setText(Integer.toString(pedido.getAlumno().getId()));
+        importeTF.setText(Double.toString(pedido.getImporte()));
+        seniaTF.setText(Double.toString(pedido.getPagoAnticipado()));
+        
+        String idArticulo="";
+        String precioUnitario="";
+        String cantidad="";
+        String fechaEstimada="";
+        String subtotal="";
+        
+        List<Articulo> articulos = new ArrayList<>();
+        
+        if (!articulos.isEmpty()) {
+            
+            for (Articulo articulo : articulos) {
+                
+                idArticulo=Integer.toString(articulo.getId());
+                precioUnitario=Double.toString(articulo.getPrecio());
+                cantidad="1";
+                fechaEstimada=new Date().toString();
+                subtotal=Integer.toString(Integer.valueOf(cantidad)*Integer.valueOf(precioUnitario));
+                
+                defaultTableModel.addRow(new Object[]{idArticulo, precioUnitario, cantidad, fechaEstimada, subtotal});
+                
+            }
+        }
+        
         
     }
     
@@ -242,7 +283,6 @@ public class ModificarPedido extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
     private javax.swing.JTextField alumnoTF;
-    private javax.swing.JTable articulos;
     private javax.swing.JTextField importeTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -252,5 +292,6 @@ public class ModificarPedido extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton limpiarCampos;
     private javax.swing.JTextField seniaTF;
+    private javax.swing.JTable tablaArticulos;
     // End of variables declaration//GEN-END:variables
 }
